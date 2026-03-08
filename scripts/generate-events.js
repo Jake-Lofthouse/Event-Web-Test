@@ -339,18 +339,12 @@ iframe { width: 100%; border-radius: 0.75rem; border: none; overflow: hidden; }
   box-shadow: 0 4px 15px rgba(${isCurrentJunior ? '64,224,208' : '76,175,80'}, 0.3);
 }
 .action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(${isCurrentJunior ? '64,224,208' : '76,175,80'}, 0.4); }
-.course-animate-btn {
+.course-map-btn {
   background: linear-gradient(135deg, #28a745, #20c997) !important;
   border-color: #28a745 !important;
   box-shadow: 0 4px 15px rgba(40,167,69,0.35) !important;
 }
-.course-animate-btn:hover { box-shadow: 0 6px 22px rgba(40,167,69,0.5) !important; }
-.course-map-btn {
-  background: linear-gradient(135deg, #fd7e14, #ffc107) !important;
-  border-color: #fd7e14 !important;
-  box-shadow: 0 4px 15px rgba(253,126,20,0.35) !important;
-}
-.course-map-btn:hover { box-shadow: 0 6px 22px rgba(253,126,20,0.5) !important; }
+.course-map-btn:hover { box-shadow: 0 6px 22px rgba(40,167,69,0.5) !important; }
 /* ── Course Modal — identical to main.html ── */
 #course-map-modal {
   display: none; position: fixed; top:0;left:0;width:100%;height:100%;
@@ -486,8 +480,9 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 <main>
   <h1>${longName} - Hotels &amp; Visitor Guide</h1>
   <div class="parkrun-actions">
-    ${hasRoute ? `<button onclick="openCourseModal()" class="action-btn course-animate-btn"><i class="fas fa-play-circle"></i> Animate Course</button>` : ''}
-    <a href="https://${parkrunDomain}/${eventSlug}/course/" target="_blank" class="action-btn course-map-btn"><i class="fas fa-route"></i> Course Map</a>
+    ${hasRoute
+      ? `<button onclick="openCourseModal()" class="action-btn course-map-btn"><i class="fas fa-route"></i> Course Map</button>`
+      : `<a href="https://${parkrunDomain}/${eventSlug}/course/" target="_blank" class="action-btn course-map-btn"><i class="fas fa-route"></i> Course Map</a>`}
     <a href="https://${parkrunDomain}/${eventSlug}/futureroster/" target="_blank" class="action-btn"><i class="fas fa-hand-paper"></i> Volunteer Roster</a>
     <a href="https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}" target="_blank" class="action-btn"><i class="fas fa-directions"></i> Directions</a>
   </div>
@@ -907,24 +902,21 @@ function updateCourseFrame(progress) {
   const finishLL = _courseFinish;
   const [sx,sy]  = startLL  ? toXY(startLL[1],  startLL[0])  : toXY(route[0][1], route[0][0]);
   const [fx,fy]  = finishLL ? toXY(finishLL[1], finishLL[0]) : toXY(route[route.length-1][1], route[route.length-1][0]);
-  const DOT_R = 9;
 
-  // Green trail behind runner
+  // Green trail behind runner — starts exactly at start dot
   if (progress > 0) {
     ctx.beginPath(); ctx.lineWidth = 5; ctx.strokeStyle = '#28a745';
     ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-    let started = false;
-    for (let i = 0; i <= Math.min(fullIdx, route.length-2); i++) {
+    const [x0,y0] = toXY(route[0][1], route[0][0]);
+    ctx.moveTo(x0, y0);
+    for (let i = 1; i <= Math.min(fullIdx, route.length-2); i++) {
       const [x,y] = toXY(route[i][1], route[i][0]);
-      if (!started) {
-        if (Math.hypot(x-sx, y-sy) > DOT_R) { ctx.moveTo(x,y); started = true; }
-      } else ctx.lineTo(x,y);
+      ctx.lineTo(x,y);
     }
-    if (started && fullIdx < route.length-1) {
+    if (fullIdx < route.length-1) {
       const [x1,y1] = toXY(route[fullIdx][1],   route[fullIdx][0]);
       const [x2,y2] = toXY(route[fullIdx+1][1], route[fullIdx+1][0]);
-      const tx = x1+(x2-x1)*frac, ty = y1+(y2-y1)*frac;
-      if (Math.hypot(tx-fx, ty-fy) > DOT_R) ctx.lineTo(tx,ty);
+      ctx.lineTo(x1+(x2-x1)*frac, y1+(y2-y1)*frac);
     }
     ctx.stroke();
   }
