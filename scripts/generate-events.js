@@ -447,9 +447,9 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   .content-grid { display: flex; flex-direction: column; gap: 1.5rem; }
   .left-column, .right-column { display: contents; }
   #cancel-tile { order:1; } #further-tile { order:2; }
-  #weather-section { order:3; } #location-section { order:4; }
-  #hotels-section { order:5; } #experiences-section { order:6; }
-  #course-terrain-section { order:7; } #nearby-section { order:8; }
+  #weather-section { order:4; } #location-section { order:5; }
+  #hotels-section { order:6; } #experiences-section { order:7; }
+  #course-terrain-section { order:3; } #nearby-section { order:8; }
   [data-name="BMC-Widget"] { display: none !important; }
 }
 @media (max-width: 768px) {
