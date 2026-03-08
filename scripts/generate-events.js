@@ -476,10 +476,10 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   <h1>${longName} - Hotels &amp; Visitor Guide</h1>
   <div class="parkrun-actions">
     ${hasRoute
-      ? `<button onclick="openCourseModal()" class="action-btn course-map-btn"><i class="fas fa-route"></i> Course Map</button>`
-      : `<a href="https://${parkrunDomain}/${eventSlug}/course/" target="_blank" class="action-btn course-map-btn"><i class="fas fa-route"></i> Course Map</a>`}
-    <a href="https://${parkrunDomain}/${eventSlug}/futureroster/" target="_blank" class="action-btn"><i class="fas fa-hand-paper"></i> Volunteer Roster</a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}" target="_blank" class="action-btn"><i class="fas fa-directions"></i> Directions</a>
+      ? `<button onclick="openCourseModal()" class="action-btn course-map-btn">Course Map</button>`
+      : `<a href="https://${parkrunDomain}/${eventSlug}/course/" target="_blank" class="action-btn course-map-btn">Course Map</a>`}
+    <a href="https://${parkrunDomain}/${eventSlug}/futureroster/" target="_blank" class="action-btn">Volunteer Roster</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}" target="_blank" class="action-btn">Directions</a>
   </div>
   ${hasDescription ? `<div class="description">${description}</div>` : ''}
   <div class="content-grid">
