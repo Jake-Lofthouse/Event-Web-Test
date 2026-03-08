@@ -108,12 +108,7 @@ iframe { width: 100%; border-radius: 0.75rem; border: none; overflow: hidden; }
   box-shadow: 0 4px 15px rgba(76,175,80, 0.3);
 }
 .action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(76,175,80, 0.4); }
-.course-map-btn {
-  background: linear-gradient(135deg, #28a745, #20c997) !important;
-  border-color: #28a745 !important;
-  box-shadow: 0 4px 15px rgba(40,167,69,0.35) !important;
-}
-.course-map-btn:hover { box-shadow: 0 6px 22px rgba(40,167,69,0.5) !important; }
+
 /* ── Course Modal — identical to main.html ── */
 #course-map-modal {
   display: none; position: fixed; top:0;left:0;width:100%;height:100%;
@@ -346,11 +341,11 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
           <button class="course-ctrl-btn" id="course-play-btn" onclick="toggleCourseAnimation()">
             <i class="fas fa-play"></i>
           </button>
-          <span class="course-time-label" id="course-time-label">0:00 / 0:45</span>
+          <span class="course-time-label" id="course-time-label">0:00 / 0:30</span>
         </div>
       </div>
       <div id="elevation-chart-container">
-        <div class="elevation-label">Elevation Profile — click to seek</div>
+        <div class="elevation-label">Elevation Profile — click to jump</div>
         <canvas id="elevation-chart" height="100"></canvas>
       </div>
     </div>
@@ -508,7 +503,7 @@ function initCoursePreview() {
 let courseModalMap           = null;
 let courseModalStartMark     = null;
 let courseModalFinishMark    = null;
-const COURSE_ANIM_DURATION   = 45;
+const COURSE_ANIM_DURATION   = 30;
 let courseAnimStartTime      = null;
 let courseAnimElapsedAtPause = 0;
 let courseAnimRunning        = false;
