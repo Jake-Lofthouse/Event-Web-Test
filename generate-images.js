@@ -13,6 +13,7 @@ const IMAGE_WIDTH    = 1200;
 const IMAGE_HEIGHT   = 630;
 const MAX_EVENTS     = 9999999;
 const CONCURRENCY    = 3; // how many pages rendered in parallel
+const IMAGE_LIMIT    = parseInt(process.env.IMAGE_LIMIT || '0', 10);
 
 if (!COURSE_MAPS_URL) {
   throw new Error('COURSE_MAPS_URL secret not set');
@@ -292,6 +293,10 @@ async function main() {
     (a.properties.eventname || '').toLowerCase().localeCompare((b.properties.eventname || '').toLowerCase())
   );
 
+  const limitedEvents = IMAGE_LIMIT > 0 ? selectedEvents.slice(0, IMAGE_LIMIT) : selectedEvents;
+  if (IMAGE_LIMIT > 0) console.log(`Limit set — generating up to ${IMAGE_LIMIT} images.`);
+  console.log(`Processing ${limitedEvents.length} events...`);
+
   ensureDir(OUTPUT_DIR);
 
   console.log(`Launching browser...`);
@@ -308,7 +313,7 @@ async function main() {
   let generated = 0, skipped = 0, failed = 0;
 
   // Process in batches to control concurrency
-  const batches = chunk(selectedEvents, CONCURRENCY);
+  const batches = chunk(limitedEvents, CONCURRENCY);
   for (const batch of batches) {
     await Promise.all(batch.map(async event => {
       try {
