@@ -14,6 +14,11 @@ on:
         required: false
         default: false
         type: boolean
+      limit:
+        description: 'Max number of images to generate (0 = all)'
+        required: false
+        default: '0'
+        type: string
 
 jobs:
   generate-images:
@@ -64,6 +69,7 @@ jobs:
       - name: Generate feature images
         env:
           COURSE_MAPS_URL: ${{ secrets.COURSE_MAPS_URL }}
+          IMAGE_LIMIT: ${{ github.event.inputs.limit || '0' }}
         run: node generate-images.js
 
       - name: Check how many images were produced
