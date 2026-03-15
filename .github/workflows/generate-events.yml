@@ -1,12 +1,15 @@
-name: Generate Individual Event Websites
+name: Generate Events
 
 on:
   workflow_dispatch:
 
+
 jobs:
+
   generate-sitemap:
     runs-on: ubuntu-latest
     name: Generate Sitemap
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -16,9 +19,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
-      - name: Generate sitemap only
+      - name: Generate sitemap
         run: node scripts/generate-sitemap.js
 
       - name: Commit sitemap
@@ -27,12 +30,14 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add sitemap.events.xml
           git commit -m "Update sitemap" || echo "No sitemap changes"
-          git push
+          git pull --rebase origin main
+          git push origin main
 
   generate-pages:
     runs-on: ubuntu-latest
     name: Generate Event Pages
-    needs: generate-sitemap
+    needs: generate-sitemap 
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -42,20 +47,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
-      - name: Run generator script
+      - name: Generate event pages
+        env:
+          COURSE_MAPS_URL: ${{ secrets.COURSE_MAPS_URL }}
         run: node scripts/generate-events.js
 
       - name: Commit and push generated content
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
           git add explore/ sitemap.events.xml
           git commit -m "Auto-update event pages" || echo "No changes to commit"
-
-          # Always sync with remote before pushing
           git pull --rebase origin main
           git push origin main
-
