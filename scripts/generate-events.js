@@ -3,7 +3,12 @@ const https = require('https');
 const path = require('path');
 
 const EVENTS_URL = 'https://www.parkrunnertourist.com/events1.json';
-const COURSE_MAPS_URL = 'https://api.parkrunnertourist.com/course_maps/course_maps_all.json';
+
+const COURSE_MAPS_URL = process.env.COURSE_MAPS_URL;
+if (!COURSE_MAPS_URL) {
+  throw new Error("COURSE_MAPS_URL secret not set");
+}
+
 const OUTPUT_DIR = './explore';
 const MAX_EVENTS = 6;
 const MAX_FILES_PER_FOLDER = 999;
@@ -235,12 +240,12 @@ async function generateHtml(event, relativePath, allEventsInfo, slugToSubfolder,
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${pageTitle}</title>
-<meta name="description" content="Visiting ${longName}? Compare nearby hotels, explore the course map, check the latest weather forecast and plan your perfect parkrun weekend." />
+<meta name="description" content="Visiting ${longName}? Compare nearby hotels, explore the course map, learn about the terrain, find local experiences and attractions, check the latest weather forecast and plan your perfect parkrun weekend." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="${location}" />
 <meta name="geo.position" content="${latitude};${longitude}" />
 <meta property="og:title" content="${pageTitle}" />
-<meta property="og:description" content="Planning a visit to ${longName}? Discover nearby hotels, explore the course map, check the latest weather forecast and find local cafes." />
+<meta property="og:description" content="Planning a visit to ${longName}? Discover nearby hotels, explore the course map, learn about the terrain, find local experiences and attractions, check the latest weather forecast and find local cafes." />
 <meta property="og:url" content="https://www.parkrunnertourist.com/explore/${relativePath}" />
 <meta property="og:type" content="article" />
 <meta name="robots" content="index, follow" />
