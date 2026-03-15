@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 // ============================================================
 const EVENTS_URL     = 'https://www.parkrunnertourist.com/events1.json';
 const COURSE_MAPS_URL = process.env.COURSE_MAPS_URL;
-const OUTPUT_DIR     = './explore/images';
+const OUTPUT_DIR     = path.join(__dirname, '../explore/images');
 const IMAGE_WIDTH    = 1200;
 const IMAGE_HEIGHT   = 630;
 const MAX_EVENTS     = 9999999;
@@ -285,7 +285,7 @@ async function main() {
   }
 
   let folderMapping = {};
-  try { folderMapping = JSON.parse(fs.readFileSync('./folder-mapping.json', 'utf-8')); }
+  try { folderMapping = JSON.parse(fs.readFileSync(path.join(__dirname, '../folder-mapping.json'), 'utf-8')); }
   catch (e) { console.warn('No folder mapping, using dynamic.'); }
 
   const selectedEvents = events.slice(0, MAX_EVENTS);
