@@ -1,64 +1,129 @@
 name: Generate Events
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
-
+    inputs:
+      limit:
+        description: 'Max images to generate (0 = all)'
+        required: false
+        default: '0'
+        type: string
+      force_regenerate:
+        description: 'Regenerate all images (ignore existing)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
 
-  generate-sitemap:
+  # ============================================================
+  # JOB 1 — Generate HTML pages
+  # ============================================================
+  generate-html:
     runs-on: ubuntu-latest
-    name: Generate Sitemap
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '20'
 
-      - name: Generate sitemap
-        run: node scripts/generate-sitemap.js
-
-      - name: Commit sitemap
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.events.xml
-          git commit -m "Update sitemap" || echo "No sitemap changes"
-          git pull --rebase origin main
-          git push origin main
-
-  generate-pages:
-    runs-on: ubuntu-latest
-    name: Generate Event Pages
-    needs: generate-sitemap 
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
-      - name: Generate event pages
+      - name: Generate HTML pages
         env:
           COURSE_MAPS_URL: ${{ secrets.COURSE_MAPS_URL }}
-        run: node scripts/generate-events.js
+        run: node generate-events.js
 
-      - name: Commit and push generated content
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-pages
+          path: ./explore
+          retention-days: 1
+
+  # ============================================================
+  # JOB 2 — Generate feature images
+  # ============================================================
+  generate-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Install Puppeteer system dependencies
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add explore/ sitemap.events.xml
-          git commit -m "Auto-update event pages" || echo "No changes to commit"
-          git pull --rebase origin main
-          git push origin main
+          sudo apt-get update
+          sudo apt-get install -y \
+            libgbm-dev \
+            libnss3 \
+            libatk-bridge2.0-0 \
+            libdrm2 \
+            libxkbcommon0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxrandr2 \
+            libgtk-3-0 \
+            libasound2t64 \
+            libpangocairo-1.0-0 \
+            libx11-xcb1
+
+      - name: Clear existing images (force regenerate)
+        if: ${{ github.event.inputs.force_regenerate == true || github.event.inputs.force_regenerate == 'true' }}
+        run: |
+          echo "Force regenerate enabled — clearing ./images"
+          rm -rf ./images
+
+      - name: Generate feature images
+        env:
+          COURSE_MAPS_URL: ${{ secrets.COURSE_MAPS_URL }}
+          IMAGE_LIMIT: ${{ github.event.inputs.limit || '0' }}
+        run: node generate-images.js
+
+      - name: Upload images artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: feature-images
+          path: ./explore/images
+          retention-days: 1
+
+  # ============================================================
+  # JOB 3 — Commit everything together once both jobs finish
+  # ============================================================
+  commit:
+    runs-on: ubuntu-latest
+    needs: [generate-html, generate-images]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download HTML pages
+        uses: actions/download-artifact@v4
+        with:
+          name: html-pages
+          path: ./explore
+
+      - name: Download feature images
+        uses: actions/download-artifact@v4
+        with:
+          name: feature-images
+          path: ./explore/images
+
+      - name: Commit and push all output
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ./explore
+          git diff --cached --quiet \
+            && echo "Nothing to commit." \
+            || git commit -m "chore: regenerate pages and feature images [skip ci]" && git push
