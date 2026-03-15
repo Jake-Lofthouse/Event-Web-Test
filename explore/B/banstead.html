@@ -244,7 +244,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 <main>
   <h1>Banstead Woods parkrun - Hotels &amp; Visitor Guide</h1>
   <div class="parkrun-actions">
-    <button onclick="openCourseModal()" class="action-btn course-map-btn">Course Map</button>
+    <button onclick="openCourseChoice()" class="action-btn course-map-btn">Course Map</button>
     <a href="https://www.parkrun.org.uk/banstead/futureroster/" target="_blank" class="action-btn">Volunteer Roster</a>
     <a href="https://www.google.com/maps/dir/?api=1&destination=51.307648,-0.184225" target="_blank" class="action-btn">Directions</a>
   </div>
@@ -285,7 +285,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   
   <div id="course-preview-wrap" style="position:relative;width:100%;height:260px;border-radius:0.75rem;overflow:hidden;background:#e8f5e9;">
     <div id="course-preview-map" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;border-radius:0.75rem;"></div>
-    <button onclick="openCourseModal()" style="position:absolute;bottom:10px;right:10px;z-index:10;
+    <button onclick="openCourseChoice()" style="position:absolute;bottom:10px;right:10px;z-index:10;
       background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border:none;border-radius:16px;
       padding:7px 14px;font-size:13px;font-weight:600;color:#2e7d32;cursor:pointer;
       box-shadow:0 4px 14px rgba(0,0,0,0.18);display:flex;align-items:center;gap:6px;transition:all 0.2s;"
@@ -318,6 +318,67 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     </div>
   </div>
 </main>
+
+<!-- Course Choice Modal -->
+<div id="course-choice-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:420px;width:92%;padding:2rem;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;">
+    <button onclick="closeCourseChoice()" style="position:absolute;top:14px;right:14px;
+      background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:30px;height:30px;
+      cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;
+      color:rgba(0,0,0,0.5);">&times;</button>
+    <h3 style="margin:0 0 0.5rem 0;font-size:1.1rem;font-weight:700;color:#1f2937;">Course Map</h3>
+    <p style="margin:0 0 1.5rem 0;font-size:0.9rem;color:#64748b;">Choose how you want to view the course.</p>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      
+      <button onclick="closeCourseChoice();openCourseModal();"
+        style="padding:0.9rem 1.25rem;border-radius:0.75rem;border:2px solid #4caf50;
+          background:linear-gradient(135deg,#4caf50,#2e7d32);color:#fff;
+          font-weight:600;font-size:1rem;cursor:pointer;text-align:left;
+          display:flex;align-items:center;gap:0.75rem;">
+        <i class="fas fa-route" style="font-size:1.1rem;"></i>
+        <span>
+          <strong style="display:block;">Advanced</strong>
+          <span style="font-size:0.82rem;font-weight:400;opacity:0.9;">Animated route, elevation profile &amp; terrain map</span>
+        </span>
+      </button>
+      
+      <button onclick="closeCourseChoice();openStandardMap();"
+        style="padding:0.9rem 1.25rem;border-radius:0.75rem;border:2px solid #4caf50;
+          background:#fff;color:#2e7d32;
+          font-weight:600;font-size:1rem;cursor:pointer;text-align:left;
+          display:flex;align-items:center;gap:0.75rem;">
+        <i class="fas fa-map" style="font-size:1.1rem;color:#4caf50;"></i>
+        <span>
+          <strong style="display:block;">Standard</strong>
+          <span style="font-size:0.82rem;font-weight:400;color:#64748b;">View the course on an interactive map</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Standard Course Map Modal -->
+<div id="standard-map-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:700px;width:96%;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);overflow:hidden;display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;background:#fff;flex-shrink:0;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87);">Banstead Woods parkrun — Course Map</div>
+      <button onclick="closeStandardMap()"
+        style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:30px;height:30px;
+          cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;
+          color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <iframe id="standard-map-iframe"
+      style="width:100%;height:500px;border:none;display:block;"
+      src="" title="Banstead Woods parkrun course map" allowfullscreen></iframe>
+  </div>
+</div>
 
 <!-- Course Map Modal -->
 <div id="course-map-modal">
@@ -550,6 +611,39 @@ function fetchElevation(route) {
   }).then(r => r.json()).then(d => d.results.map(r => r.elevation)).catch(() => null);
 }
 
+// Course choice modal
+const _courseUrl = "https://www.google.com/maps/d/embed?t=h&mid=1hEhBBxRI0oL96m3tS7p2_eU2snY";
+
+function openCourseChoice() {
+  const m = document.getElementById('course-choice-modal');
+  m.style.display = 'flex';
+}
+
+function closeCourseChoice() {
+  document.getElementById('course-choice-modal').style.display = 'none';
+}
+
+document.getElementById('course-choice-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCourseChoice();
+});
+
+function openStandardMap() {
+  if (!_courseUrl) return;
+  document.getElementById('standard-map-iframe').src = _courseUrl;
+  const m = document.getElementById('standard-map-modal');
+  m.style.display = 'flex';
+}
+
+function closeStandardMap() {
+  document.getElementById('standard-map-modal').style.display = 'none';
+  document.getElementById('standard-map-iframe').src = '';
+}
+
+document.getElementById('standard-map-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStandardMap();
+});
+
+// Advanced course modal
 function openCourseModal() {
   if (!HAS_ROUTE) return;
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
