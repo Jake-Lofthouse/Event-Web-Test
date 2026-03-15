@@ -9,7 +9,7 @@ if (!COURSE_MAPS_URL) {
   throw new Error("COURSE_MAPS_URL secret not set");
 }
 
-const OUTPUT_DIR = './explore';
+const OUTPUT_DIR = path.join(__dirname, '../explore');
 const MAX_EVENTS = 9999999;
 const MAX_FILES_PER_FOLDER = 999;
 const BASE_URL = 'https://www.parkrunnertourist.com/explore';
@@ -1215,7 +1215,7 @@ async function main() {
     } catch (e) { console.warn('Could not load course maps:', e.message); }
 
     let folderMapping = {};
-    try { folderMapping = JSON.parse(fs.readFileSync('./folder-mapping.json', 'utf-8')); }
+    try { folderMapping = JSON.parse(fs.readFileSync(path.join(__dirname, '../folder-mapping.json'), 'utf-8')); }
     catch (e) { console.warn('No folder mapping, using dynamic.'); }
 
     const allEventsInfoComplete = events.map(ev => ({
