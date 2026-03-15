@@ -12,6 +12,7 @@ if (!COURSE_MAPS_URL) {
 const OUTPUT_DIR = path.join(__dirname, '../explore');
 const MAX_EVENTS = 9999999;
 const MAX_FILES_PER_FOLDER = 999;
+const EVENT_LIMIT = parseInt(process.env.EVENT_LIMIT || '0', 10);
 const BASE_URL = 'https://www.parkrunnertourist.com/explore';
 
 const COUNTRIES = {
@@ -1231,13 +1232,17 @@ async function main() {
       (a.properties.eventname || '').toLowerCase().localeCompare((b.properties.eventname || '').toLowerCase())
     );
 
+    const limitedEvents = EVENT_LIMIT > 0 ? selectedEvents.slice(0, EVENT_LIMIT) : selectedEvents;
+    if (EVENT_LIMIT > 0) console.log(`Limit set — generating up to ${EVENT_LIMIT} HTML pages.`);
+    console.log(`Processing ${limitedEvents.length} events...`);
+
     const folderCounts = {};
     ensureDirectoryExists(OUTPUT_DIR);
     cleanupOldStructure();
-    cleanupRemovedEvents(new Set(selectedEvents.map(e => slugify(e.properties.eventname))));
+    cleanupRemovedEvents(new Set(limitedEvents.map(e => slugify(e.properties.eventname))));
 
     const slugToSubfolder = {};
-    for (const event of selectedEvents) {
+    for (const event of limitedEvents) {
       const slug = slugify(event.properties.eventname);
       let sub = folderMapping[slug] || getSubfolder(slug);
       if (!folderCounts[sub]) folderCounts[sub] = 0;
@@ -1258,7 +1263,7 @@ async function main() {
     }
 
     let found = 0, missing = 0;
-    for (const event of selectedEvents) {
+    for (const event of limitedEvents) {
       const slug = slugify(event.properties.eventname);
       const sub  = slugToSubfolder[slug];
       ensureDirectoryExists(path.join(OUTPUT_DIR, sub));
@@ -1275,7 +1280,7 @@ async function main() {
 
     console.log('\nFolder distribution:');
     Object.entries(folderCounts).forEach(([f,c]) => console.log(`  ${f}: ${c}`));
-    console.log(`\nDone! ${selectedEvents.length} pages. Course: ${found} matched, ${missing} missing.`);
+    console.log(`\nDone! ${limitedEvents.length} pages. Course: ${found} matched, ${missing} missing.`);
 
   } catch (err) { console.error('Error:', err); }
 }
