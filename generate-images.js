@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 // ============================================================
 const EVENTS_URL     = 'https://www.parkrunnertourist.com/events1.json';
 const COURSE_MAPS_URL = process.env.COURSE_MAPS_URL;
-const OUTPUT_DIR     = './images';
+const OUTPUT_DIR     = './explore/images';
 const IMAGE_WIDTH    = 1200;
 const IMAGE_HEIGHT   = 630;
 const MAX_EVENTS     = 9999999;
