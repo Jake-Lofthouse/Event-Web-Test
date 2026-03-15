@@ -10,7 +10,7 @@ if (!COURSE_MAPS_URL) {
 }
 
 const OUTPUT_DIR = './explore';
-const MAX_EVENTS = 7;
+const MAX_EVENTS = 6;
 const MAX_FILES_PER_FOLDER = 999;
 const BASE_URL = 'https://www.parkrunnertourist.com/explore';
 
@@ -512,30 +512,28 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
       color:rgba(0,0,0,0.5);">&times;</button>
     <h3 style="margin:0 0 0.5rem 0;font-size:1.1rem;font-weight:700;color:#1f2937;">Course Map</h3>
     <p style="margin:0 0 1.5rem 0;font-size:0.9rem;color:#64748b;">Choose how you want to view the course.</p>
-    <div style="display:flex;flex-direction:column;gap:0.75rem;">
-      ${hasRoute ? `
-      <button onclick="closeCourseChoice();openCourseModal();"
-        style="padding:0.9rem 1.25rem;border-radius:0.75rem;border:2px solid ${accentColor};
-          background:linear-gradient(135deg,${accentColor},${darkColor});color:#fff;
-          font-weight:600;font-size:1rem;cursor:pointer;text-align:left;
-          display:flex;align-items:center;gap:0.75rem;">
-        <i class="fas fa-route" style="font-size:1.1rem;"></i>
-        <span>
-          <strong style="display:block;">Advanced</strong>
-          <span style="font-size:0.82rem;font-weight:400;opacity:0.9;">Animated route, elevation profile &amp; terrain map</span>
-        </span>
-      </button>` : ''}
+    <div style="display:flex;flex-direction:row;gap:0.75rem;">
       ${courseUrl ? `
       <button onclick="closeCourseChoice();openStandardMap();"
-        style="padding:0.9rem 1.25rem;border-radius:0.75rem;border:2px solid ${accentColor};
+        style="flex:1;padding:1.25rem 1rem;border-radius:0.75rem;border:2px solid ${accentColor};
           background:#fff;color:${darkColor};
-          font-weight:600;font-size:1rem;cursor:pointer;text-align:left;
-          display:flex;align-items:center;gap:0.75rem;">
-        <i class="fas fa-map" style="font-size:1.1rem;color:${accentColor};"></i>
-        <span>
-          <strong style="display:block;">Standard</strong>
-          <span style="font-size:0.82rem;font-weight:400;color:#64748b;">View the course on an interactive map</span>
-        </span>
+          font-weight:600;font-size:1rem;cursor:pointer;text-align:center;
+          display:flex;flex-direction:column;align-items:center;gap:0.5rem;transition:all 0.2s;"
+        onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='#fff'">
+        <i class="fas fa-map" style="font-size:1.5rem;color:${accentColor};"></i>
+        <strong>Standard</strong>
+        <span style="font-size:0.78rem;font-weight:400;color:#64748b;line-height:1.3;">Interactive map view</span>
+      </button>` : ''}
+      ${hasRoute ? `
+      <button onclick="closeCourseChoice();openCourseModal();"
+        style="flex:1;padding:1.25rem 1rem;border-radius:0.75rem;border:2px solid ${accentColor};
+          background:linear-gradient(135deg,${accentColor},${darkColor});color:#fff;
+          font-weight:600;font-size:1rem;cursor:pointer;text-align:center;
+          display:flex;flex-direction:column;align-items:center;gap:0.5rem;transition:all 0.2s;"
+        onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        <i class="fas fa-route" style="font-size:1.5rem;"></i>
+        <strong>Advanced</strong>
+        <span style="font-size:0.78rem;font-weight:400;opacity:0.9;line-height:1.3;">Animated route &amp; elevation</span>
       </button>` : ''}
     </div>
   </div>
