@@ -42,7 +42,7 @@ const SEARCH_THRESHOLD   = 8;
 
 // Nominatim: 1 req/s, descriptive UA required by their policy
 const NOMINATIM_DELAY_MS = 1100;
-const NOMINATIM_UA       = 'parkrunnertourist.com location-page-builder (jake@parkrunnertourist.com)';
+const NOMINATIM_UA       = 'parkrunnertourist.com location-page-builder (@parkrunnertourist.com)';
 
 // Exact colours from generate-events.js
 const ACCENT    = '#4caf50';
@@ -258,7 +258,7 @@ function htmlHead({ title, description, canonicalUrl, lat, lon, locationName, br
 
   // BreadcrumbList schema — always include site root + any passed items
   const allCrumbs = [
-    { name: 'parkrunner tourist', url: 'https://www.parkrunnertourist.com' },
+    { name: 'parkrunner tourist', url: 'https://jake-lofthouse.github.io/Event-Web-Test/' },
     { name: 'Locations',          url: `${BASE_LOCATIONS_URL}/` },
     ...breadcrumbItems,
   ];
