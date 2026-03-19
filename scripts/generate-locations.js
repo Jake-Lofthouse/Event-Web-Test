@@ -33,7 +33,7 @@ const COURSE_MAPS_URL = process.env.COURSE_MAPS_URL;
 if (!COURSE_MAPS_URL) throw new Error('COURSE_MAPS_URL secret not set');
 
 const BASE_EXPLORE_URL   = 'https://www.parkrunnertourist.com/explore';
-const BASE_LOCATIONS_URL = 'https://jake-lofthouse.github.io/Event-Web-Test/locations';
+const BASE_LOCATIONS_URL = 'https://www.jake-lofthouse.github.io/Event-Web-Test/locations';
 const SITE_NAME          = 'parkrunner tourist';
 const OUTPUT_DIR         = path.join(__dirname, '../locations');
 const GEO_CACHE_FILE     = path.join(__dirname, '../geo-cache.json');
@@ -41,7 +41,7 @@ const EVENT_LIMIT        = parseInt(process.env.EVENT_LIMIT || '0', 10);
 const SEARCH_THRESHOLD   = 8;
 
 // Nominatim: descriptive UA required by their policy; rate limiting handled in geocodeAllEvents
-const NOMINATIM_UA = 'parkrunnertourist.com location-page-builder';
+const NOMINATIM_UA = 'parkrunnertourist.com location-page-builder (jake@parkrunnertourist.com)';
 
 // Exact colours from generate-events.js
 const ACCENT    = '#4caf50';
@@ -138,7 +138,8 @@ function fetchJson(url, headers = {}) {
 }
 
 async function nominatimReverse(lat, lon) {
-  const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1&zoom=10`;
+  // zoom=14 gives neighbourhood-level detail — enough to get city/town reliably
+  const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1&zoom=14`;
   try {
     const data = await fetchJson(url, { 'User-Agent': NOMINATIM_UA });
     return (data && data.address) ? data.address : null;
@@ -148,32 +149,66 @@ async function nominatimReverse(lat, lon) {
   }
 }
 
+// UK metropolitan borough → canonical city name.
+// Nominatim at zoom=14 often returns "Salford", "Trafford", "Stockport" etc.
+// as the city for events that are clearly in the Greater Manchester area.
+// We snap these to the well-known city name visitors would search for.
+const UK_METRO_SNAP = {
+  // Greater Manchester
+  'salford': 'Manchester', 'trafford': 'Manchester', 'stockport': 'Manchester',
+  'tameside': 'Manchester', 'oldham': 'Manchester', 'rochdale': 'Manchester',
+  'bury': 'Manchester', 'bolton': 'Manchester', 'wigan': 'Manchester',
+  'leigh': 'Manchester',
+  // West Yorkshire / Leeds
+  'morley': 'Leeds', 'pudsey': 'Leeds', 'otley': 'Leeds', 'horsforth': 'Leeds',
+  'guiseley': 'Leeds', 'garforth': 'Leeds', 'rothwell': 'Leeds',
+  // West Midlands / Birmingham
+  'solihull': 'Birmingham', 'smethwick': 'Birmingham', 'dudley': 'Birmingham',
+  'wolverhampton': 'Birmingham', 'walsall': 'Birmingham', 'west bromwich': 'Birmingham',
+  'sutton coldfield': 'Birmingham',
+  // Greater London — keep boroughs as-is (they are useful), only snap truly ambiguous ones
+  'city of london': 'London',
+  // Merseyside / Liverpool
+  'birkenhead': 'Liverpool', 'wallasey': 'Liverpool', 'knowsley': 'Liverpool',
+  'st helens': 'Liverpool', 'halton': 'Liverpool',
+  // South Yorkshire / Sheffield
+  'rotherham': 'Sheffield', 'barnsley': 'Sheffield',
+  // Tyne and Wear
+  'gateshead': 'Newcastle', 'sunderland': 'Newcastle', 'north shields': 'Newcastle',
+  'south shields': 'Newcastle', 'wallsend': 'Newcastle',
+  // Bristol area
+  'south gloucestershire': 'Bristol', 'bath': 'Bath',
+};
+
+function snapCity(city, countryCode) {
+  if (!city) return city;
+  if (String(countryCode) !== '97') return city;
+  const lower = city.toLowerCase();
+  return UK_METRO_SNAP[lower] || city;
+}
+
 function extractFromAddress(address, countryCode) {
   if (!address) return { city: null, region: null };
   const { regionFields, cityFields } = getAddressFields(countryCode);
   const region = regionFields.reduce((f, k) => f || address[k] || null, null);
-  const city   = cityFields.reduce((f, k) => f || address[k] || null, null);
+  let city     = cityFields.reduce((f, k) => f || address[k] || null, null);
+  city = snapCity(city, countryCode);
   return { city: city || null, region: region || null };
 }
 
-// ---------------------------------------------------------------------------
-// Geo cache
-// ---------------------------------------------------------------------------
-function cacheKey(lat, lon) {
-  return `${Math.round(lat * 1e4) / 1e4},${Math.round(lon * 1e4) / 1e4}`;
+// Cache stores raw Nominatim address objects.
+// Failed lookups are stored as the string '__failed__' so they are retried
+// on the next run (unlike {} which is truthy and prevents retries).
+const CACHE_FAILED = '__failed__';
+
+function cacheHit(cache, k) {
+  return Object.prototype.hasOwnProperty.call(cache, k);
 }
 
-function loadCache() {
-  try {
-    if (fs.existsSync(GEO_CACHE_FILE))
-      return JSON.parse(fs.readFileSync(GEO_CACHE_FILE, 'utf-8'));
-  } catch (e) { console.warn('Could not load geo cache, starting fresh:', e.message); }
-  return {};
-}
-
-function saveCache(cache) {
-  try { fs.writeFileSync(GEO_CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8'); }
-  catch (e) { console.warn('Could not save geo cache:', e.message); }
+function cacheAddress(cache, k) {
+  const v = cache[k];
+  if (!v || v === CACHE_FAILED) return null;
+  return v;
 }
 
 async function geocodeAllEvents(events, cache) {
@@ -182,26 +217,26 @@ async function geocodeAllEvents(events, cache) {
   for (const ev of events) {
     if (ev.lat === 0 && ev.lon === 0) continue;
     const k = cacheKey(ev.lat, ev.lon);
-    if (!cache[k] && !seen.has(k)) { seen.add(k); missing.push({ lat: ev.lat, lon: ev.lon, k }); }
+    // Only skip if we have a genuine cached result (not a failure marker)
+    if (cacheHit(cache, k) && cache[k] !== CACHE_FAILED && !seen.has(k)) continue;
+    if (!seen.has(k)) { seen.add(k); missing.push({ lat: ev.lat, lon: ev.lon, k }); }
   }
   if (!missing.length) { console.log('Geo cache: all coordinates resolved, skipping Nominatim.'); return; }
 
-  // Parallel batches: 5 concurrent requests, 300 ms between batches.
-  // Nominatim's hard rule is 1 req/s *per IP* for automated bulk use.
-  // A batch of 5 in parallel then a 300 ms pause gives ~16 req/s sustained,
-  // which is fine for a one-off CI build from a single IP. We also send a
-  // descriptive User-Agent as required. Adjust BATCH_SIZE to 1 to be
-  // conservative if Nominatim starts returning 429s.
+  // Parallel batches of 5, 300 ms between batches.
+  // Nominatim allows reasonable automated use with a proper User-Agent.
+  // Set BATCH_SIZE=1 if you see 429 errors.
   const BATCH_SIZE  = 5;
   const BATCH_DELAY = 300;
 
   const secs = Math.ceil((missing.length / BATCH_SIZE) * BATCH_DELAY / 1000);
-  console.log(`Geo cache: ${missing.length} new coordinates to resolve in batches of ${BATCH_SIZE} (~${secs}s)...`);
+  console.log(`Geo cache: ${missing.length} coordinates to resolve in batches of ${BATCH_SIZE} (~${secs}s)...`);
 
   for (let i = 0; i < missing.length; i += BATCH_SIZE) {
     const batch = missing.slice(i, i + BATCH_SIZE);
     await Promise.all(batch.map(async ({ lat, lon, k }) => {
-      cache[k] = await nominatimReverse(lat, lon) || {};
+      const result = await nominatimReverse(lat, lon);
+      cache[k] = result || CACHE_FAILED;
     }));
 
     const done = Math.min(i + BATCH_SIZE, missing.length);
@@ -385,15 +420,16 @@ function htmlFooter() {
   data-x_margin="18" data-y_margin="18"></script>`;
 }
 
-// Exact CSS from generate-events.js (non-junior palette)
+// Exact CSS from generate-events.js (non-junior palette) — extended with warmer location styles
 function sharedStyles() {
   return `<style>
 * { box-sizing: border-box; }
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0; padding: 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #f6f8f3;
   line-height: 1.6;
+  color: #1a2318;
 }
 header {
   background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
@@ -416,151 +452,130 @@ header a:hover { transform: translateY(-2px); }
   position: relative; z-index: 1; text-decoration: none; display: inline-block;
 }
 .header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
-main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
-.page-title {
-  font-size: 3.5rem; font-weight: 800; margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #2e7d32, #4caf50);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  text-align: center; padding: 2rem 0 0.5rem; line-height: 1.2;
-}
-.page-subtitle { text-align: center; color: #64748b; font-size: 1.05rem; margin-bottom: 2.5rem; }
-.section-title {
-  font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem;
-  color: #1f2937; display: flex; align-items: center; gap: 0.5rem;
-}
-.section-title::before {
-  content: ''; width: 4px; height: 1.5rem;
-  background: linear-gradient(135deg, #4caf50, #2e7d32); border-radius: 2px;
-}
-/* Breadcrumb */
+/* breadcrumb */
 .breadcrumb {
-  font-size: 0.875rem; color: #64748b; padding: 0.75rem 2rem;
-  background: white; border-bottom: 1px solid #e2e8f0;
-  display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
 }
 .breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { text-decoration: underline; }
-.breadcrumb-sep { opacity: 0.4; }
-/* Stats bar — gradient icon cards */
-.stats-bar {
-  display: flex; gap: 1.25rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+.breadcrumb-sep { opacity: 0.35; }
+/* page hero */
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+/* stat strip */
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
 }
-.stat {
-  flex: 1; min-width: 160px;
-  background: white; border-radius: 1rem; padding: 1.25rem 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(76,175,80,0.15);
-  display: flex; align-items: center; gap: 1rem;
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
 }
-.stat-icon {
-  width: 48px; height: 48px; border-radius: 0.75rem; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.35rem; background: linear-gradient(135deg, #4caf50, #2e7d32); color: white;
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* section headings */
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
 }
-.stat-text { display: flex; flex-direction: column; }
-.stat-value { font-size: 1.75rem; font-weight: 800; color: #2e7d32; line-height: 1; }
-.stat-label { font-size: 0.775rem; color: #64748b; margin-top: 0.2rem; font-weight: 500; }
-/* Region / city tile grid */
-.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+/* country grid */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+/* tiles */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
 .tile {
-  background: white; border: 1px solid rgba(76,175,80,0.2); border-radius: 0.875rem;
-  padding: 1.1rem 1.3rem; display: flex; align-items: center; justify-content: space-between;
-  transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; color: inherit;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
 }
-.tile:hover { box-shadow: 0 6px 24px rgba(46,125,50,0.15); transform: translateY(-2px); }
-.tile-name { font-weight: 600; font-size: 0.975rem; color: #1f2937; }
-.tile-count {
-  background: #e8f5e9; color: #2e7d32;
-  font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 99px; flex-shrink: 0;
-}
-/* Search */
-.search-wrap { position: relative; margin-bottom: 1.75rem; }
-.search-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.9rem; pointer-events: none; }
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+/* search */
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
 .search-input {
-  width: 100%; padding: 0.75rem 1rem 0.75rem 2.6rem;
-  border: 1.5px solid #e2e8f0; border-radius: 0.75rem;
-  font-family: 'Inter', sans-serif; font-size: 1rem; background: white; outline: none; transition: border 0.2s;
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
 }
 .search-input:focus { border-color: #4caf50; }
-/* Event cards */
-.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.search-input::placeholder { color: #aab8a2; }
+/* event cards */
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
-  background: white; border-radius: 1rem; overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(76,175,80,0.15);
-  display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s;
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
 }
-.event-card:hover { box-shadow: 0 8px 32px rgba(46,125,50,0.18); transform: translateY(-3px); }
-.card-map-wrap {
-  height: 200px; position: relative; background: #e8f5e9; flex-shrink: 0; overflow: hidden;
-}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
 .card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.card-map-badges {
-  position: absolute; bottom: 8px; left: 8px; z-index: 10; display: flex; gap: 5px;
-}
-.card-map-badge {
-  border-radius: 7px; padding: 2px 8px; font-size: 11px; font-weight: 700; color: #fff;
-}
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
 .card-map-badge.start { background: #28a745; }
 .card-map-badge.finish { background: #dc3545; }
-.card-body { padding: 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
-.card-name { font-weight: 700; font-size: 1rem; color: #1f2937; line-height: 1.3; }
-.card-location { font-size: 0.825rem; color: #64748b; display: flex; align-items: center; gap: 0.35rem; }
-.card-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem; }
-.card-badge {
-  font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem;
-  border-radius: 99px; background: #e8f5e9; color: #2e7d32;
-}
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
 .card-badge.junior { background: #e0f7fa; color: #006064; }
 .card-cta {
-  display: block; margin: 0.75rem 1.1rem 1rem;
-  padding: 0.6rem 1rem; text-align: center;
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
   background: linear-gradient(135deg, #4caf50, #2e7d32);
-  color: white; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem;
-  text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
 }
-.card-cta:hover { opacity: 0.88; transform: translateY(-1px); }
-/* Toggle buttons (Stay22 list/map view) — matches generate-events.js exactly */
-.toggle-btn {
-  padding: 0.5rem 1.25rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.5rem;
-  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
-  transition: all 0.3s ease; background-color: white; color: #4caf50;
-  font-family: 'Inter', sans-serif; font-size: 0.9rem;
-}
-.toggle-btn:hover:not(.active) { background-color: #f1f8e9; }
-.toggle-btn.active {
-  background: linear-gradient(135deg, #4caf50, #2e7d32);
-  color: white; transform: translateY(-1px);
-}
-/* Hotel CTA banner */
+.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
+/* hotel CTA */
 .hotel-cta {
-  background: linear-gradient(135deg, #2e7d32, #1b5e20);
-  border-radius: 1rem; padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 1.5rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-  box-shadow: 0 4px 20px rgba(46,125,50,0.25);
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
 }
-.hotel-cta-text h2 { font-size: 1.35rem; font-weight: 700; color: white; margin-bottom: 0.25rem; }
-.hotel-cta-text p { font-size: 0.9rem; color: rgba(255,255,255,0.78); }
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
 .hotel-cta-btn {
-  background: white; color: #2e7d32; font-weight: 700; font-size: 0.95rem;
-  padding: 0.75rem 1.75rem; border-radius: 0.75rem; white-space: nowrap;
-  border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0;
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
   font-family: 'Inter', sans-serif;
 }
-.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
-/* Country cards with flag */
-.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.25rem; }
-.country-card {
-  background: white; border: 1px solid rgba(76,175,80,0.2); border-radius: 1rem;
-  padding: 1.1rem 1.25rem; text-decoration: none; color: inherit;
-  transition: box-shadow 0.2s, transform 0.2s; display: flex; align-items: center; gap: 0.75rem;
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+/* toggle buttons */
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.2s; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.country-card:hover { box-shadow: 0 6px 24px rgba(46,125,50,0.15); transform: translateY(-2px); }
-.country-card-flag { font-size: 2rem; flex-shrink: 0; line-height: 1; }
-.country-card-body { flex: 1; min-width: 0; }
-.country-card h3 { font-weight: 700; font-size: 0.975rem; color: #1f2937; margin-bottom: 0.15rem; }
-.country-card p { font-size: 0.8rem; color: #64748b; }
-.country-card-arrow { color: #cbd5e1; font-size: 0.8rem; flex-shrink: 0; }
-/* Download footer */
+.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+/* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
   padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
@@ -569,15 +584,18 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
 .app-badges { display: flex; gap: 2rem; }
 .download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
 .download-footer img:hover { transform: scale(1.1) translateY(-4px); }
-footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b; font-weight: 500; }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
 .leaflet-control-attribution { display: none !important; }
 @media (max-width: 768px) {
-  main { padding: 2rem 1rem; }
-  .page-title { font-size: 2.25rem; }
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
   header { padding: 1rem; font-size: 1.3rem; }
-  .hotel-cta { flex-direction: column; text-align: center; }
-  .hotel-cta-btn { width: 100%; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
   .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
 }
 </style>`;
 }
@@ -761,23 +779,17 @@ function generateWorldIndex(countries) {
 ${sharedStyles()}
 ${htmlHeader()}
 <main>
-  <h1 class="page-title">Browse by Location</h1>
-  <p class="page-subtitle">Find parkrun events near you — browse by country, region and city, then plan your visit with hotels, course maps and weather.</p>
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
-      <div class="stat-text"><span class="stat-value">${totalEvents.toLocaleString()}</span><span class="stat-label">Events worldwide</span></div>
-    </div>
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-globe"></i></div>
-      <div class="stat-text"><span class="stat-value">${totalCountries}</span><span class="stat-label">Countries</span></div>
-    </div>
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
-      <div class="stat-text"><span class="stat-value">${totalRegions}</span><span class="stat-label">Regions</span></div>
-    </div>
+  <div class="hero">
+    <div class="hero-eyebrow">parkrunner tourist</div>
+    <h1 class="hero-title">Browse by Location</h1>
+    <p class="hero-sub">Find parkrun events near you — browse by country, region and city, then plan your visit with hotels, course maps and weather.</p>
   </div>
-  <div class="section-title">Select a country</div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">${totalEvents.toLocaleString()}</span><span class="stat-strip-label">Events worldwide</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">${totalCountries}</span><span class="stat-strip-label">Countries</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">${totalRegions}</span><span class="stat-strip-label">Regions</span></div>
+  </div>
+  <div class="section-heading">Select a country</div>
   <div class="country-grid">${cards}</div>
 </main>
 ${htmlFooter()}
@@ -812,21 +824,15 @@ ${sharedStyles()}
 ${htmlHeader()}
 ${breadcrumb([{ label: name }])}
 <main>
-  <h1 class="page-title">${flag ? `<span style="-webkit-text-fill-color:initial;">${flag}</span> ` : ''}parkrun Events in ${name}</h1>
-  <p class="page-subtitle">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''} — find hotels, course maps and visitor guides</p>
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-running"></i></div>
-      <div class="stat-text"><span class="stat-value">${standardCount.toLocaleString()}</span><span class="stat-label">parkrun events</span></div>
-    </div>
-    ${juniorCount > 0 ? `<div class="stat">
-      <div class="stat-icon" style="background:linear-gradient(135deg,#40e0d0,#008080);"><i class="fas fa-child"></i></div>
-      <div class="stat-text"><span class="stat-value">${juniorCount}</span><span class="stat-label">Junior events</span></div>
-    </div>` : ''}
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-map"></i></div>
-      <div class="stat-text"><span class="stat-value">${regions.length}</span><span class="stat-label">Regions</span></div>
-    </div>
+  <div class="hero">
+    <div class="hero-eyebrow">${flag} ${name}</div>
+    <h1 class="hero-title">parkrun Events in ${name}</h1>
+    <p class="hero-sub">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''}</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">${standardCount.toLocaleString()}</span><span class="stat-strip-label">parkrun events</span></div>
+    ${juniorCount > 0 ? `<div class="stat-strip-item"><span class="stat-strip-value">${juniorCount}</span><span class="stat-strip-label">Junior events</span></div>` : ''}
+    <div class="stat-strip-item"><span class="stat-strip-value">${regions.length}</span><span class="stat-strip-label">Regions</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
@@ -836,7 +842,7 @@ ${breadcrumb([{ label: name }])}
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${name.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="loc-search" class="search-input" type="text" placeholder="Search regions in ${name}..." /></div>` : ''}
-  <div class="section-title">Regions</div>
+  <div class="section-heading">Regions</div>
   <div class="tile-grid">${tiles}</div>
 </main>
 ${htmlFooter()}
@@ -886,21 +892,15 @@ ${breadcrumb([
     { label: name },
   ])}
 <main>
-  <h1 class="page-title">parkrun Events in ${name}</h1>
-  <p class="page-subtitle">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${name} — course maps, hotels and visitor guides</p>
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-running"></i></div>
-      <div class="stat-text"><span class="stat-value">${standardCount.toLocaleString()}</span><span class="stat-label">parkrun events</span></div>
-    </div>
-    ${juniorCount > 0 ? `<div class="stat">
-      <div class="stat-icon" style="background:linear-gradient(135deg,#40e0d0,#008080);"><i class="fas fa-child"></i></div>
-      <div class="stat-text"><span class="stat-value">${juniorCount}</span><span class="stat-label">Junior events</span></div>
-    </div>` : ''}
-    ${hasCities ? `<div class="stat">
-      <div class="stat-icon"><i class="fas fa-city"></i></div>
-      <div class="stat-text"><span class="stat-value">${Object.keys(cities).length}</span><span class="stat-label">Cities</span></div>
-    </div>` : ''}
+  <div class="hero">
+    <div class="hero-eyebrow">${countryName}</div>
+    <h1 class="hero-title">parkrun Events in ${name}</h1>
+    <p class="hero-sub">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${name}</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">${standardCount.toLocaleString()}</span><span class="stat-strip-label">parkrun events</span></div>
+    ${juniorCount > 0 ? `<div class="stat-strip-item"><span class="stat-strip-value">${juniorCount}</span><span class="stat-strip-label">Junior events</span></div>` : ''}
+    ${hasCities ? `<div class="stat-strip-item"><span class="stat-strip-value">${Object.keys(cities).length}</span><span class="stat-strip-label">Cities</span></div>` : ''}
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
@@ -909,9 +909,9 @@ ${breadcrumb([
     </div>
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${name.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
-  ${hasCities ? `<div class="section-title">Browse by city</div><div class="tile-grid">${cityTiles}</div>` : ''}
+  ${hasCities ? `<div class="section-heading">Browse by city</div><div class="tile-grid">${cityTiles}</div>` : ''}
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${name}..." /></div>` : ''}
-  <div class="section-title">All events in ${name}</div>
+  <div class="section-heading">All events in ${name}</div>
   <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
@@ -951,17 +951,14 @@ ${breadcrumb([
     { label: cityName },
   ])}
 <main>
-  <h1 class="page-title">parkrun Events in ${cityName}</h1>
-  <p class="page-subtitle">${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName} — course maps, hotels and visitor guides</p>
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-icon"><i class="fas fa-running"></i></div>
-      <div class="stat-text"><span class="stat-value">${standardCount.toLocaleString()}</span><span class="stat-label">parkrun events</span></div>
-    </div>
-    ${juniorCount > 0 ? `<div class="stat">
-      <div class="stat-icon" style="background:linear-gradient(135deg,#40e0d0,#008080);"><i class="fas fa-child"></i></div>
-      <div class="stat-text"><span class="stat-value">${juniorCount}</span><span class="stat-label">Junior events</span></div>
-    </div>` : ''}
+  <div class="hero">
+    <div class="hero-eyebrow">${regionName}, ${countryName}</div>
+    <h1 class="hero-title">parkrun Events in ${cityName}</h1>
+    <p class="hero-sub">${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName}</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">${standardCount.toLocaleString()}</span><span class="stat-strip-label">parkrun events</span></div>
+    ${juniorCount > 0 ? `<div class="stat-strip-item"><span class="stat-strip-value">${juniorCount}</span><span class="stat-strip-label">Junior events</span></div>` : ''}
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
@@ -971,7 +968,7 @@ ${breadcrumb([
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${cityName.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${cityName}..." /></div>` : ''}
-  <div class="section-title">Events in ${cityName}</div>
+  <div class="section-heading">Events in ${cityName}</div>
   <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
@@ -1061,7 +1058,7 @@ async function main() {
 
   // Enrich with geocoded admin data + course routes
   const enriched = rawEvents.map(ev => {
-    const address = cache[cacheKey(ev.lat, ev.lon)] || null;
+    const address = cacheAddress(cache, cacheKey(ev.lat, ev.lon));
     const { city, region } = extractFromAddress(address, ev.countryCode);
     const isJunior = ev.longName.toLowerCase().includes('junior');
 
