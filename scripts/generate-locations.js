@@ -33,7 +33,7 @@ const COURSE_MAPS_URL = process.env.COURSE_MAPS_URL;
 if (!COURSE_MAPS_URL) throw new Error('COURSE_MAPS_URL secret not set');
 
 const BASE_EXPLORE_URL   = 'https://www.parkrunnertourist.com/explore';
-const BASE_LOCATIONS_URL = 'https://www.https://jake-lofthouse.github.io/Event-Web-Test/locations';
+const BASE_LOCATIONS_URL = 'https://jake-lofthouse.github.io/Event-Web-Test/locations';
 const SITE_NAME          = 'parkrunner tourist';
 const OUTPUT_DIR         = path.join(__dirname, '../locations');
 const GEO_CACHE_FILE     = path.join(__dirname, '../geo-cache.json');
