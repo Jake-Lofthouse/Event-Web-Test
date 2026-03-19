@@ -252,7 +252,38 @@ function decryptFnJs() {
 // ---------------------------------------------------------------------------
 
 // Exact <head> block matching the original site
-function htmlHead({ title, description, canonicalUrl, lat, lon, locationName }) {
+function htmlHead({ title, description, canonicalUrl, lat, lon, locationName, breadcrumbItems = [] }) {
+  const plainTitle = title.replace(/&amp;/g, '&');
+  const plainDesc  = description.replace(/&amp;/g, '&');
+
+  // BreadcrumbList schema — always include site root + any passed items
+  const allCrumbs = [
+    { name: 'parkrunner tourist', url: 'https://www.parkrunnertourist.com' },
+    { name: 'Locations',          url: `${BASE_LOCATIONS_URL}/` },
+    ...breadcrumbItems,
+  ];
+  const breadcrumbSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: allCrumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      item: c.url,
+    })),
+  });
+
+  // WebPage schema
+  const webPageSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: plainTitle,
+    description: plainDesc,
+    url: canonicalUrl,
+    ...(lat != null ? { spatialCoverage: { '@type': 'Place', name: locationName, geo: { '@type': 'GeoCoordinates', latitude: lat, longitude: lon } } } : {}),
+    publisher: { '@type': 'Organization', name: 'parkrunner tourist', url: 'https://www.parkrunnertourist.com' },
+  });
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,12 +298,16 @@ ${lat != null ? `<meta name="geo.placename" content="${locationName}" />
 <meta property="og:description" content="${description}" />
 <meta property="og:url" content="${canonicalUrl}" />
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${title}" />
 <meta name="twitter:description" content="${description}" />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="${canonicalUrl}" />
+<link rel="sitemap" type="application/xml" href="${BASE_LOCATIONS_URL}/sitemap.xml" />
+<script type="application/ld+json">${breadcrumbSchema}</script>
+<script type="application/ld+json">${webPageSchema}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -464,30 +499,6 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
   font-family: 'Inter', sans-serif;
 }
 .hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
-/* Stay22 modal */
-#stay22-modal {
-  display: none; position: fixed; inset: 0; z-index: 9999;
-  background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
-  align-items: center; justify-content: center; padding: 1rem;
-}
-#stay22-modal.open { display: flex; }
-.stay22-inner {
-  background: white; border-radius: 1.25rem; width: 100%; max-width: 900px; max-height: 90vh;
-  display: flex; flex-direction: column; overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
-}
-.stay22-header {
-  padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0;
-  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
-}
-.stay22-header span { font-weight: 700; font-size: 0.95rem; }
-.stay22-close {
-  background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
-  width: 28px; height: 28px; cursor: pointer; font-size: 14px;
-  display: flex; align-items: center; justify-content: center; color: #555;
-}
-.stay22-close:hover { background: rgba(0,0,0,0.14); }
-#stay22-iframe { flex: 1; border: none; min-height: 480px; }
 /* Country cards */
 .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.25rem; }
 .country-card {
@@ -532,38 +543,21 @@ function breadcrumb(crumbs) {
 }
 
 // ---------------------------------------------------------------------------
-// Stay22 modal (shared across all pages)
+// Stay22 — opens in a new tab (no iframe modal)
+// The next-Friday check-in date is computed client-side at click time.
 // ---------------------------------------------------------------------------
-function stay22Modal() {
-  return `<div id="stay22-modal">
-  <div class="stay22-inner">
-    <div class="stay22-header">
-      <span id="stay22-title">Find Hotels</span>
-      <button class="stay22-close" onclick="closeStay22()">&times;</button>
-    </div>
-    <iframe id="stay22-iframe" src="" title="Find hotels near parkrun events"></iframe>
-  </div>
-</div>
-<script>
+function stay22Script() {
+  return `<script>
 function openStay22(lat, lon, name) {
   var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
   d.setDate(d.getDate() + diff);
   var checkin = d.toISOString().slice(0, 10);
-  document.getElementById('stay22-iframe').src =
-    'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+  var url = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
     + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
     + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin
     + '&viewmode=listview&listviewexpand=true';
-  document.getElementById('stay22-title').textContent = 'Hotels near ' + name;
-  document.getElementById('stay22-modal').classList.add('open');
+  window.open(url, '_blank', 'noopener');
 }
-function closeStay22() {
-  document.getElementById('stay22-modal').classList.remove('open');
-  document.getElementById('stay22-iframe').src = '';
-}
-document.getElementById('stay22-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeStay22();
-});
 </script>`;
 }
 
@@ -599,7 +593,7 @@ function eventCardHtml(ev) {
   const mapId      = `cmap-${slug.replace(/[^a-z0-9]/g, '')}`;
   const accent     = isJunior ? ACCENT_JR : ACCENT;
   const cityLabel  = city ? `<span class="card-location"><i class="fas fa-map-marker-alt"></i> ${city}</span>` : '';
-  const typeBadge  = isJunior ? `<span class="card-badge junior">Junior</span>` : `<span class="card-badge">5k</span>`;
+  const typeBadge  = isJunior ? `<span class="card-badge junior">Junior parkrun</span>` : '';
 
   // Build the Leaflet init script — same pattern as initCoursePreview in generate-events.js
   const mapScript = `
@@ -660,9 +654,10 @@ function generateWorldIndex(countries) {
 </a>`).join('');
 
   return `${htmlHead({
-    title: 'Browse parkrun Events by Location — parkrunner tourist',
-    description: 'Find parkrun events near you. Browse by country, region and city. View course maps, find nearby hotels and plan your visit.',
+    title: 'parkrun Events by Location — Find Hotels &amp; Plan Your Visit | parkrunner tourist',
+    description: 'Browse parkrun events by country, region and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend.',
     canonicalUrl: `${BASE_LOCATIONS_URL}/`,
+    breadcrumbItems: [],
   })}
 <body>
 ${sharedStyles()}
@@ -695,18 +690,19 @@ function generateCountryPage(countrySlug, countryData) {
 </a>`).join('');
 
   return `${htmlHead({
-    title: `${name} parkrun Events — Hotels &amp; Visitor Guides`,
-    description: `Browse all parkrun events in ${name} by region. Find hotels, view course maps and plan your visit with parkrunner tourist.`,
+    title: `parkrun Events in ${name} — Hotels, Course Maps &amp; Visitor Guides`,
+    description: `Find all ${totalEvents} parkrun events across ${name}. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.`,
     canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/`,
     lat: c.lat, lon: c.lon, locationName: name,
+    breadcrumbItems: [{ name, url: `${BASE_LOCATIONS_URL}/${countrySlug}/` }],
   })}
 <body>
 ${sharedStyles()}
 ${htmlHeader()}
 ${breadcrumb([{ label: name }])}
 <main>
-  <h1 class="page-title">${name}</h1>
-  <p class="page-subtitle">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''}</p>
+  <h1 class="page-title">parkrun Events in ${name}</h1>
+  <p class="page-subtitle">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''} — find hotels, course maps and visitor guides</p>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in ${name}?</h2>
@@ -719,7 +715,7 @@ ${breadcrumb([{ label: name }])}
   <div class="tile-grid">${tiles}</div>
 </main>
 ${htmlFooter()}
-${stay22Modal()}
+${stay22Script()}
 ${showSearch ? searchScript('loc-search', 'tile') : ''}
 </body></html>`;
 }
@@ -745,10 +741,14 @@ function generateRegionPage(countrySlug, countryName, regionSlug, regionData) {
     .map(ev => eventCardHtml(ev)).join('\n');
 
   return `${htmlHead({
-    title: `${name} parkrun Events — Hotels &amp; Visitor Guides`,
-    description: `All parkrun events in ${name}. View course maps, find hotels, check weather and plan your perfect parkrun weekend.`,
+    title: `parkrun Events in ${name}, ${countryName} — Hotels, Course Maps &amp; Visitor Guides`,
+    description: `All ${events.length} parkrun events in ${name}. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in ${name}.`,
     canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/`,
-    lat: c.lat, lon: c.lon, locationName: name,
+    lat: c.lat, lon: c.lon, locationName: `${name}, ${countryName}`,
+    breadcrumbItems: [
+      { name: countryName, url: `${BASE_LOCATIONS_URL}/${countrySlug}/` },
+      { name,              url: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/` },
+    ],
   })}
 <body>
 ${sharedStyles()}
@@ -758,8 +758,8 @@ ${breadcrumb([
     { label: name },
   ])}
 <main>
-  <h1 class="page-title">${name}</h1>
-  <p class="page-subtitle">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in this region</p>
+  <h1 class="page-title">parkrun Events in ${name}</h1>
+  <p class="page-subtitle">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${name} — course maps, hotels and visitor guides</p>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in ${name}?</h2>
@@ -773,7 +773,7 @@ ${breadcrumb([
   <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
-${stay22Modal()}
+${stay22Script()}
 ${showSearch ? searchScript('evt-search', 'event-card') : ''}
 </body></html>`;
 }
@@ -788,10 +788,15 @@ function generateCityPage(countrySlug, countryName, regionSlug, regionName, city
     .map(ev => eventCardHtml(ev)).join('\n');
 
   return `${htmlHead({
-    title: `parkrun Events in ${cityName} — Hotels &amp; Visitor Guides`,
-    description: `All parkrun events in ${cityName}, ${regionName}. View course maps, find nearby hotels and plan your parkrun visit.`,
+    title: `parkrun Events in ${cityName} — Hotels Near Each Event &amp; Course Maps`,
+    description: `${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName}, ${regionName}. View course maps for every event, find hotels nearby and plan your parkrun visit to ${cityName}.`,
     canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/${citySlug}/`,
-    lat: c.lat, lon: c.lon, locationName: cityName,
+    lat: c.lat, lon: c.lon, locationName: `${cityName}, ${regionName}`,
+    breadcrumbItems: [
+      { name: countryName, url: `${BASE_LOCATIONS_URL}/${countrySlug}/` },
+      { name: regionName,  url: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/` },
+      { name: cityName,    url: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/${citySlug}/` },
+    ],
   })}
 <body>
 ${sharedStyles()}
@@ -802,8 +807,8 @@ ${breadcrumb([
     { label: cityName },
   ])}
 <main>
-  <h1 class="page-title">${cityName}</h1>
-  <p class="page-subtitle">${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName}</p>
+  <h1 class="page-title">parkrun Events in ${cityName}</h1>
+  <p class="page-subtitle">${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName} — course maps, hotels and visitor guides</p>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in ${cityName}?</h2>
@@ -816,9 +821,48 @@ ${breadcrumb([
   <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
-${stay22Modal()}
+${stay22Script()}
 ${showSearch ? searchScript('evt-search', 'event-card') : ''}
 </body></html>`;
+}
+
+// ---------------------------------------------------------------------------
+// Sitemap generator
+// Writes /locations/sitemap.xml listing every location page.
+// Priority: world index 1.0, country 0.9, region 0.8, city 0.7
+// changefreq: weekly (event count can change as new events open)
+// ---------------------------------------------------------------------------
+function generateSitemap(hierarchy) {
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [];
+
+  // World index
+  urls.push({ loc: `${BASE_LOCATIONS_URL}/`, priority: '1.0' });
+
+  for (const [countrySlug, countryData] of Object.entries(hierarchy)) {
+    urls.push({ loc: `${BASE_LOCATIONS_URL}/${countrySlug}/`, priority: '0.9' });
+
+    for (const [regionSlug, regionData] of Object.entries(countryData.regions)) {
+      urls.push({ loc: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/`, priority: '0.8' });
+
+      for (const [citySlug] of Object.entries(regionData.cities)) {
+        if (citySlug === regionSlug) continue;
+        urls.push({ loc: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/${citySlug}/`, priority: '0.7' });
+      }
+    }
+  }
+
+  const entries = urls.map(u => `  <url>
+    <loc>${u.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${u.priority}</priority>
+  </url>`).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${entries}
+</urlset>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -957,6 +1001,10 @@ async function main() {
   }
 
   console.log(`\nDone. ${pageCount} location pages generated in ./locations/`);
+
+  // Write sitemap
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'sitemap.xml'), generateSitemap(hierarchy), 'utf-8');
+  console.log(`Sitemap: locations/sitemap.xml (${pageCount} URLs)`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
