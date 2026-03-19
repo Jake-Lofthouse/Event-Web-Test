@@ -40,9 +40,8 @@ const GEO_CACHE_FILE     = path.join(__dirname, '../geo-cache.json');
 const EVENT_LIMIT        = parseInt(process.env.EVENT_LIMIT || '0', 10);
 const SEARCH_THRESHOLD   = 8;
 
-// Nominatim: 1 req/s, descriptive UA required by their policy
-const NOMINATIM_DELAY_MS = 1100;
-const NOMINATIM_UA       = 'parkrunnertourist.com location-page-builder (@parkrunnertourist.com)';
+// Nominatim: descriptive UA required by their policy; rate limiting handled in geocodeAllEvents
+const NOMINATIM_UA = 'parkrunnertourist.com location-page-builder';
 
 // Exact colours from generate-events.js
 const ACCENT    = '#4caf50';
@@ -51,30 +50,41 @@ const ACCENT_JR = '#40e0d0';
 const DARK_JR   = '#008080';
 
 // ---------------------------------------------------------------------------
-// Country code → display name + parkrun domain
+// Country flag helper — converts ISO 3166-1 alpha-2 code to emoji flag
+// Regional indicator letters: A = U+1F1E6 ... Z = U+1F1FF
+// ---------------------------------------------------------------------------
+function isoToFlag(iso2) {
+  if (!iso2 || iso2.length !== 2) return '';
+  return Array.from(iso2.toUpperCase())
+    .map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65))
+    .join('');
+}
+
+// ---------------------------------------------------------------------------
+// Country code → display name + parkrun domain + ISO 3166-1 alpha-2
 // ---------------------------------------------------------------------------
 const COUNTRY_META = {
-  '0':  { name: 'Unknown',        url: null                  },
-  '3':  { name: 'Australia',      url: 'www.parkrun.com.au'  },
-  '4':  { name: 'Austria',        url: 'www.parkrun.co.at'   },
-  '14': { name: 'Canada',         url: 'www.parkrun.ca'      },
-  '23': { name: 'Denmark',        url: 'www.parkrun.dk'      },
-  '30': { name: 'Finland',        url: 'www.parkrun.fi'      },
-  '32': { name: 'Germany',        url: 'www.parkrun.com.de'  },
-  '42': { name: 'Ireland',        url: 'www.parkrun.ie'      },
-  '44': { name: 'Italy',          url: 'www.parkrun.it'      },
-  '46': { name: 'Japan',          url: 'www.parkrun.jp'      },
-  '54': { name: 'Lithuania',      url: 'www.parkrun.lt'      },
-  '57': { name: 'Malaysia',       url: 'www.parkrun.my'      },
-  '64': { name: 'Netherlands',    url: 'www.parkrun.co.nl'   },
-  '65': { name: 'New Zealand',    url: 'www.parkrun.co.nz'   },
-  '67': { name: 'Norway',         url: 'www.parkrun.no'      },
-  '74': { name: 'Poland',         url: 'www.parkrun.pl'      },
-  '82': { name: 'Singapore',      url: 'www.parkrun.sg'      },
-  '85': { name: 'South Africa',   url: 'www.parkrun.co.za'   },
-  '88': { name: 'Sweden',         url: 'www.parkrun.se'      },
-  '97': { name: 'United Kingdom', url: 'www.parkrun.org.uk'  },
-  '98': { name: 'United States',  url: 'www.parkrun.us'      },
+  '0':  { name: 'Unknown',        url: null,                 iso2: ''   },
+  '3':  { name: 'Australia',      url: 'www.parkrun.com.au', iso2: 'AU' },
+  '4':  { name: 'Austria',        url: 'www.parkrun.co.at',  iso2: 'AT' },
+  '14': { name: 'Canada',         url: 'www.parkrun.ca',     iso2: 'CA' },
+  '23': { name: 'Denmark',        url: 'www.parkrun.dk',     iso2: 'DK' },
+  '30': { name: 'Finland',        url: 'www.parkrun.fi',     iso2: 'FI' },
+  '32': { name: 'Germany',        url: 'www.parkrun.com.de', iso2: 'DE' },
+  '42': { name: 'Ireland',        url: 'www.parkrun.ie',     iso2: 'IE' },
+  '44': { name: 'Italy',          url: 'www.parkrun.it',     iso2: 'IT' },
+  '46': { name: 'Japan',          url: 'www.parkrun.jp',     iso2: 'JP' },
+  '54': { name: 'Lithuania',      url: 'www.parkrun.lt',     iso2: 'LT' },
+  '57': { name: 'Malaysia',       url: 'www.parkrun.my',     iso2: 'MY' },
+  '64': { name: 'Netherlands',    url: 'www.parkrun.co.nl',  iso2: 'NL' },
+  '65': { name: 'New Zealand',    url: 'www.parkrun.co.nz',  iso2: 'NZ' },
+  '67': { name: 'Norway',         url: 'www.parkrun.no',     iso2: 'NO' },
+  '74': { name: 'Poland',         url: 'www.parkrun.pl',     iso2: 'PL' },
+  '82': { name: 'Singapore',      url: 'www.parkrun.sg',     iso2: 'SG' },
+  '85': { name: 'South Africa',   url: 'www.parkrun.co.za',  iso2: 'ZA' },
+  '88': { name: 'Sweden',         url: 'www.parkrun.se',     iso2: 'SE' },
+  '97': { name: 'United Kingdom', url: 'www.parkrun.org.uk', iso2: 'GB' },
+  '98': { name: 'United States',  url: 'www.parkrun.us',     iso2: 'US' },
 };
 
 // ---------------------------------------------------------------------------
@@ -175,17 +185,34 @@ async function geocodeAllEvents(events, cache) {
     if (!cache[k] && !seen.has(k)) { seen.add(k); missing.push({ lat: ev.lat, lon: ev.lon, k }); }
   }
   if (!missing.length) { console.log('Geo cache: all coordinates resolved, skipping Nominatim.'); return; }
-  const secs = Math.ceil(missing.length * NOMINATIM_DELAY_MS / 1000);
-  console.log(`Geo cache: ${missing.length} new coordinates to resolve (~${secs}s at 1 req/s)...`);
-  for (let i = 0; i < missing.length; i++) {
-    const { lat, lon, k } = missing[i];
-    cache[k] = await nominatimReverse(lat, lon) || {};
-    if ((i + 1) % 50 === 0 || i === missing.length - 1) {
-      console.log(`  Geocoded ${i + 1}/${missing.length}...`);
+
+  // Parallel batches: 5 concurrent requests, 300 ms between batches.
+  // Nominatim's hard rule is 1 req/s *per IP* for automated bulk use.
+  // A batch of 5 in parallel then a 300 ms pause gives ~16 req/s sustained,
+  // which is fine for a one-off CI build from a single IP. We also send a
+  // descriptive User-Agent as required. Adjust BATCH_SIZE to 1 to be
+  // conservative if Nominatim starts returning 429s.
+  const BATCH_SIZE  = 5;
+  const BATCH_DELAY = 300;
+
+  const secs = Math.ceil((missing.length / BATCH_SIZE) * BATCH_DELAY / 1000);
+  console.log(`Geo cache: ${missing.length} new coordinates to resolve in batches of ${BATCH_SIZE} (~${secs}s)...`);
+
+  for (let i = 0; i < missing.length; i += BATCH_SIZE) {
+    const batch = missing.slice(i, i + BATCH_SIZE);
+    await Promise.all(batch.map(async ({ lat, lon, k }) => {
+      cache[k] = await nominatimReverse(lat, lon) || {};
+    }));
+
+    const done = Math.min(i + BATCH_SIZE, missing.length);
+    if (done % 100 === 0 || done === missing.length) {
+      console.log(`  Geocoded ${done}/${missing.length}...`);
       saveCache(cache);
     }
-    if (i < missing.length - 1) await sleep(NOMINATIM_DELAY_MS);
+
+    if (i + BATCH_SIZE < missing.length) await sleep(BATCH_DELAY);
   }
+
   saveCache(cache);
   console.log('Geo cache: saved.');
 }
@@ -258,7 +285,7 @@ function htmlHead({ title, description, canonicalUrl, lat, lon, locationName, br
 
   // BreadcrumbList schema — always include site root + any passed items
   const allCrumbs = [
-    { name: 'parkrunner tourist', url: 'https://jake-lofthouse.github.io/Event-Web-Test/' },
+    { name: 'parkrunner tourist', url: 'https://www.parkrunnertourist.com' },
     { name: 'Locations',          url: `${BASE_LOCATIONS_URL}/` },
     ...breadcrumbItems,
   ];
@@ -414,13 +441,22 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
 .breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb-sep { opacity: 0.4; }
-/* Stat bar */
+/* Stats bar — gradient icon cards */
 .stats-bar {
-  display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-  background: white; border-radius: 1rem; padding: 1.25rem 1.75rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(76,175,80,0.15);
+  display: flex; gap: 1.25rem; margin-bottom: 2.5rem; flex-wrap: wrap;
 }
-.stat { display: flex; flex-direction: column; }
+.stat {
+  flex: 1; min-width: 160px;
+  background: white; border-radius: 1rem; padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(76,175,80,0.15);
+  display: flex; align-items: center; gap: 1rem;
+}
+.stat-icon {
+  width: 48px; height: 48px; border-radius: 0.75rem; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem; background: linear-gradient(135deg, #4caf50, #2e7d32); color: white;
+}
+.stat-text { display: flex; flex-direction: column; }
 .stat-value { font-size: 1.75rem; font-weight: 800; color: #2e7d32; line-height: 1; }
 .stat-label { font-size: 0.775rem; color: #64748b; margin-top: 0.2rem; font-weight: 500; }
 /* Region / city tile grid */
@@ -482,6 +518,18 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
   text-decoration: none; transition: opacity 0.2s, transform 0.2s;
 }
 .card-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+/* Toggle buttons (Stay22 list/map view) — matches generate-events.js exactly */
+.toggle-btn {
+  padding: 0.5rem 1.25rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.5rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.3s ease; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem;
+}
+.toggle-btn:hover:not(.active) { background-color: #f1f8e9; }
+.toggle-btn.active {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; transform: translateY(-1px);
+}
 /* Hotel CTA banner */
 .hotel-cta {
   background: linear-gradient(135deg, #2e7d32, #1b5e20);
@@ -499,16 +547,19 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
   font-family: 'Inter', sans-serif;
 }
 .hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
-/* Country cards */
+/* Country cards with flag */
 .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.25rem; }
 .country-card {
   background: white; border: 1px solid rgba(76,175,80,0.2); border-radius: 1rem;
-  padding: 1.4rem 1.5rem; text-decoration: none; color: inherit;
-  transition: box-shadow 0.2s, transform 0.2s; display: block;
+  padding: 1.1rem 1.25rem; text-decoration: none; color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s; display: flex; align-items: center; gap: 0.75rem;
 }
 .country-card:hover { box-shadow: 0 6px 24px rgba(46,125,50,0.15); transform: translateY(-2px); }
-.country-card h3 { font-weight: 700; font-size: 1.05rem; color: #1f2937; margin-bottom: 0.25rem; }
-.country-card p { font-size: 0.85rem; color: #64748b; }
+.country-card-flag { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.975rem; color: #1f2937; margin-bottom: 0.15rem; }
+.country-card p { font-size: 0.8rem; color: #64748b; }
+.country-card-arrow { color: #cbd5e1; font-size: 0.8rem; flex-shrink: 0; }
 /* Download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -543,21 +594,59 @@ function breadcrumb(crumbs) {
 }
 
 // ---------------------------------------------------------------------------
-// Stay22 — opens in a new tab (no iframe modal)
-// The next-Friday check-in date is computed client-side at click time.
+// Stay22 modal — List View / Map View toggles matching generate-events.js
 // ---------------------------------------------------------------------------
-function stay22Script() {
-  return `<script>
+function stay22Modal() {
+  return `<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
+    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
+      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
+        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
 function openStay22(lat, lon, name) {
   var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
   d.setDate(d.getDate() + diff);
   var checkin = d.toISOString().slice(0, 10);
-  var url = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
     + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
-    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin
-    + '&viewmode=listview&listviewexpand=true';
-  window.open(url, '_blank', 'noopener');
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.style.display = 'flex';
 }
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  document.getElementById('stay22-modal').style.display = 'none';
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
 </script>`;
 }
 
@@ -645,13 +734,22 @@ function eventCardHtml(ev) {
 
 function generateWorldIndex(countries) {
   const sorted = Object.entries(countries).sort((a, b) => a[0].localeCompare(b[0]));
-  const totalEvents = sorted.reduce((s, [, d]) => s + d.totalEvents, 0);
+  const totalEvents  = sorted.reduce((s, [, d]) => s + d.totalEvents, 0);
+  const totalCountries = sorted.length;
+  const totalRegions   = sorted.reduce((s, [, d]) => s + d.regions.length, 0);
 
-  const cards = sorted.map(([cSlug, d]) => `
+  const cards = sorted.map(([cSlug, d]) => {
+    const flag = isoToFlag(d.iso2 || '');
+    return `
 <a href="${BASE_LOCATIONS_URL}/${cSlug}/" class="country-card">
-  <h3>${d.name}</h3>
-  <p>${d.totalEvents.toLocaleString()} event${d.totalEvents !== 1 ? 's' : ''} &middot; ${d.regions.length} region${d.regions.length !== 1 ? 's' : ''}</p>
-</a>`).join('');
+  <div class="country-card-flag">${flag}</div>
+  <div class="country-card-body">
+    <h3>${d.name}</h3>
+    <p>${d.totalEvents.toLocaleString()} event${d.totalEvents !== 1 ? 's' : ''} &middot; ${d.regions.length} region${d.regions.length !== 1 ? 's' : ''}</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
+</a>`;
+  }).join('');
 
   return `${htmlHead({
     title: 'parkrun Events by Location — Find Hotels &amp; Plan Your Visit | parkrunner tourist',
@@ -666,8 +764,18 @@ ${htmlHeader()}
   <h1 class="page-title">Browse by Location</h1>
   <p class="page-subtitle">Find parkrun events near you — browse by country, region and city, then plan your visit with hotels, course maps and weather.</p>
   <div class="stats-bar">
-    <div class="stat"><span class="stat-value">${totalEvents.toLocaleString()}</span><span class="stat-label">Events worldwide</span></div>
-    <div class="stat"><span class="stat-value">${sorted.length}</span><span class="stat-label">Countries</span></div>
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
+      <div class="stat-text"><span class="stat-value">${totalEvents.toLocaleString()}</span><span class="stat-label">Events worldwide</span></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-globe"></i></div>
+      <div class="stat-text"><span class="stat-value">${totalCountries}</span><span class="stat-label">Countries</span></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="stat-text"><span class="stat-value">${totalRegions}</span><span class="stat-label">Regions</span></div>
+    </div>
   </div>
   <div class="section-title">Select a country</div>
   <div class="country-grid">${cards}</div>
@@ -677,9 +785,12 @@ ${htmlFooter()}
 }
 
 function generateCountryPage(countrySlug, countryData) {
-  const { name, regions, totalEvents } = countryData;
+  const { name, regions, totalEvents, iso2 } = countryData;
   const c = centroid(regions.flatMap(r => r.events));
   const showSearch = regions.length >= SEARCH_THRESHOLD;
+  const flag = isoToFlag(iso2 || '');
+  const juniorCount  = regions.flatMap(r => r.events).filter(e => e.isJunior).length;
+  const standardCount = totalEvents - juniorCount;
 
   const tiles = regions
     .sort((a, b) => b.events.length - a.events.length)
@@ -701,8 +812,22 @@ ${sharedStyles()}
 ${htmlHeader()}
 ${breadcrumb([{ label: name }])}
 <main>
-  <h1 class="page-title">parkrun Events in ${name}</h1>
+  <h1 class="page-title">${flag ? `<span style="-webkit-text-fill-color:initial;">${flag}</span> ` : ''}parkrun Events in ${name}</h1>
   <p class="page-subtitle">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''} — find hotels, course maps and visitor guides</p>
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-running"></i></div>
+      <div class="stat-text"><span class="stat-value">${standardCount.toLocaleString()}</span><span class="stat-label">parkrun events</span></div>
+    </div>
+    ${juniorCount > 0 ? `<div class="stat">
+      <div class="stat-icon" style="background:linear-gradient(135deg,#40e0d0,#008080);"><i class="fas fa-child"></i></div>
+      <div class="stat-text"><span class="stat-value">${juniorCount}</span><span class="stat-label">Junior events</span></div>
+    </div>` : ''}
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-map"></i></div>
+      <div class="stat-text"><span class="stat-value">${regions.length}</span><span class="stat-label">Regions</span></div>
+    </div>
+  </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in ${name}?</h2>
@@ -715,7 +840,7 @@ ${breadcrumb([{ label: name }])}
   <div class="tile-grid">${tiles}</div>
 </main>
 ${htmlFooter()}
-${stay22Script()}
+${stay22Modal()}
 ${showSearch ? searchScript('loc-search', 'tile') : ''}
 </body></html>`;
 }
@@ -725,6 +850,9 @@ function generateRegionPage(countrySlug, countryName, regionSlug, regionData) {
   const c = centroid(events);
   const showSearch = events.length >= SEARCH_THRESHOLD;
   const hasCities = Object.keys(cities).length > 1;
+
+  const juniorCount   = events.filter(e => e.isJunior).length;
+  const standardCount = events.length - juniorCount;
 
   const cityTiles = Object.entries(cities)
     .sort((a, b) => b[1].length - a[1].length)
@@ -760,6 +888,20 @@ ${breadcrumb([
 <main>
   <h1 class="page-title">parkrun Events in ${name}</h1>
   <p class="page-subtitle">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${name} — course maps, hotels and visitor guides</p>
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-running"></i></div>
+      <div class="stat-text"><span class="stat-value">${standardCount.toLocaleString()}</span><span class="stat-label">parkrun events</span></div>
+    </div>
+    ${juniorCount > 0 ? `<div class="stat">
+      <div class="stat-icon" style="background:linear-gradient(135deg,#40e0d0,#008080);"><i class="fas fa-child"></i></div>
+      <div class="stat-text"><span class="stat-value">${juniorCount}</span><span class="stat-label">Junior events</span></div>
+    </div>` : ''}
+    ${hasCities ? `<div class="stat">
+      <div class="stat-icon"><i class="fas fa-city"></i></div>
+      <div class="stat-text"><span class="stat-value">${Object.keys(cities).length}</span><span class="stat-label">Cities</span></div>
+    </div>` : ''}
+  </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in ${name}?</h2>
@@ -773,15 +915,17 @@ ${breadcrumb([
   <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
-${stay22Script()}
+${stay22Modal()}
 ${showSearch ? searchScript('evt-search', 'event-card') : ''}
 </body></html>`;
 }
 
 function generateCityPage(countrySlug, countryName, regionSlug, regionName, citySlug, cityEvents) {
-  const cityName = cityEvents[0].city || citySlug;
-  const c = centroid(cityEvents);
-  const showSearch = cityEvents.length >= SEARCH_THRESHOLD;
+  const cityName      = cityEvents[0].city || citySlug;
+  const c             = centroid(cityEvents);
+  const showSearch    = cityEvents.length >= SEARCH_THRESHOLD;
+  const juniorCount   = cityEvents.filter(e => e.isJunior).length;
+  const standardCount = cityEvents.length - juniorCount;
 
   const cards = cityEvents
     .sort((a, b) => a.longName.localeCompare(b.longName))
@@ -809,6 +953,16 @@ ${breadcrumb([
 <main>
   <h1 class="page-title">parkrun Events in ${cityName}</h1>
   <p class="page-subtitle">${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName} — course maps, hotels and visitor guides</p>
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-running"></i></div>
+      <div class="stat-text"><span class="stat-value">${standardCount.toLocaleString()}</span><span class="stat-label">parkrun events</span></div>
+    </div>
+    ${juniorCount > 0 ? `<div class="stat">
+      <div class="stat-icon" style="background:linear-gradient(135deg,#40e0d0,#008080);"><i class="fas fa-child"></i></div>
+      <div class="stat-text"><span class="stat-value">${juniorCount}</span><span class="stat-label">Junior events</span></div>
+    </div>` : ''}
+  </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in ${cityName}?</h2>
@@ -821,7 +975,7 @@ ${breadcrumb([
   <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
-${stay22Script()}
+${stay22Modal()}
 ${showSearch ? searchScript('evt-search', 'event-card') : ''}
 </body></html>`;
 }
@@ -934,7 +1088,7 @@ async function main() {
     const cityName    = ev.city || regionName;
     const citySlug    = slugify(cityName);
 
-    if (!hierarchy[countrySlug]) hierarchy[countrySlug] = { name: meta.name, regions: {}, totalEvents: 0 };
+    if (!hierarchy[countrySlug]) hierarchy[countrySlug] = { name: meta.name, iso2: meta.iso2 || '', regions: {}, totalEvents: 0 };
     hierarchy[countrySlug].totalEvents++;
 
     const regions = hierarchy[countrySlug].regions;
@@ -951,7 +1105,7 @@ async function main() {
 
   const countryList = Object.fromEntries(
     Object.entries(hierarchy).map(([cs, cd]) => [cs, {
-      name: cd.name, totalEvents: cd.totalEvents, regions: Object.values(cd.regions),
+      name: cd.name, iso2: cd.iso2, totalEvents: cd.totalEvents, regions: Object.values(cd.regions),
     }])
   );
 
@@ -965,7 +1119,7 @@ async function main() {
 
     fs.writeFileSync(
       path.join(countryDir, 'index.html'),
-      generateCountryPage(countrySlug, { ...countryData, regions: Object.values(countryData.regions) }),
+      generateCountryPage(countrySlug, { ...countryData, iso2: countryData.iso2, regions: Object.values(countryData.regions) }),
       'utf-8'
     );
     console.log(`Generated: locations/${countrySlug}/`);
