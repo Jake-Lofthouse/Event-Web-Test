@@ -2,19 +2,21 @@
  * generate-locations.js
  *
  * Generates a three-tier set of static HTML pages:
- *   /locations/index.html                                          — world index (all countries)
- *   /locations/[country-slug]/index.html                          — country page (all regions)
- *   /locations/[country-slug]/[region-slug]/index.html            — region page (all cities + event cards)
- *   /locations/[country-slug]/[region-slug]/[city-slug]/index.html — city page (event cards)
+ *   /locations/                                    — world index (all countries)
+ *   /locations/[country-slug]/                     — country page (all regions)
+ *   /locations/[country-slug]/[region-slug]/       — region page (cities + all event cards)
+ *   /locations/[country-slug]/[region-slug]/[city-slug]/  — city page (event cards)
  *
- * Region and city are resolved via Nominatim (OpenStreetMap) reverse geocoding.
- * Results are cached in ./geo-cache.json so repeat runs skip the API entirely.
- * Nominatim policy: max 1 req/s, descriptive User-Agent — both enforced here.
+ * All URLs use trailing slashes (index.html files in folders) — no .html in URLs.
  *
- * Event cards include a Leaflet mini-map course-route preview.
- * Pages with 8+ events get a live client-side search filter.
- * Every region/city page has a Stay22 "book accommodation" CTA
- * centred on the geographic centroid of events on that page.
+ * Region and city resolved via Nominatim (OpenStreetMap) reverse geocoding.
+ * Results cached in ./geo-cache.json — repeat runs skip the API entirely.
+ * Nominatim policy: max 1 req/s, descriptive User-Agent — both enforced.
+ *
+ * Header, footer, fonts, colours all match the main generate-events.js exactly.
+ * Event cards use the same course preview mini-map (Leaflet + encrypted coords).
+ * Pages with 8+ events get a client-side search filter.
+ * Every region/city page has a Stay22 "book accommodation" CTA.
  */
 
 'use strict';
@@ -38,13 +40,15 @@ const GEO_CACHE_FILE     = path.join(__dirname, '../geo-cache.json');
 const EVENT_LIMIT        = parseInt(process.env.EVENT_LIMIT || '0', 10);
 const SEARCH_THRESHOLD   = 8;
 
-// Nominatim rate limit: 1 request per second per their usage policy
+// Nominatim: 1 req/s, descriptive UA required by their policy
 const NOMINATIM_DELAY_MS = 1100;
 const NOMINATIM_UA       = 'parkrunnertourist.com location-page-builder (jake@parkrunnertourist.com)';
 
+// Exact colours from generate-events.js
 const ACCENT    = '#4caf50';
 const DARK      = '#2e7d32';
 const ACCENT_JR = '#40e0d0';
+const DARK_JR   = '#008080';
 
 // ---------------------------------------------------------------------------
 // Country code → display name + parkrun domain
@@ -74,121 +78,30 @@ const COUNTRY_META = {
 };
 
 // ---------------------------------------------------------------------------
-// Nominatim address field priority per country code.
-//
-// Nominatim's `address` object contains fields like `city`, `town`, `county`,
-// `state`, `province`, `suburb`, etc. — but which ones carry meaningful
-// region/city data depends entirely on each country's admin structure.
-//
-// `regionFields` — ordered list of address keys to try for the region tier
-// `cityFields`   — ordered list of address keys to try for the city tier
-//
-// The first non-empty value found wins. Any country not listed falls through
-// to DEFAULT_ADDRESS_FIELDS at the bottom.
+// Nominatim address field priority per country code
 // ---------------------------------------------------------------------------
 const ADDRESS_FIELDS = {
-  // UK — county/unitary authority as region, city/town as city
-  '97': {
-    regionFields: ['county', 'state_district', 'state'],
-    cityFields:   ['city', 'town', 'village', 'suburb', 'municipality'],
-  },
-  // Australia — state as region, suburb/city as city
-  '3': {
-    regionFields: ['state'],
-    cityFields:   ['city', 'suburb', 'town', 'village'],
-  },
-  // USA — state as region, city/town as city
-  '98': {
-    regionFields: ['state'],
-    cityFields:   ['city', 'town', 'village', 'county'],
-  },
-  // Canada — province as region
-  '14': {
-    regionFields: ['state', 'province'],
-    cityFields:   ['city', 'town', 'village', 'municipality'],
-  },
-  // Germany — Bundesland as region
-  '32': {
-    regionFields: ['state'],
-    cityFields:   ['city', 'town', 'village', 'suburb'],
-  },
-  // Ireland — county as region
-  '42': {
-    regionFields: ['county', 'state'],
-    cityFields:   ['city', 'town', 'village', 'suburb'],
-  },
-  // New Zealand
-  '65': {
-    regionFields: ['state', 'region'],
-    cityFields:   ['city', 'town', 'suburb', 'village'],
-  },
-  // South Africa — province as region
-  '85': {
-    regionFields: ['state', 'province'],
-    cityFields:   ['city', 'town', 'suburb', 'village'],
-  },
-  // Poland — voivodeship as region
-  '74': {
-    regionFields: ['state'],
-    cityFields:   ['city', 'town', 'village'],
-  },
-  // Sweden — lan as region
-  '88': {
-    regionFields: ['county', 'state'],
-    cityFields:   ['city', 'town', 'village', 'suburb'],
-  },
-  // Denmark
-  '23': {
-    regionFields: ['state', 'county', 'region'],
-    cityFields:   ['city', 'town', 'village'],
-  },
-  // Finland
-  '30': {
-    regionFields: ['state', 'region'],
-    cityFields:   ['city', 'town', 'village', 'municipality'],
-  },
-  // Norway
-  '67': {
-    regionFields: ['state', 'county'],
-    cityFields:   ['city', 'town', 'village', 'municipality'],
-  },
-  // Netherlands
-  '64': {
-    regionFields: ['state', 'province'],
-    cityFields:   ['city', 'town', 'village', 'suburb', 'municipality'],
-  },
-  // Italy
-  '44': {
-    regionFields: ['state', 'county'],
-    cityFields:   ['city', 'town', 'village', 'suburb'],
-  },
-  // Austria
-  '4': {
-    regionFields: ['state'],
-    cityFields:   ['city', 'town', 'village', 'suburb'],
-  },
-  // Japan
-  '46': {
-    regionFields: ['state', 'province', 'county'],
-    cityFields:   ['city', 'town', 'village', 'suburb'],
-  },
-  // Lithuania
-  '54': {
-    regionFields: ['state', 'county'],
-    cityFields:   ['city', 'town', 'village', 'municipality'],
-  },
-  // Malaysia
-  '57': {
-    regionFields: ['state'],
-    cityFields:   ['city', 'town', 'suburb', 'village'],
-  },
-  // Singapore — city-state; use neighbourhood as city
-  '82': {
-    regionFields: ['country'],
-    cityFields:   ['suburb', 'quarter', 'neighbourhood'],
-  },
+  '97': { regionFields: ['county', 'state_district', 'state'],       cityFields: ['city', 'town', 'village', 'suburb'] },
+  '3':  { regionFields: ['state'],                                    cityFields: ['city', 'suburb', 'town', 'village'] },
+  '98': { regionFields: ['state'],                                    cityFields: ['city', 'town', 'village', 'county'] },
+  '14': { regionFields: ['state', 'province'],                        cityFields: ['city', 'town', 'village', 'municipality'] },
+  '32': { regionFields: ['state'],                                    cityFields: ['city', 'town', 'village', 'suburb'] },
+  '42': { regionFields: ['county', 'state'],                          cityFields: ['city', 'town', 'village', 'suburb'] },
+  '65': { regionFields: ['state', 'region'],                          cityFields: ['city', 'town', 'suburb', 'village'] },
+  '85': { regionFields: ['state', 'province'],                        cityFields: ['city', 'town', 'suburb', 'village'] },
+  '74': { regionFields: ['state'],                                    cityFields: ['city', 'town', 'village'] },
+  '88': { regionFields: ['county', 'state'],                          cityFields: ['city', 'town', 'village', 'suburb'] },
+  '23': { regionFields: ['state', 'county', 'region'],                cityFields: ['city', 'town', 'village'] },
+  '30': { regionFields: ['state', 'region'],                          cityFields: ['city', 'town', 'village', 'municipality'] },
+  '67': { regionFields: ['state', 'county'],                          cityFields: ['city', 'town', 'village', 'municipality'] },
+  '64': { regionFields: ['state', 'province'],                        cityFields: ['city', 'town', 'village', 'suburb', 'municipality'] },
+  '44': { regionFields: ['state', 'county'],                          cityFields: ['city', 'town', 'village', 'suburb'] },
+  '4':  { regionFields: ['state'],                                    cityFields: ['city', 'town', 'village', 'suburb'] },
+  '46': { regionFields: ['state', 'province', 'county'],              cityFields: ['city', 'town', 'village', 'suburb'] },
+  '54': { regionFields: ['state', 'county'],                          cityFields: ['city', 'town', 'village', 'municipality'] },
+  '57': { regionFields: ['state'],                                    cityFields: ['city', 'town', 'suburb', 'village'] },
+  '82': { regionFields: ['country'],                                  cityFields: ['suburb', 'quarter', 'neighbourhood'] },
 };
-
 const DEFAULT_ADDRESS_FIELDS = {
   regionFields: ['state', 'county', 'state_district', 'region', 'province'],
   cityFields:   ['city', 'town', 'village', 'suburb', 'municipality'],
@@ -199,12 +112,11 @@ function getAddressFields(countryCode) {
 }
 
 // ---------------------------------------------------------------------------
-// HTTP fetch (JSON) — works for both our own API and Nominatim
+// HTTP / Nominatim helpers
 // ---------------------------------------------------------------------------
 function fetchJson(url, headers = {}) {
   return new Promise((resolve, reject) => {
-    const opts = { headers: { Accept: 'application/json', ...headers } };
-    https.get(url, opts, res => {
+    https.get(url, { headers: { Accept: 'application/json', ...headers } }, res => {
       let data = '';
       res.on('data', c => data += c);
       res.on('end', () => {
@@ -215,10 +127,6 @@ function fetchJson(url, headers = {}) {
   });
 }
 
-// ---------------------------------------------------------------------------
-// Nominatim reverse geocode
-// Returns the raw `address` object, or null on failure.
-// ---------------------------------------------------------------------------
 async function nominatimReverse(lat, lon) {
   const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1&zoom=10`;
   try {
@@ -233,15 +141,13 @@ async function nominatimReverse(lat, lon) {
 function extractFromAddress(address, countryCode) {
   if (!address) return { city: null, region: null };
   const { regionFields, cityFields } = getAddressFields(countryCode);
-  const region = regionFields.reduce((found, f) => found || address[f] || null, null);
-  const city   = cityFields.reduce((found, f) => found || address[f] || null, null);
+  const region = regionFields.reduce((f, k) => f || address[k] || null, null);
+  const city   = cityFields.reduce((f, k) => f || address[k] || null, null);
   return { city: city || null, region: region || null };
 }
 
 // ---------------------------------------------------------------------------
 // Geo cache
-// Keyed by coordinates rounded to 4 decimal places (~11 m grid).
-// Events at the same park share a single cache entry.
 // ---------------------------------------------------------------------------
 function cacheKey(lat, lon) {
   return `${Math.round(lat * 1e4) / 1e4},${Math.round(lon * 1e4) / 1e4}`;
@@ -249,86 +155,55 @@ function cacheKey(lat, lon) {
 
 function loadCache() {
   try {
-    if (fs.existsSync(GEO_CACHE_FILE)) {
+    if (fs.existsSync(GEO_CACHE_FILE))
       return JSON.parse(fs.readFileSync(GEO_CACHE_FILE, 'utf-8'));
-    }
-  } catch (e) {
-    console.warn('Could not load geo cache, starting fresh:', e.message);
-  }
+  } catch (e) { console.warn('Could not load geo cache, starting fresh:', e.message); }
   return {};
 }
 
 function saveCache(cache) {
-  try {
-    fs.writeFileSync(GEO_CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8');
-  } catch (e) {
-    console.warn('Could not save geo cache:', e.message);
-  }
+  try { fs.writeFileSync(GEO_CACHE_FILE, JSON.stringify(cache, null, 2), 'utf-8'); }
+  catch (e) { console.warn('Could not save geo cache:', e.message); }
 }
 
-// ---------------------------------------------------------------------------
-// Rate-limited geocoding pass
-// Only hits Nominatim for coordinates not already in the cache.
-// Saves progress every 50 requests so a partial run is not wasted.
-// ---------------------------------------------------------------------------
 async function geocodeAllEvents(events, cache) {
-  // Collect unique coordinates not yet cached
-  const seen    = new Set();
+  const seen = new Set();
   const missing = [];
   for (const ev of events) {
     if (ev.lat === 0 && ev.lon === 0) continue;
     const k = cacheKey(ev.lat, ev.lon);
-    if (!cache[k] && !seen.has(k)) {
-      seen.add(k);
-      missing.push({ lat: ev.lat, lon: ev.lon, k });
-    }
+    if (!cache[k] && !seen.has(k)) { seen.add(k); missing.push({ lat: ev.lat, lon: ev.lon, k }); }
   }
-
-  if (missing.length === 0) {
-    console.log('Geo cache: all coordinates already resolved, skipping Nominatim.');
-    return;
-  }
-
-  const estimatedSeconds = Math.ceil(missing.length * NOMINATIM_DELAY_MS / 1000);
-  console.log(`Geo cache: ${missing.length} new coordinates to resolve (~${estimatedSeconds}s at 1 req/s)...`);
-
+  if (!missing.length) { console.log('Geo cache: all coordinates resolved, skipping Nominatim.'); return; }
+  const secs = Math.ceil(missing.length * NOMINATIM_DELAY_MS / 1000);
+  console.log(`Geo cache: ${missing.length} new coordinates to resolve (~${secs}s at 1 req/s)...`);
   for (let i = 0; i < missing.length; i++) {
     const { lat, lon, k } = missing[i];
-    const address = await nominatimReverse(lat, lon);
-    cache[k] = address || {};   // empty object on failure — prevents infinite retries
-
+    cache[k] = await nominatimReverse(lat, lon) || {};
     if ((i + 1) % 50 === 0 || i === missing.length - 1) {
       console.log(`  Geocoded ${i + 1}/${missing.length}...`);
       saveCache(cache);
     }
-
     if (i < missing.length - 1) await sleep(NOMINATIM_DELAY_MS);
   }
-
   saveCache(cache);
   console.log('Geo cache: saved.');
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // ---------------------------------------------------------------------------
-// String utilities
+// Utilities
 // ---------------------------------------------------------------------------
 function slugify(str) {
   return (str || '')
     .toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')   // strip accents
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-').replace(/^-|-$/g, '');
 }
 
-function ensure(dir) {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-}
+function ensure(dir) { if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true }); }
 
 function centroid(events) {
   if (!events.length) return { lat: 51.5, lon: -0.1 };
@@ -344,7 +219,7 @@ function getExploreSubfolder(slug) {
 }
 
 // ---------------------------------------------------------------------------
-// Coordinate encryption — mirrors generate-events.js exactly
+// Coordinate encryption — identical to generate-events.js
 // ---------------------------------------------------------------------------
 function eventSeed(name) {
   let h = 0x12345678;
@@ -367,14 +242,17 @@ function encryptCoords(coords, seed) {
   return Buffer.from(JSON.stringify(flat)).toString('base64');
 }
 
+// Inlined decrypt function — same as in generate-events.js
 function decryptFnJs() {
   return `function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}`;
 }
 
 // ---------------------------------------------------------------------------
-// Shared HTML fragments
+// Shared page structure — identical to generate-events.js
 // ---------------------------------------------------------------------------
-function htmlHead({ title, description, canonicalPath, lat, lon, locationName }) {
+
+// Exact <head> block matching the original site
+function htmlHead({ title, description, canonicalUrl, lat, lon, locationName }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -382,204 +260,285 @@ function htmlHead({ title, description, canonicalPath, lat, lon, locationName })
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>${title}</title>
 <meta name="description" content="${description}" />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="${BASE_LOCATIONS_URL}/${canonicalPath}" />
-${lat != null ? `<meta name="geo.position" content="${lat};${lon}" /><meta name="geo.placename" content="${locationName}" />` : ''}
+<meta name="author" content="Jake Lofthouse" />
+${lat != null ? `<meta name="geo.placename" content="${locationName}" />
+<meta name="geo.position" content="${lat};${lon}" />` : ''}
 <meta property="og:title" content="${title}" />
 <meta property="og:description" content="${description}" />
+<meta property="og:url" content="${canonicalUrl}" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="${BASE_LOCATIONS_URL}/${canonicalPath}" />
-<meta name="twitter:card" content="summary" />
-<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${title}" />
+<meta name="twitter:description" content="${description}" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<link rel="canonical" href="${canonicalUrl}" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-REFFZSK4XK');</script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
 </head>`;
 }
 
-function sharedStyles() {
-  return `<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --green:${ACCENT};--dark:${DARK};--teal:${ACCENT_JR};
-  --bg:#f4f6f0;--surface:#ffffff;--border:#e2e8d8;
-  --text:#1a2318;--muted:#5a6e52;--radius:12px;
-}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-header{
-  background:linear-gradient(135deg,var(--dark) 0%,#1b5e20 100%);
-  color:#fff;padding:1rem 2rem;
-  display:flex;justify-content:space-between;align-items:center;
-  box-shadow:0 4px 20px rgba(46,125,50,0.3);
-}
-header a.brand{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;}
-header a.map-btn{
-  padding:.4rem 1.1rem;border:2px solid rgba(255,255,255,.7);border-radius:8px;
-  font-size:.875rem;font-weight:600;color:#fff;transition:all .2s;
-}
-header a.map-btn:hover{background:#fff;color:var(--dark);}
-.breadcrumb{
-  background:var(--surface);border-bottom:1px solid var(--border);
-  padding:.6rem 2rem;font-size:.825rem;color:var(--muted);
-  display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;
-}
-.breadcrumb a{color:var(--dark);font-weight:500;}
-.breadcrumb a:hover{text-decoration:underline;}
-.breadcrumb span{opacity:.5;}
-main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem 4rem;}
-.page-hero{text-align:center;padding:2.5rem 0 2rem;}
-.page-hero h1{
-  font-family:'DM Serif Display',serif;font-size:3rem;
-  color:var(--dark);margin-bottom:.5rem;line-height:1.15;
-}
-.page-hero p{color:var(--muted);font-size:1.05rem;max-width:600px;margin:0 auto;}
-.section-label{
-  font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--muted);margin-bottom:1rem;
-}
-.search-wrap{margin-bottom:1.75rem;position:relative;}
-.search-input{
-  width:100%;padding:.75rem 1.1rem .75rem 2.75rem;
-  border:1.5px solid var(--border);border-radius:var(--radius);
-  font-family:'DM Sans',sans-serif;font-size:1rem;background:var(--surface);
-  outline:none;transition:border .2s;
-}
-.search-input:focus{border-color:var(--green);}
-.search-icon{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:.9rem;}
-.tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;}
-.tile{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;
-  transition:box-shadow .2s,transform .2s;cursor:pointer;
-}
-.tile:hover{box-shadow:0 6px 24px rgba(46,125,50,.13);transform:translateY(-2px);}
-.tile-name{font-weight:600;font-size:.975rem;}
-.tile-count{
-  background:#e8f5e9;color:var(--dark);
-  font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:99px;flex-shrink:0;
-}
-.event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
-.event-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  overflow:hidden;transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column;
-}
-.event-card:hover{box-shadow:0 8px 32px rgba(46,125,50,.15);transform:translateY(-3px);}
-.card-map{height:180px;flex-shrink:0;}
-.card-body{padding:1rem 1.1rem;flex:1;display:flex;flex-direction:column;gap:.4rem;}
-.card-title{font-weight:700;font-size:1rem;color:var(--text);line-height:1.3;}
-.card-location{font-size:.825rem;color:var(--muted);display:flex;align-items:center;gap:.35rem;}
-.card-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:auto;padding-top:.5rem;}
-.badge{font-size:.72rem;font-weight:600;padding:.2rem .55rem;border-radius:99px;background:#e8f5e9;color:var(--dark);}
-.badge.junior{background:#e0f7fa;color:#006064;}
-.card-cta{
-  display:block;margin:.75rem 1.1rem 1rem;padding:.55rem 1rem;
-  background:linear-gradient(135deg,var(--green),var(--dark));
-  color:#fff;border-radius:8px;font-weight:600;font-size:.875rem;
-  text-align:center;transition:opacity .2s;
-}
-.card-cta:hover{opacity:.88;}
-.hotel-cta{
-  background:linear-gradient(135deg,var(--dark),#1b5e20);
-  border-radius:var(--radius);padding:2rem 1.75rem;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:1.5rem;margin-bottom:2.5rem;flex-wrap:wrap;
-}
-.hotel-cta-text h2{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:.3rem;}
-.hotel-cta-text p{font-size:.9rem;color:rgba(255,255,255,.75);}
-.hotel-cta-btn{
-  background:#fff;color:var(--dark);font-weight:700;font-size:.95rem;
-  padding:.75rem 1.75rem;border-radius:10px;white-space:nowrap;
-  border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;flex-shrink:0;
-}
-.hotel-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18);}
-#stay22-modal{
-  display:none;position:fixed;inset:0;z-index:9999;
-  background:rgba(0,0,0,.6);backdrop-filter:blur(6px);
-  align-items:center;justify-content:center;padding:1rem;
-}
-#stay22-modal.open{display:flex;}
-.stay22-inner{
-  background:#fff;border-radius:16px;width:100%;max-width:900px;max-height:90vh;
-  display:flex;flex-direction:column;overflow:hidden;
-  box-shadow:0 32px 80px rgba(0,0,0,.35);
-}
-.stay22-header{
-  padding:.85rem 1.1rem;border-bottom:1px solid #eee;
-  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
-}
-.stay22-header span{font-weight:700;font-size:.95rem;}
-.stay22-close{
-  background:rgba(0,0,0,.07);border:none;border-radius:50%;
-  width:28px;height:28px;cursor:pointer;font-size:14px;
-  display:flex;align-items:center;justify-content:center;color:#555;
-}
-.stay22-close:hover{background:rgba(0,0,0,.14);}
-#stay22-iframe{flex:1;border:none;min-height:480px;}
-.stats-bar{
-  display:flex;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1rem 1.5rem;
-}
-.stat{display:flex;flex-direction:column;}
-.stat-value{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--dark);line-height:1;}
-.stat-label{font-size:.775rem;color:var(--muted);margin-top:.2rem;}
-.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
-.country-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.25rem 1.4rem;transition:box-shadow .2s,transform .2s;
-}
-.country-card:hover{box-shadow:0 6px 24px rgba(46,125,50,.12);transform:translateY(-2px);}
-.country-card h3{font-weight:700;font-size:1rem;margin-bottom:.2rem;}
-.country-card p{font-size:.825rem;color:var(--muted);}
-footer{
-  background:var(--surface);border-top:1px solid var(--border);
-  padding:1.5rem 2rem;text-align:center;font-size:.8rem;color:var(--muted);
-}
-.leaflet-control-attribution{display:none!important;}
-@media(max-width:640px){
-  .page-hero h1{font-size:2rem;}
-  main{padding:1.25rem 1rem 3rem;}
-  .hotel-cta{flex-direction:column;text-align:center;}
-  .hotel-cta-btn{width:100%;}
-}
-</style>`;
-}
-
+// Exact header from generate-events.js (non-junior variant — location pages are always non-junior)
 function htmlHeader() {
   return `<header>
-  <a class="brand" href="https://www.parkrunnertourist.com">${SITE_NAME}</a>
-  <a class="map-btn" href="https://www.parkrunnertourist.com/webapp" target="_blank">Full Map</a>
+  <a href="https://www.parkrunnertourist.com" target="_self">${SITE_NAME}</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
 </header>`;
 }
 
+// Exact footer from generate-events.js
 function htmlFooter() {
-  return `<footer>
-  <p style="max-width:800px;margin:0 auto .5rem;">
+  return `<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
     parkrun is a registered trademark of parkrun Limited.
     This website is independent and is not affiliated with or endorsed by parkrun.
   </p>
   &copy; ${new Date().getFullYear()} ${SITE_NAME}
-</footer>`;
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>`;
+}
+
+// Exact CSS from generate-events.js (non-junior palette)
+function sharedStyles() {
+  return `<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
+main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
+.page-title {
+  font-size: 3.5rem; font-weight: 800; margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  text-align: center; padding: 2rem 0 0.5rem; line-height: 1.2;
+}
+.page-subtitle { text-align: center; color: #64748b; font-size: 1.05rem; margin-bottom: 2.5rem; }
+.section-title {
+  font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem;
+  color: #1f2937; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-title::before {
+  content: ''; width: 4px; height: 1.5rem;
+  background: linear-gradient(135deg, #4caf50, #2e7d32); border-radius: 2px;
+}
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 0.875rem; color: #64748b; padding: 0.75rem 2rem;
+  background: white; border-bottom: 1px solid #e2e8f0;
+  display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.4; }
+/* Stat bar */
+.stats-bar {
+  display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+  background: white; border-radius: 1rem; padding: 1.25rem 1.75rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(76,175,80,0.15);
+}
+.stat { display: flex; flex-direction: column; }
+.stat-value { font-size: 1.75rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-label { font-size: 0.775rem; color: #64748b; margin-top: 0.2rem; font-weight: 500; }
+/* Region / city tile grid */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+.tile {
+  background: white; border: 1px solid rgba(76,175,80,0.2); border-radius: 0.875rem;
+  padding: 1.1rem 1.3rem; display: flex; align-items: center; justify-content: space-between;
+  transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; color: inherit;
+}
+.tile:hover { box-shadow: 0 6px 24px rgba(46,125,50,0.15); transform: translateY(-2px); }
+.tile-name { font-weight: 600; font-size: 0.975rem; color: #1f2937; }
+.tile-count {
+  background: #e8f5e9; color: #2e7d32;
+  font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 99px; flex-shrink: 0;
+}
+/* Search */
+.search-wrap { position: relative; margin-bottom: 1.75rem; }
+.search-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.9rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.75rem 1rem 0.75rem 2.6rem;
+  border: 1.5px solid #e2e8f0; border-radius: 0.75rem;
+  font-family: 'Inter', sans-serif; font-size: 1rem; background: white; outline: none; transition: border 0.2s;
+}
+.search-input:focus { border-color: #4caf50; }
+/* Event cards */
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.event-card {
+  background: white; border-radius: 1rem; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(76,175,80,0.15);
+  display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s;
+}
+.event-card:hover { box-shadow: 0 8px 32px rgba(46,125,50,0.18); transform: translateY(-3px); }
+.card-map-wrap {
+  height: 200px; position: relative; background: #e8f5e9; flex-shrink: 0; overflow: hidden;
+}
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges {
+  position: absolute; bottom: 8px; left: 8px; z-index: 10; display: flex; gap: 5px;
+}
+.card-map-badge {
+  border-radius: 7px; padding: 2px 8px; font-size: 11px; font-weight: 700; color: #fff;
+}
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+.card-name { font-weight: 700; font-size: 1rem; color: #1f2937; line-height: 1.3; }
+.card-location { font-size: 0.825rem; color: #64748b; display: flex; align-items: center; gap: 0.35rem; }
+.card-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.5rem; }
+.card-badge {
+  font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem;
+  border-radius: 99px; background: #e8f5e9; color: #2e7d32;
+}
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.75rem 1.1rem 1rem;
+  padding: 0.6rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem;
+  text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+}
+.card-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+/* Hotel CTA banner */
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  border-radius: 1rem; padding: 1.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.25);
+}
+.hotel-cta-text h2 { font-size: 1.35rem; font-weight: 700; color: white; margin-bottom: 0.25rem; }
+.hotel-cta-text p { font-size: 0.9rem; color: rgba(255,255,255,0.78); }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.95rem;
+  padding: 0.75rem 1.75rem; border-radius: 0.75rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+/* Stay22 modal */
+#stay22-modal {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 1rem;
+}
+#stay22-modal.open { display: flex; }
+.stay22-inner {
+  background: white; border-radius: 1.25rem; width: 100%; max-width: 900px; max-height: 90vh;
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+}
+.stay22-header {
+  padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0;
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+.stay22-header span { font-weight: 700; font-size: 0.95rem; }
+.stay22-close {
+  background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
+  width: 28px; height: 28px; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; color: #555;
+}
+.stay22-close:hover { background: rgba(0,0,0,0.14); }
+#stay22-iframe { flex: 1; border: none; min-height: 480px; }
+/* Country cards */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.25rem; }
+.country-card {
+  background: white; border: 1px solid rgba(76,175,80,0.2); border-radius: 1rem;
+  padding: 1.4rem 1.5rem; text-decoration: none; color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s; display: block;
+}
+.country-card:hover { box-shadow: 0 6px 24px rgba(46,125,50,0.15); transform: translateY(-2px); }
+.country-card h3 { font-weight: 700; font-size: 1.05rem; color: #1f2937; margin-bottom: 0.25rem; }
+.country-card p { font-size: 0.85rem; color: #64748b; }
+/* Download footer */
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+@media (max-width: 768px) {
+  main { padding: 2rem 1rem; }
+  .page-title { font-size: 2.25rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; text-align: center; }
+  .hotel-cta-btn { width: 100%; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+}
+</style>`;
 }
 
 function breadcrumb(crumbs) {
+  // crumbs: [{label, href?}] — last item is current page (no href)
+  const home = `<a href="${BASE_LOCATIONS_URL}/">All Locations</a><span class="breadcrumb-sep">/</span>`;
   const parts = crumbs.map((c, i) =>
     i < crumbs.length - 1
-      ? `<a href="${c.href}">${c.label}</a><span>/</span>`
+      ? `<a href="${c.href}">${c.label}</a><span class="breadcrumb-sep">/</span>`
       : `<span>${c.label}</span>`
   ).join('');
-  return `<div class="breadcrumb"><a href="${BASE_LOCATIONS_URL}/index.html">All Locations</a><span>/</span>${parts}</div>`;
+  return `<div class="breadcrumb">${home}${parts}</div>`;
 }
 
+// ---------------------------------------------------------------------------
+// Stay22 modal (shared across all pages)
+// ---------------------------------------------------------------------------
 function stay22Modal() {
-  return `
-<div id="stay22-modal">
+  return `<div id="stay22-modal">
   <div class="stay22-inner">
     <div class="stay22-header">
-      <span id="stay22-modal-title">Find Hotels</span>
+      <span id="stay22-title">Find Hotels</span>
       <button class="stay22-close" onclick="closeStay22()">&times;</button>
     </div>
     <iframe id="stay22-iframe" src="" title="Find hotels near parkrun events"></iframe>
@@ -587,17 +546,15 @@ function stay22Modal() {
 </div>
 <script>
 function openStay22(lat, lon, name) {
-  var date = (function(){
-    var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
-    d.setDate(d.getDate() + diff);
-    return d.toISOString().slice(0, 10);
-  })();
-  var url = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  document.getElementById('stay22-iframe').src =
+    'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
     + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
-    + '&venue=' + encodeURIComponent(name) + '&checkin=' + date
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin
     + '&viewmode=listview&listviewexpand=true';
-  document.getElementById('stay22-iframe').src = url;
-  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('stay22-title').textContent = 'Hotels near ' + name;
   document.getElementById('stay22-modal').classList.add('open');
 }
 function closeStay22() {
@@ -610,16 +567,18 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
 </script>`;
 }
 
-function searchScript(inputId, cardClass) {
+// ---------------------------------------------------------------------------
+// Search script
+// ---------------------------------------------------------------------------
+function searchScript(inputId, itemClass) {
   return `<script>
 (function() {
   var inp = document.getElementById('${inputId}');
   if (!inp) return;
   inp.addEventListener('input', function() {
     var q = this.value.toLowerCase().trim();
-    document.querySelectorAll('.${cardClass}').forEach(function(el) {
-      var text = (el.dataset.search || el.textContent).toLowerCase();
-      el.style.display = (!q || text.includes(q)) ? '' : 'none';
+    document.querySelectorAll('.${itemClass}').forEach(function(el) {
+      el.style.display = (!q || (el.dataset.search || el.textContent).toLowerCase().includes(q)) ? '' : 'none';
     });
   });
 })();
@@ -627,30 +586,23 @@ function searchScript(inputId, cardClass) {
 }
 
 // ---------------------------------------------------------------------------
-// Event card — Leaflet mini-map with encrypted course route preview
+// Event card with course preview mini-map
+// Exactly mirrors the initCoursePreview logic from generate-events.js
 // ---------------------------------------------------------------------------
 function eventCardHtml(ev) {
   const { slug, longName, lat, lon, city, isJunior } = ev;
-  const subfolder = getExploreSubfolder(slug);
-  const eventUrl  = `${BASE_EXPLORE_URL}/${subfolder}/${slug}`;
-  const seed      = eventSeed(ev.eventName);
-  const hasRoute  = ev.route && ev.route.length > 1;
-  const encRoute  = hasRoute ? `"${encryptCoords(ev.route, seed)}"` : 'null';
-  const mapId     = `map-${slug.replace(/[^a-z0-9]/g, '')}`;
-  const accent    = isJunior ? ACCENT_JR : ACCENT;
-  const cityBadge = city ? `<span class="card-location"><i class="fas fa-map-marker-alt"></i> ${city}</span>` : '';
-  const typeBadge = isJunior ? `<span class="badge junior">Junior</span>` : `<span class="badge">5k</span>`;
+  const subfolder  = getExploreSubfolder(slug);
+  const eventUrl   = `${BASE_EXPLORE_URL}/${subfolder}/${slug}`;
+  const seed       = eventSeed(ev.eventName);
+  const hasRoute   = ev.route && ev.route.length > 1;
+  const encRoute   = hasRoute ? encryptCoords(ev.route, seed) : null;
+  const mapId      = `cmap-${slug.replace(/[^a-z0-9]/g, '')}`;
+  const accent     = isJunior ? ACCENT_JR : ACCENT;
+  const cityLabel  = city ? `<span class="card-location"><i class="fas fa-map-marker-alt"></i> ${city}</span>` : '';
+  const typeBadge  = isJunior ? `<span class="card-badge junior">Junior</span>` : `<span class="card-badge">5k</span>`;
 
-  return `<div class="event-card" data-search="${longName.toLowerCase()} ${(city || '').toLowerCase()}">
-  <div class="card-map"><div id="${mapId}" style="height:180px;"></div></div>
-  <div class="card-body">
-    <div class="card-title">${longName}</div>
-    ${cityBadge}
-    <div class="card-badges">${typeBadge}</div>
-  </div>
-  <a href="${eventUrl}" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
-</div>
-<script>
+  // Build the Leaflet init script — same pattern as initCoursePreview in generate-events.js
+  const mapScript = `
 (function() {
   ${decryptFnJs()}
   var el = document.getElementById('${mapId}');
@@ -661,53 +613,68 @@ function eventCardHtml(ev) {
     tap: false, touchZoom: false, attributionControl: false
   });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-  var enc = ${encRoute};
-  if (enc) {
-    var route = _d(enc, ${seed});
-    var lls = route.map(function(p) { return [p[1], p[0]]; });
-    L.polyline(lls, { color: '${accent}', weight: 3.5, opacity: .9 }).addTo(map);
-    L.circleMarker(lls[0], { radius: 6, fillColor: '${accent}', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
-    L.circleMarker(lls[lls.length - 1], { radius: 6, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
-    map.fitBounds(L.latLngBounds(lls), { padding: [16, 16], animate: false });
-  } else {
-    map.setView([${lat}, ${lon}], 14);
-    L.circleMarker([${lat}, ${lon}], { radius: 8, fillColor: '${accent}', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
-  }
-})();
-</script>`;
+  ${hasRoute ? `
+  var route = _d("${encRoute}", ${seed});
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '${accent}', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '${accent}', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  ` : `
+  map.setView([${lat}, ${lon}], 14);
+  L.circleMarker([${lat}, ${lon}], { radius: 8, fillColor: '${accent}', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  `}
+})();`;
+
+  return `<div class="event-card" data-search="${longName.toLowerCase()} ${(city || '').toLowerCase()}">
+  <div class="card-map-wrap">
+    <div id="${mapId}" class="card-map-inner"></div>
+    ${hasRoute ? `<div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>` : ''}
+  </div>
+  <div class="card-body">
+    <div class="card-name">${longName}</div>
+    ${cityLabel}
+    <div class="card-badges">${typeBadge}</div>
+  </div>
+  <a href="${eventUrl}" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>${mapScript}</script>`;
 }
 
 // ---------------------------------------------------------------------------
 // Page generators
 // ---------------------------------------------------------------------------
+
 function generateWorldIndex(countries) {
   const sorted = Object.entries(countries).sort((a, b) => a[0].localeCompare(b[0]));
   const totalEvents = sorted.reduce((s, [, d]) => s + d.totalEvents, 0);
 
   const cards = sorted.map(([cSlug, d]) => `
-<a href="${cSlug}/index.html" class="country-card">
+<a href="${BASE_LOCATIONS_URL}/${cSlug}/" class="country-card">
   <h3>${d.name}</h3>
-  <p>${d.totalEvents} event${d.totalEvents !== 1 ? 's' : ''} &middot; ${d.regions.length} region${d.regions.length !== 1 ? 's' : ''}</p>
+  <p>${d.totalEvents.toLocaleString()} event${d.totalEvents !== 1 ? 's' : ''} &middot; ${d.regions.length} region${d.regions.length !== 1 ? 's' : ''}</p>
 </a>`).join('');
 
   return `${htmlHead({
-    title: 'parkrun Tourist — Browse Events by Location',
-    description: 'Find parkrun events near you. Browse by country, region and city. View course maps, nearby hotels and visitor guides.',
-    canonicalPath: 'index.html',
+    title: 'Browse parkrun Events by Location — parkrunner tourist',
+    description: 'Find parkrun events near you. Browse by country, region and city. View course maps, find nearby hotels and plan your visit.',
+    canonicalUrl: `${BASE_LOCATIONS_URL}/`,
   })}
 <body>
 ${sharedStyles()}
 ${htmlHeader()}
 <main>
-  <div class="page-hero">
-    <h1>Browse by Location</h1>
-    <p>Find parkrun events near you — browse by country, region and city, then plan your visit with hotels, course maps and weather.</p>
-  </div>
+  <h1 class="page-title">Browse by Location</h1>
+  <p class="page-subtitle">Find parkrun events near you — browse by country, region and city, then plan your visit with hotels, course maps and weather.</p>
   <div class="stats-bar">
-    <div class="stat"><span class="stat-value">${totalEvents.toLocaleString()}</span><span class="stat-label">Total events</span></div>
+    <div class="stat"><span class="stat-value">${totalEvents.toLocaleString()}</span><span class="stat-label">Events worldwide</span></div>
     <div class="stat"><span class="stat-value">${sorted.length}</span><span class="stat-label">Countries</span></div>
   </div>
-  <div class="section-label">Select a country</div>
+  <div class="section-title">Select a country</div>
   <div class="country-grid">${cards}</div>
 </main>
 ${htmlFooter()}
@@ -722,15 +689,15 @@ function generateCountryPage(countrySlug, countryData) {
   const tiles = regions
     .sort((a, b) => b.events.length - a.events.length)
     .map(r => `
-<a href="${r.slug}/index.html" class="tile" data-search="${r.name.toLowerCase()}">
+<a href="${BASE_LOCATIONS_URL}/${countrySlug}/${r.slug}/" class="tile" data-search="${r.name.toLowerCase()}">
   <span class="tile-name">${r.name}</span>
   <span class="tile-count">${r.events.length}</span>
 </a>`).join('');
 
   return `${htmlHead({
     title: `${name} parkrun Events — Hotels &amp; Visitor Guides`,
-    description: `Browse all parkrun events in ${name} by region. View course maps, find hotels and plan your visit with parkrunner tourist.`,
-    canonicalPath: `${countrySlug}/index.html`,
+    description: `Browse all parkrun events in ${name} by region. Find hotels, view course maps and plan your visit with parkrunner tourist.`,
+    canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/`,
     lat: c.lat, lon: c.lon, locationName: name,
   })}
 <body>
@@ -738,25 +705,22 @@ ${sharedStyles()}
 ${htmlHeader()}
 ${breadcrumb([{ label: name }])}
 <main>
-  <div class="page-hero">
-    <h1>${name}</h1>
-    <p>${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''}</p>
-  </div>
+  <h1 class="page-title">${name}</h1>
+  <p class="page-subtitle">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${regions.length} region${regions.length !== 1 ? 's' : ''}</p>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in ${name}?</h2>
       <p>Compare hotels and rentals near any parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${name.replace(/'/g, "\\'")} parkrun events')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${name.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
-  ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="region-search" class="search-input" type="text" placeholder="Search regions in ${name}..." /></div>` : ''}
-  <div class="section-label">Regions</div>
-  <div class="tile-grid" id="region-grid">${tiles}</div>
+  ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="loc-search" class="search-input" type="text" placeholder="Search regions in ${name}..." /></div>` : ''}
+  <div class="section-title">Regions</div>
+  <div class="tile-grid">${tiles}</div>
 </main>
 ${htmlFooter()}
 ${stay22Modal()}
-${showSearch ? searchScript('region-search', 'tile') : ''}
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+${showSearch ? searchScript('loc-search', 'tile') : ''}
 </body></html>`;
 }
 
@@ -770,7 +734,7 @@ function generateRegionPage(countrySlug, countryName, regionSlug, regionData) {
     .sort((a, b) => b[1].length - a[1].length)
     .map(([cSlug, evs]) => {
       const cityName = evs[0].city || cSlug;
-      return `<a href="${cSlug}/index.html" class="tile" data-search="${cityName.toLowerCase()}">
+      return `<a href="${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/${cSlug}/" class="tile" data-search="${cityName.toLowerCase()}">
   <span class="tile-name">${cityName}</span>
   <span class="tile-count">${evs.length}</span>
 </a>`;
@@ -782,22 +746,20 @@ function generateRegionPage(countrySlug, countryName, regionSlug, regionData) {
 
   return `${htmlHead({
     title: `${name} parkrun Events — Hotels &amp; Visitor Guides`,
-    description: `All parkrun events in ${name}. Browse course maps, find nearby hotels, check weather forecasts and plan your perfect parkrun weekend.`,
-    canonicalPath: `${countrySlug}/${regionSlug}/index.html`,
+    description: `All parkrun events in ${name}. View course maps, find hotels, check weather and plan your perfect parkrun weekend.`,
+    canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/`,
     lat: c.lat, lon: c.lon, locationName: name,
   })}
 <body>
 ${sharedStyles()}
 ${htmlHeader()}
 ${breadcrumb([
-    { label: countryName, href: `${BASE_LOCATIONS_URL}/${countrySlug}/index.html` },
+    { label: countryName, href: `${BASE_LOCATIONS_URL}/${countrySlug}/` },
     { label: name },
   ])}
 <main>
-  <div class="page-hero">
-    <h1>${name}</h1>
-    <p>${events.length} parkrun event${events.length !== 1 ? 's' : ''} in this region</p>
-  </div>
+  <h1 class="page-title">${name}</h1>
+  <p class="page-subtitle">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in this region</p>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in ${name}?</h2>
@@ -805,15 +767,14 @@ ${breadcrumb([
     </div>
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${name.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
-  ${hasCities ? `<div class="section-label">Browse by city</div><div class="tile-grid" style="margin-bottom:2rem;">${cityTiles}</div>` : ''}
-  ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="event-search" class="search-input" type="text" placeholder="Search events in ${name}..." /></div>` : ''}
-  <div class="section-label">All events in ${name}</div>
-  <div class="event-grid" id="event-grid">${cards}</div>
+  ${hasCities ? `<div class="section-title">Browse by city</div><div class="tile-grid">${cityTiles}</div>` : ''}
+  ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${name}..." /></div>` : ''}
+  <div class="section-title">All events in ${name}</div>
+  <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
 ${stay22Modal()}
-${showSearch ? searchScript('event-search', 'event-card') : ''}
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+${showSearch ? searchScript('evt-search', 'event-card') : ''}
 </body></html>`;
 }
 
@@ -828,23 +789,21 @@ function generateCityPage(countrySlug, countryName, regionSlug, regionName, city
 
   return `${htmlHead({
     title: `parkrun Events in ${cityName} — Hotels &amp; Visitor Guides`,
-    description: `All parkrun events in ${cityName}, ${regionName}. Browse course maps, find nearby hotels and plan your parkrun visit.`,
-    canonicalPath: `${countrySlug}/${regionSlug}/${citySlug}/index.html`,
+    description: `All parkrun events in ${cityName}, ${regionName}. View course maps, find nearby hotels and plan your parkrun visit.`,
+    canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/${citySlug}/`,
     lat: c.lat, lon: c.lon, locationName: cityName,
   })}
 <body>
 ${sharedStyles()}
 ${htmlHeader()}
 ${breadcrumb([
-    { label: countryName, href: `${BASE_LOCATIONS_URL}/${countrySlug}/index.html` },
-    { label: regionName, href: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/index.html` },
+    { label: countryName, href: `${BASE_LOCATIONS_URL}/${countrySlug}/` },
+    { label: regionName,  href: `${BASE_LOCATIONS_URL}/${countrySlug}/${regionSlug}/` },
     { label: cityName },
   ])}
 <main>
-  <div class="page-hero">
-    <h1>${cityName}</h1>
-    <p>${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName}</p>
-  </div>
+  <h1 class="page-title">${cityName}</h1>
+  <p class="page-subtitle">${cityEvents.length} parkrun event${cityEvents.length !== 1 ? 's' : ''} in ${cityName}</p>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in ${cityName}?</h2>
@@ -852,14 +811,13 @@ ${breadcrumb([
     </div>
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${cityName.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
-  ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="event-search" class="search-input" type="text" placeholder="Search events in ${cityName}..." /></div>` : ''}
-  <div class="section-label">Events in ${cityName}</div>
-  <div class="event-grid" id="event-grid">${cards}</div>
+  ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${cityName}..." /></div>` : ''}
+  <div class="section-title">Events in ${cityName}</div>
+  <div class="event-grid">${cards}</div>
 </main>
 ${htmlFooter()}
 ${stay22Modal()}
-${showSearch ? searchScript('event-search', 'event-card') : ''}
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+${showSearch ? searchScript('evt-search', 'event-card') : ''}
 </body></html>`;
 }
 
@@ -885,7 +843,7 @@ async function main() {
   const limited = EVENT_LIMIT > 0 ? events.slice(0, EVENT_LIMIT) : events;
   console.log(`Processing ${limited.length} events...`);
 
-  // ---- Build minimal event list for geocoding pass -------------------------
+  // Build minimal list for geocoding pass
   const rawEvents = limited.map(ev => {
     const props  = ev.properties || {};
     const coords = (ev.geometry && ev.geometry.coordinates) || [0, 0];
@@ -899,11 +857,11 @@ async function main() {
     };
   });
 
-  // ---- Resolve all coordinates via Nominatim (cache-first) -----------------
+  // Resolve coordinates via Nominatim (cache-first)
   const cache = loadCache();
   await geocodeAllEvents(rawEvents, cache);
 
-  // ---- Enrich with geocoded admin data and course routes -------------------
+  // Enrich with geocoded admin data + course routes
   const enriched = rawEvents.map(ev => {
     const address = cache[cacheKey(ev.lat, ev.lon)] || null;
     const { city, region } = extractFromAddress(address, ev.countryCode);
@@ -922,27 +880,21 @@ async function main() {
     return { ...ev, isJunior, city, region, route };
   });
 
-  // ---- Build 3-tier hierarchy ----------------------------------------------
+  // Build 3-tier hierarchy
   const hierarchy = {};
-
   for (const ev of enriched) {
     const meta        = COUNTRY_META[ev.countryCode] || { name: 'Unknown' };
-    const countryName = meta.name;
-    const countrySlug = slugify(countryName);
-    const regionName  = ev.region || countryName;
+    const countrySlug = slugify(meta.name);
+    const regionName  = ev.region || meta.name;
     const regionSlug  = slugify(regionName);
     const cityName    = ev.city || regionName;
     const citySlug    = slugify(cityName);
 
-    if (!hierarchy[countrySlug]) {
-      hierarchy[countrySlug] = { name: countryName, regions: {}, totalEvents: 0 };
-    }
+    if (!hierarchy[countrySlug]) hierarchy[countrySlug] = { name: meta.name, regions: {}, totalEvents: 0 };
     hierarchy[countrySlug].totalEvents++;
 
     const regions = hierarchy[countrySlug].regions;
-    if (!regions[regionSlug]) {
-      regions[regionSlug] = { name: regionName, slug: regionSlug, cities: {}, events: [] };
-    }
+    if (!regions[regionSlug]) regions[regionSlug] = { name: regionName, slug: regionSlug, cities: {}, events: [] };
     regions[regionSlug].events.push(ev);
 
     const cities = regions[regionSlug].cities;
@@ -950,14 +902,12 @@ async function main() {
     cities[citySlug].push(ev);
   }
 
-  // ---- Write all HTML files ------------------------------------------------
+  // Write all HTML files (each page is index.html inside a slug-named folder)
   ensure(OUTPUT_DIR);
 
   const countryList = Object.fromEntries(
     Object.entries(hierarchy).map(([cs, cd]) => [cs, {
-      name: cd.name,
-      totalEvents: cd.totalEvents,
-      regions: Object.values(cd.regions),
+      name: cd.name, totalEvents: cd.totalEvents, regions: Object.values(cd.regions),
     }])
   );
 
@@ -974,7 +924,7 @@ async function main() {
       generateCountryPage(countrySlug, { ...countryData, regions: Object.values(countryData.regions) }),
       'utf-8'
     );
-    console.log(`Generated: locations/${countrySlug}/index.html`);
+    console.log(`Generated: locations/${countrySlug}/`);
     pageCount++;
 
     for (const [regionSlug, regionData] of Object.entries(countryData.regions)) {
@@ -986,10 +936,11 @@ async function main() {
         generateRegionPage(countrySlug, countryData.name, regionSlug, regionData),
         'utf-8'
       );
-      console.log(`Generated: locations/${countrySlug}/${regionSlug}/index.html`);
+      console.log(`Generated: locations/${countrySlug}/${regionSlug}/`);
       pageCount++;
 
       for (const [citySlug, cityEvents] of Object.entries(regionData.cities)) {
+        // Skip if city slug same as region slug (avoids duplicate single-city regions)
         if (citySlug === regionSlug || !cityEvents.length) continue;
 
         const cityDir = path.join(regionDir, citySlug);
@@ -999,7 +950,7 @@ async function main() {
           generateCityPage(countrySlug, countryData.name, regionSlug, regionData.name, citySlug, cityEvents),
           'utf-8'
         );
-        console.log(`Generated: locations/${countrySlug}/${regionSlug}/${citySlug}/index.html`);
+        console.log(`Generated: locations/${countrySlug}/${regionSlug}/${citySlug}/`);
         pageCount++;
       }
     }
