@@ -19,7 +19,7 @@
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://jake-lofthouse.github.io/Event-Web-Test/"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events by Location — Find Hotels & Plan Your Visit | parkrunner tourist","description":"Browse parkrun events by country, region and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/","publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -90,13 +90,22 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
 .breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb-sep { opacity: 0.4; }
-/* Stat bar */
+/* Stats bar — gradient icon cards */
 .stats-bar {
-  display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-  background: white; border-radius: 1rem; padding: 1.25rem 1.75rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(76,175,80,0.15);
+  display: flex; gap: 1.25rem; margin-bottom: 2.5rem; flex-wrap: wrap;
 }
-.stat { display: flex; flex-direction: column; }
+.stat {
+  flex: 1; min-width: 160px;
+  background: white; border-radius: 1rem; padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(76,175,80,0.15);
+  display: flex; align-items: center; gap: 1rem;
+}
+.stat-icon {
+  width: 48px; height: 48px; border-radius: 0.75rem; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.35rem; background: linear-gradient(135deg, #4caf50, #2e7d32); color: white;
+}
+.stat-text { display: flex; flex-direction: column; }
 .stat-value { font-size: 1.75rem; font-weight: 800; color: #2e7d32; line-height: 1; }
 .stat-label { font-size: 0.775rem; color: #64748b; margin-top: 0.2rem; font-weight: 500; }
 /* Region / city tile grid */
@@ -158,6 +167,18 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
   text-decoration: none; transition: opacity 0.2s, transform 0.2s;
 }
 .card-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+/* Toggle buttons (Stay22 list/map view) — matches generate-events.js exactly */
+.toggle-btn {
+  padding: 0.5rem 1.25rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.5rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.3s ease; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem;
+}
+.toggle-btn:hover:not(.active) { background-color: #f1f8e9; }
+.toggle-btn.active {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; transform: translateY(-1px);
+}
 /* Hotel CTA banner */
 .hotel-cta {
   background: linear-gradient(135deg, #2e7d32, #1b5e20);
@@ -175,16 +196,19 @@ main { padding: 3rem 2rem; max-width: 1400px; margin: 0 auto; }
   font-family: 'Inter', sans-serif;
 }
 .hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
-/* Country cards */
+/* Country cards with flag */
 .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1.25rem; }
 .country-card {
   background: white; border: 1px solid rgba(76,175,80,0.2); border-radius: 1rem;
-  padding: 1.4rem 1.5rem; text-decoration: none; color: inherit;
-  transition: box-shadow 0.2s, transform 0.2s; display: block;
+  padding: 1.1rem 1.25rem; text-decoration: none; color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s; display: flex; align-items: center; gap: 0.75rem;
 }
 .country-card:hover { box-shadow: 0 6px 24px rgba(46,125,50,0.15); transform: translateY(-2px); }
-.country-card h3 { font-weight: 700; font-size: 1.05rem; color: #1f2937; margin-bottom: 0.25rem; }
-.country-card p { font-size: 0.85rem; color: #64748b; }
+.country-card-flag { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.975rem; color: #1f2937; margin-bottom: 0.15rem; }
+.country-card p { font-size: 0.8rem; color: #64748b; }
+.country-card-arrow { color: #cbd5e1; font-size: 0.8rem; flex-shrink: 0; }
 /* Download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -213,22 +237,84 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   <h1 class="page-title">Browse by Location</h1>
   <p class="page-subtitle">Find parkrun events near you — browse by country, region and city, then plan your visit with hotels, course maps and weather.</p>
   <div class="stats-bar">
-    <div class="stat"><span class="stat-value">50</span><span class="stat-label">Events worldwide</span></div>
-    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Countries</span></div>
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
+      <div class="stat-text"><span class="stat-value">500</span><span class="stat-label">Events worldwide</span></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-globe"></i></div>
+      <div class="stat-text"><span class="stat-value">8</span><span class="stat-label">Countries</span></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="stat-text"><span class="stat-value">61</span><span class="stat-label">Regions</span></div>
+    </div>
   </div>
   <div class="section-title">Select a country</div>
   <div class="country-grid">
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/" class="country-card">
-  <h3>Australia</h3>
-  <p>2 events &middot; 2 regions</p>
+  <div class="country-card-flag">🇦🇺</div>
+  <div class="country-card-body">
+    <h3>Australia</h3>
+    <p>60 events &middot; 3 regions</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/denmark/" class="country-card">
-  <h3>Denmark</h3>
-  <p>1 event &middot; 1 region</p>
+  <div class="country-card-flag">🇩🇰</div>
+  <div class="country-card-body">
+    <h3>Denmark</h3>
+    <p>7 events &middot; 4 regions</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/" class="country-card">
+  <div class="country-card-flag">🇮🇪</div>
+  <div class="country-card-body">
+    <h3>Ireland</h3>
+    <p>6 events &middot; 2 regions</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/" class="country-card">
+  <div class="country-card-flag">🇳🇿</div>
+  <div class="country-card-body">
+    <h3>New Zealand</h3>
+    <p>4 events &middot; 1 region</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/" class="country-card">
+  <div class="country-card-flag">🇵🇱</div>
+  <div class="country-card-body">
+    <h3>Poland</h3>
+    <p>7 events &middot; 1 region</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/south-africa/" class="country-card">
+  <div class="country-card-flag">🇿🇦</div>
+  <div class="country-card-body">
+    <h3>South Africa</h3>
+    <p>15 events &middot; 1 region</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/" class="country-card">
-  <h3>United Kingdom</h3>
-  <p>47 events &middot; 27 regions</p>
+  <div class="country-card-flag">🇬🇧</div>
+  <div class="country-card-body">
+    <h3>United Kingdom</h3>
+    <p>392 events &middot; 47 regions</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/" class="country-card">
+  <div class="country-card-flag">🇺🇸</div>
+  <div class="country-card-body">
+    <h3>United States</h3>
+    <p>9 events &middot; 2 regions</p>
+  </div>
+  <i class="fas fa-chevron-right country-card-arrow"></i>
 </a></div>
 </main>
 <div class="download-footer">
