@@ -5,24 +5,45 @@ on:
     branches: [main]
   workflow_dispatch:
     inputs:
+      run_html:
+        description: 'Generate event HTML pages'
+        required: false
+        default: true
+        type: boolean
+      run_images:
+        description: 'Generate feature images'
+        required: false
+        default: false
+        type: boolean
+      run_locations:
+        description: 'Generate location pages (country/region/city) + sitemap'
+        required: false
+        default: true
+        type: boolean
       limit:
-        description: 'Max events to generate for both HTML and images (0 = all)'
+        description: 'Max events to process (0 = all)'
         required: false
         default: '0'
         type: string
-      force_regenerate:
-        description: 'Regenerate all images (ignore existing)'
+      force_regenerate_images:
+        description: 'Force regenerate all images (ignore existing)'
         required: false
         default: false
         type: boolean
 
+# On a push to main all three jobs always run.
+# On workflow_dispatch the checkboxes control which jobs run.
+# The commit job only downloads artifacts that were actually produced.
+
 jobs:
 
   # ============================================================
-  # JOB 1 — Generate HTML pages
+  # JOB 1 — Generate event HTML pages
   # ============================================================
   generate-html:
     runs-on: ubuntu-latest
+    # Run on push always; on manual dispatch only if checkbox ticked
+    if: github.event_name == 'push' || github.event.inputs.run_html == 'true'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -50,6 +71,11 @@ jobs:
   # ============================================================
   generate-images:
     runs-on: ubuntu-latest
+    # Images are slow — on push to main skip them unless force flag set.
+    # On manual dispatch run only if checkbox ticked.
+    if: |
+      (github.event_name == 'push' && github.event.inputs.force_regenerate_images == 'true') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.run_images == 'true')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -73,10 +99,10 @@ jobs:
             librsvg2-dev
 
       - name: Clear existing images (force regenerate)
-        if: ${{ github.event.inputs.force_regenerate == true || github.event.inputs.force_regenerate == 'true' }}
+        if: github.event.inputs.force_regenerate_images == 'true'
         run: |
-          echo "Force regenerate enabled — clearing ./images"
-          rm -rf ./images
+          echo "Force regenerate enabled — clearing ./explore/images"
+          rm -rf ./explore/images
 
       - name: Generate feature images
         env:
@@ -92,10 +118,11 @@ jobs:
           retention-days: 1
 
   # ============================================================
-  # JOB 3 — Generate location pages (country / region / city)
+  # JOB 3 — Generate location pages + sitemap.xml
   # ============================================================
   generate-locations:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.inputs.run_locations == 'true'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -105,7 +132,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Generate location pages
+      - name: Generate location pages and sitemap
         env:
           COURSE_MAPS_URL: ${{ secrets.COURSE_MAPS_URL }}
           EVENT_LIMIT: ${{ github.event.inputs.limit || '0' }}
@@ -127,48 +154,57 @@ jobs:
           if-no-files-found: ignore
 
   # ============================================================
-  # JOB 4 — Commit everything together once all jobs finish
+  # JOB 4 — Commit all outputs
+  # Waits for whichever jobs actually ran; skipped jobs are ignored.
   # ============================================================
   commit:
     runs-on: ubuntu-latest
+    # Always run commit if at least one generation job ran
+    if: |
+      always() &&
+      (needs.generate-html.result == 'success' ||
+       needs.generate-images.result == 'success' ||
+       needs.generate-locations.result == 'success')
     needs: [generate-html, generate-images, generate-locations]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Download HTML pages
+        if: needs.generate-html.result == 'success'
         uses: actions/download-artifact@v4
         with:
           name: html-pages
           path: ./explore
 
       - name: Download feature images
+        if: needs.generate-images.result == 'success'
         uses: actions/download-artifact@v4
         with:
           name: feature-images
           path: ./explore/images
 
       - name: Download location pages
+        if: needs.generate-locations.result == 'success'
         uses: actions/download-artifact@v4
         with:
           name: location-pages
           path: ./locations
 
       - name: Download geo cache
+        if: needs.generate-locations.result == 'success'
         uses: actions/download-artifact@v4
         with:
           name: geo-cache
           path: .
-          # If no new coords were resolved this run the artifact may not exist — that is fine
         continue-on-error: true
 
-      - name: Commit and push all output
+      - name: Commit and push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add ./explore ./locations
-          # Commit geo-cache.json if present so future runs skip already-resolved coords
           [ -f ./geo-cache.json ] && git add ./geo-cache.json || true
           git diff --cached --quiet \
             && echo "Nothing to commit." \
-            || git commit -m "chore: regenerate pages, images and location index [skip ci]" && git push
+            || git commit -m "chore: regenerate site output [skip ci]" && git push
