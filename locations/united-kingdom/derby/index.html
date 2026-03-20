@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Derby, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby." />
+<meta name="description" content="3 parkrun events in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Derby, United Kingdom" />
-<meta name="geo.position" content="52.935408;-1.504769" />
+<meta name="geo.position" content="52.92523966666667;-1.4828486666666665" />
 <meta property="og:title" content="parkrun Events in Derby, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby." />
+<meta property="og:description" content="3 parkrun events in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derby/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Derby, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby." />
+<meta name="twitter:description" content="3 parkrun events in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derby/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Derby","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derby/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Derby, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derby/","spatialCoverage":{"@type":"Place","name":"Derby, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.935408,"longitude":-1.504769}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Derby, United Kingdom — Hotels & Course Maps","description":"3 parkrun events in Derby. View course maps, find nearby hotels and plan your parkrun visit to Derby.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derby/","spatialCoverage":{"@type":"Place","name":"Derby, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.92523966666667,"longitude":-1.4828486666666665}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Derby</h1>
-    <p class="hero-sub">1 parkrun event in Derby</p>
+    <p class="hero-sub">3 parkrun events in Derby</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Derby?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.935408,-1.504769,'Derby parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.92523966666667,-1.4828486666666665,'Derby parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,79 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Derby</div>
-  <div class="event-grid"><div class="event-card" data-search="markeaton parkrun derby" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="alvaston parkrun derby" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-alvaston" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Alvaston parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Derby</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/A/alvaston" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-alvaston');
+  if (!el) return;
+  var map = L.map('cmap-alvaston', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNDI0MzU0LDY1OTA0MTM4LC03MTI3MTMzLDU3MTUzNTYyLC0xMDIyNDg4LDU5MTM4NzQwLC01OTk2MTc2LDYxMzkyMjYwLC0xMTc5Nzk3NSw2MTk1NTY3OCwtMTU1ODY5ODEsNjExMTIzNjYsLTEyNzE0NDA0LDY0ODM4MDQ5LC03ODgzMTcwLDUwOTQ0NTc4LC03NjQ0NTMzLDYyMjk0NzAwLC0xNTQ3OTEzMyw1NzI1MTQ1NiwtNDE1NTMwNiw2MDY0MTMxMywtMzc0NDc4NCw1MTMyMzc0NywtMzU5OTQ4Myw2NTc1MzY0MSwtMTY2NDE3MTgsNjExMzYyNzksLTg3MjY1OTAsNjU0MzEzMTcsLTEwNzg5MzYxLDY0MjQwOTM3LC0xMDA1MTIxMSw1MzQ5NDIzMSwtMjc5MzMzMCw1ODYxOTMxMiwtOTE3MzEzMiw2NDI3NjM0OSwtNTk5OTg4Niw1OTcxMTc0MywtMTA1NzMwMTIsNjE4NDA2MDksLTE0NTUyNzQzLDYzODA2NzA2LC04MzYxMjkyLDYwNjg4NDk2LC0xNzE2MDM0LDYxMDIyNDQxLC04MjE5NjEzLDY0Nzk5ODQ3LC04MDkzNzI3LDU5ODIwODE5LC0zODc1MjE0LDU2MjE2NzE3LC0zOTY2NzM2LDU1NTYwMjMyLC0xNjIzNjEyMSw2MTQ3NDUyMiwtODE5NjYxNiw1MDY3NDc5NywtMTIyNzI1ODYsNTE2NTYxMTUsLTg1MjQ0ODgsNTg1NDgxMTAsLTkzMDMxMyw1MDc5NzMyNCwtMTU0Nzc2NTgsNjQzNDg2MDksLTE0NTU3MzY2LDY1NzUzMjM2LC03MDI1MzMzLDUyODY5MTk4LC03OTA4MDk4LDY2OTY2OTM3LC0xNDI3NzU0Niw2NjMzMDg1NSwtMTQ4ODYzODQsNjU1MjMyNTksLTEwODA1ODM5LDUwOTg3NjQ3LC0xMjc3OTU5LDU4NzkyNDA3LC0xMDAwMTk2NSw2NjM1ODAyOSwtMTIxMzY2MTQsNjE0OTIzMDUsLTUyODM5NTMsNTcyODQwMjcsLTQ3NzgzODQsNjAyMjE4MTEsLTYwMTI1NDUsNjMwMjAzNjYsLTMwNDE4Niw1MTgzMTY0MiwtMTU0NzA0OTEsNjM5OTMxODUsLTE0Mzg4NTkzLDYzNTYzMzk3LC05NzM4NDAsNTQ4NTIwNzYsLTU5MDI5NzYsNjAxNDU5NzMsLTEzOTQ1NTc1LDU0ODM0NDcyLC0xNDgwODM4Niw2MjE0MTgxNCwtNzk3MDEyMiw2MTAwNDM3MSwtNjY1MDM3LDYxOTAyMjU1LC02MDU3MDA5LDY0NDg2MTEzLC01MTczMDQwLDYyNzQ4MTM1LC0xMzg2MjY1MSw2Mzc1NDM2OCwtNDI5MjYxNyw1NTIzNjAyOSwtNzkwMzM4MCw2MjUxNjE0NSwtMTEwNzA3ODIsNTcwMzI3NTEsLTEzMzEyODAsNTQ0OTY2NjIsLTczOTY1OTYsNTY5MzA5NTUsLTE0MDg4Njg4LDYyMjM4MzE5LC0xNDMyNjMzMSw2MTY4Njg5MywtMTU1NjMzMyw2NDE2NTQ0NiwtMTM2NjkwNjcsNTA4ODA0MTUsLTExMjYyMTcsNjE5ODM5ODMsLTcyNDY0OTAsNjA1NjE2ODUsLTMzMTgzNiw1NzU0Njc2OCwtOTUzNjUzMiw2NTAzNzQyOCwtMTEzMTg1NjcsNjE5OTYwMTAsLTEwMTk2NTA4LDY2NTkyOTE3LC03MDk2MDI4LDU2NzQwMTY1LC0xNDE2NzUxMiw1OTcwNzQxMSwtMTA0NDAyNzgsNTA1NzE5NDEsLTM5NDY3OTQsNTY5MDU3MTEsLTE2MzAyNzE2LDUyOTE3ODA5LC00NTM5OTgxLDY0MzE1NTE5LC0xMjc1NjM5NCw2NDA5NjE2NCwtNTY5NDgzMiw2NDgzNTAzMiwtNjcyNDMyLDYzNjU0ODMyLC0xNjA4Mjk0Myw2NTk5MjIxMywtMjM3NjgwOCw1NDk1NTEzOCwtOTU2NTU4LDU4NTQ4Mzc0LC0zNDMzMjA5LDU0NjI5NTMxLC0xMzE4MTM5OSw2NjE3Mzk5MiwtMTY2MzIxNjIsNjI5NDUzNTgsLTE0NTE4ODQ2LDU2MjQwODA2LC0xODE2MDMsNTEwNDI0NDMsLTExMzQ5ODEwLDY1MjY4ODQ4LC02ODc0MTIzLDU4NzMxMjMxLC0xNDYwMjQzNSw2NTUyNjI5OCwtNzE0Mzg4Niw2MzA2NTQwNSwtOTg0NTM3MSw2NTI2NzcxMCwtNzMzMDU2LDYyOTg5NDY3LC00NDkyMzMwLDU2Njc3MjU2LC0xMzAzMTg5NSw2MjA2OTgxMywtNjA2NTE0OSw1MzMwMjExMywtMzgxODI2MSw2MTQ5NjU3NiwtMTUzMjcyMjAsNTY1ODcwMjIsLTEyOTA0NzUsNTA1MDQwNjQsLTE0NDk5NTMwLDU3MjIzOTA4LC0xMzg3NzY0Myw1OTU5MTYwMSwtMjk0MTU4MCw1NjMwOTg5NSwtMTU0MTAzMzQsNjM5MjgyOTYsLTEzNjcxMjMxLDU3NDQ0MTk3LC0yMTgyODQ4LDYzNTEwMDY2LC0xMzk0MTk4Niw2NTQ0NDM5NSwtMTY1MTg3OCw1Mzk0NjQ0MSwtODYwODczNSw1NjkxMzMyOCwtOTczNDE1OCw1MTAwNjc0NywtNDE2NDE4Niw1NjQ3MzUwMywtOTUwMjkxMCw1MTY4NTMyMiwtMTE2NjU5ODQsNTY0OTc1NTYsLTEzMzE2NjYyLDYzMzQ1ODYyLC00MjEzNzY0LDU0MTU1MzgwLC0zMzExNjQ0LDY1NzIzNDgyLC0xNTAzNDY5Nyw1OTk0ODc4OCwtMjUyNDc1OCw1OTcxNzE4NCwtMTQxMDI5NCw2MzEzODc1NSwtOTI2OTY1Myw2MDM3Nzg5NSwtOTMyMTA1Miw2NTIzMDk0NywtOTIwODM4Myw2NTQ0ODQ0OSwtMjc0ODkxOCw1NzI4NDM2MCwtMzMyNTgwLDY1OTk4NTMyLC0yOTI2ODMzLDY0MTU1MDg3LC0xNjQzNzY2MCw2MjE0OTk3MSwtMTY1MTE2MTgsNjI3MjExNTQsLTExNjEzMTMwLDUzODMyODYwLC04NTA0MzAwLDYyNDY0MDk4LC0zODU1NTI5LDUwNDQxNDYxLC01Mzg1MTM0LDU4MTA5MjE3LC0xNTgyMzAzOCw1ODc3NTg1NiwtMTQ0MzUzMiw2MjAwMjY3NCwtMTQ2MzA1LDU5NzI4MjM1LC02MDA0NDQ0LDYwNDQzMTk2LC00Mjc5OTk1LDY0OTU0NDkwLC0xMzUwMjYyNCw1OTgwMDQ1NCwtODgxODI2NCw2Mzg2NDg3NCwtODI4MjY0Nyw1NTM3MjUxNSwtMTYzMDAyMzAsNTc3NTI3OTYsLTk1NDIzNiw1NDc3MTg0NiwtNTYyMzUyOCw2NjYyODc0MSwtMTM3MzI1OTAsNTkzNTQ1MzksLTkzNzIxNjksNTY1OTExNTQsLTE0NDEwNTM4LDUyOTM1MDQ2LC0xMzg0NzM2LDUwNTQ1ODgxLC0xNTE3MTQwOCw1NDIzNTI3MiwtMTA3NDQyNjIsNjQ3NjQwMDQsLTkzNjc2MzMsNTU4MDg5MDgsLTUxNDU1MjMsNTU4NjIxNDgsLTU2OTMyNjAsNTMwMTI4MjYsLTkzODA1MzYsNjY3MTc3MTUsLTM2OTI5MzUsNTk0NzAxNjYsLTE1Mzg4NjAsNTA5MzQ5MDgsLTc0OTA1MDYsNTA1MTY5NjUsLTE4NDg1OTIsNTI4Mjk3OTEsLTEyNjIzNjE5LDUzNTA3MTk3LC03OTY0NDA1LDY2ODYzNzMyLC0xMzEzODcyNyw2NTUzMzY5MSwtMTM4MTQ0NzAsNTkzNzQ5NzEsLTE2Mjc2NjUyLDUxMjk1MzYwLC02MTg3MTI2LDU5MDY2MjM5LC05Njk3Mjc4LDYwODQxNDEyLC0xNTYyNTkwOSw1Mzk5MzEzOSwtNzM1NTQyMSw2NjgzNjQ2NSwtMTU5NzI5MTEsNjY1NjgyOTMsLTEyNjk4MDMsNjMyOTA5NDZd", 16477605);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="markeaton junior parkrun derby" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-markeatonjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Markeaton junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Derby</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/markeaton-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-markeatonjuniors');
+  if (!el) return;
+  var map = L.map('cmap-markeatonjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNDE1Mzk4LDU3OTc2MzI1LC00NDY4NzAzLDU5MzA3NTg2LC0xNzA0NDAsNTg4NzQ5MTIsLTYxODgzMTQsNjEyMDQwMDgsLTEwMDMxNjY5LDY0MjQ4MzM0LC02OTU1NDYyLDYzMzgyNzUxLC0xNDc4ODk0Myw1Njc0MTI0MywtNjg4OTM0Miw1NzY4ODI2OCwtNDIwNTA0OCw1MjM2Njk3MywtMTQyNDMzMTIsNTI3NjE0NDcsLTUwMDIyMTMsNjQ3MTY2MDYsLTE4NDI5MjgsNTExNjUwNDYsLTEyMDE1MTkwLDYyNDcwODY0XQ==", 122963);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="markeaton parkrun derby" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-markeaton" class="card-map-inner"></div>
     <div class="card-map-badges">

@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Darlington, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington." />
+<meta name="description" content="2 parkrun events in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Darlington, United Kingdom" />
-<meta name="geo.position" content="54.51484;-1.560531" />
+<meta name="geo.position" content="54.5148865;-1.560836" />
 <meta property="og:title" content="parkrun Events in Darlington, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington." />
+<meta property="og:description" content="2 parkrun events in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/darlington/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Darlington, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington." />
+<meta name="twitter:description" content="2 parkrun events in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/darlington/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Darlington","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/darlington/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Darlington, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/darlington/","spatialCoverage":{"@type":"Place","name":"Darlington, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.51484,"longitude":-1.560531}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Darlington, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Darlington. View course maps, find nearby hotels and plan your parkrun visit to Darlington.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/darlington/","spatialCoverage":{"@type":"Place","name":"Darlington, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.5148865,"longitude":-1.560836}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Darlington</h1>
-    <p class="hero-sub">1 parkrun event in Darlington</p>
+    <p class="hero-sub">2 parkrun events in Darlington</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Darlington?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(54.51484,-1.560531,'Darlington parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(54.5148865,-1.560836,'Darlington parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -362,6 +362,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="south park junior parkrun darlington" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-southparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">South Park junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Darlington</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/southpark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-southparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-southparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy01MzIzNzY5LDU1MjkzMTM0LC0zMDcyNzYxLDUyNTg5NzAyLC03NzA0MDkwLDU3NDc2MTg1LC0xMjk2NjA1OCw2MTE4NzE0MCwtMTI1NjYzNDcsNTY2MzQ4NDAsLTEzMjg0NjI5LDY0NzU5NzM4LC0yMzk0MzE2LDU4NjQ5NDAyLC0zMTMyOTM0LDU3NzU4NzQ3LC05Njk3NjU3LDU2MTc1OTUyLC04NzIwNDMxLDU2ODc0NzY2LC0xNjY2NDQzMCw1MjM0NzAyNywtNjcxNjY5OCw2NDAwNzEwOCwtMzQ4NzY3OSw2Mzc5NjkzNywtNjQ0NDMwNyw2NzA3NTIyOSwtNTcwNzM0MCw1MjAyODc1MCwtMTMyNzI5NDEsNTMzODg2MjQsLTE0MTg5MTc1LDYwNzM4MzY0LC02Mjg4NDg4LDYwNzk3NTg5LC0yMjgyMDkyLDYzNDMzNjY0LC0xMTE2OTAwMiw2NTE5MDQzNywtNTA2MDM1Miw2Njg3NjYyMiwtMTYzMzkyNDUsNTY3NTg3NDEsLTEwMzQ5NTQwLDUxMjEwOTgxLC0xMTM2NTY0Niw2MTg3ODk4MiwtOTM5Nzk0Miw2NTAwMTMzNiwtMTQ5OTI3NzIsNTk4MTM2MDMsLTUzOTgzMTAsNjQ2NTIwNjEsLTQ3NTIyMjUsNjMzMjk1MDUsLTE2MTQ1MDgwLDUxMzg4MDg2LC0xNDY0NDk0LDUyNDI1MzQ1LC0yNTI0OTgzLDUzMjQxMDIwLC05MjgwMjU3LDYyOTkzOTA4LC04ODA1NzA2LDUyMzkzOTc1LC04MTM3ODc3LDYxOTgwNTU5LC01MDA1MDg3LDUxMDM1NDMzLC0yNjc2MzEzLDUyOTE5NDg5LC0xMDQ0NTY2OCw2NTc5NTI2NiwtMTE2MTQyNjUsNTk5Njc2MjAsLTg0NzIxNjcsNTkzNjEwNDEsLTk2NjM1OTAsNjU4MzkxOTgsLTEyMzcwMjczLDYwODI4NTYwLC0xNDQyNzc1Nyw2Mjc3OTk4NiwtMTU3MDI1MTEsNTUyMjQzNzUsLTk1NDE3NTcsNTc2ODQ4NjcsLTc4MDE5MzcsNjIwMjc1MzAsLTk0NDAsNjQ0MzUxMTMsLTUwMzAyMTYsNTgyNTExNTAsLTEzOTQ2MDkwLDY2OTQyNTM1LC0xMTU3MjgsNjUzNTE2MjQsLTgxMTgwMzMsNTM0ODMwMTYsLTEzMzA4OTEzLDU1NDI1ODU4LC05MDU0NjkyLDYzNjk0OTc5LC0xMTM0Nzg2Miw1NDk2NjUzOCwtMTQzMDY5MjIsNjMzNDcxMzMsLTQ3MjE1NzIsNTExNTA5OTIsLTEzMjM1ODM0LDY3MDEzMjkyLC01NTIyMDE1LDYxOTU3OTQ4LC0xNTkwMzM4OCw2MzE3NjI2NiwtMTk1NjA1MCw1MDc2MTAzMiwtMzc0NzQzOCw2MTE3NDY3OSwtNDE3ODExMyw2MzY4MjAwOCwtOTg5OTEzNyw1ODUxMzM1NiwtMTM3NjgwMDksNTE4OTA2NTYsLTg5NDc0NzAsNTQyMjUwNTEsLTE1OTQxOTM3LDU5MjQyNDk5LC00NjUxMTAsNTc5MTM3MzMsLTE0MDgzOTQ3LDUzMDExODA2LC0zNTEyMzE4LDUyOTUxMTU1LC03MjY4MzE1LDYxMTAwOTQ0LC00MDI2NTA3LDU1ODkwNjAzLC0xNjM3NjAwMSw1MzMxMzY4NywtMTYzNjM4Miw1NDQxNTE2OSwtMTY2MzA2NjksNjE1Nzc0NjIsLTEwOTUxNzksNTgzNjk2OTgsLTk3Nzg1MzUsNjEyNjM4NDMsLTExOTgzNTUxLDYyODEzMzAyLC0xMTA0NjI4NSw1Nzk0OTQ5MiwtMTMwODE0MSw1NzI2MDA5MywtNzI0MTM2MCw1MjQ4MjI2MSwtNjM0NzA0Miw1NTc2MDE0OCwtOTYxODA3OSw2MDgwNDk2MCwtMzUzODE3OCw1NTgxNzU5MSwtNDc5NDM1LDYyMTMwNTQ4LC0yMzc1MTMsNTE2MTEwOTcsLTYwNzA1MDQsNTIyNzMyMTQsLTk1NTEwOTksNTE3NTc5MzMsLTYxODExNzgsNTkwNDEzODIsLTQ3MjU3MjMsNTA1Nzk1MThd", 5395972);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

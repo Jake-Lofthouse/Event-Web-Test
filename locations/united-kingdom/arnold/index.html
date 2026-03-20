@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Arnold, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold." />
+<meta name="description" content="3 parkrun events in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Arnold, United Kingdom" />
-<meta name="geo.position" content="53.022132;-1.171188" />
+<meta name="geo.position" content="53.00331366666666;-1.1151843333333333" />
 <meta property="og:title" content="parkrun Events in Arnold, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold." />
+<meta property="og:description" content="3 parkrun events in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/arnold/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Arnold, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold." />
+<meta name="twitter:description" content="3 parkrun events in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/arnold/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Arnold","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/arnold/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Arnold, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/arnold/","spatialCoverage":{"@type":"Place","name":"Arnold, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.022132,"longitude":-1.171188}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Arnold, United Kingdom — Hotels & Course Maps","description":"3 parkrun events in Arnold. View course maps, find nearby hotels and plan your parkrun visit to Arnold.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/arnold/","spatialCoverage":{"@type":"Place","name":"Arnold, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.00331366666666,"longitude":-1.1151843333333333}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Arnold</h1>
-    <p class="hero-sub">1 parkrun event in Arnold</p>
+    <p class="hero-sub">3 parkrun events in Arnold</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Arnold?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(53.022132,-1.171188,'Arnold parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(53.00331366666666,-1.1151843333333333,'Arnold parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -359,6 +359,78 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
   
   var route = _d("Wy00NTA0NDQ5LDU5NDg2OTI5LC00NjY1MTY4LDUzOTIzNjcxLC0xMjIyODc0MSw2MDMxMjY0OCwtMTI1MjUyOTIsNjU5NDE4ODMsLTE0MDAzNjQwLDYxNDA4MzM0LC0xMTU1MjAzMCw1MTc5OTYzNiwtMTEyNTMyNzksNjQ3MzM3MzAsLTY3MDMzMjgsNjEwMjMxODEsLTg1NzY4MCw1NTAxNzA3MiwtMTAwMTI1MDcsNjQzMjcyOTgsLTI2MjA1NzMsNTY5MDUwMDEsLTMzNTQ0ODksNjY4MzUzMTEsLTEwNDc4NzYyLDYyNjMxMDY2LC0xMjA3OTg4Myw1MzMyNTc5NywtMTI0ODkxMjEsNjY0NzUzMjQsLTE1NjgzMDQ1LDU3NzkzNjc2LC0zODcyNjA0LDU5NTIzMTk0LC0zMzIwNDc4LDU5ODAwNTk2LC0xMzI2NzU5OCw2MjAzNzA0MCwtOTk3MTY1LDY1OTg3Mzg5LC03OTA0MDYxLDU2MjM4MjA3LC01NDAxODMsNjAzMTg3MDMsLTEwNDQxMiw2NTAyOTUwNiwtMTI5MzkyNjUsNTE4Njk3NzksLTEyMTczMDM2LDU3OTkwNDg3LC0yNTg0Nzk3LDUyMTIyMTYzLC0xMjkzMzUxMiw2MTQ1NDgwNiwtMzA5MDc0MCw2NjgxODI2MywtMTE3MjkyODEsNjY5MzUwMDMsLTM1MTUyMDAsNjU1ODAyMTcsLTMwMjA5MDAsNTIxMDEzNjMsLTExMjYzOTgzLDUyNjg2ODkxLC0xNTQ3NDM0MSw2Mjk3ODY0OCwtMTM3NjI1LDYwODc2NTk1LC05MTU3MTM1LDUxMDk0NzIwLC03OTU3NTg4LDU1MjI4Nzc0LC0xMzcyOTkwMSw2MDM1MzI0OSwtMjcwMTY1MSw2NDUxNTU0MCwtMTQ0NTY2MDIsNjM3Njg3NDMsLTEwNTcyNzcxLDY1MDM0NzQ2LC0xMjkwMzIxOSw2NjUxNDY0NywtNjE0MzUwOCw1NDIyNDIzNiwtMTYwMjM0OTIsNjM4NTgyMjgsLTExMTYyODU4LDUwOTM2NDI4LC0xMDEwNjUyMSw1MjMwMDczMiwtMTYxNTY2MSw1MTc5NTkxOSwtODczNTMxNSw2MzY0NDk5MCwtMTUyOTY3NDIsNjU5MTY1NzAsLTQ1OTE1OSw1NDI0OTYwMCwtMTA2MTEwMDUsNTYyNTYzNzMsLTEyNDczNTk3LDU2MTgxODUwLC04OTY2NDE5LDY0NDYxMDgzLC0xODUwNjcxLDY2NDg0NTYwLC05NzA1NzA3LDYzODU5MTY2LC0xMjQ2NDkyNSw1NjMzMTY0MCwtMTM5MDk5LDYxMTIzMjM5LC0xNjQwMDM0OCw2MjIyMDkzNSwtNDIwOTQ0OSw2MTY5NzQ4NywtMjE0NjkxNSw1OTUyNjc0OCwtMTE3Nzg5MDUsNTExNzYwOTUsLTEwMzY1OTE4LDU4MTY5NzMwLC0xMzUwOTg4Myw1NTUwMzU5MywtNjc5NzE1NSw1NDQwMTAxNywtMTM4ODUwMzQsNjMzMTM4MDcsLTExMzY0MDc0LDY1NTE0ODk0LC05NTA5NjQ5LDU1Mjc1MzkyLC0xNTg1OTg1OSw1ODg3OTMzOCwtMTA5NTY4MDYsNTMyMzQ5MjYsLTkxNTU0ODQsNTg4MzQ3MjAsLTEwMDQ5ODY1LDU1OTY0MDYxLC05NjgyODQzLDYyODIxODU0LC0xMzE4MTIxLDY0OTc1MTExLC0yMjQ2MTU1LDUxNzc0OTQzLC0xNDYwNzU0Niw1NDg1MDI4NiwtNzIzNDY3Nyw2MzcxMzM2NCwtMTUyNjkzOTksNTc1OTg1MzMsLTE1MTM0MTU4LDY0ODUxNjMwLC0yMTY5NDU3LDUxMDQ0NjgwLC0xMjQwMzYwOSw2NDc4NzE0NiwtOTY5MzEyLDY0NjA2MDg3LC0yNzA0Mjg4LDY1NzU3MjcwXQ==", 4615050);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="gedling junior parkrun arnold" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-gedlingjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Gedling junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Arnold</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/gedling-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-gedlingjuniors');
+  if (!el) return;
+  var map = L.map('cmap-gedlingjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0zNjg5MDY5LDY2MTg1MDc0LC0xMjQ2NTY4LDUyOTI0MDUyLC0xNjU3MTk0OSw1MzUwOTE5MCwtNjUxODQ4Miw1NDc3ODI4MSwtMTI0MDcxNTYsNTE5NDM3NzcsLTgyMTg0Niw1MjYyMDExNSwtNzcyMzYxNSw1NDAxMjQ0NywtMTEyMzYyOTQsNjU2MDQ4MzgsLTcyNTY5Miw2NDQ0Nzk0NywtMTQ1MjAzMTcsNTc4MjIzMzEsLTE0NTI4MjY4LDUwNTA1MTkxLC0xNjM2OTM1LDU2NzAxMjc4LC0xMDM2NzExMiw1NjU5NzM4MywtMzYzNjM3Niw2MjI4MzQ2NywtMTQ4MDg0MDcsNjIyNDIyOTksLTE2NTIyMDc0LDUxNjg5OTk1LC0xMTkyODkyMyw1NjUwMzU1MSwtNzQ1NjMyMyw1NjY1Mjk3NCwtNzY0Mzk1Niw2Mjc1NTY0MywtNTE4MTM4NSw2Mzc2ODg3MiwtMTUzMzQ4NCw1NDI3MjE5NCwtNDM0NjUyNiw1Mzk2ODI4NiwtMTU0MzI3NTcsNjAzNjM2NDIsLTI4ODg4OTQsNTEyNzI2MzcsLTEzMjQ0Nzc0LDUzNjI0MjcwLC0xNTMxNzkzNCw2MDIxMjQyOCwtNDMzMTI2Myw2MTc5MDEzNF0=", 10624588);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="gedling parkrun arnold" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-gedling" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Gedling parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Arnold</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/gedling" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-gedling');
+  if (!el) return;
+  var map = L.map('cmap-gedling', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02MDU2NDUsNjAwMDMyMzIsLTUwMzgxODcsNTg4MzEyOTQsLTgyMjMyNjIsNTI0NjI0MjMsLTExNzA2NzE1LDU5MjA1NDQxLC05Mjc3MDQyLDU5NTYyMzQ5LC04MzM1NDY5LDU2NjcyMDU0LC0xNTU4OTM2OCw1NzY1NzI4MSwtODUyMjM1Myw2NDIyODUxOCwtMTI4NjI2NjksNTc5OTY0MDYsLTY0NTA0ODEsNTkwNTMzMjIsLTMwMjEyNzQsNjI3MzkxNjQsLTg4ODU3NTQsNTc0NzA4NTcsLTYxMjg3MzEsNjU2MzQ0MjMsLTc4NDg0MzMsNTg3NjA5NzcsLTgzNTUyMDMsNjYzMDQ2NTQsLTIyMzUyMjAsNjQ1MzIzNzYsLTQzNDYxMyw1NTI3MjExMiwtNjQ2NzgyMyw2NjIzMjQxMiwtODY0NTE1Myw2NDY0NjYxMSwtNjA2MTA3MCw1NTg0MzI3NCwtNTQ0MDUxMyw1MjU3NjE3MywtNTA0NDE0OCw1MTUzNDgyMCwtMTY3NDk5MTgsNTA2MjYyNDcsLTEwNTIyMDI2LDY0MDU4MTkxLC04MzIxMjY0LDUwNzM0MDQwLC0xNDI0NzUsNjI2OTQyNzQsLTEwMzM1OTAzLDY1Mjc4MDA0LC0xMDI2NTM5Nyw2MTE5MzY3MiwtMjE2NDk2MCw1NTkzMzA1OSwtMzYzOTc1Myw1MzMzNTMwMywtMTEzMDYzMDYsNjA4ODY4MTksLTE0OTc4NzMxLDYzMzE2MDM0LC0xMjQ5NDgzMyw1Nzc0ODY2NSwtNjIwNDUwMCw2MTM0MjI0MCwtMTAyOTE2NTYsNTI4OTA4NzgsLTUxMjQyODQsNjMxNjA2NjYsLTE2MzI4NTUsNTg2NzEyMDYsLTE1ODQ4OTA5LDU2ODk0NjYxLC00NzU2MTU4LDU2MDEyNDcyLC0zNjE0ODE4LDYzNjM4NTc2LC0xNjE4OTYzOSw2NTYzMTY4NiwtNTEwMTUxNiw2MTY1NzQ4MiwtMjQ3NjczNSw2MzAxNjY3MSwtMTk1MDQxMCw1NjkzMTUyMCwtMTUyNjQ0MDAsNTQzOTAzMDksLTE1OTMzNjg5LDYyNzQ3NDUzLC05NjU0MzM5LDY3MDYwMjI2LC0xMDczNTUxMyw1MDY2NTg5OCwtODAxNDEzOSw2MTY1ODEzOCwtMTExMTkxMzcsNjU4NTMyNjEsLTc3MTY5MzgsNjU5NjkxMjUsLTMxNTUzNDIsNTk1NjUwOTAsLTY1MjM2MjksNTYzMTM4ODAsLTE0MTM0MjYwLDU5NTk5Mjk2LC01MjYzNDU2LDU5NTA2NjAzLC01MjQzNjM5LDU1MTE4NTc5LC0xNDI0ODI0Niw2NDMxMDM0OCwtNzE3NTA1LDU5NTcyNjY2LC0zMDIwMzU4LDU4NDUzNTYzLC03NDUwOTgyLDUwNDYxNDExLC0zNzUyNzk1LDU1MDEzNjI5LC03NjU0NTE0LDYxNDMwODMwLC0xNDU1OTI5MCw1MDY4NDkwMSwtMTA5Nzk3NjcsNTg0NjgwNjYsLTEyNzg1NDU3LDY1MjEzODc1LC03MDAyNjQwLDY1Mzg2NjUwLC0zMjUxMTI3LDU2MDIxOTAwLC0xMzIwODMyOCw1NzExMTA2MywtMTc5MDc2MCw1NzU0OTUzNywtMTI5NzI3MjcsNTQ5MjAzMTksLTEyNTY2NzI0LDUzMjY5OTQ2LC01NDAxODk0LDUzNjk1OTA0LC05MDU2MjI5LDY1MTQ3OTQ0LC0xODEzNzAsNTA5MDIxODUsLTEwNDkwNjc4LDU2MzA5Mzg0LC0xMjY3Mzc0OSw2NTM3OTU3MiwtNTk5MzQzMSw1NjQ2MTMzOCwtNjQ3OTA1Miw2NDU5MzIzMV0=", 9045164);
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);

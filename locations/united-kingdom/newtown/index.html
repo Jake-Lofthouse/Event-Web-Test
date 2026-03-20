@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Newtown, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown." />
+<meta name="description" content="2 parkrun events in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Newtown, United Kingdom" />
-<meta name="geo.position" content="52.514658;-3.319012" />
+<meta name="geo.position" content="52.514636499999995;-3.319038" />
 <meta property="og:title" content="parkrun Events in Newtown, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown." />
+<meta property="og:description" content="2 parkrun events in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newtown/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Newtown, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown." />
+<meta name="twitter:description" content="2 parkrun events in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newtown/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Newtown","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newtown/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Newtown, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newtown/","spatialCoverage":{"@type":"Place","name":"Newtown, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.514658,"longitude":-3.319012}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Newtown, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Newtown. View course maps, find nearby hotels and plan your parkrun visit to Newtown.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newtown/","spatialCoverage":{"@type":"Place","name":"Newtown, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.514636499999995,"longitude":-3.319038}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Newtown</h1>
-    <p class="hero-sub">1 parkrun event in Newtown</p>
+    <p class="hero-sub">2 parkrun events in Newtown</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Newtown?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.514658,-3.319012,'Newtown parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.514636499999995,-3.319038,'Newtown parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,43 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Newtown</div>
-  <div class="event-grid"><div class="event-card" data-search="newtown parkrun newtown" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="hafan yr afon junior parkrun newtown" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-hafanyrafonjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Hafan Yr Afon junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Newtown</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/H/hafanyrafon-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-hafanyrafonjuniors');
+  if (!el) return;
+  var map = L.map('cmap-hafanyrafonjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMjczMTczOSw1NjU2MTkzNCwtMTM4MDkzMDAsNTU2MDMyNDYsLTc5NjY0OTYsNjA5NzcwNDksLTYzMzIyMTMsNTE1NTkzMzgsLTE2MTEwNDE3LDU0OTcyMjU0LC0zNDQwMzU1LDU0MDc5Nzg2LC0xNjU0Mjc2OSw1NDEzMjY4MSwtMTU5MzgzNjIsNTUwMTI0NjMsLTQ5MDE1NjQsNjY4NzE3ODEsLTgxNzgzNTMsNTc1OTAzMzcsLTgzNDgxNjUsNTcyNjY2MDYsLTE0MTQ5MDgxLDUyOTAzNzQ1LC04MTUzNTIxLDU1NDg4NjIwLC0xNjU0MTI1NSw1MzU2MTU4OSwtNTIyNjIzLDU4NDcwNjk3LC03NzE3NjcyLDY2NzAxNzgxLC0xMzMzMjk4OCw2NTM5MDAwMSwtOTg2Mzg5OCw2MTI2Mzg0NiwtMTA3NjI0ODcsNjQyNjcxMzMsLTg2OTA3NTQsNTM2NDk1MDgsLTQxMTU2NzQsNTM2NjA4NjYsLTYwMzI3NzgsNjIzMjA4NDYsLTk3MTI2NTYsNjEyMDA1OTUsLTE1ODA4MzE0LDYzMjQzNTU5LC01MDI2MzY4LDU5Mjk2MzAxLC0xNDY5NTE1Miw1ODE1OTEzNiwtODM3OTM0LDY2MTQzNDUyLC03ODMwNDYyLDYzNDQwNTQ3LC0xNzgxMDU3LDU0OTQ3MDI3LC0xMjkxNDE3MCw2MTczMDI1MCwtNjkyMzU4NSw1NTgxNzYwNywtMTQ5NTQyODEsNjAyNzgxOTIsLTgxODgxNDMsNTY2NDI2OTcsLTM3MDk5NDksNTIwMjU3NjIsLTExMjkwMTA3LDU4NTQxNTM4LC02ODExNDk5LDU3ODYzOTc5LC00MDQ4NDk1LDYwNzIzNjkwLC04OTM5MjkyLDUzMTE3MzAxLC0xNjY1Njc3Nyw1NzQ3MzA4OCwtNTI2NTY4Miw2MDYyMjgyOSwtMTI2ODQ5ODgsNjA5MTA5OTEsLTkzMzUxMjgsNjM2MzQ3MTgsLTgyMTcxODQsNTg2ODk1OTYsLTE0MTIzMzg1LDU4NjM3MzY5LC01NzE3ODg0LDYwMDIxNDg3LC04MDI3NDMzLDU1Nzk0NjQ5LC04ODM2NjIxLDU2MTM2NDI4LC0xMTkwNTUyMiw1ODkyNzI3MiwtMzE5NjY1LDYyNTYwNDExLC0xMTAyODYyOSw1NTQyOTAxMSwtMTY5MzI2Nyw2Njg1NzMyNCwtMzg4NDY1LDU4MzU4MDYzLC0yNDg0MTA1LDUzODE5NTcxLC00MjI2MTgyLDU4NTgxNzgwLC0zODcyODkzLDYyNzQ4OTU2LC05NzI5ODg3LDU4MTQ5ODYxLC0xMjM1OTA4LDUyOTc2NDg3LC0xMDk5NzE4Myw2NDU3MDExNywtODEwNzg0MCw1NDM2ODQ3NiwtMTYzMjk1NTYsNjYyNzEwMTAsLTc5MzQwODIsNjQ2OTUzNjAsLTgwOTMwMzAsNTkzMTY1NjEsLTM1Mzg2ODEsNjI0MzYyNzIsLTU0OTYxNzYsNTI3ODAyMzMsLTEzMzA3NjA4LDU2NDc1MzMwLC0xNTYwODk3NSw1MzExNTc5OSwtMzU5MzE0NSw1ODk0MjI0MywtNTY3NjA1OSw2MjExODU1OCwtNjE3MTYwNyw2MDMwNDE2MSwtMjg4MzY3OSw1NTc3MjA0NCwtMTU0MDQwMSw2MjQ3NTg5NSwtMTA4NDMyNzgsNTQwNTYxODIsLTgzMTM4NDksNjM3NzgwNzUsLTEzNzU1NzA2LDU0Njg1NDcxLC0xMjY3NTE1MCw1MTYwNzEwMCwtMzM1NTE4Miw1OTM3MjQ0NCwtMTE3MTk3Niw2MzQyNTU3MywtMTE1NjEyOTQsNTM4ODA3MzEsLTMwMzM5ODQsNjQ2Mjc0OTEsLTU4NjI5MTIsNTY4MTEyNTAsLTEzNzgzNjUwLDYxNjgxNTE0LC03MDc3Mjg2LDY0ODUxMjg4LC0xMjc4Mjk2Nyw2NjI4MzAwNSwtMTQwMzk4NzAsNTQ1NjA3MzAsLTY5ODcwNzYsNTgxODkzMzcsLTc2MjMyNjQsNTE3NDQ0ODksLTE0MDE4MzA3LDU1MDc3NTkzLC0xMDAzODI3LDU1NDYyNDczLC0xNTkxNzE5Myw2NjEwNjcyNCwtMTkwNTk0OSw1Mzc2MzMyNSwtMjM4NjUzMyw2NTUxMjc4MiwtMTIzODEyMzcsNTczODQ5NTcsLTQ0NTQ0NCw1NDUwMjQ0NSwtNDgwNTQ1NCw1OTExOTY5OSwtOTQzMTg3Myw2NTQ5NjEyMSwtMTAzNDQ1OTksNjU2NDQ1NjYsLTgxNzY5LDU1Nzk4MDA2LC0xMDgxNzc0NSw1MDg3NjgyMiwtODk5NzQ3Miw2MjE4MDE4NSwtOTI2ODYwMCw1MTQ4NjM1NCwtMTI4ODE2Myw2MjE5NzAzMF0=", 10502818);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="newtown parkrun newtown" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-newtown" class="card-map-inner"></div>
     <div class="card-map-badges">

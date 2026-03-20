@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Plymouth, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth." />
+<meta name="description" content="3 parkrun events in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Plymouth, United Kingdom" />
-<meta name="geo.position" content="50.409091;-4.079618" />
+<meta name="geo.position" content="50.39022033333333;-4.134252333333333" />
 <meta property="og:title" content="parkrun Events in Plymouth, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth." />
+<meta property="og:description" content="3 parkrun events in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/plymouth/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Plymouth, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth." />
+<meta name="twitter:description" content="3 parkrun events in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/plymouth/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Plymouth","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/plymouth/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Plymouth, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/plymouth/","spatialCoverage":{"@type":"Place","name":"Plymouth, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.409091,"longitude":-4.079618}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Plymouth, United Kingdom — Hotels & Course Maps","description":"3 parkrun events in Plymouth. View course maps, find nearby hotels and plan your parkrun visit to Plymouth.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/plymouth/","spatialCoverage":{"@type":"Place","name":"Plymouth, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.39022033333333,"longitude":-4.134252333333333}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Plymouth</h1>
-    <p class="hero-sub">1 parkrun event in Plymouth</p>
+    <p class="hero-sub">3 parkrun events in Plymouth</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Plymouth?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(50.409091,-4.079618,'Plymouth parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(50.39022033333333,-4.134252333333333,'Plymouth parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,79 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Plymouth</div>
-  <div class="event-grid"><div class="event-card" data-search="plymvalley parkrun plymouth" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="central parkrun, plymouth plymouth" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-centralplymouth" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Central parkrun, Plymouth</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Plymouth</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/centralplymouth" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-centralplymouth');
+  if (!el) return;
+  var map = L.map('cmap-centralplymouth', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0yOTM5NjAsNjMzNjIwNDUsLTEyMzgzNDc3LDU2NDM3OTkxLC0xMDYxMzA1Niw2NDc2NDIzOSwtMTA3MTA2MTgsNTk5NDMwOTUsLTEzNDIxMTg2LDU3MjQ1NDg5LC00NjY5NTE2LDUwODMwMDU5LC05NjQ4MDgyLDY0Mzg2MjYwLC0yMDcwMDc5LDU5NDk0OTU2LC0xNjY4MTI4MSw2NDg1MTQ2NywtNTQ2NTgsNTk3MzYwMDksLTEzMjA4ODI5LDY2ODU3NDQ0LC00MDA2MjU4LDYyODAyOTg3LC02NTUyMjU1LDUzNDAyNTA4LC05NTE1Miw2MzczNDk2NCwtMjY0ODI5Nyw2NDQxOTU1MSwtMTUyNzMyODIsNTk1MTIyMTEsLTYzNTU1NTcsNjY4ODEwNDEsLTY0OTk5NjgsNTQ5MjUxNDIsLTE2MTA1NzgyLDYyNjYyODUyLC0xMzExMzA3Miw1NTE3MDI0NiwtMTYxNTcxMzAsNjY4NTE4NjYsLTEyMTQxMjI0LDYyNzgyMTgyLC01MDY4MjMwLDU2NTg1ODYzLC0zOTgyMjEyLDYyNjEzMDE4LC00MjgyNDg0LDU4MjMwODM2LC0xMzExODkwLDYwODU0OTU4LC0xMTM5MzUxMyw1NDUyODIxMCwtNjU0NTEzMiw2MDc5NjYwNSwtMTY1NDk0NzQsNjM2NzE4NzMsLTE2NzQ0NDE1LDYwMTc5NTA4LC02ODg4ODAyLDUzOTY2ODQyXQ==", 15281882);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="devonport junior parkrun plymouth" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-devonportjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Devonport junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Plymouth</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/D/devonport-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-devonportjuniors');
+  if (!el) return;
+  var map = L.map('cmap-devonportjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMTAwNDkxMCw1Nzc5MDUwOCwtMTYxMDc5MDEsNTE2NTUwNjYsLTk2OTI2NTcsNjA3NDQ0MjEsLTEyMzk2MTUsNTY0ODk1NzksLTc4MTY3NzAsNjQyMjk5MjUsLTY3Mjg5OTMsNjE3MDA5MjAsLTE5MzgyNjAsNTEzNjQ0ODksLTEyNjE2NTMxLDYwOTE0NjI5LC0xNTIyODg0NSw2MzQ4NjkxNiwtMTYzMTYzNTUsNjQzOTM0NTQsLTEwODQ0MzA2LDU1MjY5MDgyLC0xMTI3Njk5MSw1NjQ2NDc1MCwtMzE5NzM5NCw1NTU0NzI1NSwtMzkwMDg3NSw1Nzg2NTk4NCwtNTA1OTc2Myw2Mjk5MDcwNSwtMjc3NDEzLDU3NTc3ODk1LC0xMjc3MTAxOCw2NTA4NTQzMSwtMTQ0ODk4ODQsNjY3MzYwMzMsLTExOTg0NTY0LDU5ODYwMTg1LC01NDkzMjMwLDU5MjM0Nzk5LC00OTU0NjA5LDY1NzY4OTk4LC0xMDg1NzExMSw2Njg5NzE5OCwtMTY1MjcyNTMsNTE1NzY1MTQsLTQ5MDI0LDYxODEwMjI5LC0xMTkzMjI5Nyw1NTI4MzkzNCwtODA0NDY4OSw2MDIyOTgyNiwtMTE5Njg5MzEsNTUzNDMyOTgsLTEzNTk2OTMwLDYzMDI1MDQ5LC0yNTkyNDk0LDY0MzAxMTMxLC02MDYwNjk2LDUwNDQ0NTY0LC03OTcyODg3LDU4NjE4MzM2LC02MTIyOTcxLDY1NjgxNDQwLC0xMzc1NTgsNjQwMzYwNThd", 341528);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="plymvalley parkrun plymouth" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-plymvalley" class="card-map-inner"></div>
     <div class="card-map-badges">

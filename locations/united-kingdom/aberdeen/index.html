@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Aberdeen, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="2 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen." />
+<meta name="description" content="3 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Aberdeen, United Kingdom" />
-<meta name="geo.position" content="57.1527255;-2.095799" />
+<meta name="geo.position" content="57.14894066666667;-2.122415" />
 <meta property="og:title" content="parkrun Events in Aberdeen, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="2 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen." />
+<meta property="og:description" content="3 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Aberdeen, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="2 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen." />
+<meta name="twitter:description" content="3 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Aberdeen","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Aberdeen, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/","spatialCoverage":{"@type":"Place","name":"Aberdeen, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":57.1527255,"longitude":-2.095799}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Aberdeen, United Kingdom — Hotels & Course Maps","description":"3 parkrun events in Aberdeen. View course maps, find nearby hotels and plan your parkrun visit to Aberdeen.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/","spatialCoverage":{"@type":"Place","name":"Aberdeen, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":57.14894066666667,"longitude":-2.122415}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,10 +229,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Aberdeen</h1>
-    <p class="hero-sub">2 parkrun events in Aberdeen</p>
+    <p class="hero-sub">3 parkrun events in Aberdeen</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
@@ -240,7 +240,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       <h2>Staying in Aberdeen?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(57.1527255,-2.095799,'Aberdeen parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(57.14894066666667,-2.122415,'Aberdeen parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
@@ -398,6 +398,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="hazlehead parkrun, aberdeen aberdeen" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-hazlehead" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Hazlehead parkrun, Aberdeen</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Aberdeen</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/H/hazlehead" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-hazlehead');
+  if (!el) return;
+  var map = L.map('cmap-hazlehead', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02NTQ5NzIyLDYwMzMwNzA2LC04NDc2OTc1LDU2MTMyMDQ4LC04MTc2ODU2LDU4NjY5OTM0LC02NTM2MzA0LDYyMTYwOTM1LC0xMDI1Njk4MCw1MDk5NDA4OCwtMTQ3Mjk0NzksNTQxMjE0NDYsLTY1OTg0MjQsNTg4Mjk3NzUsLTc2MzU5ODQsNjA5MzAyNTgsLTEyNjMwODI4LDUzNzE4NTc2LC04NzgyMTgwLDU2MTM0MDE4LC0xMzE1MTk3Niw2NTkzODYyMiwtMTYxOTI1MTUsNTIwMDUzMzIsLTE1MTY3Mzk0LDYzNzA1MzU0LC0xMDI0MDQxNiw1NTIwOTYwNywtMTU5MDg2NjgsNjA4Nzk5NDksLTU0Mjk1MDUsNjM0Mjg3MTEsLTEwOTEyNTc0LDYzMjU0MjIxLC0zNDgyODQ0LDYwODc0NTMwLC0xNTk3MDczNyw2MjAwNzU4MCwtMTQ4MDAzMDQsNTA1NjE4MzYsLTE1MjAzMzg1LDU4NTczNDEyLC0xMjgzNDI1Niw1MTk2Mzk0NSwtNTg5MjU1NSw1OTE0ODYyOSwtOTc3MzA2Myw1NzY4ODEwNCwtNTEyMjMxLDU0NTMxNDU3LC0yMjAyNjA0LDU4NDcwNjMxLC0xMjIyNTQ2Myw2NTk0ODU1MiwtNzYxODg5LDY2OTQwMDAyLC0xNTgyODU5MSw2NjIwODk4MCwtNTA4MDc4OSw1NjYxNDc4NiwtMTYxMjA5MjEsNTA3MjEzMzgsLTQyMzAzMTksNTkxMzgxNjQsLTEzNTMzNTI0LDUwNzkzNDI0LC0xNDk0NTMyMyw2MTE4NTgyNCwtMjMzMTg5OCw1MTcyODYyNywtNjEzNTkzOCw1MTUxNjAxMF0=", 1378340);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

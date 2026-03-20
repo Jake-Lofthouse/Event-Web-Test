@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Ripley, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley." />
+<meta name="description" content="2 parkrun events in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Ripley, United Kingdom" />
-<meta name="geo.position" content="53.008339;-1.359978" />
+<meta name="geo.position" content="53.004175000000004;-1.3598675" />
 <meta property="og:title" content="parkrun Events in Ripley, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley." />
+<meta property="og:description" content="2 parkrun events in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/ripley/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Ripley, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley." />
+<meta name="twitter:description" content="2 parkrun events in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/ripley/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Ripley","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/ripley/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Ripley, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/ripley/","spatialCoverage":{"@type":"Place","name":"Ripley, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.008339,"longitude":-1.359978}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Ripley, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Ripley. View course maps, find nearby hotels and plan your parkrun visit to Ripley.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/ripley/","spatialCoverage":{"@type":"Place","name":"Ripley, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.004175000000004,"longitude":-1.3598675}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Ripley</h1>
-    <p class="hero-sub">1 parkrun event in Ripley</p>
+    <p class="hero-sub">2 parkrun events in Ripley</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Ripley?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(53.008339,-1.359978,'Ripley parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(53.004175000000004,-1.3598675,'Ripley parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,43 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Ripley</div>
-  <div class="event-grid"><div class="event-card" data-search="shipley country parkrun ripley" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="shipley country junior parkrun ripley" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-shipleycountryjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Shipley Country junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Ripley</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/shipleycountry-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-shipleycountryjuniors');
+  if (!el) return;
+  var map = L.map('cmap-shipleycountryjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNTE0NjE5MSw1MjYyNDExMywtMTA3MDIwMDAsNTEwMzI5ODAsLTE0MDk1NDEsNjY0NTA2OTEsLTI4MTM1OTksNTcyNjgyMTQsLTEzMjA1OTksNjA1NTk4OTcsLTgxNzAzMDgsNTEzMTA0ODcsLTExMzIwMTAsNTgwMTc3NzksLTkwNDQ2NzMsNjA3NzU5MjYsLTY5ODEyOTEsNjcwMjUwMzIsLTI0MTYwOTAsNTI4NjY4MDIsLTEzNTQ0MDc5LDYyMTUzNDU0LC04NTAyODA4LDYzODc2NzQ4LC03OTI5ODkzLDU2NzEzNjUwLC0xNDg0ODUxMiw1ODY0MzExOSwtODQzMTk0MCw1ODE0NDc1NywtMTY3MTY4MTksNjU2NzE0NjksLTgxODUzLDU4MTU5MTk5LC05NTAzMDUwLDUyOTE5Njg0LC0xNDU2MjE0Nyw1Mzk0Njk5MiwtMTAxNTE2OTQsNTM1MjAzOTMsLTcwNDI5MjMsNTc5MjI1NzAsLTE2NjU1ODgsNTgxNzg1NTksLTk1MDM1NSw2MDk3OTIyMSwtMTcwNTU4Myw1MzMxODMyNCwtMTU2MDEzNDgsNjQ3OTU5MTksLTExODY1NzQ3LDY0MjQ3OTE2LC0xMTk1OTMzMiw1MzEwNjYwMSwtMzUwMzYxNyw1NTg4Mzc1MywtOTIxNDM2NSw2NzAyNDk2NCwtMTEzMzA5MzIsNjA2ODM2MjUsLTEwMjI3NjIxLDUzNzcwMTc4LC0zNDM4MTQ5LDY1ODE5NTg3XQ==", 14680136);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="shipley country parkrun ripley" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-shipleycountry" class="card-map-inner"></div>
     <div class="card-map-badges">

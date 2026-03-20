@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Havant, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant." />
+<meta name="description" content="2 parkrun events in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Havant, United Kingdom" />
-<meta name="geo.position" content="50.875771;-0.975565" />
+<meta name="geo.position" content="50.882119;-1.004213" />
 <meta property="og:title" content="parkrun Events in Havant, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant." />
+<meta property="og:description" content="2 parkrun events in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/havant/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Havant, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant." />
+<meta name="twitter:description" content="2 parkrun events in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/havant/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Havant","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/havant/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Havant, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/havant/","spatialCoverage":{"@type":"Place","name":"Havant, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.875771,"longitude":-0.975565}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Havant, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Havant. View course maps, find nearby hotels and plan your parkrun visit to Havant.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/havant/","spatialCoverage":{"@type":"Place","name":"Havant, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.882119,"longitude":-1.004213}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Havant</h1>
-    <p class="hero-sub">1 parkrun event in Havant</p>
+    <p class="hero-sub">2 parkrun events in Havant</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Havant?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(50.875771,-0.975565,'Havant parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(50.882119,-1.004213,'Havant parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -362,6 +362,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="waterlooville junior parkrun havant" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-waterloovillejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Waterlooville junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Havant</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/W/waterlooville-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-waterloovillejuniors');
+  if (!el) return;
+  var map = L.map('cmap-waterloovillejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNTUzMzcxLDY0NTYyODE4LC05MjAyNjkzLDU4ODg3NTgzLC01NTkyNDE2LDUwODcwNzAzLC02NTI2MTI5LDYzNTI1Mjk5LC0xMDEwOTg1OSw1NDY5NTA2NCwtOTc2NTg0Nyw2MzU1NDc0OSwtNjI0NDg4MSw2NjI1OTA4OSwtMTQ5MzU5ODQsNTExMTc0MjUsLTY0NjY1NzUsNTgwNzQxNzcsLTc2MjQ5MDcsNTk4Mzk3MTMsLTM0NDMxNjksNTc2MzkzNDEsLTE0MzQ5MDgzLDY1MDA1NTk3LC0xMjY0MDY0Myw2MjQ2NjcyMywtNjY4NTI0MCw1NDI3MTIwMSwtMTAxODAxNDEsNTQ2MTMxOTcsLTQ5ODI3NTYsNTgzMDA5NzYsLTMwMDE5MDUsNjMyODA5MjUsLTE2MDc3MjY0LDY2MDkxMDMxLC00MzI1NTgzLDU5MjIxNTcxLC0xNTE3NTA0MCw1ODczMDc0MywtNzM1MzA1MCw2NDM5MTU4MywtOTgxODQxNiw1MTk1MTYyMSwtNDYyNjI3Miw1OTY2ODA5OSwtODkzOTYxNCw2NDExMjAyOCwtMzg0ODg4Nyw2MDY3NTc2MCwtNjU3ODU5LDY1MTY1NTAyLC0xMzY2NDg0Myw1NzI2NzUyNiwtNzcxMjA3Nyw2MTcwNjY0MSwtNDk0Nzc5OSw2MzAwOTc1OSwtMTQ2NDY2NTIsNjI4Njc1MzUsLTU1Njg0NTIsNjE5NTQ2NzQsLTIyOTEzMzcsNTI5Mjk5NjAsLTE1NTAwODc1LDY2NjYwMDI3LC0xNTY0NDcxNyw2NTQzMjIwNywtNzU2ODgxMCw1MTM3NDUxNCwtMTE0OTMxOTMsNTUwNjk1MDIsLTE2MDg1MjUyLDYxMDYzNDY0LC0xNjYxMDY5Miw2Mjk1MjQwNiwtMTYyNjkzNzQsNTI3MTg3MzksLTE1MTA4MzM2LDYxNTcxMDY3LC0xMDk3NDg3MSw1MzU2MjQ3OSwtMTg4NTU3OSw2MzgxMjA5NywtMTY1NTQ0NDcsNjUxMTk1NzQsLTEwNTExMTU3LDYwODE5MzE3LC0xMTYyMjk4MSw2NjU1MTAwMywtMjgwMDA0NSw1MzM4Nzk4NCwtODcxNDMyOSw1NzYzOTQ3MSwtMTI1MzU5NjksNjE2NTU1NDMsLTUwNzA1MzMsNTEyNjcyNTYsLTUzMDA3MzYsNTgzNDUyNjksLTQyMDkzOTksNjI1MTgwODcsLTMzMTE4NjIsNTcxMjcwMTMsLTE0ODA4NzM5LDU3OTAyNjAxLC0xMjc4NDI1Niw2Njc0MzkwOF0=", 14705507);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

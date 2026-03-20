@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Mid Ulster, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster." />
+<meta name="description" content="7 parkrun events in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Mid Ulster, United Kingdom" />
-<meta name="geo.position" content="54.615093;-6.735656" />
+<meta name="geo.position" content="54.63659742857143;-6.758934714285714" />
 <meta property="og:title" content="parkrun Events in Mid Ulster, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster." />
+<meta property="og:description" content="7 parkrun events in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/mid-ulster/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Mid Ulster, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster." />
+<meta name="twitter:description" content="7 parkrun events in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/mid-ulster/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Mid Ulster","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/mid-ulster/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Mid Ulster, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/mid-ulster/","spatialCoverage":{"@type":"Place","name":"Mid Ulster, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.615093,"longitude":-6.735656}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Mid Ulster, United Kingdom — Hotels & Course Maps","description":"7 parkrun events in Mid Ulster. View course maps, find nearby hotels and plan your parkrun visit to Mid Ulster.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/mid-ulster/","spatialCoverage":{"@type":"Place","name":"Mid Ulster, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.63659742857143,"longitude":-6.758934714285714}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Mid Ulster</h1>
-    <p class="hero-sub">1 parkrun event in Mid Ulster</p>
+    <p class="hero-sub">7 parkrun events in Mid Ulster</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Mid Ulster?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(54.615093,-6.735656,'Mid Ulster parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(54.63659742857143,-6.758934714285714,'Mid Ulster parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,115 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Mid Ulster</div>
-  <div class="event-grid"><div class="event-card" data-search="musa cookstown parkrun mid ulster" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="derrynoid forest parkrun mid ulster" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-derrynoidforest" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Derrynoid Forest parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Mid Ulster</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/D/derrynoidforest" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-derrynoidforest');
+  if (!el) return;
+  var map = L.map('cmap-derrynoidforest', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00NzExNzI3LDU4NjAxNTAzLC02MzQ3NDc0LDY0MzU1MTE5LC00MTM3ODIsNTA2NDI4NDQsLTEyODA5ODkwLDUyMjUwODk4LC0xNTUxNzQ0Myw1NDUyMDcyNCwtMTY3MjA1MzMsNTY2NjU0OTIsLTExNjM2MTM3LDU1NjIxNjI3LC0xMTY2NjQ0MCw1ODQ2ODAwNSwtMjQ1NTkxMSw2Njk5OTY5MywtMTU1NTU2MTAsNTY2NzA0MzYsLTIwOTk1NzIsNTkwNDE2MjUsLTExNzczNjg4LDYzNTM3MzQyLC0xMDc5NDc2MCw2MzkyMjIzMywtNDQ5NDc4NSw1NzE5MjA3MywtNDE1NDQ1OCw1NzY0NTM2NCwtNTcxNjcyOCw1NTczNTQ1MywtMTU0ODc4NzYsNTExODQyNDMsLTg3ODI2OTIsNTg3MDEwMTQsLTE0NjE3NzQ3LDUwNzM2MjM1LC0xNDI1NjYyOSw1ODEyODcyNCwtODM4MDUxNCw2NDM2Nzg2N10=", 5661237);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="dungannon park parkrun mid ulster" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-dungannonpark" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Dungannon Park parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Mid Ulster</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/D/dungannonpark" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-dungannonpark');
+  if (!el) return;
+  var map = L.map('cmap-dungannonpark', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMjQ2MzkzNSw1OTI5NjI4MiwtNTI2MDIwNCw1MDg5NDE3NywtNjU5NjY5NCw1MjY4NTA0NSwtMTcwNTUzMCw2MjAwNTE2OCwtNTM4NjE4OSw2MzA0MDI5MCwtMTIwNTM5NjAsNTkzMDcxNTYsLTEzOTkwOTUzLDUxMjgzNjIyLC0xMzIzMTA5LDUzMzkzMDAwLC00MTQyNjg0LDY2NjY0MzUxLC00MjY5NjAxLDUzMTg2NzM5LC0xMDAwODQ5MSw1MjgxMDYyNCwtNTYzMDM2NSw2MjI0NzQyMywtNDU0NTU1Niw1MTM1Nzc4MywtMTMzMjQ0OTMsNTQzMzgzMDUsLTE0MzM0MDkzLDU4NTMyNTYzLC05NzM0NjU4LDYyNTg4NTk3LC0xMDk3MzQxLDYxNjYwMzYwLC0xNzkyMjUyLDYyNTEwMzM2LC02NjQ5Mjc5LDYyMzgxMTkwLC0xMTk5NTg4NCw1MjQ2NjczMywtMTA5NzY3ODMsNjMzNzc0OTIsLTExODIyNzY3LDU0NzI3NjgwLC0xMzU2Njc2Myw2Njk5NDI0MiwtMjE0NzMyMyw2MTc5MjczMywtMTAzMTE2NSw2MTA2NTY1NSwtMTYwNzY4NDAsNTMyOTcyOTYsLTExMjU5MTg1LDUxMTc0OTI3LC0xNDM0NTYxMCw2MDY0MDM4NywtNDgyMjY5LDU1NDAxNTQ1LC0xNDI3MTEzNSw1ODA0NjUzMiwtMzUyNDUxNyw1Mjc1Mjg0NCwtMTAzNjAwODEsNTE0NTY2NzIsLTE2NDUxMTA1LDYwODg4MjE5LC02NzQxODYwLDU0Nzc5MDkwLC00NzA0NDIsNTE4NDM5MjQsLTEyODM0OTAyLDYwMzY1OTM4LC0xNjAzODMxOSw2MzIxNjM5MSwtNTE5MjYzMyw2NTkyNzczNCwtMTIxODYxMjgsNjMwMzUzODAsLTExOTk0NzYzLDYxODc2Njg4LC0xMDc0ODExNyw2MTQ5NTQ1MywtMTI4NTYwMTksNjY0MTI4OTcsLTEwMTAzNjcwLDU5NDQzNzU5LC02MDQ1ODgsNTQzNTU2OTYsLTUwODk2NzksNTEzMzA1ODUsLTcyODIzMjEsNTkyNDM0MjQsLTEzMjUwNTE5LDU3MjczMTM5LC0xMTYwMTcxOCw1MTc3MDYzOSwtMTExMTIwMjcsNTg3NTY1MDIsLTE1MjYwNjA5LDU4NjIyNzE5LC00MzMyNDUzLDU2MzEwMDIwLC0yNDgzNDg3LDY2NTA3NTMwLC01MzcxODYyLDY0MDg5MDE4LC0xNTc2MjU1MSw2NDkyNTQ4MCwtMzc4NjM2NCw1NzU1MzE1NCwtMzQ2NTg5Nyw1OTQ3MTE1MCwtODk1NDUyNSw2MTI1OTMxMCwtNDY4OTkwNSw1NjIwODE1MCwtMTY3NTExNDUsNTQxNTg5MDUsLTE1NDEwMzMzLDU3NDkwMTU1LC03MjExNjc4LDU3NDMzOTEwLC0yNjcxODg4LDU1Mzc3MzM2LC0xMTc2OTM1Miw1Njg5MTYxNSwtMTE5MDQ1MzgsNTIzMjM1MDYsLTE1NzQzMjE3LDY0OTU2NjExLC05MDA1NTQzLDYzMDM4ODkxLC00MTg2NjkyLDYwNTk4MTg3LC05ODA2NDk3LDUxMjc3ODUxLC01NTgxMjgzLDU5MDgxNzEwXQ==", 8706548);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="magherafelt junior parkrun mid ulster" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-magherafeltjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Magherafelt junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Mid Ulster</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/magherafelt-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-magherafeltjuniors');
+  if (!el) return;
+  var map = L.map('cmap-magherafeltjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNDI0NDQ1Miw2NjQ0NTIxNywtNzU2MzczOCw1NTMwMDA5NywtMTMwNDMwMDgsNTY4NDQ5MTEsLTEyODkxODA2LDY1MTU1NDQyLC03ODQ2NjI1LDU4ODA1OTcyLC0xMTM4NTMzOSw1NTI2MDY1NCwtMjQ3MzMxNCw1NDY4OTk0MiwtNjkwODg4OCw2MTk2OTA5MywtMTUxOTc2Miw2NTE5ODQyMSwtMjY3MDA3Miw2NDk2NjQ5MSwtMTEzOTY4NSw2NjAyMzUxMCwtNDA0OTMyNCw1MTc2MTQ1MywtMjY2OTczOSw2NDM4NDIzNCwtMTE3Mjk1MDIsNTg2MjEzNjUsLTUwNDE3MTksNjQ1NTcyNjIsLTI0OTg1MDAsNTEwNDQ1OTcsLTE2Mzc2NTA1LDUzMTIxMDI2LC0zNDg3MjI0LDYzNjYyMjU3LC03ODU2NTI0LDU1MDE4MTAzLC0xNjk3NTAwLDY1NjIzNzQxLC0yMDM1ODg5LDYxMTQ3NjI2LC0xMjU3OTc5Niw2NjkwMTU3NiwtMjIyNTQwMSw1MjcwMjUzNCwtNTUwNTgyOCw1ODY0Mzk2OCwtMTYwMzQ5NDUsNTIyNDg4NjgsLTIyMjI2NDAsNTA3NDc0NzcsLTEyOTUyNzM1LDU0Nzk0NTk5LC0xODQ4NTY0LDU3Mzc4NzY1LC0xNTg3ODgyMCw1NzAzNzU3MSwtMTU3NDk4OTMsNTcwMzg4ODksLTM3Njg4MzIsNTMwOTQ3MDIsLTgzOTg4NzksNTM4NjU5NDQsLTg2Njk2NTQsNTU1ODkxNDEsLTE0NzE2NjkyLDYzOTQwMDkxLC0xNDcxNzg3MCw2MDU0NTU3OSwtMTAyNjIxMzgsNjQyODk3OTgsLTExOTMxMDg3LDU1MDQyNjM0LC02NjE4MDI2LDUwOTcxNzM1XQ==", 13503025);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="musa cookstown parkrun mid ulster" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-musacookstown" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -362,6 +470,114 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="round lake junior parkrun mid ulster" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-roundlakejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Round Lake junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Mid Ulster</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/R/roundlake-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-roundlakejuniors');
+  if (!el) return;
+  var map = L.map('cmap-roundlakejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02MTY1MTU2LDUxMTY5NjMxLC0xNTMwNzU2LDU4MzQzMzM0LC01Mzk3MzcsNjQ0MjU1NTQsLTQwODg0NjIsNjMwOTYzODAsLTEwMzE5MTQxLDYzMTA0NzkzLC02NTE3OTE3LDY1NTU1MzE0LC0yNTQyNjI5LDU0MTE1Mzk1LC03MTYyOTkzLDYwNzEyNTA4LC0xMTU0ODc5Niw2MzQyOTUyNywtNzI0MDc1LDU4Nzc0MzMyLC04NjgyNzAyLDUwNDAwNzM3LC0xNTc0NDAwNiw1NDA5MjA3MiwtMzQ0NzgwLDU5MjIyNDk2LC03Mjc2ODkyLDU4NTY2MjUxLC03NjYxMjcsNTYzNTY1NzYsLTE2MTQ0OTQxLDU5ODAwMjYyLC0yMzI4OTAsNjQwNTcyMzYsLTcwMTMwNyw2NTU5MDAwNiwtMjk3MjU1LDYwNDQwNzkzLC0xMzA4NzQ3Miw2MTA1MTEwNywtMTU4NDg3OTksNjU4MjQxOTgsLTE2MTI1NjYxLDYwMzgxMDE2LC0xMTY1OTM4Miw2MzM0MzA4MiwtMjg1NzM1OCw2NjU3MTExNiwtNTIwOTg4OSw1ODczMDMxOSwtMTI5MzgyNjEsNTM1NjA4NzEsLTUzMTAwOTYsNTk2MzIwMzksLTQ0NDYwNDYsNjExNDUzNDld", 8332338);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="the fisherman‘s walk parkrun mid ulster" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-thefishermanswalk" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">The Fisherman‘s Walk parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Mid Ulster</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/T/thefishermanswalk" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-thefishermanswalk');
+  if (!el) return;
+  var map = L.map('cmap-thefishermanswalk', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xODg5NDQ2LDU0NjE0NzQ5LC0xNjU0MjUxMiw1OTI3NDY4NiwtNTQyMzE2MCw2MTMzNTE3OCwtNzEyMTc1Miw1MTk4NDE5MywtMTQzNjA3MDYsNTcyNjY0NTMsLTY2NDE3MTAsNTk3MDIwODAsLTYyMzczMDYsNTE5NTcxODMsLTQyODc1MTYsNTE1MzYxODAsLTExNzEzNjUyLDY2MzI2NTEwLC02MDkyMTg5LDU3MDYwNTMzLC04OTYwMDQ1LDU0NzQ5OTM5LC02ODU1NzYwLDU5MTY5MDAwLC04MTcyMTgzLDU0NTMyODY5LC04NzY2MzI0LDYyNDU1Mzc1LC03MjY3NDA0LDYzMzgzMjg2LC05NDc2MDQ1LDU5MjQ3NDA0LC0xNjE2ODgyOCw1Njg4NjY3MSwtNDA2OTgzOCw2NTE5MDc0OSwtMzEwNjUwNiw1ODYwNDYxNywtMTAyMzk2MDQsNTQ4NDc1OTcsLTU2MDM1MjksNTQ5MDkzMzUsLTUxNDYzNTYsNTYwNDM5ODgsLTEzNDI1ODc0LDYwNDgzMDUxLC0xMDgyNjMxMSw1OTc3NTUwMSwtMTY1OTg5MTYsNTY3NDIzMDksLTE2MDc1NTc4LDUxODY5Mzc2XQ==", 9106833);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="washingbay wetlands junior parkrun mid ulster" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-washingbaywetlandsjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Washingbay Wetlands junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Mid Ulster</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/W/washingbaywetlands-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-washingbaywetlandsjuniors');
+  if (!el) return;
+  var map = L.map('cmap-washingbaywetlandsjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00NDgxNjM0LDUzNTgxMTQwLC0xNDQxNzE5OSw1MjQ3NjUyNSwtNDE2MjYzOSw2MTkxNzQxMCwtODI2ODczMCw1OTQ1MTM5MiwtMTQ3MDQ3MCw2NTAzMzY1NSwtODQ4NTcxNyw2MzM1MTc2NCwtMzc0MDcwNiw1MDk0MzQ3MCwtNTIxMDQ4OCw1NjcyMzIxMSwtOTgxMzQ0OCw1MzU0MTc2MCwtNjQ0MDM3NCw1MzU0NDU0MCwtNzgyMTk1NSw2MjY1MzA5OSwtOTUyMTU0MCw2MDA0MDAyMSwtNDk1MDk0Nyw1NTg4OTc0OCwtNjEwNzIwLDY2NTY3MzIzLC05Mjc3NTYxLDUxMTk3MDUzLC0xMzM1NzAyOCw1MjEzMDkwMCwtNzg0Nzk5OCw1NDcxNjU5MywtMTI1MDIxNDQsNjAxMDczNTAsLTEyMjgyODM4LDU0ODA2ODY1LC0yNDQ2NTg0LDUxNjgwMTk5LC0zMzgwOTA2LDUzNzg4MTQ4LC0xMDE1OTA1NCw2NTU4MTc0OCwtNzMyMTY0Niw2MTc1OTk3MywtMTE0MjQ4NjcsNTQ1OTYxNjgsLTcyMjU0MjEsNjEzNjU3MTIsLTY0NjM1MDQsNjIyMjM3OTcsLTczNTEyMjYsNTIwNzQyMTgsLTgzNDg0NjgsNTkxMDQ0NTUsLTcwNDQ2MjUsNjUwNTgwNzEsLTcxNzUxMjgsNjA5NzA0OTQsLTE0NTQzODcxLDY0ODY2NjE4LC02MTg0MDc0LDY1ODA0MTYxLC0xNjI1NzgzMSw1NjgwOTAxNywtMTY1Mjk1NjIsNTQyMDY1OTFd", 16452781);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

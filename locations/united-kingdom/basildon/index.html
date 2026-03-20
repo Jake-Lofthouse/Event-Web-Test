@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Basildon, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="2 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon." />
+<meta name="description" content="4 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Basildon, United Kingdom" />
-<meta name="geo.position" content="51.605372;0.45853049999999995" />
+<meta name="geo.position" content="51.60541825;0.45831474999999994" />
 <meta property="og:title" content="parkrun Events in Basildon, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="2 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon." />
+<meta property="og:description" content="4 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/basildon/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Basildon, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="2 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon." />
+<meta name="twitter:description" content="4 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/basildon/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Basildon","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/basildon/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Basildon, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/basildon/","spatialCoverage":{"@type":"Place","name":"Basildon, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.605372,"longitude":0.45853049999999995}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Basildon, United Kingdom — Hotels & Course Maps","description":"4 parkrun events in Basildon. View course maps, find nearby hotels and plan your parkrun visit to Basildon.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/basildon/","spatialCoverage":{"@type":"Place","name":"Basildon, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.60541825,"longitude":0.45831474999999994}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Basildon</h1>
-    <p class="hero-sub">2 parkrun events in Basildon</p>
+    <p class="hero-sub">4 parkrun events in Basildon</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Basildon?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(51.605372,0.45853049999999995,'Basildon parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(51.60541825,0.45831474999999994,'Basildon parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -398,6 +398,78 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="lake meadows junior parkrun basildon" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-lakemeadowsjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Lake Meadows junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Basildon</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/L/lakemeadows-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-lakemeadowsjuniors');
+  if (!el) return;
+  var map = L.map('cmap-lakemeadowsjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wzg0Njk5MjQsNjEzODY0NjMsNjk1NzAxNyw1NjExMjUwOSwyMzY3OTkzLDU2ODM5NDgzLDI2MTkxMTQsNTcxNDI4MjYsMTA0MjUyNjUsNjQwMjY0OTgsNjU0NzY1NCw1Mzk1OTA2NSwxMTcxOTkwOCw2NTI2OTU5OSw5MzY3NDc0LDU2MjM5NDMyLDczNjcyNjksNjI1MjM0OTQsNDgwNzM3NCw1MzE2NTM2MywxMDIwMDc2OCw2NDUxNjkyMiwxMTA2MTU2LDU5OTc4MjI3LDY4MjgyOTUsNTY0OTA0MjAsMzI3MDE4Miw1MTYwODUxNSwxMTk4NzgyOCw1NzE5NTE5MCwxMTM4Njk0NSw1MzA2Mzk2OSwxNTgwOTE3MCw1Nzc2NTMyNywxNjEzMTY2Miw2NjM2Njc0OSwyMjU4NDE2LDYwODAzNjA5LDI5OTA0MDQsNjQ5OTUzOTIsMjg4NTUzMyw2Njk5MjYwMSw5ODM3Mzg0LDY0OTYzNTQ0LDE0MTU3NjEsNTEyMTQ0NzksMTYzNzk2MTIsNTMyMzEzNTIsNDMyNzgyNiw2NDU4NDUzOCwxNjE2NTk4OCw2MDI4ODkxOCwxNjI2MTg4Nyw1Nzk3MDQ1OSw5NzQxNzAzLDYyOTc3NzU5LDIxNTQyMDksNTM3ODM4MDQsMzU3NjM1Nyw1NDkzNTkzMyw0MjYyMDQ0LDU0MzQyMzAyLDEzODYzMjk0LDU2OTAyNDQxLDEzODY5NTQ5LDUxNzE4MDQyLDM2NjMwNjksNTc2MzAzMDQsMTE3OTYyMTksNTQ2NDU4NDEsMTIyMDEzMjUsNTQ2MDYxMDcsMTY2MTQ1NjMsNjE2MDU4NTUsMTg1NjY0Nyw2MjYwOTI2NCwxNTg2MDU0Myw1NTc0MDcxNSwxMjEwMjI3Niw1MzMwMTE1OCw2NTE0NDE4LDU3NjM0MTk0LDEzOTk5MjM4LDU3NTc3NTQ4LDEzNzAxNTYsNTk5NDg2MTEsNjIzNzE4Nyw1NjMzMjEyNCw4NzIxNzU0LDYxODUxMzE0LDkxMzk0NTUsNTA0NDI4NTcsMzY5ODM1LDU0MDcxMjU5LDkwNzQwNjIsNTI1ODU5ODFd", 9557982);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="northlands junior parkrun basildon" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-northlandsjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Northlands junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Basildon</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/N/northlands-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-northlandsjuniors');
+  if (!el) return;
+  var map = L.map('cmap-northlandsjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzM1NTc5ODYsNjIyODY3OTIsMTA5Njc0MjAsNjQzODA3MTEsOTI0NzIzOSw1MzE1NTgxOSwxNDkzMDEwMCw2MjA1MDgyMSwxNDE1NTYxMyw1MDUxNTMzNywxMDk5MDI4LDY2MTQ3NjQzLDUxMTA1NDQsNTQ0NTYwNTcsNzU2ODM4Miw2MjAyMTgwOCw5Mzg0MjI1LDYwODE4MzgyLDE1NTkzMDI5LDYwMTM5MTc4LDEyNjQ4NDQyLDUxNzY2MjE3LDE4NjQ1NTcsNjU1NDIzMTUsOTc5Njc1Myw1MzUwMTIyOCwxMDUyNzkyMyw1OTY0MzQxMywxMTI5MzUwNiw1Mzc2NjE1OCwxMTUyMDMzNyw2NTEwNDQ0MiwyOTIwNjI5LDU0MzA5MDEyLDc5ODU2ODksNTc3MjIxODUsMTQ4MzE3NTgsNTgxNzI3NDEsMTMyNDIxNDUsNTc3MDIyMjgsMTUwNjEyNSw1NDgzMTYxMCwxMjc2OTE3Miw2NzAzMzA1NF0=", 13354340);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

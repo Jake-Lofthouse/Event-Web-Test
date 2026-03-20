@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>parkrun Events in Bremen, Germany — Hotels &amp; Course Maps</title>
+<meta name="description" content="2 parkrun events in Bremen. View course maps, find nearby hotels and plan your parkrun visit to Bremen." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="Bremen, Germany" />
+<meta name="geo.position" content="53.0852965;8.82297" />
+<meta property="og:title" content="parkrun Events in Bremen, Germany — Hotels &amp; Course Maps" />
+<meta property="og:description" content="2 parkrun events in Bremen. View course maps, find nearby hotels and plan your parkrun visit to Bremen." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/germany/bremen/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="parkrun Events in Bremen, Germany — Hotels &amp; Course Maps" />
+<meta name="twitter:description" content="2 parkrun events in Bremen. View course maps, find nearby hotels and plan your parkrun visit to Bremen." />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/germany/bremen/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Germany","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/germany/"},{"@type":"ListItem","position":4,"name":"Bremen","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/germany/bremen/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Bremen, Germany — Hotels & Course Maps","description":"2 parkrun events in Bremen. View course maps, find nearby hotels and plan your parkrun visit to Bremen.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/germany/bremen/","spatialCoverage":{"@type":"Place","name":"Bremen, Germany","geo":{"@type":"GeoCoordinates","latitude":53.0852965,"longitude":8.82297}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
+/* breadcrumb */
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+/* page hero */
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+/* stat strip */
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* section headings */
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+/* country grid */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+/* tiles */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+/* search */
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+}
+.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
+/* hotel CTA */
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+/* toggle buttons */
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.2s; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+}
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
+/* download footer */
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/germany/">Germany</a><span class="breadcrumb-sep">/</span><span>Bremen</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">Germany</div>
+    <h1 class="hero-title">parkrun Events in Bremen</h1>
+    <p class="hero-sub">2 parkrun events in Bremen</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in Bremen?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(53.0852965,8.82297,'Bremen parkrun')">Find Hotels</button>
+  </div>
+  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
+    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = false;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+
+  window.setFilter = applyFilter;
+
+  // Wait for DOM to be ready so event cards exist before we filter them
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyFilter(getInitialFilter()); });
+  } else {
+    applyFilter(getInitialFilter());
+  }
+})();
+</script>
+  <div class="section-heading">Events in Bremen</div>
+  <div class="event-grid"><div class="event-card" data-search="unisee parkrun bremen" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-unisee" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Unisee parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Bremen</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/U/unisee" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-unisee');
+  if (!el) return;
+  var map = L.map('cmap-unisee', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzEwNDQ4NDQ5LDUyNTU5MTYwLDM0MTMxMjksNTY0NDA5NDAsMTA1MzU3MDEsNjEyODA5MDgsMTI1MjA3NzksNjM2MDc1ODQsNjc0MDYxMyw2Mjg2MDU0Niw1MDI3Nzc1LDYxOTczOTA4LDE0MjE3NjU5LDYzNTgzNzUwLDM0NjU0MjMsNjI5Njg4MjQsMTY0ODQ1NTMsNjAxNzc2MzQsMTAwMjMxMzUsNjQ1OTc3MDQsMTA2ODA4ODcsNTYwMzAyMzYsODgxNTM0Nyw1ODU5MjczNCw1MTQ1NTI3LDUwNzk0NjMwLDExODMzMDI5LDY0OTY0MDMwLDEyMDQ5MjI1LDYxMDAwNjA0LDYwOTE1NTEsNTM5Nzk4MTgsMTY0MTc1MjMsNTA1NDg2MTYsODk0MDI5NSw2NTIxMDQzMCwxNTE1MTgwMSw2NDMxMjY5MCwzOTg2MzM5LDUxMzgxMzE2LDQxMDY0MjcsNTMzNjUwOTIsMzc1MzQ4OSw2NTI5NjcyMiwxMjUwMTI0Nyw1MDYzNzQwMiwxNDIwNTI0Myw1NDI0MzY4MCwxNjM0ODUwMyw1OTYwMjUwMCw1NDg4NzYzLDU0NDg0MzM0LDE0NTkxMDYzLDUxMzk3ODI0LDEzNTY1NzU1LDY0MzMyNzA2LDEyNTYzOTg3LDUyNjk4NjI4LDY2NTM2NDEsNjM4NTY5NDgsOTEwOTQ3MSw2Mjc1OTQxNiwxMjA4ODU2Nyw2NjY5ODEwMCwxMTk1MTA3OSw2NTEwNTg4Niw4Njk1NjExLDUyMzIwMDc4LDQ2MzE5MDUsNjIzOTQwOTQsNTA2OTUzMSw1ODQ1NTgwMCw5NjA3Nzk5LDYxNTUxMTQyLDEzMTM2OTY3LDUyMDMwODcwLDQxMzYzLDY1MjA0NDg0LDM4MTI3MzksNjA0NjkwNzAsMTU4MjE3NzEsNTQ1NTc0NzYsMTQ3NTQ4NjEsNjU2MDg4MjQsMTQzNTYxMSw1OTE1MTQ4MiwyMzU1NTc3LDUzOTAzODI0LDEzOTQ5NjE3LDY2ODI5MDI0LDc2NDU4MDcsNjQyMTY0MzAsMzczODc3OSw1MzIzNjE0MiwxNDQ2OTczNSw1MjQxNDM5OCwxNjI4OTMyOSw2MjA4NTQ1MCw5NDg1ODk5LDYyMjI4ODA0LDkzOTU3MTEsNTQ4MjEwODYsMTU3ODI2MzksNjExMzA2NjYsMTI0MTQ5MjcsNjA3MzI5MjQsNzkzMDcyNSw2MDQyMDM0OCw5OTQyMDAzLDY3MTAwMTI4LDUyNTQwMzMsNTA3MTkzMjAsMjg1MTI4Nyw1OTE4MTE2NiwxNDE2OTYzNSw2Mzc2MTU2NiwxNzI3NTgzLDY0NDM5NzMwLDEwMDkxOTcxLDU0MTAzNzc4LDE0NDU4MjM1LDUzODExNDA0LDYzODMyMjksNTM3NjIyMjYsOTYxNzczNSw2NDA2NjU5OCwxMTY5NDIxNSw1ODgwMDU1NiwyODQzMTIzLDUxNDk1ODEwLDU1NTE2NjMsNjQ4OTUyNTAsODY1MDM3Nyw2MDIxNTM4Miw0NjcwNjI5LDU3OTI3MjA2LDE1NzU3MDI1LDU3NDYwNjY4LDE0NTMyNzA3LDUyMjI3MDk4LDI1MDUzNTMsNTU4NjcwNTQsMzMzMzM5MSw2NDc3OTkwNCwxNTY0MDYwNyw1MzcwNDczMiwxMzA1NTQyMSw1NTMyNDIzMiwxMjIzODQ2Myw1ODI1MTQxMCwzNzMyMTYzLDU3MDcxMjQwLDE4OTEzNzUsNjIyMDA4OTgsMTMzODI3MzcsNTE2Mzk1MTAsNTY0NzQzMyw1OTQ3MjQ5MCw1MzA2MjA1LDYyMzAwNjE0LDg0MTU1MjcsNTc2NzMwMDIsMzcxMjk1Myw1MzczMzUyMiwxNjYxNzY1OSw1OTM0ODY0OCwzMjA0ODg3LDUzNDk0Nzk0LDkxNDM3NjEsNjYzNjg5OTQsNzI1MjE5NSw1OTY1NjIwNiw4MDA4ODk3LDYzMTUyNTg2LDE0MzQ1OTQxLDU0OTIzMDIyLDc4NTg0NTEsNTg2MjU2ODIsMTk3ODQ5MSw1MDQyOTMwNiwxMjMyOTAyMSw2NzA0MzM4MCw4Mjg5OTUsNTA2Nzk0ODQsMTQ2NTg5NDcsNjQyMTA1MjgsMjI2MzA5OSw1MjAyMzU0NiwzNzM0ODQ1LDUzOTQyNzEyLDEyNTkxNjYxLDU2MTI3NDQ4LDU3NTcyNDcsNjIzODMxNjQsMTQ5NTg4MDcsNjQ4NzEzMTIsMTE3MjE5NDEsNTcwMjg0MjgsMTQ0OTA3NTMsNTE1NjExNDQsMTI2OTE2NDcsNTEzMzIwNDIsMTExMDcxMTMsNjM4Nzg1NjAsNzAzNjE2Nyw1NzMyMjU2NCw1MzQ4OTkzLDY0MDE5MzQyLDY0MjAzMyw1MjY0NDQyNCw2OTg5NDI1LDUzOTMyNjM0LDE0MjQyMTk3LDU5MjM4MDEwLDg2MzE3Nyw1MDk3NjM4Niw2NzQ1NTMzLDY2ODYyNDgyLDE2NTgyOTIzLDY0OTM4NTE2LDIyNjc3MjksNjIwOTAxOTgsNTMyNTQzLDYyNDczNjU4LDEzODY0OTc3LDU5MTQ4ODE2LDEyNTg2MTU5LDU2NDIwMzEwLDc0NTk3NDUsNjYzNTAwMjYsMzk0NDE2MSw1Mzk2NTg4NiwxNTQ0MzI4Nyw2NTc2Njg2Miw0MTY3NTgxLDYzNTk4NDI0LDEyMzQ3OTUzLDU4ODAzNzU4LDExMjE3Mjk5LDUyNjE2MDQ0LDkxNzQ5NSw2NjU2MTMxMCw0NTg2ODk5LDUwODk4NDAwLDE2MDY5NjI5LDUyOTg4NjUwLDUyMDUxMjMsNjI2Mjg4MTgsMTU3NTk3MTcsNjY1MzY5NTAsMTQ2NTU0NTcsNTU0NTE2NDgsMTMzNzQ5NzksNTE4MDA1NDYsMzM5NzQ4MSw1NDY4MzkyNCw2MDYwMTU3LDUyMDg1ODU2LDc2MjU2ODksNTU4NTA1MjgsNzg0MjAxLDYxNTU0OTA0LDYwODIxMjMsNTA2ODAzNTgsNDI1NjI0Nyw1ODE1OTk2Miw5MDQ0NTI1LDU1ODQ5OTUyLDI3NjY4NDksNTgzNzA2OTYsMTQ2OTY5NjMsNjQyMjkwOTYsMTExNDE4NDEsNTU2MjQzMTAsMjEwNTkxMSw1MTM1NDYzNiwxMjI1Njk1NSw2NDQ3MzY0MiwxMzMzODEzOSw2MzY3OTY2NCwxNDg0MzExNSw2MDU2MTM5MCw0MzMyNDIxLDU0NTYzODQwLDE2NzEzNTI5LDUwNjAxNTYyLDQ1NjA3MTUsNTc4NDU0MjYsMzEwMzkzNyw2Njc2MDE5NCw2OTIxNDcxLDY0NzkyNDQyLDM4NzQ1NzMsNTgxOTQyMDIsNDU2MDA4Myw2NjkzNzQxMCwxOTM5ODg1LDYyMTMxOTA4LDM0NDU0NzUsNTk1OTQyOTgsOTE5MTU1Nyw1NzkxNjIxNCw5MTExMzUsNTc1NjA1OTIsMzk5ODkyNyw2MTcwNDkwNiwxMDE3NjI2OSw1MjkzNDQ1NCw0OTc5Nyw2NjAzNzc2MCwxMDE3MjMxOSw1NTY5Njc0Niw3NjU0MzU3LDUyNjU4MzY0LDEyNjQxNDY3LDY0NjMwMjA2LDgzODM0NTUsNjIwMjE3NzIsNDYyMjI4NSw2NTQ3NDEyNiw5MTc5NjU5LDUyMzkyMjMwLDQ1MzM3OTcsNjUxNzE3OTIsMTQwMjk5NTksNjE5NDE0ODgsMTY0ODQ1MTcsNTYwMTAyNDAsMTE4NzQ2MzksNTA2MTkxMzIsMTIwMjM5NjUsNTcyNDA3MTAsMTAxODU1NDMsNjMyMDU4MzQsMjM2NzM2Nyw1NzQwOTUyNCw0MjgwNDEsNTkxODE5NzQsMzY2MjUyMSw2NTYwMTQ3Miw5NjM2NDIxLDYxNDI3NjQ4LDEyOTUyNzE3LDY1ODc3MDIyLDE0NzYwMjA3LDU1OTQ1NDk0LDE0ODk2MTU1LDY2NDU5ODA2LDE1NjExMzMsNTk0MTM2MDYsMzMyNTA3Nyw1MDg0NDE5MiwxMjgyMTI2OSw1MzQ1NjAwMCw3NDI5MDMzLDY2MDgxOTMwLDg5NzIxNzMsNTUwNjUzMDYsOTg2NDg4OSw2MDk2MTMzMiw1MzE2OTc3LDYwNzEyMTM4LDk3NzQ1NDMsNTE2MzkxODYsMjg1ODIxMyw1MjQyMDUyOCwzMzgyMTE1LDU3OTgyNzE2LDQ0OTU2MzksNjI0NzcxODAsNzIxMzQzNyw1MDc1NTEzOCwzNDgyODY3LDU4MTc3OTkwLDQ0MDI5MzEsNTA3NjcwMTQsOTEwNzkzOSw2MDEzMDA1MiwyOTUzMDE5LDU0MzM0NTgyLDkyMTU5MDcsNTYzMDUyMDQsMjIwMDY1MSw2MzY2OTY0MCwyNTE4MDE3LDYyOTU2NTc0LDk2MTkzMDMsNTQ0ODI4MjQsMzcyNjE2Nyw2NjExMTI5OCwxNjYyMzMsNTUzMDEzOTIsNDgzMzEzMyw2NjIwNzU4Niw1ODk3MTU1LDU2MTg5MjUwLDQ5MjMzNSw1Nzg2NzkxMCw0OTg0MTMxLDUzMDUzMTI0LDUxODU5ODMsNjM2NTExOTIsMTMzMDAzNjcsNTE5MTE0MzIsMTA1NjMwNDEsNTYwNzc1ODAsMjg3MzU0NSw1NDQyNDQzMiwxMTQyNzY1Myw1NjA5OTQxOCwxNjgzMjExLDYxMDIxNTMyLDExMzg2NTg3LDUyMDcyMjQyLDI2MjAxMjMsNTg0MjYwNDgsMTQ3MTYxMzUsNjEyMzgzOTIsMjUwNDAwNyw1NTIyNDU2NCwxMTUyNDg1MSw1MDczNTQ0Miw2NzgzNTQ3LDU2MjYzODM0LDE0OTk3OTQxLDU3MTg3MTc0LDEwMjE0OTkxLDY2OTM1MDI0LDE1MTQ1MDgxLDU1ODgzNTc4LDcxODUxNDMsNjIwMzU5MjYsNTg4ODM1NSw1MTc0NDg0NiwxNTAwOTcxNyw2MDI5MTQ2MF0=", 11243546);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="werdersee parkrun bremen" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-werdersee" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Werdersee parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Bremen</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/W/werdersee" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-werdersee');
+  if (!el) return;
+  var map = L.map('cmap-werdersee', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzEzMzE1NDAsNjYwNjY0NDQsOTM2NTYzNiw2NjQ5OTgwOCw2OTk1MzE1LDUzNTkzNTAzLDExMzM0NDczLDU5NjkwOTUxLDEzNDI0NTAzLDY1MDY1Nzc5LDE1NDk2NTk4LDUyMzY3MzgzLDY1NjM5MDcsNTQzOTg0MTEsMTU4NzYyNjEsNTg2NDY0NjYsMTE2NTc3MjAsNTc2ODk4NzgsMjMxMTI2Nyw1NTA5MjE2MSwxNTk5MTM4Myw1MTE0Nzg1MSw5OTQyNDA1LDU0ODM3Nzc2LDk3MzcwNzUsNTk1ODk3NjYsNDI0ODEzMSw2NTAyOTkzNiw0MjU4Njg4LDUxMjg4MzkyLDEzMTgwMTEyLDU5MjIzNzUwLDExNTA3ODYsNjQ5MTAwOTgsMTY1MTM0NDAsNTA3NTgyNTcsMTM0OTIyMDgsNTYzNTU0NDAsMTQ5NDMyOTQsNTYzNTYxOTksODQxNTQyNSw1ODUzOTkwOSwyNTQ0ODg2LDUwOTk0Mjc4LDExODgyOTAwLDU4MzQ1MTkxLDY3NTA0NjQsNTEzMjI5NjQsMjQzNDkyMCw2NDU2NTQ5NSwyMTYyOTE0LDYxMTAyMDU3LDc1NTA1ODcsNjEwNDUwMzYsMTI2NTM5OTAsNjUxNTcyNjgsMTE2MDYwNDcsNjA1NzEyNzMsMTIwMTgxODYsNTA0MDQ1MzQsNDg4ODE5OSw2NTE4ODMwMywxNjA1NzAzOCw1NjM5MTA4MSw1ODYxMzksNjU1NjkzNjYsMTYyNzgzNzcsNTMyMTE0MDIsMTE2OTQ4MTUsNTE3NjA2MTIsMTE1MjA4NDEsNjUzMDQwNzIsNzQ1NjkzNSw2Mzc4NjgzOCw3NTI1MzI4LDY0MjQ0OTQ2LDE2MjQ2MDE1LDYzOTkwODgwLDU1MDE4MCw2MjQ2MzE2MCw0MTk0ODAwLDUxMzY4NTMwLDE4NjYwNzIsNTgyMDk5NzAsOTM2MTYwMCw2MjUzMjk3NCwyNjg4Mzc4LDUyOTQ0MDAwLDU0ODIzMDgsNTE4MTY3NTgsMTY1MzI1MCw1MjU1MzEzNywxMjk1MjAwNiw2MTEyNjIyMiw4MjM4NDY0LDU4ODc0MTcxLDc5ODI2MDcsNTM3ODY0MjIsNTM3ODM3MCw2MTQyNTA1NywzNjQzNTE5LDY2NTU4MjAzLDQzMzExNjAsNTUwNjQ0MDQsMjQ1NDU2OSw1NTA3MjU4MiwxMTAyNjgyNCw2MzIzNjkwMiwyNDM2OTAyLDU2MTE2MjA1LDQ1Nzc4NzEsNTE3MDkzMTYsMTA1ODE1MzUsNjM2NDU1NDQsMTI2NDA5NjQsNjY5Mjg4MjcsMzY0MTMwMiw1ODg0MDgwMywxNTY2OTE4LDY2MzY5NDgxLDE2MTAwNzk3LDUwMzMyNzkyLDYxOTI2NjYsNjI0MDAzNjcsMTE4NjY4OTcsNjY5Mzc0NjAsMTEwMTQ5NjYsNjQwNjgwMTUsMTYyMDYxNjQsNjQ4NTQ3MzQsMTI2NjIyMTQsNjY3OTE5MTgsNTIxODM3Miw2MDE2ODY0NywxNjI5Mjg1OCw2Njg1NTgzNSwxMjI5ODE1LDYwNDI1NDAxLDk1MDU2NjQsNTM3MjM1NzksNTU3MjI0Nyw1MDk5MTg0Myw0MzA4MzkxLDY2NzU1ODc0LDEzMTA4MjY0LDUyNzE3Mjg0LDE2MDM3MDY4LDUxODIzMjQ0LDgzMzkyOTQsNTE5ODEyNDUsMTE3MTk0NDMsNjM1NTUyNTQsMTk5Mjg2Miw1ODAyNjQ1OCwyMjYyMDg5LDYzMzA0NjQzLDIyNDkxMDEsNTI2MzkxNjEsMTM4ODEwNjIsNTMxNjI2NDksMTUyMjQyOTksNTA1OTYzODYsMTYwMjIxNiw1MzkwMTY2OCwzNDQwODYsNTY3MTg2NjgsMTgxNjYyOCw2NjgxNDQ2NywxNDEyNzExMCw2NTc2OTUxNSwxNTg0OTMxOCw1OTA2MzE0OSw5MzEzODQ1LDU2NTM3NTA1LDY1NjkxNTQsNjQwOTk1NjIsNDUzMjU2Miw2MjQ5OTM3Niw2MzA0OTM1LDU5ODA1MTM1LDcyMzY3NzYsNjI3Mzc4NDYsNjc5ODY4NCw2MDE5MDQ5OCw0NzE5NjE4LDY1NjIyMDQ1LDUwMTY5OTAsNTcyNTY1NzksMTY5MDQ4OSw2Mjg4ODg1NiwzMjE5NTI1LDU2MjkxMTM1LDE2NDc1ODEwLDYwNTM4ODY5LDIzNzM4NzIsNjI1MDg0MDYsNzI5NzIyMSw2MzQ2NTA2NSwxNTY2ODI4Niw2NDQ0MDk3NywxNDk4MTg1MSw1NjM2MTQwNSw5NjkyNzk4LDY1Mzg2NjgwLDEzNDM0MjY0LDY2OTc1MzU3LDE0MzYxMTY3LDU4MTM5MTcxLDg5MzY1MjYsNTgyODA1NzgsMTU1NTQwOTAsNTQ3ODMzNjIsMTE3NzcyLDUxNzMwMzI3LDU4ODU5MjksNTEwMTQyNDcsMTc2ODc4MSw1MTY0Mjc3OSw5NzA3MTQyLDYwNjA2ODc2LDExMjg2MTc0LDY2NTEyNTk5LDE3NzY1NTMsNjQ2OTkxNTYsMTA1OTAyOTEsNTQ1NzkxODUsMTAzMjM5MDUsNTY5OTY5MDksODY2MzYxNiw2NDcwMTAxNSwxMTM5ODIwNCw1MzExNjQ1NywxMzE0NjkwOCw2MDU4NDkxNywzOTQ3MzAyLDU5Mjg4NDMwLDI1NjU2MzEsNTkzODU1MjYsNDAxMTY5LDU5NjIwODY3LDMyNDcwNDUsNTE0NTgwNjksNTE4MjYzNCw1NTc3NjY5Myw1OTQxNjAyLDYyNDg3MzQxLDE1ODE1ODUzLDYwNDQ3MzQ5LDc5NzU1Miw1OTk2MDEzMCwxMjgzOTI4MSw1NjI0Njk5MCwxMzE5MjU4MCw1NzEzOTM1MCwxMzIwMzcyMiw1MDQ0Mjc5Myw3NjE2ODY3LDUxNTIyOTU5LDQ4MjI0MzcsNTU3NDQ4MzYsNTI5OTU5MSw2MzU3MTc1NSwxMTM1NTk4Nyw2MDg1MTcwOSwxNjgxMTc5LDU0NzQyMzQ2LDExMjY3MDk1LDU4MzYxMTE5LDk2NDU2MjUsNTY5NjI0NDQsMTM3MTY1MCw1NjIzNDc1OCwxMjY3MDg0Miw1MDc2OTk0Niw0MzE1MTcwLDU0MjUyOTYyLDc4MDkxNjcsNjQwODI0MjYsNzc5NzEwNCw1MzU5OTQ2NiwxMDg4ODgzOSw1MDg2MTc5OSwxMTM1ODUwMyw1OTQwNDA0Miw5NjEyMDk1LDU2Nzg3Mjk5LDk1OTMxNTIsNTk5MTY2OTIsMTQ4MDUwMzUsNTQxMTg5ODYsOTg2NDEzLDU3NDIyMDE3LDE1NDQ3NzE2LDUzODQyNDcxLDM1NTM0MTgsNTIzODg2OTYsNTk0MjQ2OSw1NTkzMDIwOSwxMTY2MTg1Nyw1MjYyNTg4NiwyNjIzNDYwLDUyMzU3MDg2LDU5MDU2OTcsNTYzNjgzOTYsMTI3MTkxMzUsNTM4NTU3MjcsMTEwMTM2MDgsNTc2ODA5MjcsNDg4NDk1Myw2NjIxNTgyMiwxMzc5NDQ2LDY0MDAwMDY1LDYyOTgzMzYsNTc3NTkwMTUsODU3NTIzLDU0ODcwNTMxLDMzNDQ2MCw1MTY3MTM4OCwxMTcyMTY2Myw1ODY5NTg5NSw4OTU2Mzk1LDY2Njk2NTQ1LDkwMzg5OTcsNjY3ODExMjcsNDgyNTA0Nyw1MzI5NDc2Niw4NzQ4OTMwLDYwNjI2NzU0LDc1OTI5Miw2Njc2NjA2OSwxNjcyMjE2LDYzMzYxMDI5LDE1ODY1MTkyLDY1MTczMzkxLDIzMTAwMzcsNTgyMjA1MTMsMTE2MTY3MDcsNjI5OTE5MDUsNDQwOTU5Nyw1NjUxMzk3NiwxNTc5ODkzNCw1OTQxNDg2MywyMTk0NzU0LDY0NDg0NjI0LDE0ODc0MDYxLDU2NjY4OTU1LDExMDU4MjIxLDY0OTQ1Mzg3LDI0NjQwMDQsNjEzMzk2NjMsODI3OTE2Niw2MjM4MDMzNCwxNjE2NDMxOCw1NTI0ODcyMiwxMTMxNTk5NSw1NzAwMDQzMSw4NjIwNjIwLDUzMzAxMTgyLDE1NTg1NTQyLDU4ODkxODc1LDEyNDI0MzIwLDU4Njg1MzE4LDExMTE1MzAxLDUwMzM0NTk1LDE1MjkxMjMyLDU2MzUxNTY3LDExNTQ5OTc5LDYwMzYyODcxLDMxMjYyMjIsNTU3NjQ0ODgsMTM4MzY0NDQsNjI2NjgyOTksODM3NTE2MSw2MDgwMzE3OSwxNTc2ODM5Nyw2NTQyOTQxNSwxMDc2NDA2MSw2NjA4NzU0MCw2MTUyMjg2LDU0NzA1ODU5LDE2NjAyNDMyLDU5NTg2ODQyLDMwNzU2OTYsNTE2ODU0OTUsOTc4MDYwNiw1OTEzODQwOCwyNjE5OTU0LDY2MTMxNzk2LDk2ODY1MzcsNjE2OTg1OTYsMTIwMjYzMTUsNjU1NDk0NTEsMTUzNzcwMzQsNjMzNDU2NzIsMjc1MzU4MCw2MzQ3OTg2NCwzMDUxNjY4LDYyNjQyNDQ0LDUzNTcyMTksNTE0MzUzMzUsMTA4NzkwNzIsNjAwNzA0NzUsMjEzNTg1Niw2NjI1NzQ2OSwxNDQ2NTQ2MSw1NTg5NDcxOCwxMjc5NTA3Niw1NDMxOTM0NywzMDQ3MTQ2LDY0NjIxMzg0LDE0NTQ3MzQxLDY0NTkxMTQwLDk2NDY1NzYsNjMwMDY0OTUsODU3NzU1LDY2MzE1MzI3LDQ5MzEwMyw1OTM0NDA2OSwxMjI5MTk3MSw1OTM3NDk1Miw5MzA3MjM0LDYzMjQyNzE4LDE3MTM2MzUsNTkzNjQ5MzQsMzA5MTEwNiw2MTcyMjM5Myw2NzExNTI0LDUxNjUwNjkyLDEwNzMzNzI2LDYyNzI1ODczLDQ4MTY5MzAsNjI3MzE5NTgsMTA1MjI0NzcsNjI2NzQyMjQsMTYzNzg3NTcsNTUwMTMwMTcsMjU3OTA0Miw1ODA5MTAwOSwxNDE4MjM2NSw1NjQ5ODUyMywxNjM1MzAwOCw1NjA3ODM2MSwxNTk1NjY3NCw1OTE4MDY0NCwxNjY5NTMyNCw2NTc0NDE3NSw3MDkzNDQyLDUzNzU1NTM4LDEyOTgyMTY0LDUzNjQyODk0LDQ0NDE5ODcsNjUxOTI4NDYsNjQwNTkwOSw1OTYyOTI2Niw3NTg4Mzk4LDYzMzIwNzIzLDE2NTQyMzE3LDY0NDYyOTUyLDE0MjcxNTIsNTU0NjU3NTcsNjkxMjcxMiw2MzU1NjEwMywxNDY4MDg4OCw1NDc2NzM0MSwxMzA3MzI3Myw2MzIyNDY2NCwzMDIxOTg4LDU1Nzc0ODExLDYxNjY3NDcsNjYwMDExMDgsOTM4ODkxOSw2MjE2MDAxMiwxMTIyNDE0Niw1NTA1NzIzMyw3NjAyNjgwLDY1NTI0OTUwLDI3OTA3NDksNjIxMjUxNzgsOTA1NTM5MCw1OTE2NDkyNF0=", 11331684);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
+    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
+      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
+        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.style.display = 'flex';
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  document.getElementById('stay22-modal').style.display = 'none';
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+
+</body></html>

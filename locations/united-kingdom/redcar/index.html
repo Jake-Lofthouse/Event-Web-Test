@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Redcar, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar." />
+<meta name="description" content="4 parkrun events in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Redcar, United Kingdom" />
-<meta name="geo.position" content="54.615225;-1.07902" />
+<meta name="geo.position" content="54.586805749999996;-1.064867" />
 <meta property="og:title" content="parkrun Events in Redcar, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar." />
+<meta property="og:description" content="4 parkrun events in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/redcar/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Redcar, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar." />
+<meta name="twitter:description" content="4 parkrun events in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/redcar/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Redcar","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/redcar/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Redcar, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/redcar/","spatialCoverage":{"@type":"Place","name":"Redcar, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.615225,"longitude":-1.07902}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Redcar, United Kingdom — Hotels & Course Maps","description":"4 parkrun events in Redcar. View course maps, find nearby hotels and plan your parkrun visit to Redcar.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/redcar/","spatialCoverage":{"@type":"Place","name":"Redcar, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.586805749999996,"longitude":-1.064867}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Redcar</h1>
-    <p class="hero-sub">1 parkrun event in Redcar</p>
+    <p class="hero-sub">4 parkrun events in Redcar</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Redcar?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(54.615225,-1.07902,'Redcar parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(54.586805749999996,-1.064867,'Redcar parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,115 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Redcar</div>
-  <div class="event-grid"><div class="event-card" data-search="redcar parkrun redcar" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="flatts lane parkrun redcar" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-flattslane" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Flatts Lane parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Redcar</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/F/flattslane" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-flattslane');
+  if (!el) return;
+  var map = L.map('cmap-flattslane', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNjQ2Mzc5Niw1OTQxMDU3OSwtNDAxMjM2Niw1ODUxOTc0NCwtMTA4ODY5ODEsNTU1MTAyOTksLTIzMzAyMjIsNjU5NjczMDAsLTY2NDgxNzYsNjMwMDYyMjksLTYyNTU4MCw2MTQ3MDIwOSwtNjM1Njk2OSw2MDI4NTMxNywtOTYyNzM4MCw1ODk5MTYxOSwtMTI0MDc1MzUsNTA5OTU0NjYsLTY4MzUzMyw2NzA1NzY3MywtNjEyMjcxOCw1Mzc0MjcyNCwtMzIzMDc5OSw2MzUzNzgwNywtNjE3NjUzMSw1NDEyNTY4NSwtMjk0NTA4OCw1OTA4MTcxOCwtOTUwNzAyNSw1MzE1ODc5MywtOTExMjUwNCw1NTI0NTExMywtMTIzODUyMjgsNjEzNjUxMTIsLTI1OTIwNzksNTczMjk1MzMsLTQ0NjIxMCw1NDk0MTg0OCwtNjY2MDA0OCw2NjQ3MzQ2MiwtMzg5Njg0Nyw1MzYyMTg0NywtMTUwNDE2NTEsNjcxMDQwOTEsLTgyODYyMjUsNjAwNTcyODAsLTExODM5MTExLDYwODExNDA2LC0xMzcwMDk2Niw1MzkwNjE5NywtNjE3NTczLDU0MTE1OTE2LC0xMTM5ODE0Myw1NzA3MzU4NCwtNjA2MzU0LDU4NTk5ODcwLC02OTUwMjA5LDUyMDY4NjMzLC02ODI2NjI0LDYxOTM2ODc2LC05NTkwNTE2LDY0MjU2MzM2LC00MTEyNDIwLDUzMjQzODM0LC0xNTU3NDgzMSw1NDkzMDA4OCwtMTE2MDUxNTksNjEwNzkzNzQsLTMyMjY1NTUsNTM5MDkxNjAsLTI3ODUxNzUsNTMwNTcwMzgsLTE1MTA4ODM4LDUyNzM2MjE1LC01OTMzNTMxLDY2MjQzNzEyLC01MjU2NjI4LDUzMjM1NzE3LC0xNTEwNjk1LDU2MTk0Njc2LC0xMDgyNzM0Myw2MTI4NzYyMywtMTY0NTQyMTYsNjEwMDYxNDksLTc5MTkyMzksNjAyMjI3OTIsLTU5NjQ1MjgsNTg4NzM2MzYsLTg2MjE2NjYsNTQ2NTI2NTcsLTM1MDMxMTUsNjQ4Mzg4MjgsLTgzNzcyMTYsNTIyMjEzODQsLTI1MDU2NTUsNjM5MTE0OTUsLTcyNjg2MzgsNjU3Njg5MTEsLTQzNDMxNzMsNTc2MzI0ODQsLTE1Mzg0NzM2LDUyOTMzNDYzXQ==", 2280785);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="marshall drive parkrun, brotton redcar" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-marshalldrive" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Marshall Drive parkrun, Brotton</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Redcar</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/marshalldrive" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-marshalldrive');
+  if (!el) return;
+  var map = L.map('cmap-marshalldrive', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMTUwNTY1Niw2NDk0OTA2MCwtNzQwNTQwOCw1MjAzMzMxMSwtNjk3Njc4LDU2ODUyNTYwLC02NzQ2MjYxLDYwMzUxODI3LC0xMzMwMjk1NCw1OTM1OTA2NCwtOTA3OTI5NCw2MDcxMTc2NCwtMTYyNTgwNTYsNjUwOTI2NjYsLTQ5ODUyNjcsNTg5MzUxNjYsLTUzMzM0NjAsNTY4MzU5OTksLTEzNjE1ODQwLDUyNDA2NDIyLC0xMjk3ODIyNCw1MzUyMjU5OSwtNDc3NDA4Miw2MTU2ODM4OSwtODQ3Mjc4NCw2MDIyMDc0OSwtMTY2OTA3MDQsNTc1ODYxODEsLTkzNTMxNDksNjQ1MzQ1NzAsLTEwODA2Mzc1LDYwMTE1MzgxLC0xNTU1MTIyNCw2MTYwNDY2MCwtNzEyMDMxNCw1Njg0MTUzNywtMTQyNzkyMjYsNTA3NzYzNjksLTc4NjI0MjEsNTk1MTkyOTgsLTEzNzYyMDI2LDYwMTAyMTA5LC03NzA2NjQzLDU2MzYyMTc1LC0xMTkxOTQxNSw1MTEyNTYyNCwtMTg1OTk5MCw1MjIzNjg0NSwtNzY2MzA1Niw2MTE0MTIyMywtMzcwMDkzMyw1NDAwNDk3MywtMTI1ODU1NzYsNjQ5NTY3NzcsLTExMDQzMzk3LDYwNTA0NDMwLC0xMTQ1NDEyMCw1OTczMzE4NSwtOTY1MzE1MCw2NDcwMzYyMywtMTU0NTczMDUsNjAzNDY4OTMsLTExNTk1MTU0LDYwNTkzOTg2LC0xMjUyODAzMSw1NzkzMzUxNywtNjA2MTA0OSw1MzM1OTUwMywtODY5OTg4Niw2NjM4NDE4NV0=", 15124871);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="redcar junior parkrun redcar" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-redcarjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Redcar junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Redcar</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/R/redcar-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-redcarjuniors');
+  if (!el) return;
+  var map = L.map('cmap-redcarjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05NDU5MTIyLDYxMDY0NzkwLC00NjkyODQyLDU0NTY4NjM1LC04MDU0NTAyLDYwNTQwMTc4LC04NzUzNTEzLDU3MDY4MTczLC05MDQwMzM0LDYwMzk2MDI3LC0yNzQ2NzEzLDYzOTI4NjgzLC01NjMwOTE4LDY2NDM4NTM2LC0xNDQyNjAzNyw2MTUzNTI4MiwtMTQ0MzA3OCw2NDY2NzQ2NSwtMTExMDU1NjAsNjEzNDA4MjIsLTM2Njk3MzIsNTE5MDQzMjMsLTEzNzEzNzA3LDYyNDUyODI1LC0yNzY2MDU0LDU5NDA2NjMyLC0xMjM5MzI0MCw2NDQxODc4OSwtMTY2MDU5NTIsNTg3NTM2NzksLTU1NDE4NzAsNjM4OTA4NDksLTg3NTA3Miw2MTM5MzAxNiwtNzE4NDAwOCw2NjA2MzE3NCwtMzgwMTg3Nyw1NjIzMzkyOSwtMTUwMzk5NjcsNjYxNDk4MzksLTEwMjE3NTg0LDYwNzUyNzMyLC0xMTkwMDQ4NSw1MDc4NTE0MCwtMTE2OTUzMjgsNTc1MDA3OTksLTE0NTk2OTI4LDY1MTMwMjA4LC0xMjgxNzUxMCw1Mzg2ODY2NCwtMjU0MzE4NCw2MjEwNDU3NiwtMTI2MDI1NzIsNjA4ODI2MTMsLTg4NDg0MjYsNTMxMzQxODksLTI2MjMwMzIsNjA0ODAxNTksLTQ1MzkxNjQsNTEyNTQyMTQsLTc0NTgwNTgsNTk2Mjk1ODUsLTYzMDU1OTgsNTIzMjcyMDksLTY1MDE4MjEsNTcwOTk0ODUsLTExMTk5MDYwLDU0Mzg5MDM1LC0xMDk1ODI3MSw2NTI1NzkwNSwtNTk3MzM0NSw2MzcxMzA3MSwtNDE2MTE1Nyw1OTQyOTQ3NiwtMjI2MTgyNiw2NDg4MTc5MywtNzgyMDYyMSw2NjkyNzM0NiwtODM0NTg2NSw1MTIzNzg5NCwtMTAxNjU5OTcsNTcxMjQ5MzksLTk1MDQ2Myw1MjMxMDIzNCwtMTExNzk5MzcsNjQzODQ0MjYsLTE1MTM3MDY2LDY2NTcxNDEzLC05MjA0MDg5LDYyMjcwMzU2LC0xNDg5NTA3NCw1MzA2MzM0MSwtMjExMDI2MCw1MTczODQ0MCwtNjI2NjcxOSw1NzIxMDY4OCwtMTYzMTgyNzUsNjA5MTQyNzEsLTExMDE2MDg0LDYxNjk4OTc0LC0xNTI0OTgzMyw1ODI3MjM0MSwtMTE0MzU3OTEsNTkxNTQ4MDMsLTE2NTc5ODQ5LDYxNDEzNzkxLC0xMDE5NzQ2Niw1NjM4MDExMCwtNjk4Nzg0OSw1NzQyNzkyNCwtMTMxMDQzMTMsNjIzMTE2MzIsLTg4NTI4OTQsNjI2MjU3NjEsLTc1MTI3Myw2NjIzOTA2OSwtMTQ1MTA5MTcsNTg1OTE3ODEsLTE0NjU3NTIsNjEwNzc1OTgsLTE0NTQ0NzEwLDUyOTMxMTQwLC00MTMwNjE2LDUzMzQxNTA5LC01MzIzNzQ0LDU2NzE1Mzc1LC0xNzIxODA2LDYyMjg0OTEwLC0xNjA2MzkwNiw1MjMzMjk4OCwtOTE5MTQzLDYzMzcyNjYzLC0xMzA4MzA0MSw2NTM3MzY1MywtNjY0OTY2Miw1Mjg3NTY1OCwtMzg4NTkyMyw1NDM4NDMxOCwtNDUyNzQzOCw1MDk1NTY5NywtMTM4NTg2NzQsNTA4MDMyMTAsLTQxNjI0ODcsNjU1OTkyMDMsLTUxODA4OTYsNTgyODYxNjEsLTEyOTI3OTQyLDU0MDgxMzg1LC0xNDgwMTUzMiw2NTIzMDg5OSwtMTQ2ODE1MjAsNjIzMTc5NzgsLTI0MTg4NzgsNTM2OTgyOTMsLTEwNjQwNjkxLDYxMDcxMDg3LC03MTgzODE4LDYyNDk2MzAxLC0xNDI1MDMyOSw1OTY3MTkwNywtMTI3MTc3MDcsNjE2Mjc3NjEsLTg2ODU5MTUsNjAxODcyODYsLTI3NjA4NDQsNjU5NjQzNTksLTkxMjU4NjcsNTM4MzI1NDQsLTQ1MDExMDcsNTk4NDk0NDgsLTI3NjQ3NzEsNjU3OTU3MzcsLTM5OTA5ODEsNTk4NDE4ODQsLTkyNzk3NTEsNTMxODU3NTIsLTU5NzYwMDQsNTcwNDExOTUsLTE0ODU1ODE1LDU3OTU4MDIyLC0xOTgzMjc2LDYzMzE0NjY3LC0xMzMwOTkxMCw2MjY5ODEyNywtMjc0NzI5MCw1MjU1OTQwNiwtMzM2NzM3Myw1MTU5MDk1NywtMTQ0NTM5MjMsNjUzMjI4OTUsLTEwNjc4OTUyLDY2NzcxMDEzLC00ODExODEsNTk2NzU5NTMsLTEzODc2NjI0LDUyNjU4NzE4LC0xNzU3NDg5LDU2NjI2ODc2LC00NTQ3MzEzLDYyMTc3MTYwLC0xNDYyOTAxNCw1NzMxNjYzMywtMTU4NTQwNzQsNTk0OTM0MjksLTkyMDk2OTEsNjQyMTk2MTMsLTYwNjc2MjcsNTA0ODQ1MDld", 11755255);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="redcar parkrun redcar" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-redcar" class="card-map-inner"></div>
     <div class="card-map-badges">

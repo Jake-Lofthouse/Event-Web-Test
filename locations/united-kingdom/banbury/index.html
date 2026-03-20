@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Banbury, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury." />
+<meta name="description" content="2 parkrun events in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Banbury, United Kingdom" />
-<meta name="geo.position" content="52.068807;-1.332318" />
+<meta name="geo.position" content="52.067389;-1.33381" />
 <meta property="og:title" content="parkrun Events in Banbury, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury." />
+<meta property="og:description" content="2 parkrun events in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/banbury/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Banbury, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury." />
+<meta name="twitter:description" content="2 parkrun events in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/banbury/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Banbury","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/banbury/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Banbury, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/banbury/","spatialCoverage":{"@type":"Place","name":"Banbury, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.068807,"longitude":-1.332318}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Banbury, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Banbury. View course maps, find nearby hotels and plan your parkrun visit to Banbury.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/banbury/","spatialCoverage":{"@type":"Place","name":"Banbury, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.067389,"longitude":-1.33381}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Banbury</h1>
-    <p class="hero-sub">1 parkrun event in Banbury</p>
+    <p class="hero-sub">2 parkrun events in Banbury</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Banbury?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.068807,-1.332318,'Banbury parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.067389,-1.33381,'Banbury parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -362,6 +362,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="spiceball country park junior parkrun banbury" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-spiceballcountryparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Spiceball Country Park junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Banbury</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/spiceballcountrypark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-spiceballcountryparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-spiceballcountryparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNTQyNDM5OSw2NTc3ODQ0NywtMzA2MTE1Miw1MDkwMTY2OSwtNjMxODYzMyw1ODMxODU5NSwtNjkyNjIxOSw2MDMwNDI2NiwtODA0NzY4LDYyMTU3OTA3LC0xNjY0OTExNSw1NjMyODEyOCwtNjU0MDYyMSw2MzU3NTM5OCwtNjczNTMwOCw1MzI4MzU3MiwtMTA0MTAxMyw1MDU4ODkwNCwtMTAxNjY0ODYsNTkwOTg5NzAsLTM4MjI4NDUsNTY3MzUzNzIsLTk0NjAxMzcsNTY3OTU4MTIsLTQ3MzcyMzMsNTQxNTU5NzYsLTE2MDY1NDM3LDUyNTA1NjcxLC0xNTcwMjU4Niw1MjQ5NDk2NSwtNjIyNjAxOCw2NDQ1MDk4OCwtODA4NDgyMyw1NDIwMzMyNiwtNzI3OTk1Myw2MTc4NTUyOCwtMTQ0NTA5ODIsNTg5NDgyMTcsLTk1NDQwNzcsNjAwODU4MDIsLTEyMjY5MjE3LDU3MzI2NDg5LC00Nzc3OTA2LDY0NjM0MzEwLC05NzczMDUzLDU1MDY3MTk4LC04Mzk5NDkzLDU4MDc2NjY0LC0xMTQxMTIwMCw2MzcyOTI4NywtNzU4MjU2Nyw2MjY5ODI3NywtODUxMDgzOSw2MzEwOTMxMywtMTUyMzY5MDMsNjYyMzc1NDcsLTE1MTIxMzMzLDUxODExMjAzLC0xNTczNDc1Niw2NDkyNjE3MSwtNzIwMDMwMiw2MzY4NzE0MiwtMTU4NzQzMzYsNjI5Nzg1ODMsLTE1Mzk0NzY2LDU2NTM3ODAxLC0xNTMzMTQ3NSw1MTQxODQ4NiwtMzI3NjMxNSw1OTU4NjcyNiwtMTE4MTM1MDIsNjY0NzM0NzMsLTU0ODk1NzEsNjI1OTIxNzcsLTU2NDY4MzgsNTcxMjYzMjksLTg0NjEzNDksNjE2NDYzMTAsLTk3ODg1Myw1MDc4ODkxNiwtNjgyNzk1NCw2MDgyMzQ3OSwtMzI2NjQxNiw2MTYyNzU5MiwtNjEwMjc5Myw1NzE2ODU4MSwtODI5NjkyMSw1MjkyMTM3OCwtMTc2NTgzMiw1MDQwMTk2MCwtNjk4NzkzNSw1ODMyODk5NSwtMTM3MzcxMDcsNTI3Mzg2NDgsLTYxNDI5MTgsNTc0ODU1MDcsLTEwNTE5Mzk4LDY0OTExNDIwLC0xOTI2MDAzLDYxMjc5NjQyLC00MDg5NjIsNTYzNzcwMTcsLTg0NzU2NzgsNjQ1Nzc3MjgsLTE2NTU3MzA1LDYyNzU5MzM4LC0xNjIzNjU2MCw1NDI1MDczOSwtMzEzNDQ0OCw2Njg1ODA4MCwtMTQyMzYwNDQsNTgwMzMwOTksLTgyMTg1NDIsNTM4MDIxMjUsLTM1OTM2Nyw1NzY0ODA1MSwtMTI5MTIyMjEsNTMxNDQ4MjUsLTg2Mjg4MDMsNjI1ODQyNzcsLTEwNzMyODQ2LDYxNDU4MDQ0LC0xNTU1MjM4Nyw2MTY2ODMyMiwtNzU3MzQ4Miw1NzcyNzA0MSwtMjc3NDcyOCw2NDAzMTYxNywtOTMxMDY5NSw1MjI2MjIzMCwtMTU4NzA3MzMsNTc1NTAzODMsLTIwMjg0Nyw2MDA1OTI5NSwtMzcyNTIzMCw1MjUwNDM0MSwtOTM4NDg5OSw2NjQ4MTk4MSwtMTAyMzIwNTMsNTUxNTM1NjIsLTE1NzI1MTE5LDY0MTU0MDIxLC02MzMyMjY3LDYwMDc3MzMxLC0xMDMyMTA4NSw1ODc4MzUzMywtNjcxMjM0MCw2MDI3MTEzNCwtMTA1Nzk0MTksNjUxMTk3OTIsLTYyNjU1NjcsNTI1Njc1OTEsLTE0ODAxMzMzLDUyOTI1MzMyLC05MzQ2NjI3LDU3OTc3OTU5LC0xNTk2NjM4Niw1Mjg5NzMyNywtMTA0MTY4NzMsNjUzMTEwOTIsLTEwNjc0MTc4LDU3NjQzODA2LC0xMzE3ODgyMCw2Mzc2OTAwMiwtMTEwNDA3MzcsNTUzNjQwMDksLTM4NTAzMzUsNTcwNTczODMsLTc1MTkwOTYsNjM3MjE2ODIsLTcxMjQ1MzAsNjEyMTYzNjksLTQ4MTkyNTQsNTY2MDc0NjEsLTEzNDI4MzU1LDYyNTY2MDUyLC0xNTc2MTAzMSw1ODQ3MTkyMiwtODY5MDA4Niw2MjY3NjA5NCwtNjkxMjUyNyw2MDkyNzc5OSwtNTkxNTg0Myw1Mzk5NTAzNSwtMTI4OTk1OTAsNTQyNDE1NzYsLTEyNTU2OTE5LDUzMjExOTA3LC0xNDMwODQyNiw1OTAyNDQxOSwtMTQ5MTEzMjEsNTI2Nzg5OTQsLTQwMzA5MSw1NjgxMjU2NCwtMjIxMzgyOSw2MDA2NDI2OSwtMTAzMDY5NzAsNTk5MTc0NjAsLTc4MjI3OTksNjIyNTAyMTksLTQ2NTgxMDUsNjQyNTU3MTIsLTE1MjQwNTUzLDUxOTg4NDQxLC0xNjY3NTg5Myw1NjYxNzk1MiwtMTM5ODIzNDIsNjQyMzkwOTksLTk4NTEyNzgsNjUyNTAzODYsLTEwNTIxMDUzLDU4NTAwNTIwLC0xMDgzMTIzOSw1NDcxMDE3MSwtNzU2MTM4OSw2MjAyMzE2MiwtNDUyMTE2OCw2NDg3MDQ0MCwtNjMzMjg2Miw2MjY1NjQzMywtMTE5MzQ1NTUsNTc1MDE0MzAsLTU4ODY3NzAsNjI1MDgyMDAsLTEwNTM0NzI5LDU3NTA0NjcxLC0yMzU2NzIwLDU2MTQ2MTE4LC0xMTk5ODgxLDUxMzgzNzc0LC04Nzg1Mjc3LDY1MTIzMzk5LC04MjIwMjcxLDUyNTQ2NDA2LC00NzI2NjAzLDYzNTgwODc2LC0zOTMyOTIyLDYxNDg1MDU0LC0xNDgyMzA3NCw1MjcyNTQ4OSwtODMzNTUzMCw2MTI5NjI0MywtMzM0MjExMyw1NzUyNDA2MiwtMTM0NjExMzUsNjA4MjM2NzQsLTQ4NTk4NjksNjQzMzMwNjQsLTY5MjE5NzUsNTk1OTIyNTAsLTI3MDM2MjMsNTc2NTY4ODQsLTE2Mjg5MTc0LDYyMTQ1Nzc2LC00MjE1MDgwLDU4NjgyODQ0LC0xMTcyMTM5Myw2MzEyMTQ3NSwtNDE0NzcyOCw1ODc2MzEzMiwtMTE0NzM4MzgsNjUwMTA5MzQsLTk0NjYyMTEsNTk5ODAyNjksLTEyMzEzMjc4LDYwNjQyMzM4LC0xMzM1NDU1Nyw2NDA3OTM0NiwtMTE4MzU3NTAsNTgxNzMzMjIsLTI4NjEzNzQsNTA0Mjk2NTYsLTExNzg2MDg1LDUwNDcwMDcxLC0zNzgxMDI3LDYwNTIyMTMzLC02ODg0NTE0LDY0MTM2OTA1LC0xNTI1OTU2OSw2NDM4OTg3MiwtNDk1NjIyOCw2NTIwMDg3OCwtNTg1Mzg3Niw1NjQzODI3MCwtMjE4NzYyNiw1Mzg5MzA0NiwtMTMwMjA4MTgsNjI4OTgxMTksLTE2NDc2NDk4LDUyMjM3Nzg4LC00OTk5NDY1LDUyNzcyNDk2LC0yMzY4Nzg0LDYyNTk0MzAyLC0xMzIyNDA3LDYwNDUyODgxLC0zODc4NjgzLDUwNDY1Nzc4LC0xNDI4OTM1MCw1OTE4MTc1OCwtMTM1OTYwNDIsNTg0NzU1MDcsLTc1MDM2NzgsNTk3Nzk3MDcsLTI3OTIyMjAsNTcyMjA5NzAsLTQ1MjU1Miw1MzUzODA0MiwtMzI2NDYzNiw1ODA4ODk1MywtMTkxOTQ5Myw2NDgyMzAwMywtMTU0MjY5NTYsNTUxNTg2ODEsLTE2MjYxNTkzLDY0NTcyNzUxLC0xNTY5MzA1LDYzMDg0NzY3LC04NzkyNjgwLDYwMjczMjIyLC04NjA4NTMwLDU3ODc3MTUyLC0xMjM4NTg4LDYzMDc1MzgzLC0xNjM4MDA0NSw2MDU4MjgzNSwtMTQzNTM2MTgsNTE1MzgzMDMsLTE0OTUwMTEyLDU1NDM5MTQxLC02NjA2NzA2LDY2NTgyNjM5LC00OTc2NzA2LDYwNTAwMTk2LC0yNDA2ODU4LDYxODI5NDgzLC0yOTY5MTc0LDUzMjM1MTI1LC02MjIzMzAsNTA3MjcxNDUsLTUwODI4MzgsNjAxNzQ5OTUsLTU3OTE3NzYsNjY5MzQ2MzQsLTc4NTIyMzksNTEwMjkzMTgsLTc4NTQwMjQsNTk0NDE3MzMsLTE2MDE4NjQyLDU5MTE2OTgxLC01MTE5ODQ0LDU2NTg1MjAyLC0xMTY0ODg0Niw1ODU0OTExMSwtNjk4MTgxMiw1MTg2OTczMCwtNzI0Nzc5MCw1NDY0NjQxNSwtMTEzMTUyODMsNTU4MzM3NjksLTE1NjMwMTYzLDYyMzIxNDU4LC0xNzA0NTY5LDU4MzAyNDM3LC0xMDY0MDY4Niw2MjcyNzg2NSwtODE0OTkyOSw2NDUyMjM4OSwtOTA0ODI1Niw2NDEzODU0MywtODQ4NDA1NSw2NTMyOTU5NCwtMTE5NDQ5NDAsNTEwNzAyMjMsLTEwMDY0OTU5LDU1NDYxNTQ5LC04NDI1OTE0LDU5NjI2NTk2LC0xNTYxNDcyNSw1NDc1NTQxMywtNDYzMTQxMiw1NDgzMDQ4NywtMTUxNjk2MzEsNjU2NTA4MDksLTM2NDY3MzgsNTc4NjA4NDIsLTE4ODYxNjYsNjA1NjMzNTksLTc2MTUzMTgsNTE2MTM0NDksLTk0Nzk1OTIsNTgwODQ1MjcsLTQyODcwNTcsNTY5NjYxNjksLTE2NDkxMDg4LDYyMDU0NTczLC03NTE5MTU1LDY0NjQzNTk4LC0xMjYxNDcxMSw2MzMyMzg3MywtNjQ1NTU0NCw1OTMyMzYwNSwtMTQwODkwMTgsNTY4MzkxNDMsLTk2MjcxMjUsNjY2MjM0MzgsLTg1NDMyOTIsNTMyNzg1NzgsLTkzNzMzOTYsNTUxOTE3NDIsLTE1NDc3NTc5LDY0OTI3MjEyLC0xNjE5MTQyMCw1MTU0MTYyMywtMzE1NTM0NSw2NDczODAzMCwtODQzOTEyLDYzOTMyNTU0LC0xNjc1NTc2Myw2NjQ4MDcwOCwtMzI3MDAzNyw1Njg0NDk4MiwtMTU2NjUzOTQsNTg4NjgwNDYsLTE5MjM3MDAsNTMzMjQxMzAsLTQ3NzgwODIsNTgzMTk2MzcsLTE1NTg2MTg2LDYxNDU4NDYyLC0yNjczMzU3LDUzNjUwNjQ2LC0xNDU2NDA3Niw2NTUzMzA1MSwtMTYzODEwMDQsNTMzNzg0MjEsLTEwMTM2MTg4LDY2MjU2OTY2LC0zNzU0MjE2LDYxNjIxMTcwLC02OTkzNzM2LDYyNDM5MDczLC0xMTY4OTkyNSw1Njg1NTg3MywtOTQ4NTYzLDYwNDU0MzI5LC0xMDY0MDQ2Niw2MzczODU0MV0=", 2543976);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

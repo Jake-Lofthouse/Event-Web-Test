@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Gold Coast, Australia — Hotels &amp; Course Maps</title>
-<meta name="description" content="4 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast." />
+<meta name="description" content="10 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Gold Coast, Australia" />
-<meta name="geo.position" content="-28.0273345;153.41098075000002" />
+<meta name="geo.position" content="-27.990721;153.39300110000002" />
 <meta property="og:title" content="parkrun Events in Gold Coast, Australia — Hotels &amp; Course Maps" />
-<meta property="og:description" content="4 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast." />
+<meta property="og:description" content="10 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/gold-coast/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Gold Coast, Australia — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="4 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast." />
+<meta name="twitter:description" content="10 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/gold-coast/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Australia","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/"},{"@type":"ListItem","position":4,"name":"Gold Coast","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/gold-coast/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Gold Coast, Australia — Hotels & Course Maps","description":"4 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/gold-coast/","spatialCoverage":{"@type":"Place","name":"Gold Coast, Australia","geo":{"@type":"GeoCoordinates","latitude":-28.0273345,"longitude":153.41098075000002}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Gold Coast, Australia — Hotels & Course Maps","description":"10 parkrun events in Gold Coast. View course maps, find nearby hotels and plan your parkrun visit to Gold Coast.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/gold-coast/","spatialCoverage":{"@type":"Place","name":"Gold Coast, Australia","geo":{"@type":"GeoCoordinates","latitude":-27.990721,"longitude":153.39300110000002}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">Australia</div>
     <h1 class="hero-title">parkrun Events in Gold Coast</h1>
-    <p class="hero-sub">4 parkrun events in Gold Coast</p>
+    <p class="hero-sub">10 parkrun events in Gold Coast</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">9</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Gold Coast?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(-28.0273345,153.41098075000002,'Gold Coast parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(-27.990721,153.39300110000002,'Gold Coast parkrun')">Find Hotels</button>
   </div>
-  
+  <div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in Gold Coast..." /></div>
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,79 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Gold Coast</div>
-  <div class="event-grid"><div class="event-card" data-search="coomera parkrun gold coast" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="bellevue park junior parkrun gold coast" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-bellevueparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Bellevue Park junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/bellevuepark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-bellevueparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-bellevueparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE1NDE3ODMwOCwtMjkxNDU0OTksMTU4ODkzMjY1LC0yNTk2NDM5NywxNTQ5OTYxOTgsLTE3ODcyNDE0LDE2NTU2NzYyNiwtMzE5NjczMTIsMTUxMTEzOTEyLC0xODY0NDU4MywxNTg0MzU2MzgsLTIwNzE3MTE3LDE1MjY0OTE3MywtMjI3OTc2ODEsMTY3MjIxMDc1LC0xNzExMTQyNSwxNTUzNzgzNTUsLTE4NjY1MjUwLDE2MDYwMDAwNSwtMTg3Njc1NDcsMTU1MzY3MDQ2LC0xODA4NTc2MSwxNTcyNjIwNTAsLTMyODMxNTEzLDE2NjU1NjAyNiwtMjY5MzQ5OTcsMTU3MDE5NzczLC0zMjAxMTQ1MCwxNTE4MzUxOTIsLTMwMzMyNjE1LDE2MzU4Nzc1NywtMjk3NzE1Nzdd", 2386226);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="broadbeach waters parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-broadbeachwaters" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Broadbeach Waters parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/broadbeachwaters" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-broadbeachwaters');
+  if (!el) return;
+  var map = L.map('cmap-broadbeachwaters', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE1ODcwNTIyNywtMjM4MjI2NjMsMTU2MzE2NzI2LC0yOTQ1Mjg4NSwxNTI4ODgwNzYsLTI2ODM2Mjc3LDE2NDgxODgwNCwtMTcyNDczOTQsMTY0ODgyODQ1LC0yNDAzNDMzNCwxNTM4MzgxOTEsLTIzMjUwMzg3LDE2NzA4NDA0OCwtMjAxODI1NTUsMTY2NDAwNTg1LC0yMTg2ODU4MSwxNjYxOTY2MjIsLTE4Njc4OTY3LDE2MjE0NzIyMCwtMzA0ODA5OTYsMTU2NDA1MDM5LC0zMTM0MTc2MiwxNTMyMTIzNTgsLTMzNDkxNTY1LDE1NjMxMTEzMSwtMjg4MjEyMTQsMTYzMTcwMjI2LC0yNDE0NDA4OCwxNTk3MzcyMzksLTI0MDgwNDMxLDE1Mzk4NTcxNSwtMjA4MDY3MTMsMTY0MDY4OTIwLC0xOTQ2ODc4OSwxNTQzNDMyMTYsLTIxMzU0NDMzLDE1MTQ0ODI4NSwtMjQxMDQyOTQsMTY1Njc3MjIwLC0yNjk0NTU4MiwxNTYzNTI0NDEsLTIyMjE2MTQyLDE2MjgyNDE2NSwtMjQ5MzY5NzksMTYzNDkzOTIwLC0zMTM0OTYwMywxNTQ1NjIzNTUsLTI3NDcxODAzLDE1OTYxMTU1NCwtMjA4ODcyNzcsMTY2MzA1NDg1LC0zMjgxMTY1NCwxNTMzNjk0MzksLTI4NTc1MzkyLDE1NzcwMzg2MCwtMjEwNzk4MjAsMTYyNTE3NDAzLC0yMTM3Nzc1NCwxNTc1MzIwNDYsLTMwOTUwMzA3LDE1MTMwNDY2MCwtMjMxMDEyNDYsMTYzMzc1NjA4LC0yODI5NzA5OSwxNTczMjA0NDcsLTIwMjI5NzQ4LDE1OTkyNTc0NSwtMTc2NzA4NTgsMTU0MzgwNTQ4LC0yMzI3NzM5NiwxNjY2OTU1MDgsLTI5NDY2NzcwLDE2MjQ3NjM3NywtMjMyMTkyNjYsMTU5MDM4NTQ2LC0xNjgzMzA0NywxNjc1MTY1NzEsLTI1NDA3NTEyXQ==", 7154041);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="coomera parkrun gold coast" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-coomera" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -359,6 +431,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
   
   var route = _d("WzE2Mjk3MTAxMCwtMjI0MzA5MzAsMTU0NDQ0MzU2LC0xOTY2NjQyOSwxNjI4ODIzMjYsLTI1MDYxMDc3LDE2MTkxNTc5MiwtMzMyMzgyNzksMTY3MjY5NTY5LC0yOTEwODgyMSwxNTMxMDA0NjksLTE4NzQ5Mzc2LDE1OTY0ODUyNCwtMjgyOTQ5NjAsMTUyNTM1MTIxLC0zMjY0MzI2NiwxNjQ3Mzg4NTksLTMzMTM0NDQ3LDE2NjM4OTM4NSwtMjQ2OTY4NzQsMTUxNzM2MDk0LC0yMTk4MDc3MCwxNjY3MzY5ODIsLTE2OTgyODc1LDE1MTc0MzQ0NiwtMjY2MTM1NzksMTU3MDgxMzY4LC0yMzQwNDExMywxNjI0MDU0NDYsLTIzOTgzOTk0LDE2Mzg1MDA4NSwtMjc5ODM1MjYsMTUxOTU1MDczLC0xODk3MTMzNywxNTc1MzA5MTQsLTI1MTIzNjIyLDE2Mzc3NzM0MiwtMjY0OTA3MDQsMTUyOTUwNTYyLC0yMDE5MTQ5NiwxNjIyOTM4NDksLTMwMjI0MTMxLDE2MDY1OTA4NywtMjQ2NjA4NjAsMTU5MzM3MjkxLC0yMzg5MjU5NywxNTYwMjQxMjcsLTE3NjQ1NzU2LDE1ODAwMDg3MiwtMjg3NjQ5NzAsMTU2MzU4MTM0LC0yNDgwODU3NCwxNjc0OTA1MDAsLTI1NzQ0MzIwLDE1Nzg1Njk4NywtMTc4OTI0NjgsMTUyMTU0NDQ4LC0xOTk0MTkxMywxNjAyMTk4MDQsLTE3NjQ2NTkzLDE1ODM5NDIyMywtMjEyNjY0MDgsMTU2MjI4MDI2LC0yOTc1MTM4NSwxNjIzNTUwOTYsLTIzMTM3MDgwLDE2MjI5NDUzNiwtMzIyMTQ0MzYsMTU1ODU5MTA1LC0yOTMzOTY1MiwxNjA5NDQ0MDYsLTIzMTQ0NTg2LDE2MTY1NTYxMSwtMjY5MDYyMzUsMTY2MTAwMTU2LC0yOTk5MzI5NSwxNjM3MDMwNDMsLTI5ODk2Nzk2LDE2NjEwMzIyNSwtMjQwMzgyNDcsMTYyNDQxMTMzLC0zMDQ0MDgyNSwxNTM1MjE0MzAsLTIxNjkxODkzLDE1MTc0MzEyNiwtMjE2NTI1ODcsMTYxNjI2ODMyLC0yNDMzNTkzNywxNTQ5NDYzNzIsLTIzMTQ5ODk4LDE2MTgwNzUzNiwtMzAyNjY0MzIsMTY2NDE0MjM0LC0xOTkwMTU0NCwxNjI5MzM4NTEsLTMwMDIyOTk0LDE1MzM3NTAyMywtMzAzNTg5OTcsMTYxOTUwMDc3LC0xODM5MjM1MSwxNjUwNTI0MTYsLTE5MDUwODU1LDE2NDQwNzAxMywtMjY0NDAxNjMsMTY0OTkxMTA5LC0yNTMwNTM2OCwxNjU3NzIzMDksLTMxNzk4MzA3LDE2NTQxNTE5MywtMjgwMDEwNTQsMTUyOTMzNzY4LC0yNTU1ODUxNywxNTM4MDY5OTAsLTI4MDgyNjI5LDE1MzE4NjE1OCwtMjExOTA2OTMsMTYzNjEyNDQ1LC0zMzQwMDM3OCwxNTcwNjI1NTEsLTMxMzM4MjU1LDE1MjE0MDY4OCwtMzEwOTg4ODMsMTYyMzE2NDg0LC0yMjgzNjY1OSwxNjEwMzUyOTcsLTE3ODU1NTg4LDE1NTY4MTQ4MywtMzMxMzA0NDUsMTY3NDg4NzQ5LC0yNzUxNDcxMiwxNjAyOTcxOTIsLTI3NDAwOTUxLDE1ODI0NDIxMCwtMjM4MTQ4NjEsMTY0NjYzMDEwLC0zMjgyMjUyMCwxNTMwMTM5MTksLTIyNjgwODk3LDE1MjMyMzk1MSwtMzA3MzAwMzAsMTU3MDA1NDg2LC0yNDY0NDMxNCwxNjM5MzQ2NjksLTI2MzgzOTY1LDE1MzE5MzA5MywtMjk1NDQwOTUsMTY1NDA1MDEzLC0yNDczODIwMywxNjYyODY2NjcsLTIwMjUyMjg0LDE1Nzk0MDAxMywtMjIxMTQzOTgsMTYxMDE4ODEzLC0zMjIyMjA0NCwxNTgxMjk1OTYsLTMyMDgxMDY3LDE2NDc4Njk4NSwtMTcyOTc5MTksMTYzOTY3Nzk0LC0yMDEyMjY2MiwxNTgxNzI3MzcsLTMyODUzNDMzLDE2MjU2Njk0MSwtMjYzMTk0NDgsMTUyODI2NjA4LC0yMTc4NzQ1MSwxNjY0MjQ2MDMsLTIwODQyMTUwLDE2MjgyNzE2NiwtMjY4OTA2NzcsMTU5ODU3MTMwLC0yNDMzNjQxMiwxNTQ3MDEzMzAsLTIyODE3OTkzLDE2NjA3NzQ4MiwtMzI3MDIzNDcsMTY1OTc4OTAzLC0zMzE4NjkyNiwxNTYxNDA2NTEsLTMwNjk4MzQ2LDE2MDM5NzE3NCwtMjE4NjkyOTksMTY0MzgwMTQ0LC0yNDA4NTQxOCwxNjUyMDM0NDIsLTI0Mzg2ODczLDE1ODEwNTYzMSwtMjUzODcxODUsMTUxODQ4OTM5LC0xOTI1MDUwNCwxNTEyMDI2ODYsLTE2OTk0OTM3LDE2MDY5MDczOCwtMjgwNTI1MTMsMTYwNzYwOTA4LC0yODc2NzU0MCwxNjE1MjQ2MzEsLTI4NjkxNTU1LDE1NjgyOTk4MiwtMzMwMzExMDMsMTU4MTEzNTA4LC0yMDgzNTcyNSwxNjMzMDgyODMsLTMxNzYzODU5LDE2MDExMTc2NSwtMjA4Nzg3NTYsMTY3NjM3MTk0LC0yMjgxNzgwOCwxNjMxOTQyMDksLTMwMzYyNDExLDE2NDAzNzE4NywtMjQxMjg5NTQsMTU4NTMwMjE1LC0zMzIwNzYwMCwxNTY0NjY2NDMsLTMyNDcwMjc2LDE1MjY0MjM5MywtMjEyNDYzNjgsMTU0NDE5NDE5LC0yMDQzOTMzNCwxNTc1MDY1MjAsLTMwNTUzNzYwLDE1NTE1NTQ2MiwtMjEwNzA3NzYsMTU3NTkzOTMzLC0xNzE2MjQ0NCwxNTk3NDQ2MzcsLTE2ODM1NTI2LDE2NDgxNzY3NiwtMTkxNzIxMzEsMTU0Mzg2ODgyLC0yMjY4MzgxNywxNTk5OTAyMjIsLTE4MTAyNTk0LDE2MzIyNjA3MywtMTgxNjc2NzQsMTY0ODEwMDgyLC0yNDQyMDcxOSwxNTI4NjYwNzIsLTMwOTgzOTU4LDE2NTY4NTcwNSwtMzE2MjQyMTQsMTY0NTk3NDE4LC0yMzQxNjc4MywxNTY4Nzc0MTAsLTI4ODk3NTQ2LDE2NzM1MTIxMywtMjE2ODE3NjIsMTY1OTM5Mzg1LC0yODMxOTg1NiwxNTE3ODQxOTcsLTE5NTUyOTYxLDE2NDQxNjUwMywtMTc0ODcxNzIsMTYzNjE1MDE2LC0xODE5Mjc0NiwxNTg3MTQ3MDYsLTIyMDU0MTI1LDE2NDIzNzUyMiwtMTgzNDU4MDIsMTU3ODQzOTU0LC0zMDEwODgxMSwxNjI3NTI0MDYsLTIxODU0NDc4LDE2NDkxOTg5OCwtMzM1NTM0MTcsMTUxNjE1OTI5LC0yODk0NzA3MSwxNjA4NDExMzEsLTIyNTY4MDYyLDE2NDExMjYzMCwtMjcxMzQ0MTcsMTYyNDMyOTc2LC0xNjkwOTA1NCwxNTM2MjQ4MjksLTI2NDg0NDA5LDE2NDg5NjY4NCwtMzI0MTY1NDQsMTUyNDg0ODk5LC0yODE2Mzg2NywxNjM2NjI0MTMsLTI3Mjc2MDUwLDE1NTAzNDQwMSwtMjM3MjA5MzQsMTY1NjYxNTk1LC0yNTQ4ODMwNywxNTY5Mjc1MTIsLTE5MzQ0MzE4LDE1MTYwOTY3NywtMjA3MjExMDIsMTUzNTE2MzQ0LC0zMjQ5MzU4NSwxNTkwOTk1ODEsLTIzNzcyNjUxLDE1MzQ5MzQzMSwtMTkzOTM3NTgsMTU2NjE2NzIxLC0yODIxMTMyOCwxNjcyNTI2NjQsLTI2ODMyMTMzLDE2NTg1Nzg4MCwtMjIxOTk4MDEsMTY0NTQ5OTg3LC0xNzIxNjk0NSwxNTMwNTczOTIsLTI1NDgzMzM4LDE2NTk1NDI0NSwtMjkxMTgzODgsMTYyMDA4MzgzLC0yODY3NzUwNywxNjE5MTkxOTEsLTI4OTA1NjA4LDE2NzQ1MjEyNiwtMzA0MDAwMDcsMTU2MDYyNDIyLC0yNjY3OTE2OCwxNTIzMzAxNTAsLTMyMTA2Njg0LDE2Mzk1NDQxOSwtMjQwOTY5NDYsMTUzNzIxMzA4LC0yNjA5MzE1MV0=", 12597410);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="gainsborough parklands parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-gainsboroughparklands" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Gainsborough Parklands parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/gainsboroughparklands" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-gainsboroughparklands');
+  if (!el) return;
+  var map = L.map('cmap-gainsboroughparklands', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2MjI0NjE1NywtMzI1MTAzMDQsMTY2MjU3MzAzLC0yMzExMzUyNywxNTY3MjM5MjgsLTMyMzM4NTk1LDE2NjA3MDI0NiwtMjcxODg1MjAsMTUzNjQwMDgwLC0yNDM4MjYxMiwxNjM3MzczOTEsLTMwNDg3ODIzLDE1ODQzMzQwMiwtMjI2Mjk1MzgsMTYyMDEyMTY2LC0zMjU3NDk5MiwxNjUxMjA5MTAsLTMyNDQ4NjQxLDE2NDQ0ODcwMSwtMjE3MTc0OTYsMTYxODM5MDg1LC0yODI4NjczMSwxNjczMzYxMjUsLTIyMTQ0NTE1LDE1MzYxOTcxOSwtMzEzMDk4OTIsMTYzODY2OTc1LC0yNTQyMTEzMSwxNjExNzM2NDksLTIxNTI4NTY0LDE2NzQ5OTI3NSwtMjQwMzUyMDAsMTY1MjE5MDMyLC0yNDEzNTAyMiwxNTc3NTU2MjksLTI1NDMzODM2LDE2MDc3Mjg5MiwtMTc1ODA5ODgsMTU2NDg5MDg4LC0zMDE5MjA5NiwxNjY5NTk2MjYsLTIyNzQ1OTYwLDE2MTczNzE4OSwtMjI3NDYwMTgsMTY0ODQwMzk1LC0yNDgyMDIwMCwxNjY5NjMyMDIsLTIxMTkyMTI0LDE2MTU1Njk5MSwtMjE1MTIyNjksMTYzNDg0OTAxLC0zMjEzMTk0OSwxNjU2NTYzNjIsLTE4MjY5MDc0LDE2NDI5NjE0MywtMzAyNzE0NTEsMTU1NTkwMTY2LC0yMzI0Mzc2MSwxNjM0NDA1NjEsLTI3NjgzMDExLDE1NDE4NDU2MSwtMjc2NjEyMTgsMTY0NzU2MTYyLC0zMzI4OTk4MywxNjA4NTc2NDAsLTMxMjExODU3LDE1NDEwNzA5NSwtMjc4ODM3NzQsMTYyNjQyNjU2LC0yNjUzOTY1NCwxNjQwMjkzNjQsLTI1MjE0MjIwLDE1NDMyMDgwNSwtMTgzOTE0OTUsMTU2MzI5MzgwLC0yMjAyMjM4MCwxNTY4OTExNzEsLTI5MzQxMTM0LDE1MzM0NTU2OCwtMjMzNzE4MDksMTY1NjU5MTQ3LC0yMTA0NzE1MiwxNjM4MjQ4MTcsLTE5ODE5MjYxLDE2NDc1Nzg3OCwtMzIxNjM0NzQsMTU3NjE5Nzc5LC0yODUxMjMyOSwxNTkyMjE1MjAsLTIwMDYxMjE1LDE1NjE3OTk4MywtMjk4MTkyMjMsMTYxMjQzNTMyLC0xODY0NDM2NCwxNjUyMTUyNTcsLTMwMTcxODQxLDE1MzE3NzAyNCwtMjQ5NjQ4NDIsMTYwNDA1NjYyLC0yNTU3MDkyNCwxNjY4OTk5MzksLTI3MTQ2ODI5LDE1MTU4NDAzNSwtMjExNjY1NzUsMTU0NTg3MzU4LC0xODE1MjkzOCwxNTMwMTI1OTYsLTMwOTQ5NDE2LDE2MTEyNzE3NiwtMjA5OTkyNzAsMTUxNDc4NDMzLC0zMDI5MDQzMywxNjAzNDgwODIsLTI3NDM2ODA0LDE1NzUxMDc2NiwtMjA4ODYzNDIsMTUyMDI0ODgwLC0xODExMzM3OSwxNjQ5MzI2NzMsLTE5NjIxOTk4LDE1Mjg3OTI5NCwtMTkxNTQzNDYsMTY3NDU1Mzk4LC0yNzI1MTQ5MSwxNjE1MDY3MzcsLTIyMDUzNDc0LDE2NTE5MDU5MiwtMjk4ODU3MzMsMTUxNzQyNzI2LC0xNzM4NjI4MywxNjAzMDk3MDcsLTIwMTg2MzE3LDE1MjU3OTgzMSwtMTc5MDU5NDcsMTU3OTEyODczLC0yODk5OTQ3NSwxNTE0NDg0NjEsLTE4Mjc5MjI2LDE1NTc1OTA0NCwtMzIxNjA3MzUsMTU2NjQ1ODczLC0yOTYwNzgxMiwxNTc0MTU3MzIsLTI4ODI5NDIyLDE2NzI5NTkzMSwtMjEyODkwOTAsMTU3MzQ0MTgwLC0zMjc4Mzk3NCwxNTY1OTU5NzUsLTMzMjAyNTQyLDE1MzQyMzE1MSwtMjgxMDk5MTMsMTU4NTY1ODYxLC0zMTQ1OTkxMSwxNTU4ODM0NDksLTMxODk5OTA5LDE1MTcyNjc1OCwtMjgxMzU5NzIsMTY1MjU0Nzg0LC0xODQxMTkxMywxNTY0NDE4MTgsLTE5NTUxMTUwLDE2Mjk2Mzc2OCwtMjY5MzU1NTgsMTYyNzk1ODk0LC0yMTM2MjM4MiwxNTc5MzQ1MjUsLTI4MjQ3ODg5LDE2MjE2NTI3MSwtMzI5NDczNDEsMTYxNTEwNzMxLC0zMjUyNjg0OCwxNTY2NDM0MzYsLTIzMjY0OTQzLDE1NTY2NzkwNCwtMjk5NDczOTQsMTY2NDY1NTQ3LC0yNzE4MDMxMSwxNTYyNjM0OTcsLTE4Mjc1MTMyLDE2MjkxNzIwNCwtMjU2MDA2NjYsMTU2OTMzOTU1LC0yODI5MDI2MywxNjc0OTk4MTgsLTMxMzc0NTk3LDE2MDA4MjkwOSwtMjAxOTI2NzQsMTU2NjYyNzE2LC0yNzgzMTk5MCwxNTMzNTQyMTcsLTE4MTUwMTY3LDE1MTE2MTE0OSwtMjg4MjgwNjVd", 5630842);
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
@@ -431,6 +539,114 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
   
   var route = _d("WzE2MDc3OTA1MiwtMzA1ODUzMDEsMTYyOTcyNjg0LC0yOTU0MzAwNiwxNTU0NDkzMjMsLTI4NzIwMzgyLDE1NTcxNDk5NCwtMjU0MTk5MDIsMTU5NTY4MzUwLC0yODg4NzIwNCwxNjM1OTE3NTAsLTI0MTM3NzExLDE2MjE5Mzg5MiwtMzI1NzczMDYsMTY0NTg4ODM3LC0yMjU4NjU2MCwxNjM0MjgyODEsLTMyMzIwNjE2LDE1OTgxNjc2MSwtMzIwMzAxNjUsMTU5MTA1OTIyLC0zMDAyNDI5NCwxNjY4MzMwNjEsLTI3MzQyNDY2LDE1OTQwMzI5MiwtMTczMDQxNTksMTYxODIwMzU1LC0zMzIzNDMwMiwxNjMzNDA1NzMsLTIxMjQzMTkyLDE2NjI1MzMyNSwtMzExMDIxNTAsMTU4MzY4NDQxLC0xODIwMTg2NSwxNTE3MzE0NDgsLTIxNDQxNjYzLDE2MDI0NzY3OCwtMjgzODQ4MzYsMTYxMDU4NDMzLC0xOTIyOTQyNywxNTQyMzQ2OTIsLTIzNTgwNTczLDE2Mzc4NTc4NywtMTcxMjM0MDUsMTU1MDEwMTc0LC0yNDY0OTMyOSwxNTgzMzM2ODAsLTIzMzg5MzIxLDE2MDgwNjEyNCwtMjg4NDEwNDgsMTY0MDI3NzkwLC0zMDE5Nzg1MywxNTUwNzU1ODIsLTMzMDg5MTk4LDE1NTQzMzk0MiwtMjc4OTkxNTEsMTY3MjkzMDM0LC0zMDI3NTMwOSwxNjQ0NDEzMjksLTIwNDU4MDkyLDE1MzI5MTIxMiwtMTcyODQzNTMsMTY2MTQzNzg5LC0yMjIzNjQ1MSwxNjA5MDk4MjcsLTE4NzAxOTk5LDE2MDY0NTU0MywtMjExOTk4MDMsMTY3MDQ5Njk3LC0zMTY2MzkyNCwxNTg3NTM4MzgsLTIyNTk1NjcwLDE1MTk4NTc0NywtMTk5MTE1MzUsMTYyNjc0NDU4LC0yNDk0NjAwMiwxNjM0OTM0MDcsLTI5OTA0NDk3LDE2NjgxMTA2OCwtMjg2Njc4MTcsMTU5NDUwMjEyLC0yOTk2ODQ1MiwxNjY5NDcyMzAsLTIzMDM5MzU2LDE1MTA4MjA5NywtMTk3NjEyODQsMTU3NzE5MTY4LC0yNTIyODUwNCwxNTU2MDk2NjYsLTMwODUyMjA3LDE1NzM1MjcxMiwtMjAwOTg1MTUsMTU4NjMwMzk0LC0yODQ2OTA4MiwxNTU1OTU4NTIsLTE3MzAwNzUwLDE1Mzg2OTE4MCwtMjczNzk0NzksMTYwNTQwNDQ4LC0zMjQ3NDI5MCwxNTk5ODQxODcsLTIzNDM1OTg0LDE1Mjk1NzI0MCwtMTc5NjQ4MzMsMTUyMzQ4MTc1LC0yMTc1MDA5OCwxNjE4MjA1MzQsLTI3MjQ4ODMxLDE2Mzg1OTg2NiwtMjcxODE3NjQsMTYyMTUxNDI5LC0zMTg0OTk2MCwxNjEzNzYwNDEsLTIxNjEzNDA2LDE1MzU4NjA4MywtMjQ5MTM5OTQsMTU3NzQ2NzI1LC0yNjA1MTE1NywxNTY2OTQ0MTYsLTIxMTg0MTI1LDE1Njk5NjA1NCwtMTkwNzgxNTgsMTU0NzU1OTA3LC0zMTQ3MDQ1MiwxNTc3MTQ0NjEsLTMyNTQ0NzQ3LDE2MTIzNTExOCwtMjI1NzQzNjEsMTYwOTM2NzAyLC0zMDAzNDkxMSwxNjA2OTQ3MjgsLTIxNzg2MTM4LDE2NTI5ODEzMSwtMjQ3Mjg4ODIsMTU2Mjg1MTM4LC0zMTQ2OTI3MCwxNTY3NTIwOTYsLTE5MDkyMDEzLDE1MTc5OTAwNSwtMTg4NTM0OTYsMTYwNzQyNTUyLC0yOTcyNTE3NiwxNjE5ODkwMTQsLTI0MDA5NDgzLDE1MjYyNjg4NiwtMjY0NTMzMjQsMTY0ODkwOTA3LC0yMjU2ODI1NiwxNTI2NTQzNTIsLTMyNTU2Nzk4LDE2NTI5NTYzMCwtMTY5MTM1MzgsMTU2NDAwNjUxLC0yNzEwMTAzNCwxNjU1MDU1OTYsLTIwNjY2MDk1LDE1OTQ1NzA3MywtMjAxMDg3ODUsMTY2Mjk4MzMzLC0yNjc4NzUzMywxNjM3NzY0MTEsLTMwMDQyOTkyLDE1MjQ4Mjk2OCwtMTg2ODU5MTEsMTYzMDM2NDkwLC0zMDc2MjQ3NSwxNTQ0MjMyNDQsLTI4OTgwNjU0LDE1MjA2MDgxOCwtMjU5NjEwNzMsMTU1MTU5MjkzLC0yNjY5MjkwMSwxNjY4MzA0NDAsLTI2MzE1MjI3XQ==", 11021586);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="mudgeeraba parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-mudgeeraba" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Mudgeeraba parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/mudgeeraba" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-mudgeeraba');
+  if (!el) return;
+  var map = L.map('cmap-mudgeeraba', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2MzQ1Nzc3MSwtMjIxOTE4MTAsMTY3MDUxMjYxLC0yNTk5MTA2OSwxNTM0NTkyMTUsLTI5NjM4NjEzLDE1Nzc5NTU2MywtMjYyMjYzMDYsMTYxNzYyNTE1LC0xODAyNjg5MiwxNjI0NDIzMjksLTI0NzA0MDc5LDE2MzkzOTE0NSwtMTg3OTIwMDcsMTUzNjAxNTEyLC0yNDgwNzkyMSwxNTcxMTA5ODAsLTMyOTI2MjE2LDE1MzQ2NjgwNSwtMjIxMjY2NDYsMTYxNzMzOTI3LC0zMzUxMjY3NSwxNjY2ODU5NjksLTI3OTI5NDYwLDE2NzMzMTEwNywtMjc2MTExODksMTY0MDM3NjY3LC0yNTcwOTM2MCwxNjExMjU1NjksLTMzNDA2ODMxLDE2MjM1Njc4OSwtMTg4NDUzMjUsMTUzOTAwMTA5LC0yNjU0NDg0MywxNjE3NjA3ODAsLTI1NjA0ODc0LDE2MzA0MTc3NCwtMjYwNDY3OTAsMTU0NDk3MTc2LC0zMzUxOTQyNiwxNjc2OTE0OTgsLTI3Mjk5NzMzLDE1Nzk5NDUwOCwtMTgwMjI4MjMsMTY3NjE2ODcyLC0yNzA2NjQ5MCwxNjM0MTgyMDMsLTMxMDA4ODMwLDE1MjI4MTg0NCwtMjQ4MDEyODcsMTU1MzcwODczLC0yMTQ2MTE2NiwxNTk1NzU3NjUsLTMyNzMyNDQzLDE1MjcxMDk5NCwtMjY1OTAyODEsMTYyMzIzMDA3LC0xNzc2MTM5NywxNTMyMDczMjgsLTE5MjAyMTUyLDE2NjczMjI3NywtMTk3MTY5OTQsMTU2OTAyMDE1LC0yNTA2NjI3MCwxNTI4NjkxOTMsLTE2OTk1MTU4LDE1MzY3OTA4MCwtMjM4NDU1MjAsMTYxODM1MDExLC0yNDUyODc1MywxNjA5NzM1MzgsLTI3NzgxMzY5LDE1Mjg5NDk1MywtMjExMDE0MzksMTYxODMzODczLC0xNzA4MDIzMCwxNjIyMjgwNDAsLTE3MTkyOTE1LDE2MTE1NTk2MywtMTgwMjYzOTgsMTU2NzY5MTA4LC0xOTc0MjA2MiwxNTM2MzM1MDgsLTE5NzU2Mzk5LDE1MTAwNzcwMiwtMjAxMzc5NjksMTUyNTE5OTc2LC0zMjcyMTI2NiwxNTcyNjE2ODcsLTMyMTY0MDE1LDE1NzE2Njg1MSwtMzA2MTk0MTIsMTUyMDA0MjczLC0zMjU3ODk2NiwxNTExMzAzOTQsLTMxMjIwNDM4LDE2MDg5NjY4MSwtMzE4MjIyNjYsMTUyNjQyMjA0LC0yNTk5Mzk1MywxNjcwNjMwNjUsLTIyNDkyNTg1LDE2MjAxOTU5MSwtMjc3Nzc1MTQsMTUxNDMyOTQ5LC0zMTkxNjc5NywxNjQ1MDIwNTIsLTE4NDMyOTUzLDE1Mzk1NTMxNiwtMTk0ODQ5NDEsMTYwOTU2NzgxLC0zMjk4MzQ2MSwxNjYzNjU3NjcsLTMyNDg5Mjg3LDE2MTM3NDEyOSwtMjE3MzgzMDksMTUzOTUyMDYzLC0zMDg2ODUyNCwxNjQ5ODA3MTksLTI2MTExNjIwLDE1Mjc5MzgwMywtMjQ0NjcyMzYsMTUzOTc3ODk5LC0yNTQwMDcwOSwxNjY2NzU5MTcsLTMzMjkzMzgwLDE2NjYxNzIyMSwtMjY4NTM1ODld", 6925476);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="paradise point parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-paradisepoint" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Paradise Point parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/paradisepoint" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-paradisepoint');
+  if (!el) return;
+  var map = L.map('cmap-paradisepoint', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2NTcyMjY4NCwtMzA0MzEyODEsMTY3MTEwNTE1LC0zMjk4Mjk1MywxNjQzMTAzNTYsLTI4ODE1NTU5LDE1ODIxNTMwMSwtMzAxNzc0ODQsMTU4OTg1NjU0LC0zMjcxNTIxNSwxNTI0MDUxNTMsLTIwMDkzMjkzLDE2MjQ0NTQ3NSwtMjYzMzM2NjcsMTYxNzA5NTgzLC0yMDM3Njk4MCwxNjE5NjY2MTAsLTE3NzUxODk1LDE1MjA1MTU2MywtMjkyNDIxNjYsMTU4OTUwODYxLC0zMjU3NDA1OCwxNjI2NDE5NDAsLTI2MzA2NjA2LDE2MzYzNDIzNiwtMjE3ODE1NTUsMTU4Njc1MjUwLC0xODkxMTA5MywxNjI5MTEzMjUsLTI2OTA0MjUwLDE1NjU4NDU2OSwtMjEwMzQ4NzIsMTYxMTU0MzU2LC0yODU1Njg4MCwxNjA4MTk4NjgsLTI0NzMzNTc3LDE1NDkxMDk5MywtMzIyNjk2NDgsMTU0NDg5MjU0LC0yNDc4MDQ5MSwxNTYxNDA4ODQsLTMzMjk4NTQ5LDE2MDc3MzY1NywtMjk1NTQzNTgsMTU4NDgxMjUzLC0zMTcwODE2OSwxNjcyNjQ4MDAsLTIyMTEyNTU4LDE2NjIxMzcwNCwtMjYwMjA4MDMsMTU1MjMxMjEyLC0yNzgzNzc1MywxNTkyNDcxODQsLTI0MDgwMzM3LDE1MTcwMzY3NCwtMTgyMjI3OTcsMTY0MDkyMDk1LC0yODY1NTY3NCwxNTM3OTg3MzUsLTI0MzU5Nzk2LDE2MzE5NjMyOCwtMzA4OTEyMDUsMTY2ODA4MjM3LC0zMTA5ODY1NywxNTI3NzQzNjEsLTMzNDA1MzE2LDE2MDM0OTc2NywtMzAyNjg1MDcsMTU2NTAxNTkyLC0yMjQwNTQyMSwxNjI3NjY0NDgsLTIzODcyMTAxLDE2MTYwOTAyNywtMjExNzA2NTgsMTU1MjA2ODEwLC0xODQ0MDQ0NSwxNTU5MDgwNTIsLTI3NzE4OTY5LDE2MDI1MzUwMiwtMzI0ODQzMDMsMTY0MTc5MjAzLC0zMDcxODk4MywxNTEzMjAyMjUsLTIyNzk3NTE1LDE1NDA1MDA2MiwtMzE1MDMyNjAsMTUyOTA0MjYyLC0yMTI2NDQwNSwxNjU3MDIwMTMsLTE4NDAyMzAwLDE2NTA2NjUyNywtMjgxMTU2NzAsMTU0MDMxMDgxLC0zMDgxMzUzMywxNjM2NzEzOTUsLTIwODU3NjEzLDE2NDU2Mzc5MiwtMTcyNDkyNjcsMTU5ODQ4NTQ0LC0yMTY0Mjk5MiwxNTQxMTE3MzgsLTMxNzYwMzA4XQ==", 11603121);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="surfers paradise parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-surfersparadise" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Surfers Paradise parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/surfersparadise" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-surfersparadise');
+  if (!el) return;
+  var map = L.map('cmap-surfersparadise', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE1ODk5MjgxMywtMjY5NDI3NzEsMTY2NjcxMDczLC0yMjIwMzIyMiwxNjA4MDY1NDQsLTIzNjk2MDU5LDE1ODI2Njg1NSwtMjEzNDAwMDksMTY3MTg1OTU3LC0yMDIzOTU1MSwxNjU2MDY2NDUsLTIxNzE5MzU5LDE2MTMyMDg0OCwtMjMwMzU0NTksMTUxMDQzOTQ0LC0yOTMwMzQwNCwxNjA2OTU4ODQsLTI4NzQzNDc0LDE2NDg1NTc3NiwtMjc4OTA0MDUsMTU0MDc0NjkxLC0yMjA2MTA5MCwxNjYyMTQyMTIsLTIzMjE5NTU1LDE2NTQ2NTkzNSwtMTk3NTczNjUsMTYwNDA3ODgwLC0yNDU3MzAxNSwxNjA2Njc5NjMsLTIwMTg4MDkwLDE1MzYzNTEzMywtMjgyNTE4NjIsMTY0MzEyNDY0LC0yNTQwNTQ0NywxNjM4NjU0MDcsLTE5NTcxODEyLDE1OTIwNzMzMywtMzI3MjgzMjUsMTY3MTA5ODA3LC0yMDY5NzgyMSwxNTk3MjE3MTcsLTMxNTkzMDgyLDE2NTgzODg1NiwtMjg4NzQ0ODAsMTYyMTM0NTkzLC0yNTExOTE0OCwxNjA0MTg0NzcsLTE5MzQyNTk4LDE1ODg5OTQ5MywtMjAyMDg0MDgsMTU2NTYwMDIxLC0zMTkyMDcxNCwxNTY2MDI1ODIsLTMxNDMzMDAzLDE1ODY1Njg0OSwtMjEwNTkxOTcsMTUyMzkzNjQ1LC0yNTA3NTc2MCwxNTgzNjY3ODQsLTIyODU5MTM0LDE1MjAzNzQ1NCwtMjMzNDU5NzgsMTU0OTM2NzYxLC0yMjY3NzQ5MSwxNTY0MTk0MjMsLTI3NjU2MzkxLDE2NjQ1NTcxMywtMzEzMTMyMTYsMTU1NjU2NjY5LC0yNTQ5NDgyMywxNjE4OTUyMTUsLTE3ODgxOTA0LDE1ODA4NTMwOSwtMzI3NDQyNTQsMTYzMjIxNzYwLC0yNjY0NTE1MCwxNjYwODk4NDcsLTI3NjUwMDE5LDE2MDA2MzA4OCwtMTg2NTg3NTcsMTUzNDkzNDA4LC0zMjE4MzgwMV0=", 11974216);
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
@@ -548,5 +764,16 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStay22();
 });
 </script>
-
+<script>
+(function() {
+  var inp = document.getElementById('evt-search');
+  if (!inp) return;
+  inp.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.event-card').forEach(function(el) {
+      el.style.display = (!q || (el.dataset.search || el.textContent).toLowerCase().includes(q)) ? '' : 'none';
+    });
+  });
+})();
+</script>
 </body></html>

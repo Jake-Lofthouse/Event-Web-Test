@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Cambridge, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge." />
+<meta name="description" content="4 parkrun events in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Cambridge, United Kingdom" />
-<meta name="geo.position" content="52.236675;0.161906" />
+<meta name="geo.position" content="52.2176105;0.13944225" />
 <meta property="og:title" content="parkrun Events in Cambridge, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge." />
+<meta property="og:description" content="4 parkrun events in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridge/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Cambridge, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge." />
+<meta name="twitter:description" content="4 parkrun events in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridge/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Cambridge","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridge/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Cambridge, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridge/","spatialCoverage":{"@type":"Place","name":"Cambridge, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.236675,"longitude":0.161906}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Cambridge, United Kingdom — Hotels & Course Maps","description":"4 parkrun events in Cambridge. View course maps, find nearby hotels and plan your parkrun visit to Cambridge.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridge/","spatialCoverage":{"@type":"Place","name":"Cambridge, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.2176105,"longitude":0.13944225}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Cambridge</h1>
-    <p class="hero-sub">1 parkrun event in Cambridge</p>
+    <p class="hero-sub">4 parkrun events in Cambridge</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Cambridge?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.236675,0.161906,'Cambridge parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.2176105,0.13944225,'Cambridge parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,108 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Cambridge</div>
-  <div class="event-grid"><div class="event-card" data-search="milton country parkrun cambridge" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="brook leys parkrun cambridge" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-brookleys" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Brook Leys parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Cambridge</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/brookleys" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-brookleys');
+  if (!el) return;
+  var map = L.map('cmap-brookleys', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE0NTQwNjI2LDYzMzQ3OTc0LDY2ODE0Miw1MjA4OTQ4OSw2MTI1MTE2LDU3MDI5NzQwLDE1NzM2NTEwLDY3MDQ0MzkxLDY3MjI2NzQsNTUwMjkxNDksMTQ4MjI0NjQsNjQzOTUxNDYsOTQwMTA2Myw1Mjk4MzI1OCw2MDExODY1LDU0NDAxNzA1LDM2MjU5LDYwMTQ0NTA2LDk5NDk2NzEsNjM0MjgwNzYsMjc3NTMxNyw1Mzk5NzI5OCw1MzQ0OTkzLDYwMTQ3MTI2LDgzMTM0MzgsNjUxMTM5NTcsMTEzMjcyODIsNjQwOTY5OTAsOTU5MjAzMyw2NTM2MDU0Niw3NzIwMzk2LDY1MTcwMDQyLDcxNjI4MzQsNTcyMTAxOTQsODQ1MjExNiw2NTI0NjYyNiwxNTkyMDE2LDU4OTgxNjI0LDgxMTUzNDgsNTc4NzUwNzIsODU3NzczNSw1NTgzNDEzOCwxMjYyNTI4NCw1MTg5NDM3OSw4NzUwNzQyLDY1MTUzOTQ4XQ==", 6814667);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="coldham’s common junior parkrun cambridge" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-coldhamscommonjuniors" class="card-map-inner"></div>
+    
+  </div>
+  <div class="card-body">
+    <div class="card-name">Coldham’s Common junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Cambridge</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/coldhamscommon-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-coldhamscommonjuniors');
+  if (!el) return;
+  var map = L.map('cmap-coldhamscommonjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  map.setView([52.208437, 0.15458], 14);
+  L.circleMarker([52.208437, 0.15458], { radius: 8, fillColor: '#40e0d0', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  
+})();</script>
+<div class="event-card" data-search="coldham’s common parkrun cambridge" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-coldhamscommon" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Coldham’s Common parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Cambridge</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/coldhamscommon" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-coldhamscommon');
+  if (!el) return;
+  var map = L.map('cmap-coldhamscommon', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2NjQxNyw2MjkxMzY1NywxMzI3NjY0MSw1ODY0MDI2NywxMTczNDI0Miw2NDA3OTM2OSwxNDA3MTQxNyw2NjI3NDg5NywxNDgyNTUyMCw2MTI4MDEwNCw0NzQxMjI2LDU5MzYzNDQ5LDM2NjkzNTIsNjIzMDg4MDAsOTQxODg5NSw2NTY5NTgxNiwxNTg5OTgxLDU0MDk5OTI0LDEwMjIyNTE3LDYxNzc3ODYwLDI3MzI2MjEsNjYyMTkwMDksOTQyNDExNCw2NzEwNjM3NCwxNTc4MTE0Niw1MDUwNzc2Niw4ODUzMjk2LDY2NDQ2NjMxLDEzNjcxNjk5LDYwMDUyNzQ4LDExMTQwNDMyLDU3OTM2NjAxLDQyMDU2MjQsNTgyNjEzMzIsOTI0MDAwNyw1OTU2MDY5NSw0MDk5MTE1LDUzOTI5NjUxLDExNjU5OTI3LDU4Nzk4OTg0LDE1OTkwOTkzLDYwODQ0MzQ5LDY4ODQyNTAsNjI2OTM4NzgsMTM4MjM0MDAsNjQzMTY4NDMsMTUxNDA2NDcsNTY2OTc0OTIsOTIyMjE4Nyw1Nzg5ODE0MCw4ODMwMjA5LDUzMTI4NjU5LDEzMzIyOTAzLDU0MzkxNDA5LDc3Mzk4MjAsNTg0MjE5NjcsMTA2NzYyODksNjQzNDE4MTMsODA4NDY2Niw1MTM2NDQ3MywxMTkzNjUwNSw1MzYzNzk4Myw2Nzg0MTUsNTg5NzA5NzAsNTY1MTI5NSw1OTEwNzkwMywxMDE2MTA5Myw1MDM1NDkyNCwxNjI1MjU2OCw2MTM0Mjc4MSw0MDY5NjYzLDY0NDYyMzcxLDE0OTkxNDU5LDYxMzk4MzkzLDY4OTMxODgsNjMzNzM0MTcsNDI5MDYwMCw2MTA5Mzc5NiwyMjc4NzE5LDU3MzIyNzgwLDI0NjU1MDYsNTc1Nzg2NTIsMjc5MTQ3MSw2NTAzNjQ4NSwyNDgzNDAwLDUyMDAyOTYzLDEyMjMxMTgyLDU5NTQ2NjM1LDE2NzI4Nzg1LDUzNjIwNTg5LDQwNTgwODgsNjM3OTUwNDEsODY0MzUyMyw2MjE2MzI4Myw4MjgxODE2LDY2NTE5OTE0LDE0NDcxMDU2LDY0MzU4MTA2LDEzODA5Mzk1LDY0MTgyNDYwLDEyMTQ4OSw1NzYyMzQ3NSwxMzk0NDIyMSw2MTA0NjA4Niw1OTg4MDc5LDUzODEzODA3LDMxNDc4MDIsNTE1ODEwMzgsMTE5Njg1NDYsNTY4MDYyNjMsMTA4NjgyNDAsNTM3OTU5OTQsOTM3MTk0MCw2MTM4ODk2NSw3MzIwNzIzLDY0MTQ3NzA5LDcxNTI1NDAsNjI3MzUzNjEsMTI2NzQyODksNjI4NjEyMzEsMTEzODQwNTcsNjM2MTkwMjMsMTI3NTAzMTUsNjYxNzMxMTIsNjUzNDE3Nyw2NTA2NDE0MSw3NDkxOTUyLDU5MzcxNTg2LDkxMzE3NDEsNTY4NDEwMjQsMjA2MjExMiw1NzUzNzA0Niw5MjU3OTM3LDU3NDQzODY0LDE1MjM5Njg3LDY0NTUxNTA1LDE2MDIwODY2LDYyNTAyMTYwLDExMTU5NTYzLDUyMzkxODc5LDUyMTg3NDIsNTQ1MDU4ODksMTQ3MzI5OTksNjM0MDMzMzksNjYzNjY5Nyw2MTAxMTkwOCwzNzk4ODczLDU3NTg2NjM4LDEzMjUyODgzLDY1MjExNzczLDE2MzM3NjgzLDY2NDgzNDAyLDY0NTc0MzcsNTYzMDU0NzQsMTUxNjU2NDEsNTM1MTAwMTUsODM4MDc1Nyw1MzQyMTE0OCw1MTM5NzM3LDY2NjAyMDQxLDE2Njc3MjU0LDU2NDYwMzk0LDY1NzgxMjMsNjQyOTI3MjYsMTI0MTkzNDMsNjE3Mjg3NTUsMTQ4NDc4MDYsNTQzMjg1MjIsNjc2NTUwOCw2MjAwNjIzNiwxMTk4Mjg5OCw2MDY1NTIwMiwzNDM3MTQwLDYyMDI3NDA0LDM4NjkzNDEsNjMyODI0MzcsNjI0MzgxMiw1MDYwMjI3OCw3ODk2MjE1LDYxNjA0NTY0LDU4MTA4NjMsNTQxOTI1MDAsMTMzMzI4MzUsNjE5NTU1NzUsMTIxOTkzNzIsNTE4ODE4MDUsOTg1ODE5MCw1NDkwODI1MywxNjcwNjEwNCw1NTIyMDc3NCw3NzE4NzU4LDU0MzQxMjQwLDE0NDk4MzI3LDU5NDI4MDQwLDk4NTA4NDcsNjI3MDU4NjksMTI1NTgyOTIsNTI2NDkyMzksMjI4MjI2NSw1MDM3MTM0NSw1MDI2ODYzLDY0MTQ2NTc5LDQzNTAxMjcsNTU3MTY2MjEsOTk0NzgwNiw1MzgzMzY5MywxMTU0MzcxLDU4NDA5MjYzLDE0NDAwMjYsNTYwNjc0NTgsMTI1MjAxMiw1NTM4NTk3OSw0OTgxOTAzLDUwNTIyODA1LDk4NzI1MzAsNTI5OTQ1OTIsNjI2MjczNiw2MjE0NTYxNSwxMjA0MDYzMSw1Mjg2OTA3MCwzMTA2MzgsNTgxOTA4MzIsNTg2MDIzMCw1OTI5OTMwNCwxNDE5ODU4OSw1MjExMzM0NSw5MjE4Nzc5LDYwODg4NzYzLDExNzQ1NzY5LDU0NTE0MjI0LDEwNTMxNjksNjUyNTEzMjAsNTgxNzc3OSw2MDI1OTAzMSwzMTY1NDA0LDUyOTc2NzI0LDk4ODU4NzEsNTkxOTgxNDEsMTQxNjk5NzksNjM3MzYxODQsMzk0OTI4Miw2MzAzNzU0NywxNTQ2NDk5Myw1MDQ0MzY4MywxMzE3NjM4NCw2NjMxOTQxMiwxMjg1MTE5NSw2NDY1MzQyNSwxNjQ4NDY4Myw2MjEzMzQ1NSwzMTUxNTI4LDU5NDQ0MjgyLDEyOTgxNjUxLDU3MTA5NzA5LDYwMzQ0NDYsNjAzNDU5MjUsOTc1MzM3MSw1MDQ0MDIyMSwzOTM5ODk3LDY2NDM4Njg2LDEyODE0NzAzLDU4Njc4NDg4LDIwNzY1ODEsNTEyMTM0NzQsMzMxODM1NSw1Nzg2OTc3Niw3NDI0NTg0LDY1NDc0NTc3LDU4MDYyMDMsNTE0MTE1ODAsMTYxMjg5NDksNTQ4Nzg0ODksODA4NTExMCw1NTI3Njc2MSwxNTIwNzUwMSw2MzQxNTQzNCwxNjQ5MTI1OCw2Mjc4MTAxMSwxMzA4NzcyNCw2MjMyNTc4NiwzNTUzMzI0LDU5NjkzODk2LDE1OTczNDI3LDUyNzU3ODkzLDYyNDA4NDksNTk5Njk2NDIsMTU0MDg0MDgsNTI3ODIxNTksMTIxMDE1NjksNTQ2NjczOTUsODk1NjIzNyw2NjU0MjYwMSwxNDE0MzY3LDUxNzU3MzA3LDExMTA0OTUyLDU4NzY0OTAyLDgwNzAxMDUsNTIyOTcxNzMsMTUyOTUzNjYsNTgwODE4MDcsMTE4Mzg0OSw2MDMyMTQzNSwxMzEwODUzNCw1NTcwMTgwNiw3NDc2MTA2LDU2NTUzNDA5LDE2NjU2NDg1LDU1NTQwMDM0LDIwNDMyNSw1MjQzNjA1MywxNjI5MjYxNCw1MzQ4NzQ4MSwxMTk2MzU3Nyw2NjIzMDMzMywxNDU3NzQ2MCw2NjM2NTMzNCwxNjUwOTAwNCw2MjA0NTU1Myw2NzAwOTMwLDY1MTE5NDQyLDE1NTUyNTcwLDU1MTA0MjU4LDU4NzMzMjUsNTk3NzgzMDIsMTQyMzE4NzAsNTA4MTY3NDQsMjEyMDA1Nyw2Njc1NDA1NywxNDU4MDQ3Miw2NDMzMjE3Nyw4NjM0NDc5LDU1OTc4NjQ2LDE0NjI3ODA1LDUxNDI4MDI2LDEyOTk5NzIzLDY1OTk0NTI0LDEzNTMyNjIxLDU0MTAyMTM2LDMwOTM5OCw1NTgxNzY3MCw1MjYxODAsNjQyMzYwMzIsMTM1OTg5NTYsNTk2MjUwODcsMjIxMDMxNSw1NjU4NjMyMCwxNDM3ODc5MCw1ODE4MTc4NSwxMjgwNDUxMyw2MzEyOTIyNiwzNTAxMDk1LDUwOTQ3MTkzLDE0MjU5ODcwLDYwMzkwMjU5LDEwMTkzMjk4LDU5MzAxMzI1LDMyNDUzMjEsNjI4NjAzMDMsMTUzMDE3NDksNTMyMDg3NDksMjE2NTE2LDU1ODIwMTAyLDE5MzIyNTYsNTg2ODgxODAsMTU0NjEzMDMsNjIzMTAxNTMsNDk1ODMwMiw1OTUzNTA0NywzMjUwNjIyLDYwNDk4NTc1LDE1NzUxNDkwLDU5MjY5NzgyLDQxMTU2MzIsNTU2NjExMzcsMTA4MDQxMjUsNTQzMzgzNTAsMjg0NzgwNyw1MDgyMTc0NCwxMzc5NjM0OSw2MDI3MDQyOSwxNDI2OTI1NCw1MzQ5MjM4MSwxMzM1OTU4NSw2NDAyNDQ4MSwyODM3NzIwLDU3MDk2NDcxLDMwNzM5NDksNjQ0MjAwMzYsNDk1MzAxOSw2MjE4MjY1NSw3MzEwNDQ4LDYzMjMwNzc2LDk2MTk5MDksNTA4MzgyMjksMTEwNzczNDgsNTY2Njk2OTEsNjI0NzUyMyw1ODM5MzU2NywxMjY3NjE2OSw1NzUxOTg4Niw1Mzk5MTM5LDY1OTg0OTQzLDEwNzYxMzMxLDY2MTkwNDkxLDEyNzIwNzE4LDYzNDc5MzA2LDE1NjYzNTMzLDU0MTIzNDQ3LDcyNzMyMzksNjUwOTUzNDksMTExMjk2NjEsNTE2MzE1NTgsNzM2MTczMCw1ODc4Mjk1OSw4NDg3MTY2LDU3OTc4MjU0LDgxMzU3NjUsNjA5MzM0ODEsMTY2NDk2NTMsNjU3NzI2MTcsNDY3NDUwOSw1MzQwMDY2NCwxMDUxOTI3LDUxMTQzOTQ0LDMxNTA1NjgsNjE0NDA3OTIsODAwNTgyLDU0NjA3NzEzLDYxMjg3MjUsNTYwNTk1ODYsMTAxMDYwOTYsNjMzMTc4OTYsMTMyNzc2MTEsNjYxODI2ODQsNjAwNzA1LDU0MzE3MTM5LDEyNTQ5NTAyLDU4NjU0ODA5LDc2MDkwMyw2NjU4ODQ0Nyw5NzU1MTEyLDU3NTA3MDk1LDU0NjM1NzUsNjQ3ODMzODEsMTExMzEwMzcsNTMyMDQzOTYsMTM2MDgwODEsNTMyOTMzNTIsODgxMjU2NCw2Mzk0MzcwNSwxNTkwMDU5NSw2NzAxOTE4Myw1MjI4NTAzLDU1OTQ5NjA1LDQzNzc0MjUsNTM4Mzg2MDMsOTE4NzE0OSw2MjQ5NzYxMiwzMjg4MDkzLDY0MTcwNzgzLDE4MTAyMDMsNTQ3ODUwOTQsMzM0ODQ5MCw1MDk0OTg2Miw0NzE3NjYzLDUyMjAxODY0LDczMTAwNSw2NTYyNjA0OSw1ODQ4NjY4LDUxOTQyMzAxLDY3MTEyNTUsNjI2NDQ3NDMsNTAzNTA2Niw1MjIwMzg1NSwxMTIxODkyNSw1ODI2NjM5MywxMTY3NTcyMiw1MjAxNDk0MCw4ODc1MTAsNTc0MjU1MzYsMTQ3MDAzODUsNTYyMDQ1NzgsMTU5NjQ5NDEsNTUwODc4MjIsODk4NTgzOSw2NTY0NjY0MCw2NDY5OTkzLDU3OTQ1OTg5LDUxNjQ3NzYsNTc2NTc2MDAsMTY0MjIxODgsNTkxNzc4MTAsMTE2MDY0OTgsNjIyMTM3MDgsMTYwMDU5MjcsNTgwODYwNzMsNzExOTM3Niw2MTgzODExNyw4NzQ5NjYxLDUzMDM4MTE1LDEyNjE4Mjg1LDYwODg4MzA3LDY3MTYwNjYsNjE0MzYzOTYsNDE0NjIzMyw1MzI1NzU1OCwxMDM1NzA3MSw2NDc0MTg5NSwxMTE0NDYzOCw1MTU1NDc5NCwxMTc4MTg3Miw1Nzc5MjQ1MCw0MzI5ODIxLDU5MjE3MzQ0LDE1MzYwNzM3LDUwOTA1OTA3LDI0MTE0NjgsNTI2MDU2NTIsMTQxOTk5NDgsNTEwNzg1NTQsMTUxNjkwMSw2MjU4Nzg0NCw1Mzc5NTI2LDYwMzcxMDc1LDU2NTg2NTMsNTM0NzM1MDMsNTAxODY2OCw1NDM3NDY5MCwxNTYwODUxNCw1OTkzNzIyOSw3MTU4NzQ1LDYyMTg3NTk4LDE2OTIzMDcsNTkwMjMxMDEsNzU3MTgwMyw1NTI3MzM4NCw3NTk5NjMsNjAyMjc0MDksMTA2MDYzMiw2MTk2MjY3NSwxMjE2NzU2Myw1NDk2ODg0NywxNjYwOTkyLDU3OTI4MTEyLDQ1NTMwNDksNTQ2Mjc4MTYsMTIwOTIzMTUsNjY1NjQwOTcsNDU1MzE2Miw1MzUyMzUyOCwxMzY5MTgxLDU2NzY2NTk5LDk1NzkzODQsNjQzMTM2MjgsMTg3Njg2NSw1NDkxMTI1NywyNTAxMDcyLDUyMzkwNTM4LDEwNTU5MDExLDYwNjUzNTg0LDY1Nzk0OTEsNTA2OTg4MzIsMTA4NjQ4NDcsNTA5MzYxODcsOTQxNzM2OCw1OTE5Mzk2OSwxNjI0OTk0MCw2MzU2NDY0NSw2MjU1OTc5LDU5Mzg3NjA4LDE1ODIxNTY4LDY2OTUyMDM2LDExMDY2MTYsNjU5Mjg2MTQsMTE5Nzk0MDMsNjEwNDk4NjUsMTAyNTU1NTEsNTEzNDg3ODEsNTMwMDkxNyw2MjY2MjA0NSwxNDc1NzM5LDY0NzM3NDg3LDgyNzc2NTksNjY2ODg5NjksNjgxNDA4Miw1ODYzMDcxMyw0ODIzNjQ3LDYyOTk4MzIzLDQ4MzgzODIsNTQ0NzE3OTAsNTg4NTI3Miw2MzgzMzAyMyw4ODA1MTIzLDYyOTU4NTQ1LDE3NTMxMjQsNTYyMjM4MjksNDQwNjQ2NCw2Mzc1NjQ3MCw1NTk3NDk2LDU3MjgzODIyLDE0NDgzMzAxLDYzMDE2NDE2LDI0MjQxMjgsNTM3NTUzMjIsMTQwODMwODYsNjMzNzY4NDQsMTUxODE0MzAsNjI0NTI2NDQsMTU2NzI5MDEsNTYyMDY4MTUsOTc5Njk4Myw2NTAyMzgxOCwxMjIxOTAxMSw1MTA1MjY4Niw3NDY3ODY2LDU5NzQwNzk0LDQxNTAwNDQsNjUyNzQxNzIsMTI0Mjk3NzcsNjMzMTc3NTgsMTU3MzcyMTAsNTkxNjYzOTYsMTQ1MjcyNjcsNTQ1OTUwNzMsMTU1MjQ3MDYsNTQ3Nzg4NTksMTEwNjkwOTksNjUyMTc0MDIsNjA1NDQ5NSw1MjU5NDIzMywxNjUyMTc2Niw2MDgwNzU3MCwzNDIyOTkwLDY2NjU3Njc0LDk4NjgxOTcsNTU2MDQ3OTQsMjg1NzY3MCw1NDI4MzI0OCwxMzUxNjgxLDU4NDMzNzIzLDE0NTg2NjYxLDU3MTQzNzY0LDc0Nzk5NDUsNjQ3MzYxMzEsNTg5ODY5OCw1NDAyMjExMyw2NzM2MDkzLDYzNzU5MzQyLDEyNDE1MjgwLDUwOTU4NDI2LDYzNTIwMTIsNTA2MzcyMjMsNDMzNTAzOSw1NzQ1NzQ1Miw5ODExNzA5LDU4MTA5NDEwLDUxOTE2OTgsNTM4NzU2MzksNDY2OTExNyw1MTM4MzkxOCw5NDExODMsNjYwNzc3NjcsNTM3MTE2OSw1NjU2MzIwNiw5Mjg0MDQsNTI3MjgyNzIsMjM5MDQzMCw1MDkzNTkyMiwzNzI3NTEwLDY0MzM3Njg0LDExMzkyMjQ2LDU1NzczMDg0LDE0ODg5MzMsNTI1MDg1MzMsMTI4NTI1OTEsNjQyODMwOTAsMTg1OTE0OSw2NTc3ODAyMywxMTkwNjIwOSw2NjY1NzY2OSw5NTIzMjQzLDUyNjMxMDc5LDE5ODQ0NjAsNTQ2OTg5MTQsNjI3NzU3Myw2MTg5MTQ0MSwxNTI3NDM5NCw1NjQyMzE4Nyw0ODY0ODYxLDY0NTcwNDIzLDEzODA0MjQ3LDUyOTkwNTU0LDc0NjMxNjQsNjY1OTYzMzYsMTIzMjY5OTYsNjUyNTk3NjMsNzExODI2LDU0NTI5NjE4LDEyODE3NTY1LDU1OTkyNDU4LDI5NDEzNzIsNjI5MjE1OTEsMTcxNTM1MSw2MjQ1NzgzOSw0MTAwMTIwLDUxMzQxNTMzLDg1OTg5NTIsNjQyNjc2NzYsMzM2MzE3Niw1OTM4MTY2MiwxNDA4NzM0OCw1MDc1OTA2NSw2NTMxMjEzLDUyMjE1MjEwLDE0MDgzMTQ5LDU3MTY3ODIxLDczNTEwMTIsNTQ4MTkxODksNDI4NjUwNCw1Mzc4NzQ0NSw4NzcyNzE3LDYxMTkxNzE4LDM2MjQxOTEsNTI1OTg3OTAsMTI0NjM5MzQsNTM1NTgzNzksMTA4MzcxNTQsNjUxNTE5MjEsMTM2OTkyNDQsNjM0MTY5MjksNTQxNzk0NSw2MTM1OTQ4NiwzMTI5MTEyLDU4NjE0MTgyLDEyMjQzNjg4LDYxNzA0NzU5LDE2NzE3NTMyLDYwNDg4ODk1LDkxMzgyMTQsNTk5NTgzMDEsMTIzMTY3ODEsNTE4Nzk2MjMsMjE4NDgyNyw2MTUyODk3OCwxMzY5NjEyNSw2MzA2NzQ3NSw3NDYyNDM3LDU0MDQyNTQ2LDEwNzY5MzY4LDU3MDk5NzQ2LDI3Njk4OCw1ODA2MTIyNCwxMTYxNDY2MCw1OTc3MDk4MCw1Nzc1ODUwLDY1OTMyNjc1LDc5NTE4Niw2NDE3NTI3NSw3ODU1NTk4LDYwMTA4NTcwLDE0NDM1NjksNTI5MTkxOTcsMTIwNzQ2MjksNTA4NTExMTUsNjQyNTI2Niw1ODI1MjU3MSwxNjQyMzU5MSw2MTI0NjIyMiwxNjUyNzU1OSw1MDM2MTAxOSwxMzEwNTg4Myw2NzEwNTEwNywxNDQ5MDAxNCw1NDUzNTgyOSw2NTA2MzYsNTIyNTY0NzUsOTQxMjUxMyw1ODY2Mjk4NiwxNDkzNTIzNyw1MzQxOTM1NCwyMzA0NzUzLDUwNDE0MDcxLDEwNDc0Nzk1LDU1NjM1NjA4LDc0MDg2MjksNjQyNzA5ODQsMjc3ODQ3NCw1MDY2NDE3NV0=", 16740513);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="milton country parkrun cambridge" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-miltoncountry" class="card-map-inner"></div>
     <div class="card-map-badges">

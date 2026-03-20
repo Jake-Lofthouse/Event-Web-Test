@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>parkrun Events in St. Petersburg, United States — Hotels &amp; Course Maps</title>
+<meta name="description" content="1 parkrun event in St. Petersburg. View course maps, find nearby hotels and plan your parkrun visit to St. Petersburg." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="St. Petersburg, United States" />
+<meta name="geo.position" content="27.84707;-82.608119" />
+<meta property="og:title" content="parkrun Events in St. Petersburg, United States — Hotels &amp; Course Maps" />
+<meta property="og:description" content="1 parkrun event in St. Petersburg. View course maps, find nearby hotels and plan your parkrun visit to St. Petersburg." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/st-petersburg/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="parkrun Events in St. Petersburg, United States — Hotels &amp; Course Maps" />
+<meta name="twitter:description" content="1 parkrun event in St. Petersburg. View course maps, find nearby hotels and plan your parkrun visit to St. Petersburg." />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/st-petersburg/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United States","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/"},{"@type":"ListItem","position":4,"name":"St. Petersburg","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/st-petersburg/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in St. Petersburg, United States — Hotels & Course Maps","description":"1 parkrun event in St. Petersburg. View course maps, find nearby hotels and plan your parkrun visit to St. Petersburg.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/st-petersburg/","spatialCoverage":{"@type":"Place","name":"St. Petersburg, United States","geo":{"@type":"GeoCoordinates","latitude":27.84707,"longitude":-82.608119}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
+/* breadcrumb */
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+/* page hero */
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+/* stat strip */
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* section headings */
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+/* country grid */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+/* tiles */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+/* search */
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+}
+.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
+/* hotel CTA */
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+/* toggle buttons */
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.2s; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+}
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
+/* download footer */
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/">United States</a><span class="breadcrumb-sep">/</span><span>St. Petersburg</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">United States</div>
+    <h1 class="hero-title">parkrun Events in St. Petersburg</h1>
+    <p class="hero-sub">1 parkrun event in St. Petersburg</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
+    
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in St. Petersburg?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(27.84707,-82.608119,'St. Petersburg parkrun')">Find Hotels</button>
+  </div>
+  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
+    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = false;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+
+  window.setFilter = applyFilter;
+
+  // Wait for DOM to be ready so event cards exist before we filter them
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyFilter(getInitialFilter()); });
+  } else {
+    applyFilter(getInitialFilter());
+  }
+})();
+</script>
+  <div class="section-heading">Events in St. Petersburg</div>
+  <div class="event-grid"><div class="event-card" data-search="weedon island preserve parkrun st. petersburg" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-weedonislandpreserve" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Weedon Island Preserve parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/W/weedonislandpreserve" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-weedonislandpreserve');
+  if (!el) return;
+  var map = L.map('cmap-weedonislandpreserve', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03NDQzMjIyOCwyODEyNTU5MywtNzIwMTk0NDgsMjgyMjIwMTcsLTcwMDQ4NjU2LDE3ODg2MTA5LC03MDQ2NzY0NiwyNTMyNzc4MywtNzA4NjA1NjQsMjk4MDMxNTMsLTgzMzgwMTMwLDMyNjg2NTQ3LC03NDM4MDc4MiwyNTQ0NzIzNywtNzkzNjAwNzQsMjk2MjIwOTUsLTgwOTIzMzMyLDE3MDk3MDMzLC03ODgzMjc4MCwyNjgzNDc5NSwtNjc0NTU3NDAsMzA3ODAzOTcsLTc4ODc3MjI2LDMyMjg3ODU3LC03MjUzMjMzOCwyOTcyODA4MywtODI5MTI2MzQsMjI0ODgzNzEsLTczNDgwNzY4LDI1MzU3NjQ5LC04MDc3NTIxNCwyMzMxOTU5MywtODA0NDYxNzYsMjU5ODQxMjMsLTcwMjgxMzUwLDIwMTMyNTQxLC04MzMwNTk0MCwxODg3MDA3NywtNzY0OTMyNjQsMTc5NTU0ODksLTcyMTgzODA4LDE5ODgyNjg1LC03NDg0NjE0NiwyMzYwNjE5MSwtNzA4MDYyMTgsMjU0NjMzMTUsLTY4MjE4MjQ0LDIxMjI2MzczLC04MDI3NDQ3NiwyODg2ODkzMywtNzc2MjQ1ODgsMTkyMDQ4NDEsLTgxODE1OTM0LDIwODg2NTc3LC03NjE1OTQ0MiwyMTY4OTExNSwtODI2NjAyMDAsMzA3ODIxMDksLTc4OTA1NDQyLDI4MjIyOTg5LC03MTc5NTg4NiwxOTY3Mzk1NSwtNzMyNzczNzYsMzIyMTY5MzksLTc5MDM0MDE4LDMzMDcwMjk5LC04MzMwMDc1NiwyMDQ0OTgxNywtNzMxNDU3NjAsMTkyMDA2MDcsLTgwMzY4NjMyLDMyNTYwMzYzLC03MTg0NzA4NiwzMTkxOTk4NywtNzYwMjMzNTQsMzA1MzYxMzUsLTcxNjY4MjU0LDIzODk3NDEzLC03MjgxNzMxOCwxOTIyODU5MywtODAxOTYzNTgsMjgxMjc4MjksLTY4ODkzNjc2LDI5NzAwNjgxLC04MDgyMjAyMCwzMTU1OTA1NSwtNzQ2OTk0MjgsMjI4NDU1MjcsLTczNjI5MjkyLDMyMDIzNzEzLC04MjI1MTg2OCwyNzk2MDU3OSwtNzIyNTQ1MTYsMTgwNDU4MTEsLTcyOTMzODcyLDIzNzc5Mzk3LC03ODM4NzYzMCwyMDU0ODk0NywtNjkyNjY1NjIsMjU1MjM4NDcsLTgwNDYzODY0LDE4MzI3MDAxLC04MjAwOTYzNCwyMzUyODI1MywtODI0NTMwMjgsMjM1NjE2OTEsLTcwNzAyNTY0LDIzMjAwMTUzLC03MTM0Mjk5NiwzMDcyNDM4MywtNzcwMzk4MTYsMjg0NzE5OTksLTc2NTk5NTk4LDIwNzUzODI5LC02OTUyMTg4MiwyODQxODIyNywtODAyMzMyNzgsMjg3MzY1MTksLTY5MTU4NTg0LDMyMjE0OTMzLC03NTI3NTIxNiwxODI2MTkyMSwtNzQ2MjQyNTYsMjY0MjY3MzUsLTgzMjgzNjU0LDMzNDQyNTA3LC04MDE2MTIzMCwyNzc1MDY0OSwtODIzMTc1MzQsMjE0Njc0NzksLTc5MzY3MTI2LDE3OTAzODc1LC04MDA3NjIzMCwyNDE1NzEzNSwtODIxMDc3NzQsMjEwMzYxNjMsLTY5MDAxMzg0LDI3NTkzOTEzLC03NjUxMjUxNiwyMjQ3MDAyMywtNzQzMjM4NDAsMjQ0MzExNDUsLTgwNzM5NzgwLDMyNjkwNzk3LC04MDkxMzUxMiwyMzgwNDAwMSwtODA0NTgzMTQsMjQxNTg4NDUsLTc1ODk1NzcyLDIwMjY1OTYxLC03Nzk5ODExOCwyMDg0NDg3NywtNzk2OTMxNTYsMjI1MjU0NDcsLTc2ODI2MDYyLDIyMjc0NDYxLC03MjcwOTQyOCwyNDQ2NDg0MSwtNjgzNTQ4MzAsMjI3ODAxMDksLTY5Mzc1MzM2LDMxMDg5ODQ3LC04MDI2ODAzNiwzMDc2NzU0MywtNzg3NjIwMzQsMzI5NzI5NTcsLTY4ODg4Nzc4LDI5MzYyNDI1LC03Mzc5MTE1NCwyOTA1ODIyNywtNzU4OTAxMDYsMzI3NTQyOTksLTcwOTAwNDgwLDI5Njc2NzMzLC03NDQ2NzIwNCwyOTEzMTI4OSwtNzQ4MjgyODYsMjAyMjg4NTUsLTc3MDI3OTcyLDIyNjc4MDg3LC03MzAxODE1NCwzMTk3OTA4MywtNzM0NTk0NTIsMTg4NjcyODEsLTczNDQ5MzcyLDI3NDk4MTEzLC04MjgxNDYwMiwxOTg3OTYyNywtODAwNDYwMDYsMjQxNDE3MTEsLTgzMTQ1OTA2LDI3MDcwMzUzLC02OTc1MzI1NCwyNTgzOTkwNSwtNzQ4NjgzODgsMjM1OTc3MTksLTc1OTY0MDg0LDI0NTA4MDQzLC02OTgxNDM5MCwyODQ4NDUxNywtNjg1MDU5NzYsMjEwMjM5ODksLTc5NTc4NDk0LDI1MjQ5NTgxLC03NzY1OTY1NiwxODY1Njk1NSwtNjkzNTkxOTgsMjg5NTA4NTMsLTcyOTU4NjcyLDI2MTMyODIxLC03OTg3OTk0NiwxODM1NTY0NSwtNzMyNDQ0MDQsMTc5ODMzMjUsLTcyMTE2NDEyLDI5NTc1MTQxLC03MTAyNDkyNCwyMTEyMDUzMywtNzE5NDgwODQsMjUyMzg3MTEsLTgzNzk3NzMyLDIzNTI3Njg1LC03ODcyMDUxOCwyMDMyMjI4MywtODM2NTUxODYsMjgyNjE0OTEsLTgwNzI2Nzc0LDIzMjgwMjkxLC02ODIwMjk1NCwyNDE1NzU0NywtNzkwNTI3MjYsMjM5MDc5ODUsLTc1ODI2NzU0LDIwNjQ1MjM5LC03NDE0MzgyNCwxODQzNzQ3MSwtNzM2MjM0NzQsMjY1MTU3NDEsLTcyMTcwMDg2LDI4MzQ5MDAzLC03MjgxMjI4MiwyOTM3NjI2NSwtNzE5NjkwMzAsMzI2NTQzOTcsLTgyNjYzNTc0LDMwMzQ5MTk1LC03NzM4MjA5NCwzMDY4NTIwMSwtODEzMzY1NDIsMTc1NjQ3OTEsLTY5OTgxNjM4LDI1MjQ0NTY1LC04MzI0NTk1NiwzMTcxNTYyNSwtNzMxMDQwMjgsMjI5NjYwMTksLTcwNzA2NTU2LDI1MzQ2OTgxLC04MDM0NjE4MCwyMTkzNjEwMywtNzMxMTIxNDgsMjQxODY5MTMsLTc0NjQ1NDc0LDI1NTc3NzI5LC04MjU3NzEwNCwyODcyNTE1OSwtNzczNTA1MjYsMjY0NTY4MDUsLTc4MzIyNzM0LDE5MTU3MDc3LC02ODI4NDMyMCwyMjcxOTUxNywtNzExNzg1NDAsMjk2NDEyNDUsLTc3NjEzOTY2LDI3MTk4NDY5LC03OTQ1NjU1MiwyNDYxNDc4NywtNjgwODYyNjgsMTg1MTM0NTMsLTY5NDUxODU2LDMyMTY3MjcxLC03MTE0ODU3OCwyMzU4MjE2MSwtNjc1NzQwODYsMjQ4MTkwODMsLTgyMDIyNTc2LDI4MDcxNTU1LC03Nzk2NTAyOCwyMDU1MTE3MSwtODIxMTY3ODIsMzI1NTQzMzcsLTc4MTcwOTUyLDI5NDY1MTYzLC03NjkwODY5NiwyNTc3NzY4MywtNjc3ODU0NjAsMjA0NzM0MzMsLTc3MTk5OTkwLDI3Njk2NTI3LC04MzMwNzgwOCwyNTQzNTcxNSwtNjk1NjM3OTQsMzAzMDE2NzMsLTgwNjQwOTQwLDI2MzA2MDc5LC03MzY3NDgwNiwyMDQ3MDU4MywtNzgzMDIzNDIsMTY5MDA0OTEsLTcwNTA5NjA2LDI0OTA4NjA1LC02OTI1MzQ3NiwyMzIyOTIxNSwtODAxMDUzNjAsMzAwNjg1OTUsLTc5NzExMDc0LDIxMzE4NzU1LC03ODA4NzcxMiwyMDU0Nzc1OSwtNzQwMzM0NDAsMzIzMjQ5NDMsLTgxNTE3NTg0LDI5NDMwMzM1LC03ODA3NDA5NiwyNzc4MTY2MywtNzEyMzI4NjIsMzAyNTg0NTUsLTc4MTgwNDMwLDIyNjQ0OTI3LC02ODMyNTEyMCwzMTE4NjQ3OSwtNzI5MDkzMjAsMTc2NzQ1ODcsLTY3MzU1MzE4LDI2NTY1NjI1LC03MDc5MjQ3MiwyNTEzOTAwNSwtNzAxODYzMDQsMTcxNzAyNzMsLTczNzU3MDg0LDMxNzM3ODIzLC03NzgzNjIyOCwxNjk4NzE4MywtNzkxNjgzNzIsMzI0MzIzMjcsLTgwNzg4ODQ0LDI1MzE5NTc3LC03NDEwNzMzMCwyNjA3NTc1NywtNzk2NDIwODgsMzAxNjk4NzMsLTczMDEwNzE2LDMxOTU4NDc3LC04MzU5MjY0MiwzMDEzMjQ0MSwtNzcxNDYzMDQsMzMxODUyMjMsLTc1Mzc0MzE2LDIzNjk2MTYzLC03ODUwNDY4NiwzMTU1OTE2NywtNzc1MjIxMjIsMTg0NDA2MTcsLTcyNjI1MTIwLDMwNzQ3MDc3LC03OTI5MTIyMCwyNjcxNTI1OSwtODIwMDA5NzgsMzE4ODQ2NTEsLTc2NDQ4OTg4LDI1MDI3MTk3LC03MDIxOTE2MiwzMzIwMzkzOSwtODMxODIyMTAsMjI1MjM3NTksLTc1Mjc2MDIwLDE4MTE2MzgxLC03NTYyODA4NCwzMDk0NDY2MywtNzIxMzA2NTQsMjc4MjUyMzksLTgzNzM5OTYwLDMyMzk5OTQ1LC04MjQyNjM5MCwxODY5MjU5NSwtODM2ODczNjYsMTkwODM1OTUsLTc1ODQ2MTI2LDE4MTIxNjQ3LC03MjE2MTYwNCwyMjQ3MDI3MywtODIzODk1MjQsMTczMzU2MzMsLTgxMTM2MDYyLDI4OTM3NzM1LC03MTExNzc2MiwyNjY2MTgzNSwtNjc2ODkxMTYsMjY5Njg5ODksLTY4MTkzNjY0LDE3NzMxOTI3LC02OTQ1OTcxOCwzMzA1NTUzNSwtNzQ0OTkxNTQsMzIxNzExMTEsLTgwNDU2MTQ4LDIwOTQ3NzM5LC03MjA1ODU3NCwyNzE5Njk3NSwtODAzNTA3NDAsMzA3MDQ1NjcsLTgwNjU5ODMyLDI4MjUxOTIxLC03NTk2NTE5OCwyMjQxOTQ4MywtNzQ3OTU3MTYsMTk1MDAwODksLTczOTA5Mjk0LDI1NDgwMDE5LC03MTA1NDUyNiwyNDk1OTA1MywtNjc4MzUwMTYsMjE3MjAwMzksLTcyNjk3MzMyLDIyNDQxOTgxLC03MjU0NjY3NCwyNDI2MzA2NywtNzE5OTM0NDYsMjk3NjU1MDMsLTczOTUwMzQwLDIxNjg4ODA5LC03MDEwOTc0MCwyMTk4NjU4MSwtNzc1MjY4MjYsMzAzNzMzODUsLTcyNzg0MjM2LDE3NTEwODM3LC03ODg0NjY2NCwyNjQyNDkyMywtNzAwNzU3ODIsMTc5ODA1NTEsLTY5NDA1MzAyLDIwODA0ODQ5LC03MjkyODY5OCwyMzgyMTIxNSwtNzgwMzQxMTIsMzMzNTg3MzEsLTc0OTA2NTEwLDE4MDE0NTQ3LC02ODk4NzU3MCwxOTA3NTMyNywtNzk1MjI1MTAsMjU4ODE3NjMsLTc3NjIzNDAyLDI2MzI2OTE5LC03Mzk1MDAzMCwyOTU3NDg2MSwtNzYxNjY5NTIsMzMzNzI5NTUsLTY3OTU4NDY4LDIwOTUyMjI1LC04Mjg4OTU3NCwyOTA3NzgyNSwtNzM3MTk3NjIsMjgzODc2NzUsLTczMzk2MzQyLDMwMDcwMTkzLC02OTk3MDg4MiwyMjUwMDEyNSwtNzE3MDA4NDYsMTg3MzgwNzksLTgyNDkzMTUyLDMzMTk3MTIxLC03MTA2MzgwMiwyODA4NDQ4MSwtNjgzNTQ5MDAsMTgwNzk0NDEsLTc1MTUwMTc2LDI5MDY2MTkzLC04MTYxODgwOCwzMDM2NDE5MywtNzIwNzcyMTYsMjI3NzYwMjMsLTc0OTk3NDAwLDI1NDkzOTYzLC03MzA3MjkyOCwyNDA2MDk5MSwtNzM1NDQ0MDQsMjE0MzI2NDUsLTc0ODEzNjQyLDIzMjQ0OTQ5LC04MDM0NzQ1NCwzMjA0MDA5NywtNzUxMzI1MzQsMTkzODM1MDMsLTc2ODQ4NDE2LDMyMjQ4NzUzLC02ODU1OTI3NiwxODkwNzYyMSwtNzU5ODI0NDIsMjQ0NjMzODMsLTY4OTYyNjk0LDIzMjIzNDM1LC03NDcwMDI2NiwyODE2NjI3NywtNzUyOTA1MTgsMjg4NTc3NTEsLTcxNzYwMTc0LDMxMzMxNTUzLC04MTUyMDAzNiwyMjUwOTIyNSwtNzQwMjEwMTQsMjA2MDc0OTcsLTgzMTA3NjgwLDE2OTUyNzEzLC03ODUxMTQ4NCwzMDg3MjY3NSwtODM3NDEzNzQsMzM0MzY0OTMsLTY4NDAxNTYyLDIwNzAwNTUxLC03MDA2NjQ0MCwxOTQzNDIxNSwtODA1MjkyMzgsMjI1NTc3NjcsLTcwNTMxODY4LDI4NjcwMDI5LC03Mjc0ODUyMiwzMTA0NjI0OSwtNzE0Njg5NjgsMjU4Nzg0MDUsLTc3NjU1MzI4LDIzOTM5ODA5LC04MzEzNzgzNiwzMjI1MDE5NywtNzMzODI1NDAsMjQyNTQ0OTUsLTc2ODQyNjc4LDI3OTQ3MTc3LC03ODc0OTE3OCwzMDgyMDU4NSwtODM0NDQ2MTgsMjE2NzY1MzcsLTcyNDk2NTcwLDMyMTU1MjQ3LC03MTcyOTE5NCwyMjAyNjAyOSwtODI2NTQ1MDIsMjAzODgzNzksLTc4NTU5Mzg2LDE3MjE5MTIzLC04MjYzNTQ5OCwzMjg2Mzk2NywtNzgxODMxMDgsMjM2NDc5MzUsLTc3Mjg3NjgyLDI2ODM2NTQ1LC02OTY3MzkxMCwxOTgzMDk0NSwtNzcxMzk0MTYsMTc3MTM1ODMsLTgxMDcxMjk2LDMxNDIwMDQ3LC04MzM2NTk0NCwyNjY5Njc2NywtODE4MDE0NDYsMjExNzgwNzksLTc1OTY4Mzk2LDI0MzI3OTE5LC02OTA0MDI4MiwyNTg4NTMyNywtNzAxMTAzMDQsMzI2NzU4MDcsLTgzNjIwNjc2LDE5NjMxMTAzLC04MjM2MDkzNiwzMDkyMTgxNywtNjk5Mzc0NzAsMjYyMDk5NTUsLTc3MDE0Mjk4LDI5Mjg5OTk3LC04MTcwODYxNiwyMDg3NTA4MywtNzI2Njg1MTYsMzM0MjQzNDUsLTczOTIzNTcyLDI0NzQyMzA5LC03MTIwMjY1MiwxOTAzOTQwNSwtNzkzODQ1NTQsMjA1MTk1MjcsLTcxMTY5NjI0LDIxMzY0MjQxLC04MjY5Mzc2NiwyNDY3NzkwMSwtNzU5NDA0NzIsMjQ4NTM5NTcsLTczMzIwNDUyLDE5OTA2NzI3LC02NzI2NTc3MCwyNzczMDk1NSwtNzYzNzU3NTAsMTg4NzE3MzEsLTc2NjYzNzc4LDIwNjI1MjIxLC04MDM5NDIxOCwxNzAyMzA1NywtNzQyNDQwMzQsMzMxNDU1MjUsLTcwODQ0OTg2LDMwNjg4NTg1LC03OTQxNjY0MCwyOTU0MzgyOSwtNjk1NDc4NjAsMjUxNjU2NjUsLTc5NDQ2OTQ4LDE5ODkzNjYzLC02ODI4ODk3OCwyMjMzODAxNSwtNzA1OTMzMzAsMTk2NDI4NzEsLTc2NTI0MDU0LDI3MzI0MDg1LC02ODkwNzQwOCwzMTc0NjAzNywtNzU3NDM1NTYsMzEyMTAxODEsLTY4ODk2NzU2LDI3MzM0MjQxLC02OTE5NDQyMiwyNDYyNzQ3MSwtNzYwNDE4OTAsMzA4MTA0NjMsLTgxNTY5MjAwLDI3MzQ2ODU3LC04MTEwNzkzNCwxNzIxMjUzMSwtODAxMTk5NzIsMjU3ODI4OTMsLTc5MDE2MzcyLDIzNjQ5MjI5LC04MDgwOTY1OCwzMjA1MDAzNywtODA4ODA0NDYsMjU5OTg2MjEsLTY3Mjg1ODc2LDI2MjU2OTI3LC02NzI3NDMwOCwyMjkzOTYwNSwtODI0MDg0MzQsMTg5MDA2MjEsLTgxMzE5MzA4LDE3NjA1OTQzLC03MDYwMzYwOCwxODM2OTg2NSwtODE4OTQxMDQsMjM0NTg2MDEsLTY3NjI1MjUwLDE3MDU1MDE3LC03NjM4NjQ0NCwyOTU0NTU0NSwtNzMxMjU4MTAsMTgwNDE1NTUsLTY4ODA0OTgyLDI2NzUxNTg1LC02OTQ4MTE3OCwyOTk2NDY4MSwtNzQ2NDIyNjgsMjcxNzQzOTcsLTgyMjkxMDM4LDE3MjAzNDI3LC03MjYyNzA2NiwyNDk0Nzg2NSwtNzYyMzUwMzgsMTgyMzU4ODcsLTcwOTk3NTIyLDIzMzQ5NDQ1LC03Mzg3OTIyMiwxOTU5MTMwMSwtNzIzODk4OTQsMTcxMzI2ODMsLTgyNTczOTg2LDE4MjU3MzMzLC03MzQ1NzkyMiwzMTMwOTU5MSwtNzQ2NTA3MDQsMzMyNDI0NjcsLTgwOTAwNjA2LDMxMzUwNzU3LC03MDM0NDI2NCwyMzYyOTUyNSwtNzk2NTg5MDYsMzA2OTYyMDMsLTY3Nzc5MTc4LDIxNzgyMjY1LC02OTYwODIxOCwyNTQ5NzYxMywtNzM2NTMyMjQsMjgyNzA3MTUsLTc5Njg2MTQ4LDE4NTE2MjU3LC03MzIwNzE2MiwyODM3OTM5MywtNjk3NDY3NjIsMjA4MDg2MjUsLTcyODAxMTc4LDI2NDcxNTMxLC02OTY1NzUyOCwyMTEwNjcwMywtNzQwNjQ1MzgsMzA3MTEwMjUsLTY4MDQxNzA0LDE4NTk3ODg3LC03NTYxMTg4OCwyMTgyNzc3OSwtNzM3MTE4MjIsMzA4NDExMzksLTc0NjQwMzU0LDE3OTIyNDA3LC03MTU2MDk5NCwzMzEzMDg0NywtNzEzNTcxNTIsMjMwMzEyMjMsLTc3NTIxNzUyLDIzMDY5NTUzLC03NjI1MTQyNCwyNTg2NzIxNywtODIxOTI1NjIsMzA4NTE1ODUsLTY3Mjc2MTE4LDMyMTIyMDU5LC04MjYxOTU0MCwxNjkzNTE3MywtODI4MDU5MDAsMjUzNjMwMDEsLTcxOTAxMzM0LDI3NDg5MzM3LC03MjEwNjA4OCwyMjQxNTA1OSwtNzAwMjUwNjgsMjgyOTI1NTEsLTY5NDg5OTQ2LDIxNDY1NjM1LC03NDE0ODYxMCwyNzcyNTE5NSwtNzQ2ODI4NjYsMzI1MDEwNjUsLTcxMTM0NDkwLDMyNDcwNjMzLC03MjQ4NzAyMiwxNjg0NjQ3MywtNzM4MDUwNzQsMzAyNzQxNDcsLTcwMTQ5Njg0LDIwMTA4NTUxLC03NTc2OTgzMCwyNTE0ODAyMSwtODAyMzk4OTAsMjY1MDE0MzMsLTcwMzcwMzI2LDI1MjY1NDA5LC03NzY5NzM1OCwzMjcyMjYzNSwtNzc3MjYzNDYsMTc3MTgyNDksLTY3NTk1NDI4LDE3MDc2NjUxLC03NDQ0NDU0NCwyNjYxMDk4NSwtNzY3NDQ0NTQsMzMxOTYxNTcsLTc2MzA4MzIwLDE2ODU4MDkzLC04MTA0NTY4MiwxNzQ0NTU2MSwtNzEyNTg0NTYsMjMyODE4MDksLTgyNDExNjg4LDI1MjUxMzI3LC04MTg5Nzk0NiwzMjUyMDk4NSwtNjc4NDgxNzAsMjEyNDUwODcsLTY4ODE0MTEwLDE3ODkzMDQ5LC03NDAwNzQ2MiwyMjU4MjQ5MywtNzAyNjg1NTAsMjU2Mzk4MjksLTgyNzczNTEyLDIyMjU4NDAzLC03NTUwOTU5NCwyNzIxOTQxOSwtODM0MDM0NjYsMjAxMTI1NDEsLTY3NjQzMTQ2LDI1NTY0MzEzLC03NzgwMjAzOCwzMDEwMDcwMSwtNzQxMjQwNjQsMjcyNTI4NDEsLTcwMDA1OTk4LDMwNzY5NTk3LC03OTU4MjAxNCwzMjY4MDI2NywtNzAwNTMyMzQsMzI5MDQ2MDMsLTY3MjQyNzk0LDIxMzk0OTE5LC04MjU3MjI0MCwyNDk3Nzk3OSwtNjc4MTE0NDAsMjY0MDYzNTcsLTgyNjI2MTkyLDMxNjM4NDM3LC04MzMzNzk5MiwzMzUwMjIyMywtNzg3OTk5NTIsMzIxNjAwOTUsLTc3MjU2OTU4LDMyNjc1Nzg3LC02NzE4Njc2NiwyNjEwNTU5MSwtNzAzOTcyMDIsMTg0NzY0NDEsLTcxNzY0MTY4LDMyMzExNjk5LC03NTg5Nzk0NCwyMzMxNDI5NSwtODMxMjA0NzQsMjg0MjA5NTUsLTcwNTIxNzkwLDIyMzEwNDQ3LC02OTY4ODk3NiwyMzEzMzQyMSwtODA5MTUwODIsMTczMDI2ODMsLTc4Mjg2NTMwLDIxMTk4NzIxLC04MjY2ODUzMiwxOTQzNzg2OSwtODE4NzMyNTIsMjA2NzU1MzMsLTgyMzMxMDg0LDMxMTY2MjQ1LC02OTExMzE1OCwxOTA2MTAxMywtODA2MTUxNjQsMzIzOTI1NTEsLTcyOTE4OTU2LDI1MTI0MDcxLC03MDQ1NDEyMCwyNDYzODk3MywtNjk2MTc5MzYsMTk4MjExMTksLTc5MTYwNzY2LDIwMjgzMDk1LC03NjkyMjcwNiwxNzc5MDMzNSwtNzM3MDAyMzYsMjgwMDUzOTcsLTc5Nzk4MTkwLDIwNzk4OTI5LC03NDYyOTA3OCwyMDk2OTMwNywtODI1NTQ5MzgsMzA1OTE4MTMsLTY5MzM2Mzg0LDI4MTQzMTc3LC03MjkwODYyOCwyODg1NzU0MSwtODE2OTc3NTAsMTg5ODA1NDcsLTc2NjgxNjUyLDE2OTE3MTgxLC04MTkwMDMxMiwxOTE0MzM1OSwtNzE5Nzc5MzQsMzEyMTMzNzMsLTgxNzE4MjQyLDE5Mjg5NTQ1LC02OTAyMjU3MCwyMjA0NjQwMywtNzI0ODUxNTQsMzIzMjgyNzksLTc0MzA2MTEyLDIxNjI3Njk5LC04MTgwNTQwNCwyODE3NzE1MywtNjc0MDA2MjYsMjgyMDg1ODcsLTY3ODc0NzY2LDI5OTQyODAxLC03Njg2NTcxNCwxNzMzNjA0NSwtODI3NjMyMTYsMjc2ODMxOTMsLTcwMzkwMzQwLDI0MzE4Mzc1LC03MjAxNjI1MiwyODg4Mjc3OSwtNjg5NjI1NjIsMjA4NzgyNTMsLTcxMzMwMDUyLDI4OTM5MzU1LC03MDI1NDU3NCwzMDA5ODMyMSwtNzE3OTcyMjQsMjc2OTg3NzcsLTgyNzI2MDM0LDI0NzE1NzYxLC03NzU2NTgwMiwyNzIxNTc2MywtNzcwNjI0MDYsMjEzNTY4NDcsLTcyODczNjYyLDI5MjY2NjcxLC02ODE4ODk3MCwyNzk4MzkyOSwtODMxMTg2NjAsMjE0NTU1MjUsLTc4ODAzNDg2LDE3MDI0ODY1LC03OTg2ODkzNiwyOTM4MzU5MSwtNzA0ODQyODIsMjc4NTkwNzcsLTgwMTU5NzI4LDI5NjEzMzUxLC03MzA1ODQ2OCwyNzExOTE3NSwtNzc0OTA5NzIsMzE1ODI0NjksLTY4MDYwNTU0LDMyMjYyNDY5LC03NTAxNDUzOCwyNTcyMjM0OSwtNzgxODI5NzgsMjgyMzc2MjcsLTc0MDg2OTEyLDMwODc1MTMzLC02NzI4NTAwMCwyOTQ1NjE4NywtODE5MjQ2NjIsMzE1MzE1NjMsLTcyODQ3Mjc0LDIyNDAyMzA3LC03Njc1MTk5MCwyNDIzMzY1MywtODA1NTYxNTAsMTg0NDYwMDUsLTcyMDMzMDc2LDMwMjYxMzE1LC03ODE0MzU1NiwyNDQ3OTgyMSwtODI0NDcyNTAsMTc2ODEyMTUsLTc3NjE5OTQ4LDE5NDczMzg5LC03ODQ4ODA0NCwxODYyNTg0NSwtNjg0Njg5NTQsMjM1MjQ1MTcsLTcxMDEyNTQ2LDI3MjAxODMxLC03NzEzMTI4NiwyMTcyMjc0NSwtODM0MTMyNjQsMTgyNDE1MTMsLTc1ODI1ODI2LDI0MzAyOTkxLC03ODE3MzA4MiwyOTQ1NTkxNSwtNzkxNjkwODAsMjc5OTkyMjMsLTgwMDkxODI4LDIzNDU4Njg5LC04MzIwMDMwMCwzMDk0MzA3OSwtNzMyMjYwMzIsMjkyODk0OTksLTcwNTg0NzAyLDE4NTY0MzE3LC02ODAwODY4OCwyOTY5NTk2MSwtODI2OTQyOTIsMjE4NzI5NTcsLTgzNTEzMjA4LDIwMjU5NTM3LC03MTkyMTUzMCwyMTAwOTQ0OSwtNzU1NjM2NzgsMjI3NzExNzUsLTgxODUzMDQwLDIxMzk4Mjg1LC03NDIxODM0NiwzMDE2MTQ5MSwtNzM0Mzk0NTgsMjYzNDk0MjcsLTc5Njc1MTU2LDIyNzQ1NzM5LC03NDg2OTA0OCwyNjE3MjI1OSwtNzM2NDgxODIsMzMyODM5NDEsLTgzMjc4ODM4LDI5Mzg4NjcxLC02NzM2MjY2NiwyMzE4MDIxNSwtNjgyNzg5MjgsMjA1MDkzNDMsLTY4NDg5NDkyLDMzNDIyMTk1LC04MTgxMDg3MiwyNDgxMTE4MSwtNjczNTYyMzIsMjg5MjQ2NTMsLTY4Mzc0OTA0LDI3NDI2NTc3LC04MjQ2NzcwMiwyNDI3ODQ3NSwtNzEyMjAzNjIsMjIzODM1NzMsLTcwOTI0NzE2LDI1NjcxNTI1LC03OTA0NzMxMCwyNDU1MDYxMSwtODM3NjAzNDAsMzM1MDI1NDEsLTgzMzg1OTk0LDI4OTY4NTI3LC03Njk1NDA4NCwyMzEyNTA5NSwtODA4NzE3NTAsMjcxNDgwODEsLTgxOTY1ODU4LDIzODYwNjE5LC04MDExMzI1OCwzMjk2NzE1NywtNzQwNjUxNDIsMzI0MDcyOTksLTY5NDExNTIyLDE3NDQ1MTQ3LC04MjYwMTAzNCwyODc2NzMyNSwtNzIxOTExNjAsMjQ5OTI3NjEsLTY4NDY4NTAwLDMyNTQxNDE5LC03MTg4NTA1MCwyMDgwODU4OSwtNzY3NDA1MTAsMjE3NDAzOTEsLTcyNDE4ODEyLDE4OTkzNzczLC03MTg5Mjk3NiwzMDk5MjkzOSwtNzc5NjQ3MjIsMjE4MjYzNzcsLTgxNDc3Nzk2LDE5OTM4ODM3LC02OTA4NjYzMiwyNjk2NDU3NywtNzMxNTc1OTIsMzIyMDk0NDUsLTcyNTM0ODkyLDMxOTUxODE3LC03NTg5MjIzMCwzMjM5MTcxNywtNzU5MTc0ODgsMTg0MjI2NzMsLTgzNTA5OTI0LDMxNzI2MjE5LC02ODg2Njg1NiwyMjY2NzY3NywtNzU1MzIxNzAsMjIxNDQ4MjksLTc0MzMxOTYwLDE5NzYxNjA1LC04MDI5MDg5NCwzMTYzMTM3NSwtNzkwMjgwNjgsMjM0MDE1NDksLTgwNDIxODEwLDMyMDQxMjI5LC03NzYzNzQ1NiwzMzI2OTEwNSwtODI2MDM2MzIsMTgxNTczMDMsLTc4NTk4NDY0LDMxODQyNDc5LC03NTEyMTk1MiwxNzI0MDI3NSwtODIwMDY2MDgsMzAxNzM2ODcsLTgyOTE2Njg4LDI5Njg4NDUxLC03NDM3NTEzOCwxNzkwODgyMSwtNzgwMDEwMTAsMjk5MTUzNDUsLTcwMTY3MDg4LDI2MTIyNzg5LC02OTkzMTkxMCwyMTgwMDY1OSwtNzA3NDkwMjIsMjM3MjU3NzEsLTY3Mzk3NjE0LDI5ODAyNzY1LC03NTA5MjQzMCwxNjg1NDgxMSwtNzQ1NDAzNTQsMjE0NzgyMzMsLTc0MTA5ODM2LDIyMjIzNzA1LC03MTU4MTUyNCwzMDQxMjA2OSwtNzU4NTA1MTIsMjYwMTMzMDksLTgzNjU5NTQ4LDI1NjkwMjY3LC03MTQ0NzgyMCwzMjcyMTc1MywtNzEwNDA1NDgsMjYwNzcwODcsLTc5NjAxNzE2LDI5Nzk2NzM1LC02NzQ4NjkzNiwzMTk1MDc2NywtNjkxMzkwODIsMTgxODExMTMsLTc5MzA1Nzk0LDIwMDkzODI3LC04Mjg0MDY2MiwxOTc2NTI4NywtNzAwOTYyNzgsMjkxMTQxNjMsLTY3ODU5ODA0LDI5OTIyNzgzLC04MzIyNDQ2NiwyODE1MjEzOSwtNzAyNDEwODgsMjc0MDI4MzMsLTczNjg2OTgyLDMxOTYzNjQ5LC03NTQzNjI4NCwzMDM3MjAzMywtNzE2ODQ3OTIsMjkxNzE0ODMsLTY4NTc4NzcwLDIzODIzNjIxLC02ODM3NTc5MCwxNzMwMjcxOSwtNjkxNjA3NDQsMzI1NzI0NzksLTcyMzAyODU4LDE5NDUxNTk5LC03MTkwMjc2MCwyODM0MDY2MywtODA4MDY5MDQsMjE0Mzg0MTcsLTc3MjE5NjI4LDE3NDM2MjU5LC04MTQzNjQwMCwzMDcwNDAyOSwtNzg4MDgyOTIsMjA5Njk0ODksLTc5ODA5ODE4LDIxOTM0Njc1LC03Njc4MDA3OCwyODkzNjk2NywtNzE2MzgwODAsMzI0MDM5NzcsLTY4NzQwOTUyLDMwOTgwMjE1LC04MTk4MDg3NiwzMTExMTAyNywtNjc4NjYwMzQsMzI1MjQ2MTEsLTcxMjUzMjA2LDIwMzIzNzUzLC02Nzg2MzM1OCwyMjEzMDg2MSwtNjkxMzE1NjYsMzI0MzMzNzcsLTc2OTcwODIyLDE5MzU0MDA3LC03MjE3NTczNCwzMTU0OTYyMywtNjcyOTUzODYsMjU0MDM1OTEsLTc4NDQ2MjM2LDMzNTE0NjMxLC03NzE5MDQ5NCwxODQyNTI1NSwtNzU0ODM2NTYsMTkzMDUyODksLTc3NDgzOTE2LDI1OTMxMjI3LC04MTY5NzIyNCwyOTg4OTE1OSwtODE5ODAxMzIsMjg2NDQyMDUsLTgxMDAxMzI4LDE3ODkzMDYzLC04MzYzNTg4MiwxNzQ2NjE2NywtNzg5MTk2NTQsMjk5MjE3ODksLTY3MTIwNDMyLDI5MzQwMDQzLC02OTI5MTIzNiwyMDI0NDY4OSwtODMyODgwNDAsMTkyMTY1ODEsLTgzODIzMjM2LDI4MzYyMzEzLC03MTc1NzI0OCwzMjM3NDI0NSwtNzY4NzkyNTQsMjcyNzU3NTcsLTgzNTQwNzg4LDI5NzczMDAxLC04MzI2ODEyMCwxOTMyMzgzMSwtNzg5NDIwMjQsMjY5MTA4MTcsLTgzNDA4MDQ2LDMyNTM3MDM3LC04MDg4NDU3OCwyMjczNjQzNSwtNjg0OTY5MjQsMTkxNTY1NDMsLTY4NjQzNzM4LDIzNTIzODc1LC03NDQxODg5MCwyMTk5NTgyMywtNjgzMzAyNTYsMjk0ODM0MzMsLTczNDc2ODUyLDI1NzcyMTU3LC04MjExMzkzOCwyMTE4NzE5NSwtODA5Mzg4MzAsMjA4MjgxNDUsLTc2OTYzNzM2LDMxNDcwMzc5LC03Mzc4OTk4NCwyODgwNTM0OSwtNjcxNDIyNTgsMjM2NjQxNDNd", 9540837);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
+    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
+      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
+        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.style.display = 'flex';
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  document.getElementById('stay22-modal').style.display = 'none';
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+
+</body></html>

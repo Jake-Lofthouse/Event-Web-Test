@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Halifax, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax." />
+<meta name="description" content="3 parkrun events in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Halifax, United Kingdom" />
-<meta name="geo.position" content="53.731746;-1.873871" />
+<meta name="geo.position" content="53.723392999999994;-1.9499643333333332" />
 <meta property="og:title" content="parkrun Events in Halifax, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax." />
+<meta property="og:description" content="3 parkrun events in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/halifax/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Halifax, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax." />
+<meta name="twitter:description" content="3 parkrun events in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/halifax/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Halifax","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/halifax/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Halifax, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/halifax/","spatialCoverage":{"@type":"Place","name":"Halifax, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.731746,"longitude":-1.873871}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Halifax, United Kingdom — Hotels & Course Maps","description":"3 parkrun events in Halifax. View course maps, find nearby hotels and plan your parkrun visit to Halifax.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/halifax/","spatialCoverage":{"@type":"Place","name":"Halifax, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.723392999999994,"longitude":-1.9499643333333332}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Halifax</h1>
-    <p class="hero-sub">1 parkrun event in Halifax</p>
+    <p class="hero-sub">3 parkrun events in Halifax</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Halifax?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(53.731746,-1.873871,'Halifax parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(53.723392999999994,-1.9499643333333332,'Halifax parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,43 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Halifax</div>
-  <div class="event-grid"><div class="event-card" data-search="halifax parkrun halifax" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="centre vale parkrun halifax" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-centrevale" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Centre Vale parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Halifax</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/centrevale" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-centrevale');
+  if (!el) return;
+  var map = L.map('cmap-centrevale', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMDUxNDYzMyw1NDA4NjA4MCwtMTE3MDQ5MDYsNTQ2MjE3NjQsLTg3NTA4NzksNTc3ODYwMTcsLTM4OTAxNDAsNTA2NzA3MDksLTcxNjgxNzEsNjQ5NTQzNzUsLTc3NTc5MzUsNjMzMjQ5NTgsLTIxMzIxMjAsNjE3NTczOTIsLTU5NjcxOTAsNjQwNTk3OTIsLTEwNDUzMTQ1LDU2MTYxNTA0LC0xNTg5NTkzNSw2MTk4NDU2NCwtNjU1Nzg4Nyw1NzUwNTM5MSwtMTIxNTM5MzQsNTc4ODg2NjEsLTEwOTEzMTk5LDUxOTI4MTUyLC0yNzYwMzcsNTgwODcyMTYsLTEwNTcwMjkwLDUxNDQzNzc2LC02NTY1NDEwLDYyNjUxMTU4LC0xNDA4MjQ1LDU1OTI0NTE2LC0xMzI4Njk5NCw1MTQ5MDAyMSwtMTM0NTUxNjAsNTc1NTgyMzQsLTI5Njg3MjAsNjQ0MjgzODMsLTE0ODYyNDE0LDU2MzE2Mjg5LC0xNTM1MzQ0Miw1MjM3NDM1OCwtNDI3ODg2Miw2NTQ2MTgyMywtMTU0NDg4NTgsNjMzMTUxMDgsLTI3Nzk1MjEsNTI1MDgwNDgsLTEzMzM4NjcyLDUyMjEzMTM1LC0xNjQwNzg2NCw1MTg5OTgwMCwtMzcyNTU4Myw1ODU0NzY0OSwtNzAxMzYxMyw1NzM5NDM1MCwtNTkwODk1NCw1MTcyODY1OSwtMTQyNTE1ODcsNTEwMzkyMzMsLTE1OTMyODMyLDYzNjc4MjkxLC04OTExNDMxLDY2MDk5NjkwLC00MzM4NjgsNjY0MjM1NDQsLTEwNzM2MDQzLDY1MzE5MDM0LC0xMjM0NjIzOCw2NDk1MDA2NCwtODkyNTg2Miw2NDc1OTE5MSwtODY4Njc5Myw2MzAyNjQwNSwtMTI3NTQ4NDEsNTI5MjA1OTIsLTgwNzY5NzgsNjE4NjI2ODQsLTk4ODc0MzQsNTQ0MTY0NDUsLTgyNzE2NCw1ODE4NDExNSwtODU4MTEzOSw2NTU3NTExOCwtMTAwNDczMjUsNTYxODk5MzcsLTg1ODU4OTUsNTU2MTQ5NjAsLTE0MzE0MjY3LDYyNDcyODc3LC0xNDAyMjEzNiw1NjE5MjExOSwtODcyMDIxNiw1MjE4MjQ0MSwtMjc1NSw2NjM1NDQ3OCwtMTU2MzU3MzMsNTc5NzY2MDQsLTEwOTM5MjQsNjU0MjA2NjEsLTE1NzY4MjA2LDU5MTAwOTY5LC02NjE2NzYwLDUyMTU2NDM4LC01MDQ1NDMxLDUyMjgxNTcyLC03MDk1NzUxLDYxOTcxMTEwLC0xMTY5NzAyLDUxMjEzNzg3LC0yOTI1NTY2LDUzODk1NDI3LC00MDMyODQyLDYwMzY0MDg2LC00NjAwOTEwLDYwMzU4NjM3LC0xMDY3MjAwMiw2Mzk1MTYyOSwtMTYxNTYyOTAsNjM0MzUzMzEsLTg0NjcwNSw1NzI5MjMyNSwtMjAyMTM1Miw2NTgxMDE3NSwtMTQ4MTc4MzEsNjExNjc1OTcsLTEyOTcwOTAwLDUzNDM4NDIyLC00ODgzODQ2LDYyODQ5MjA4LC0xMDIyNDk4Nyw2MjA0OTc0OCwtOTUzOTIzMiw2MDQ0NjUwNSwtMTI2NzM2MzgsNTkyNzI4MjQsLTkxMTc0NjcsNjY3MjY3NzUsLTQ2Mjc3MzYsNTc5NDY4NDcsLTc4MTYzNDMsNTgxMTE3MzEsLTc2MDY4OTMsNTk5MTg3NDAsLTY3MjQ0NTEsNTgzNTIyNTAsLTEzMzY3NTU3LDU5NzI5MzIxLC02MTMwNzU0LDU2MTE3MjA4LC05MTE2NzAsNTg3NTAyNDEsLTEyMTI0NTczLDU1MDg1NzI5LC0xMjM2OTYwNiw1OTUxNTg1OSwtMTIwMDAxNiw2MTE3ODE0NCwtNjM2NzQyNSw1NjIwNTQ2NiwtMTA2NzU0ODMsNTUzNTEwNTcsLTEzNTA0NDg5LDUzNTU2MTQ5LC02ODEzNDkwLDUyMjIwNTk3LC0xNTAwOTAzNyw1NjgxNDg3MywtMTMwODg2MzMsNjAzNDQwODRd", 7886474);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="halifax parkrun halifax" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-halifax" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -362,6 +398,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="people’s park junior parkrun, halifax halifax" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-peoplesparkhalifaxjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">People’s Park junior parkrun, Halifax</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Halifax</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/peoplesparkhalifax-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-peoplesparkhalifaxjuniors');
+  if (!el) return;
+  var map = L.map('cmap-peoplesparkhalifaxjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03NzY4MTM1LDUyMTQ5OTkxLC03NDg0OTE2LDYxMjY3NTgwLC04OTUwODIwLDYxMjg2MDczLC0zNTQyOTIsNTYwNTU0NDksLTQ0NDQ4NTgsNjUxNDU2MzEsLTY5NzczMDAsNjIyOTY1MjUsLTQzODU4OSw1MjQ4NTQ5MSwtMTg3NTQ3Miw1MTY0MjYyMCwtMTY1Mjg3OTAsNTUyMTEyMDMsLTExNzgyNTUwLDU1MDQ0MTM2LC0xMzgzMjgyNiw1OTE1MDM2NywtNTA1MjI3Myw2NzAyMDU3MywtNjY2NTYyOCw2NDU4Njk2MywtNTIwMDc2LDU2NzIzMTgxLC04NjcxNjk2LDY1NDM0NjQ0LC02MzQwMjI2LDYwMTQyNzA2LC0xODE1NjQwLDUwNTAwNjkzLC0zMDMzOTk5LDYzMDUzNzk5LC0xNTkxNTY3Miw1NzAxNzgzMiwtMTI0NDQxNzgsNTE2NjU1MDEsLTIyMTQyNTcsNTE1OTMzMjAsLTgyNDkxMTcsNjI1MDQzNDgsLTQyMTI2MDIsNTMxNzUxOTQsLTc1ODUyNyw1NjEwNDc0MywtNDEyNzY5Miw2Njg5OTA5NCwtMTAxNDUxNTYsNTA3MTU2NjBd", 14121053);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

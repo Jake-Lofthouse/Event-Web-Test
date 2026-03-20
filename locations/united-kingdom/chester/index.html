@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Chester, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="2 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester." />
+<meta name="description" content="6 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Chester, United Kingdom" />
-<meta name="geo.position" content="53.2236665;-2.7951639999999998" />
+<meta name="geo.position" content="53.236409333333334;-2.791346166666667" />
 <meta property="og:title" content="parkrun Events in Chester, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="2 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester." />
+<meta property="og:description" content="6 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/chester/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Chester, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="2 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester." />
+<meta name="twitter:description" content="6 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/chester/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Chester","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/chester/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Chester, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/chester/","spatialCoverage":{"@type":"Place","name":"Chester, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.2236665,"longitude":-2.7951639999999998}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Chester, United Kingdom — Hotels & Course Maps","description":"6 parkrun events in Chester. View course maps, find nearby hotels and plan your parkrun visit to Chester.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/chester/","spatialCoverage":{"@type":"Place","name":"Chester, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.236409333333334,"longitude":-2.791346166666667}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Chester</h1>
-    <p class="hero-sub">2 parkrun events in Chester</p>
+    <p class="hero-sub">6 parkrun events in Chester</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Chester?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(53.2236665,-2.7951639999999998,'Chester parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(53.236409333333334,-2.791346166666667,'Chester parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -398,6 +398,150 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="ellesmere port parkrun chester" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-ellesmereport" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Ellesmere Port parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Chester</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/E/ellesmereport" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-ellesmereport');
+  if (!el) return;
+  var map = L.map('cmap-ellesmereport', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02MzczMjUxLDYwMTg0MDQzLC0xNDEyNDA0Myw2NDUyNTQ4MywtMTQ3NzQxNjcsNTUwODM5NzksLTEyMDE2NzYsNTk2MzUxNTQsLTc0MTI1MDIsNTkyODgwOTEsLTE2MDI0OTU1LDUyMDA2OTA0LC03NzA0NzIsNjUxMjg3NTYsLTE2MDU5NDU5LDU4MTIzODQ5LC04MjY1Mzg5LDYwOTk3OTE3LC01Mjk3OTA2LDYxOTYyNDY3LC0xNjczOTc2LDYyNTQzNTcxLC0xMTQ0MDIxNCw2MDEzNDQzNywtMTQ4OTY2ODIsNTYwMjAyNTcsLTE1NjQxOTQ2LDU0MDY1NDQ1LC01ODIxNzc4LDY2NjA5NzY0LC0xMzg2NzA5Niw2MTU1MTAxMSwtMTUwOTU0NDYsNTg4OTM0NzgsLTE0MDk0NTMxLDU1MTA4ODIzLC0xNDIwNjk5Nyw1MzcwMTYxMiwtMTUwODg3MjgsNjA4MDQwODcsLTIyNDU0MzUsNTIwMzExNzQsLTQ1NzY4NTgsNTk3NzQxMzgsLTE2MTQ5OTQzLDU0NDY4MDU1LC0xMjM0MDY0NCw2NTQ4NDAyNCwtOTgyODc4Myw1NzY5MjM2MCwtMTUyOTQzOTUsNTIyODI5MTgsLTE1ODY3MTIyLDY2ODUxNjIzLC0xMDM2NDQ4Niw2MTU2NjE5NywtOTY0MzgyNCw1MjA2NTQ4NSwtOTgxNDA0NSw1MTY4NzgyNSwtMTQ3NTU0MjgsNTYwNzkyMTUsLTE1NDIzNzQ2LDUxNjM4MzkwLC00ODcxMjYwLDUzODQwNzA1LC00OTE0MzUyLDUwNDM4MTkzLC0yMzkxNTc2LDYwMjkxNzU4LC0zOTE2NTU2LDU0NzUzNTQwLC0xNDk2MDIwNSw1MzczMzkwMSwtMTMzODU4ODQsNjUyMTQ4OTUsLTMxMTI3MjIsNTE0MjQ5MzEsLTkxMDkyMCw1MTgwNjUwNiwtNzg5MzYxMSw1OTQyODkzNywtODQ1NDQwMSw2NTk4ODA1MSwtMTU0Mjg0MjMsNTA1NzY1MzVd", 6900557);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="gardenhurst estate junior parkrun chester" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-gardenhurstestatejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Gardenhurst Estate junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Chester</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/gardenhurstestate-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-gardenhurstestatejuniors');
+  if (!el) return;
+  var map = L.map('cmap-gardenhurstestatejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0zNDUzMzMzLDYzODE4MjU3LC04MDA3Mzc4LDY1MjYzNjAyLC0xNDY4NzAxOCw2MTgzMDc1NCwtMTU0OTQ5MDUsNjYwMzM2NjUsLTE0ODYzMTM3LDYwMTUyNDQ1LC0xMDI0MzExMiw1NzkxNDM0MiwtMzYwNTA4Niw1MTk3MzU0MSwtOTE3MzQ2MSw2MTU1NTQ3MCwtODg1MjU0NCw2NjQ2NDU4NiwtMjM0ODQ1Nyw1NjAxNDY0MiwtMTU3MTI0OCw1NDg3MzMwMCwtNTI4NzkxOSw2NTI5MjE5NSwtOTIzNjM5NSw1MzIwNjEzMywtMTY3MjU4OTYsNjE3MzQ0OTAsLTEyMjE1MjIsNjMwMzQyMDAsLTI1MTIwNjgsNjU2NDk2NzcsLTEyMzM4NDg5LDYzMjkwMTUwLC0xNTA5Nzc0OSw1NjA5OTE3MiwtNjE2MzM4Nyw2MjI5OTA1NSwtOTQyOTQxMSw1Nzc5NDY3OCwtMjgxNjcwOSw2NDY3MTExNywtNzU3MTcwMyw1ODA4NDkwNCwtNDgzNjYzLDUxODg0MDA2LC02MDQ5NDc5LDY1MDA4MDE4XQ==", 15114857);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="northwich parkrun chester" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-northwich" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Northwich parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Chester</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/N/northwich" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-northwich');
+  if (!el) return;
+  var map = L.map('cmap-northwich', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03NzE1MTc2LDU4ODI4MzUyLC02NzU5NDgyLDU0MTA4MjkxLC0zMDE1MDE4LDUyNzk1ODg4LC0xNjEyNjgwMyw2NDg2Mzg0MCwtMTM0Mjc4MDcsNTcwNjM1OTgsLTcyMDgxMjIsNjA4NzYzMDUsLTI1MTMyMTgsNjMyOTk5ODksLTkzNzAwNzgsNTY4NjMzNDYsLTY1NjczNjQsNTg1MzgxNzIsLTE1MDYyNDQxLDYzOTE0OTk4LC03NTQ3MDY5LDUyNzY3NjkxLC0xMjAyNjA4LDY0ODk0NzA0LC02MjY2MzQ0LDU0NDUwNTM1LC00NjIzMDAyLDUwNDg1MjI4LC0xNTE0NDI5Myw2MTI4Mjg2NSwtMTU4NzgyOTcsNjI3NTUzMzYsLTEwODIzNTA1LDYxODcyMDA5LC0xNTMwMjIyMyw2MzQ1NjA4NiwtMzU1ODA5Myw2MjkwMjU5NywtMzY3NDc0Niw2MTgzMDg0NSwtODYzNTg5NSw1NjkyNjk4NSwtNzYwMzM1LDU1MzU0OTgyLC04NzAwNzAxLDY1NzU2ODY1LC04MDM3NjM4LDU3Mjg5ODA4LC0xNDQ4NzYzNiw1MDQ3NDI3NCwtMTIwMjU2MjAsNTU0MTk0MzQsLTEzMzA4NDEzLDY2NjcwNDU1LC0yODE3MTk5LDY0MDA1NzI3LC0xMzk3MzY2OCw1ODg2OTMzNiwtMTA5MTA2ODIsNjEyMzY3MTksLTE0NjQ2MzU2LDYzMDIwMDA1LC03OTc5Njc0LDYzMzAwOTkyLC0xNTMxMzUxNCw2MzI3NzUwMCwtNTI5NTI3Niw2MzkzNDkzMywtMTI4NTAyMjYsNTc1NjU5NzQsLTEwMzAxMDg1LDY0NjY1MjQ2LC0xMTM3MjYsNTcyNTY0ODMsLTQzNTQyMzAsNTgzNTk5MjksLTgzODUyMDUsNjEwMDMzOTIsLTIwODkyMjYsNTIyODMzNjksLTQ0MzA5MjAsNjMwMzE5NTUsLTY2NTk5NCw1MjMxMjMyMywtMzY0Nzg5LDYxMzE0NDE4LC05MzkwNzAsNTcwNjQyMTYsLTcyMTI1MjAsNTY4MTU2MTAsLTkyMDQ5LDU4NzYwNDcwLC0xMjUyMDgyMCw1NTk2ODEyOCwtMTA1OTc4NTgsNTQyMjA3NzEsLTQ3MDAyNzAsNjIyNzM2MTQsLTEyMTY1MDE4LDU4MDE3Nzg4LC0zNjY4NCw1OTU1MzA1MCwtMTEwNzg3MTAsNTQzNTUzODksLTEyNTMxODYyLDU2OTcyODY5LC03MzY3OTI1LDYwMzg5NDQzLC0xNTM4NDM5Nyw2NTU1ODUyMCwtNzkwODYsNjY2NTA3MTgsLTkzODA1MDEsNjI0NDkyOTQsLTE0NDE1OTY3LDU5NTU5MjM3LC04Nzg1Mjk3LDYwODEwNjE4LC00NzQ3MDUxLDU5MzYyMDgxLC04Nzk0MDgxLDY0MjI1OTA4LC05OTg0NzA2LDY2NTM4MDg1LC03MzM0Njg1LDU5ODA5MTM1LC0xMjc0NzMyLDYzNDYwOTE4LC00Njc4NjgwLDYwMTE4MzQ4LC05NzQ2MTcyLDYxMDU1OTgxLC0xMDczNzMzNyw1MTk0MzEyNiwtMTA5OTI3ODAsNjE5NTE2ODUsLTI2NTczNyw1NzcwNDE0NiwtNTA5MzA1Nyw2NTY5NjkyNiwtODU3NDkzMyw2NTAwMzkxNSwtMjY0MjcwNyw2NDA4MTIyNiwtMTMxMjI3ODEsNTAzNjUwOTAsLTQ5MTM2ODAsNjQ3NzYwMDAsLTI5NjEyMjYsNjY3MDE5NTQsLTE0NzU1NDk2LDY2NjQyNzU3LC0xNTc2NzMsNjA0NjYxMTIsLTkwOTk0NzYsNTUzNDUyNjIsLTk3MDM1NTgsNTE3MTkyNDAsLTY5MDEzMjgsNTM3OTA4OTQsLTEzODczOTc3LDU2NzI3OTM2LC0zMjU4MzgyLDY1MDEyODM2LC04NDQwMTgyLDYxNTMzMzAxLC02MTExMTkxLDU1Mzg2NjUzLC0xMzQyOTgxNyw2MTQ4Mjc3NCwtMjg3OTAxOCw2Njk1MjkxNiwtMTE0MTA1ODksNTk1NzI4MTcsLTE1OTMwODUzLDU0NjU3NzE5LC04MDQ1Mzk2LDU5ODU1NDY4LC0xMzA0Nzc5Miw1NDUyNjczOCwtMjgxMjExNSw1NTg0NzU3MSwtNDAyODcyOCw2MjA2NDUwMiwtMTQ0NjYyMjAsNjEwNzM5OTYsLTgyMTYzNDgsNjE3Njc2MzksLTYxNDk2NTAsNTYwNjA1MDgsLTEwMjAyMTcwLDU2MDI3NTYzLC02Mzk2OTAwLDU3ODU2NTI4LC0xMTAyODMwLDU4MDA0NjQwLC0xMzMxNDYyLDUzNjY5MzY3LC00NTc1MTIzLDUwOTk5NzM2LC0zOTU2MjI3LDY2OTA1Nzg3LC04Njk4MTg0LDUzNTkwMzU2LC00NTIxNjksNTc5NjI1OTAsLTQ0NTI3MTksNjUwMDA1OTcsLTM4MjgxMjEsNTY4MzM4NTMsLTE0ODI3NTQzLDU3NzAzOTExLC02OTY2MDI5LDUwOTkxMjg4LC03ODM2NTM1LDY2ODk2NzU1LC03MDMxNjk1LDYxMzM0MDIzLC0xNTYzOTE3LDYxMjM3NTM0LC02OTg5NjMwLDUyNzkzMzgwLC01MjI2OTM3LDY2OTkyNjI2LC01ODUxMzQyLDY0OTQ3ODk2LC01MzI2NjMxLDU1NzUyNDEzLC0xNTMwNTY3Myw2MTM5NTE4NSwtMzIzMTk1LDYwMzMzNDIzLC0xNjY4NjE1OSw1NzQzOTY2MiwtMTE2OTM1MTYsNjUwMDg3MDAsLTMzNzE4MzIsNjIxMDgxOTQsLTg0NDYwNjgsNTg2NDE0MDUsLTc1NTg0MDUsNjM0Mjk1MjUsLTU5MTExODgsNTMxNTE2MzksLTU3NDg0MjQsNTUxODY4NTMsLTc2OTgyMTMsNTAzMzk0ODEsLTY1NjY1NjUsNjA2MjQ4NzcsLTExNjY0NzM3LDY1ODU4NjQyLC0xNTI1NzQ1NCw1NTAyODExMSwtMjA3NTUwNyw2MzM3MjMwNywtMTUwNTc1OTgsNTQxNDM4MTgsLTY3NjI3NDgsNjE3NjgyODEsLTEwMzI0NCw1NzQ1MTM0MywtODgzNTU0Nyw2NzAwOTI0MiwtNjg1NzEyMCw2NjI1OTUzOCwtNzMwMDgxMyw2MjMwMDY2NCwtMjY0MTExNiw2NDE0NDk2MCwtMTA4ODgzMjksNTg2NzU0MTEsLTU5MzQwMyw2MjYxNDY3NSwtNTU2MzQ3Miw2MDQ0MDUzMCwtMzIyNTgsNjU5MjQ1MjgsLTIyMTc3OTcsNTU3NDg3NjcsLTI0Mjk2NTcsNTI5MDI3OTQsLTEzODkxNTc3LDU1MDQ0OTYwLC05MzY4NTA5LDUwNzEwODAwLC0zMjM3NTg2LDYxNTUxOTA5LC0xNzg1MzEzLDY1MTY0ODk3LC0xNDQwMzI1OCw1ODkxNTA5MSwtMTI4NjU4NjMsNjY0OTQwMzcsLTE0OTA3NzgwLDU2OTk0NTY5LC04NTI5MDE4LDYwNDYzMjQ5LC04MDMwODcsNTgxOTM5MTIsLTk3Njc1OTYsNjQwOTE3OTQsLTE2NjA3NjQxLDU5OTg4NDU4LC0xNjAzMTQzOSw1NzgwMjA4MiwtMjY1ODIzMSw2MDY3NjM5NywtMzU5NzAxNyw1OTg3ODgzNCwtNzM5Njg2NSw2MDg2MTE4MywtOTUwOTk4Nyw1OTUxOTg0NiwtOTc3NDI3Myw2NzA3NTU1MSwtMTA4MDAzNjAsNjU1MzU3MDEsLTEzNTk4MDQ0LDU2MTUwMDIzLC0zMzE5MTYwLDUxMzM3MzA5LC0zNDkwNDMxLDU2OTk0NzM1LC04NDUyNTM3LDY2NDczMDY5LC02MTk1NDIyLDYzNzQxODE2LC0yNTYxMzUxLDY1NDc4MzM0LC0xMjA5MzYwNCw1NTY4MDk4MiwtOTA3NzA1Myw1MDkyMDU1NywtMTIxMDM1MDYsNTc4NDg4NjcsLTQyOTg1NTAsNTc2MjMyMzYsLTEwMzk0NzU3LDUxNjE4NzE1LC0xNjczMTQ3Nyw2MzkyNTAwOCwtOTY1MjMyLDUzNjIwNDYzLC0xMDU1MDA5Myw1NTgzNzg1MiwtMjAxODIxNyw1NzQ5OTcwNCwtMjMzNzYzNCw2NjQzODUxMiwtMTI0NjA1MTIsNTYzNDc1MDgsLTU3MTE5OTIsNTM1NDY1NDUsLTEzNDY2MTQ5LDYxOTE4MjM1LC0zOTAwNzg1LDY1Mjg3NDE4LC04NzMyMTY3LDU1MzUzMjIwLC0xMTIwNzkxMCw1MDYxMjkyMCwtMjY5MTcyNSw1Njk5OTcwNCwtODY5ODE4MCw2NDQ4NDU2NywtOTc1Nzc1Nyw2NDcwNjE0NSwtMzQwMzMxNSw1ODY5Mjk2Nl0=", 4724773);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="the wirral way junior parkrun, parkgate chester" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-thewirralwayjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">The Wirral Way junior parkrun, Parkgate</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Chester</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/T/thewirralway-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-thewirralwayjuniors');
+  if (!el) return;
+  var map = L.map('cmap-thewirralwayjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNTE0MTg3Myw1NjYwMjUzOSwtNTA4ODg2NCw1MzYwOTQ4NCwtMjIwMjUzOSw2NDg3Njc1MCwtNzU1MDQ5Nyw1NDE2NzIyOCwtNTI0NzExNyw2MTExNzgzNSwtNzM1MTcwMCw1MzkxNjcyNSwtOTk1MzA2Myw1NzUzNzkxOSwtMTA3NDEyNzEsNjA0NDk3MDgsLTExOTAyMjM2LDU5MDk4ODU5LC0xNjUwNTM1OSw1MjY5MzEyOCwtMTM0OTkwNzYsNTE3MzA0MjIsLTU1NDkyLDUxOTcxOTgwLC00MTUyMjY5LDY2MTUxMzg5LC0zMzgzNzE4LDU0MTA5OTg2LC0xMjU2OTI1MCw2NTAyMzI4OSwtNTU4MTg5Nyw1MjAxMTQzMywtMzcxNzY4OCw1OTYzODQ0MV0=", 171432);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

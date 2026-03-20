@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Lisburn, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn." />
+<meta name="description" content="4 parkrun events in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Lisburn, United Kingdom" />
-<meta name="geo.position" content="54.516511;-6.036816" />
+<meta name="geo.position" content="54.4939595;-6.06044075" />
 <meta property="og:title" content="parkrun Events in Lisburn, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn." />
+<meta property="og:description" content="4 parkrun events in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lisburn/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Lisburn, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn." />
+<meta name="twitter:description" content="4 parkrun events in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lisburn/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Lisburn","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lisburn/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Lisburn, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lisburn/","spatialCoverage":{"@type":"Place","name":"Lisburn, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.516511,"longitude":-6.036816}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Lisburn, United Kingdom — Hotels & Course Maps","description":"4 parkrun events in Lisburn. View course maps, find nearby hotels and plan your parkrun visit to Lisburn.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lisburn/","spatialCoverage":{"@type":"Place","name":"Lisburn, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.4939595,"longitude":-6.06044075}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Lisburn</h1>
-    <p class="hero-sub">1 parkrun event in Lisburn</p>
+    <p class="hero-sub">4 parkrun events in Lisburn</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Lisburn?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(54.516511,-6.036816,'Lisburn parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(54.4939595,-6.06044075,'Lisburn parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,115 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Lisburn</div>
-  <div class="event-grid"><div class="event-card" data-search="wallace parkrun, lisburn lisburn" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="hillsborough forest parkrun lisburn" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-hillsboroughforest" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Hillsborough Forest parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Lisburn</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/H/hillsboroughforest" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-hillsboroughforest');
+  if (!el) return;
+  var map = L.map('cmap-hillsboroughforest', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy04MzEwODUxLDU4NTE2NjczLC00ODM5OTE4LDYwNjU4MjQyLC00MzYwOTksNTQ2NDY1NTEsLTE2MDQzNDU1LDU5NTMwMTkwLC0xMDI5NDYxOCw2MjM2NTM1NCwtMTMxMzk2MDYsNTcyMDk0NzQsLTE5MTU3NTYsNTYyMjgzOTYsLTEwNzIwODc3LDU2MjkyODM2LC03NTQ3NTk5LDUxNTY3OTkzLC03NzY1NTYxLDY3MDg3ODI0LC0xNDU2NzE5MSw2MTExNDUwMiwtOTYzODYyMCw1OTU4NjA3NywtMTgwNzQ0MCw1MzkwMDk4NywtMTYyMjc1ODMsNTY4MzEyNjAsLTk3ODI3NSw2MjYxOTg1MSwtNzI5NjQyLDYyNzM1NDcyLC02OTc3NDA1LDUwNTE4NDI1LC0xMTgyMTMsNjE3NzIyMjIsLTIzNTk5NjMsNTI4OTEwMjQsLTEzOTIxOTQzLDY1NTMxMTc1LC02MTQzMTM5LDYwMjgyOTUwLC0yMjEwNzYxLDUyMzkzMDAzLC05MzE5MzIzLDU4Mjg5MjQzLC0xMzkyMjQyNCw1Njg1Mzg1NywtMTA0ODg1NjgsNTUzMDc0ODgsLTE1MDM1NTQ0LDU5MjM4NTAxXQ==", 6587261);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="lough moss junior parkrun lisburn" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-loughmossjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Lough Moss junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Lisburn</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/L/loughmoss-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-loughmossjuniors');
+  if (!el) return;
+  var map = L.map('cmap-loughmossjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02NzYxODE2LDUxNTcyNzk3LC01MzU2MTQ1LDYwMzAxMjA4LC01MjU0MDQxLDU3Njc1NzE2LC0xMzcyNzc2LDU2NTU2MDkxLC01NzA3MjQxLDU5MTY3MzE5LC0xMTU1MjY0OCw1NDg5Mzg2MCwtMTA5MDcyNDgsNjQ1NzQ3MzIsLTE1NjA4ODU1LDUxMTAzNDE0LC0zNzY0NjIzLDU2MDAxMjYxLC01Njg2NTA5LDYyNjEzNTUzLC0zMzc3NzczLDU0OTMzMjA1LC0xOTQ5NjAyLDY2MzUwMDE5LC03ODUyNzE2LDY2MzQ3NzQxLC0zNDQ2MjUxLDY2NzIzNDI5LC0xMDU2MDY2Miw2MDcxODAyOCwtNDA5OTU5OSw2NzA0ODQ4OCwtMTE0MDc2NDYsNTIzMjM4OTIsLTQyMzQxNTAsNTM0NjkxNjksLTQ2NTIyMTEsNjQzOTA0MTksLTEwNjQ4NzQ3LDU4NzM1MDA2LC0xODMxNDgzLDY0OTMzMDk0LC05ODQ4Mzc2LDYyMjQ0MTM4LC0xNDA4NTAwOSw1NzYzMTg3OCwtMTUyMzQzNjgsNTM4ODczMzQsLTUxMzU4MjMsNTExNTI2ODcsLTM3NDU1NDEsNTE0Nzc5OTIsLTEwMDEyNDc4LDY2MzU4MjQ4LC0xNTYzNzAxOCw2Mzc4NTg3MCwtMjE3NjM0Nyw1NTE4MDE2OSwtMzQxMzA3LDU3OTI3ODgzLC0yNTM3Mzk1LDY3MDQ4MzI4LC02MDI0NDM3LDU2MzgzMTg4XQ==", 5139212);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="moira junior parkrun lisburn" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-moirajuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Moira junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Lisburn</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/moira-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-moirajuniors');
+  if (!el) return;
+  var map = L.map('cmap-moirajuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0yNzA2MjE3LDUyMjE4ODEyLC00NTM2NDUzLDY2NzU5NDg0LC01NzQ2NzQ3LDU3Mjc0ODcyLC03NzE0OTkxLDU0MDEzMzI2LC04Nzg4MjMzLDUzMjU0MjU2LC0zOTA3MDgzLDU2MzI4MDgyLC00MjgzNzg5LDU4ODA2NzI4LC0xNDA1NjU3NSw1Mzg3NDUwNCwtMTI3NjEwMjEsNTU0ODU1MDIsLTE4NTAxODcsNTU2MzgxMTQsLTMyNjg0ODEsNjMzMTY1MjIsLTE0MDk0MzIzLDU1NjgzNzk4LC0xMDUwNzY3OSw2MzAyNjU1MCwtNjM3MTAwNyw2MTc3NDg3NCwtNTQzNDMzLDYyNzUzMzY4LC04MzYwMTA3LDYwMDg4NTkyLC0xMjcxNTM1Nyw2MTk2OTkwOCwtMTI0OTU5MjksNjAyNjM3MjQsLTg3ODk2ODMsNTE4MjQ3MzYsLTEzNTAwNDY5LDYwMzIyOTk2LC0xMDgxODU2OSw2MjIzMjU5MiwtNjQ4NTg5MSw1ODI4OTYyNiwtNDU5NDc0Myw2MTgzMTgwOCwtODcwMDQxMyw1MDQ4MDI0NCwtMTA2MzUyNDcsNTU2MzE5MDIsLTM3OTI0MTUsNTE0ODM4NDYsLTEyNTQ4Njc1LDU5OTk4NTMwLC0xNzAzNzU3LDU4ODY1NTQyLC0yOTQ5NDYzLDU3ODI0NDA4LC0xMTI0MDU0Myw2NTE1NjE5NiwtNDQwNzc1MSw1ODA2MzcyOCwtODYxNTE2OSw1NTg2MDE1MCwtMTQxODM3OTEsNTgxODE0MzQsLTE0NDM1NTEzLDYzMDMzNTAyLC0xOTQyOTMsNjI0MjgyMDgsLTExOTAxNDU3LDYzMDM3OTg2LC0xMDIxMTg1LDUyNzY0Mzg4LC03MTAyNDM5LDYzNjc3MTg0LC0zNDk0NjUsNTcxNTIyNjYsLTE0NDM5ODQxLDUyMjc1MzM2LC0xNzk0NTIxLDYxODgxNjc0LC03ODI3MDg5LDU3Mjk2MzQ4LC0zNTIwMzc5LDYyOTYwMDE0LC0xMDczMTYwOSw2MzQ5MTExOCwtMTQ3NjMwNTMsNTQwNDk0NTgsLTU2MjY5MjUsNTU5NzI1NDIsLTU1NTY2MTMsNjExMzAxMDQsLTMwMzMyNDcsNjE4NDQ5MzAsLTIyNDY1NTksNjM0MjMxMTQsLTE0MTY2ODg3LDU5NzgwNDg0LC0xNjkyNSw2MTI3MDM4NCwtNjMwMDU2OSw1NTIyNDM4NCwtODEwOTQzNyw1NTkwNjU0OCwtOTY3NTc1Myw1NzA4NTUxMCwtMTYwNzIwNTMsNTA1NTkyNDAsLTE0MjEwMTEzLDUyMjM5NjMyLC0xNDk1MzQ3Nyw1NDkyODE3NiwtNTE5MzQ5MSw2NjQxOTkzOCwtOTA2MzA0MSw1Mjc3NjgzMiwtMTU2NjI3NjcsNjI1NTc0MjAsLTc1NTg1NTUsNjU2MzgwNjQsLTU2NjExMjksNTI1MTAxNjYsLTExNjA0NTQzLDYwOTkwMDM4LC0xMjA4MzMzNyw2MjYxNTc3MiwtMTAwODk2NTcsNTgzMDQ2NTgsLTI4NzM5MzUsNjA2ODE2NTYsLTE2NDEzNjk3LDYyNDY2ODg0LC0xMzIwNjI1MSw1NTI4MDQ5MCwtMTQ3Njc2NzcsNTIyNDI5MTQsLTEzNDQ1ODU3LDU3MTQ1MjMwLC05NDA1MDM1LDU2MTk1NTA2LC0xMTQzMTU0MSw2MDYxMjU3MCwtMTYxNTA5NjMsNjU3MTE2NThd", 15307778);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="wallace parkrun, lisburn lisburn" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-wallace" class="card-map-inner"></div>
     <div class="card-map-badges">

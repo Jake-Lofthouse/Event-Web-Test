@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Kingston upon Hull, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="2 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull." />
+<meta name="description" content="5 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Kingston upon Hull, United Kingdom" />
-<meta name="geo.position" content="53.751487499999996;-0.3514445" />
+<meta name="geo.position" content="53.756514800000005;-0.3488484" />
 <meta property="og:title" content="parkrun Events in Kingston upon Hull, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="2 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull." />
+<meta property="og:description" content="5 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kingston-upon-hull/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Kingston upon Hull, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="2 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull." />
+<meta name="twitter:description" content="5 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kingston-upon-hull/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Kingston upon Hull","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kingston-upon-hull/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Kingston upon Hull, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kingston-upon-hull/","spatialCoverage":{"@type":"Place","name":"Kingston upon Hull, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.751487499999996,"longitude":-0.3514445}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Kingston upon Hull, United Kingdom — Hotels & Course Maps","description":"5 parkrun events in Kingston upon Hull. View course maps, find nearby hotels and plan your parkrun visit to Kingston upon Hull.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kingston-upon-hull/","spatialCoverage":{"@type":"Place","name":"Kingston upon Hull, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.756514800000005,"longitude":-0.3488484}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Kingston upon Hull</h1>
-    <p class="hero-sub">2 parkrun events in Kingston upon Hull</p>
+    <p class="hero-sub">5 parkrun events in Kingston upon Hull</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Kingston upon Hull?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(53.751487499999996,-0.3514445,'Kingston upon Hull parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(53.756514800000005,-0.3488484,'Kingston upon Hull parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,43 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Kingston upon Hull</div>
-  <div class="event-grid"><div class="event-card" data-search="hull parkrun kingston upon hull" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="alderman kneeshaw junior parkrun kingston upon hull" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-aldermankneeshawjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Alderman Kneeshaw junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Kingston upon Hull</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/A/aldermankneeshaw-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-aldermankneeshawjuniors');
+  if (!el) return;
+  var map = L.map('cmap-aldermankneeshawjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy04MzQ3ODg5LDY2NDAyMjA2LC03NzU4OTEyLDU4NDM5MzgzLC0yNTMzNDAxLDU3MzY3NzY1LC01ODUyMjI3LDUyMTk3MDQyLC03MDkwMzk0LDU1MTQxNDk2LC00NzU1MTgxLDYwMzYzOTc4LC0xMDQ0MjI2Nyw1ODcxOTM5MSwtMTE4MzcxNDIsNTE3NjMwMDMsLTEyMTg2OTk3LDY1OTMxNDA2LC0xNTE4NjM1NCw1MTYyNjc3NSwtNDU2MzIwOSw1NjEzNzE2MCwtMzI2OTUxMSw1MDU4MTU4NiwtMTU1NjU5MCw1NDA4Njg3NywtMTAyNzgyMzAsNTcwOTM4MTgsLTcxNzA1MTgsNTU4ODA1MzIsLTg5MTM5MjcsNjM3MzM5NzEsLTgzNTMyNDcsNTkyOTYyMjYsLTEyMzYzMTg3LDU3NDY1MTk0LC0xNTExMzM5OCw1NTM2MTAxOSwtMTExMzIwOTQsNjYyOTgxOTAsLTExOTk1NTA0LDYxOTE3ODMzLC0xNTIxODIyNyw1NDU4MzIyNiwtODE5MDY3Niw1MTMwNTczNSwtMTQ1OTYzOCw1NzYzNTk0NiwtMTI1OTk3NDYsNTQ1NzE1NzEsLTExMjg2NTAxLDU0NzcxMTE5LC05NDczMjgzLDY1NzY3MTE4LC03ODc2MjIxLDUwOTM4NDIzLC03NDEzNDc5LDYxMTQwMTYwLC0xNjM2NTg4Niw1Nzg1OTMzMywtODE5Mzg4MSw2NTE1OTAyNiwtMzAzNjg3NSw1ODIzMDMxOSwtMTM4NDY1ODEsNTg0MzQ2NjYsLTEwMzE3NzY1LDU3NTA4OTE2LC0yMjU3MjA4LDUxMDY3NzI1LC0xMDczNDQwOSw1MDg5NjY2NSwtMTEzMjg0NDUsNTMxMTY3MjAsLTEzNjUwMDg0LDUwOTk5MzM2LC02MDY4NDQxLDU0ODQ4MDg5LC0xNTY4NTE1Miw1MjkzNzY1OF0=", 1061752);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="hull parkrun kingston upon hull" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-hull" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -362,6 +398,78 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="king george playing fields junior parkrun, hull kingston upon hull" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-kinggeorgeplayingfieldsjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">King George Playing Fields junior parkrun, Hull</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Kingston upon Hull</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/K/kinggeorgeplayingfields-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-kinggeorgeplayingfieldsjuniors');
+  if (!el) return;
+  var map = L.map('cmap-kinggeorgeplayingfieldsjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy01NTY0NTg4LDU2MDAzNjIyLC0xMTgwODY0NCw2NDAzMDAzMiwtNzU5MjY5MCw1ODk4MjIzNCwtMTAzNjQ1NDgsNjcwNjA3MTUsLTE1MTcyMDE0LDU5NDI4MDgxLC0xNTMwMDUwOSw1MzM2OTMxNiwtMTA5NzU2MzEsNTE1MTAwODUsLTI0Mjk4NzksNjY1ODgyMjAsLTEyMTIxMzM3LDYwNjkyNjAzLC0xNTYwMDQzMCw1ODA2OTk1MSwtNTEyMzYzLDY1NTM4NjgzLC0yNzY2ODQ2LDYwNzIyODczLC0yMzc2NjY3LDUxNzEwNzIyLC0yNzg4NzQ1LDU5Nzc2MDU3LC0xNjQ2ODc0NSw2Mzc3MjA2NiwtNDgxOTgyLDUxNzE0OTIwLC00NjE0NTMwLDYyMzE1MDIxLC00ODMxMzI1LDYyNDM0MzMyLC0zMzg1NTY1LDUwOTgxMzQ5LC0yOTQzNzQ0LDUyMDA5OTcyLC0xMzU3NDc4Nyw1Mjc4ODgwOSwtNzI3NDc3OSw2NzA4MjA2MywtMTY1NTk5MDAsNjI0OTAyODAsLTQ3OTk3LDYxMjcwMTc2LC01NTExOTAwLDU1MDAwMTgyXQ==", 11715823);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="peter pan junior parkrun kingston upon hull" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-peterpanjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Peter Pan junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Kingston upon Hull</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/peterpan-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-peterpanjuniors');
+  if (!el) return;
+  var map = L.map('cmap-peterpanjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03Mzg0NDcxLDU2MDg4NjQxLC0xNjU1MDg5Miw2MDUzODY0NSwtMTY2OTA3OTQsNTE1NDQ0MTMsLTMzNTY1MjUsNTIwMzcxNzYsLTE1MDcxMDkyLDU0NTgyMTUxLC0xNjQ1MzMwMSw1MTgzNzU4NCwtMTA0NDQ3NDEsNTExNzY5NjcsLTEwNDI0MjM0LDY0MDk0MjQzLC0yNjE3NDI4LDU2MjQ5OTU3LC0xMjQ3MzIxMiw2MjAxMjY5OCwtNDE0MDM2LDYxNTEwODE4LC02NDIwNTQ5LDU1NzM4MjY4LC01MTE4OTM3LDUwOTIxMzc1LC00MzkyNTAxLDU5NTk1OTIyLC0xNTI3NzkyMSw2NjQ4NTQwOSwtMTYwOTE1MTQsNjE0MjI3ODUsLTY2MDA4MTcsNTEyMzgwNTMsLTEzMjM1MTA4LDY1ODExNDE5LC02MTA3MjIxLDYzOTMwMDU3LC0xNTAyNjc3Myw2NjA3MjMwOCwtMTYxNjQxMDksNjA2NjY2MDYsLTIwMzY0NTYsNTY1Mzc0MTMsLTE1MjE1MzE3LDYxMzcwOTA3LC0xMjAzNTc4NCw2NTM0OTk1MCwtNjU0NTc0NSw1MTk5OTg2NCwtMTU5OTAwNjcsNjI5NTkzMDAsLTg2MDY0NjcsNTk3ODQ2NjYsLTI4MTM0NDcsNTI1NjcwMzcsLTExNTMzMDc3LDUwNzI2ODE2XQ==", 749919);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

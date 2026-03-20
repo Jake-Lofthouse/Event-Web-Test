@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Portsmouth, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth." />
+<meta name="description" content="4 parkrun events in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Portsmouth, United Kingdom" />
-<meta name="geo.position" content="50.778371;-1.08343" />
+<meta name="geo.position" content="50.804527;-1.066485" />
 <meta property="og:title" content="parkrun Events in Portsmouth, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth." />
+<meta property="og:description" content="4 parkrun events in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/portsmouth/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Portsmouth, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth." />
+<meta name="twitter:description" content="4 parkrun events in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/portsmouth/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Portsmouth","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/portsmouth/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Portsmouth, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/portsmouth/","spatialCoverage":{"@type":"Place","name":"Portsmouth, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.778371,"longitude":-1.08343}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Portsmouth, United Kingdom — Hotels & Course Maps","description":"4 parkrun events in Portsmouth. View course maps, find nearby hotels and plan your parkrun visit to Portsmouth.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/portsmouth/","spatialCoverage":{"@type":"Place","name":"Portsmouth, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.804527,"longitude":-1.066485}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Portsmouth</h1>
-    <p class="hero-sub">1 parkrun event in Portsmouth</p>
+    <p class="hero-sub">4 parkrun events in Portsmouth</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Portsmouth?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(50.778371,-1.08343,'Portsmouth parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(50.804527,-1.066485,'Portsmouth parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,115 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Portsmouth</div>
-  <div class="event-grid"><div class="event-card" data-search="southsea parkrun portsmouth" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="eastney junior parkrun portsmouth" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-eastneyjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Eastney junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Portsmouth</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/E/eastney-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-eastneyjuniors');
+  if (!el) return;
+  var map = L.map('cmap-eastneyjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00NTc0MzQ2LDUwNTkyMzUyLC05NDQ1NzQwLDYyNjQ3MDc2LC01NDc3NjIzLDU4NjA0NzI5LC0xMjAwNDkwMCw1NjM5MDgyNSwtNDM2MDA5NCw2MDQ5MzQxMywtMTQzMTU5NTksNTc5OTIyNTYsLTU5MzUxMDgsNjM2NzE2MjIsLTU2MDAyODMsNjExMjY2MTIsLTE0Njc1NzAzLDUyMDcyNjA2LC05NjI5MjQzLDYzNTE0Mzk4LC04OTc4MjI2LDUwNzcyODMwLC00MjcwMjc2LDU3NjE3OTY1LC0xNTc2OTMwMCw1Mzc2NDczNSwtNjY1NjE3Niw2NTc2OTQzNiwtNzQ0MDU2LDY0MjAyMzg4LC05NDY2NjE1LDYxNjUyNjkwLC0xNjQ0ODU4MCw2Mzk4ODM1MiwtMTU4MzcxMDEsNjI5ODAwMDcsLTQzNDE5OTgsNTk5MTI2NzYsLTI5MDg3ODAsNTkxMzE3NzUsLTM3ODk3OTQsNjMyMDU0NDAsLTE1NDAxMjIyLDYyODA0Mjc5LC0xMjc2MDQzNSw1OTUyMjE3NywtMzM0NDk3OCw2MTM4MzAxNSwtMzkxNDk1Miw2NjIyMDk2OCwtNzk1MjE5NSw1MTI3ODc1NywtMTM5NDcxMjUsNTg4Mjk1NTIsLTk4MjI1ODMsNTIzNDU1ODksLTQ0MTIzNTgsNTI5Njg1MzIsLTE0MTYzNjk2LDU2MjQ0MTE5LC03NzA0NjcwLDU2MTIwMzA4LC0xNjQxODc4MSw1NDYxNzg0OCwtNDY3Mjk4MCw1Nzc4NDM4OSwtMzYwMjczNyw1NDk1MjkxNCwtOTc5NDE2MSw1NzU0NzQwOSwtMTAxMjg4MDksNjYwMjg4NTUsLTEzNDg1NzU4LDYwNzM2MTY3LC04ODA5MzkzLDYxMDkzNDA3LC00NTMyNDIsNTA2NTI1MjMsLTE0NDQxOTYzLDU1MDUxNTQyLC04MjA5NjEyLDYwMzc2MjIzXQ==", 4027821);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="great salterns parkrun portsmouth" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-greatsalterns" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Great Salterns parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Portsmouth</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/greatsalterns" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-greatsalterns');
+  if (!el) return;
+  var map = L.map('cmap-greatsalterns', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02NTkwNjk3LDY0Mzk5ODY3LC0xMzI3MzE3LDUxNjMxMDg4LC04MDA4MTA1LDU2NDI3MTExLC0xNTUyNjQ0Niw1NTkwNTY3NywtNDU4MzQzMCw1MTY3MjI2OCwtODExMDIxNCw2MTAzODEzNiwtNTM3MzM3NCw2MTUxNTUwOCwtMTI0NjcxNzAsNTQxMDE5NDksLTE1Mzc1NDMzLDYzMTczMjY4LC04MTcxODg5LDYxNjg0Nzc5LC0xNTMwNzAzMSw1NDE0NjAxMiwtMTI1MjE3MzQsNjMxMTE4MTQsLTkwMzQ2NTUsNjU2NTI4MzEsLTIxMjY0MzEsNTA1NjgyOTQsLTEwMTk3MDA0LDU5MDg4MzQ3LC0xNDg3OTY5MSw1MDc2NzgxMywtOTk4MTk2OSw2MDUzMjY4NywtMzA2NDgxLDUzNjc2NTM5LC01Njg0ODcyLDU0MjI1Nzg3LC0xNTg2MDM3MCw2Njk1MDg4MywtMTI0OTQwMDAsNTYxNDU1NjUsLTM4Nzk0MzgsNjQ1ODQxNzUsLTQzNTkxMjgsNjU4MzQ0MzAsLTE0MTg3MDY4LDUxNTUzMjUwXQ==", 4432505);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="portsmouth lakeside parkrun portsmouth" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-portsmouthlakeside" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Portsmouth Lakeside parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Portsmouth</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/portsmouthlakeside" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-portsmouthlakeside');
+  if (!el) return;
+  var map = L.map('cmap-portsmouthlakeside', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00NzgxMjM2LDYzNzg1MTE2LC0zNDM5OTYzLDY1NjY2MDY3LC0xMTkzNjI3Niw1NTA4MTcyMCwtMTAzMDY1MCw1NDE0MDczNiwtNzc3MzgwLDY1ODE2MTQyLC0xNDkxMjQ0Niw2MTg5MDEyNCwtMjM0NDkxNyw1NTQxMjI1MiwtMTMxMjE0NDMsNTUxMjg0MjAsLTk2ODQwODcsNjQyNDQzMTgsLTE3MjAzNzEsNTk5ODU1MjgsLTc4NzI4MCw2MjQ5MzY0MywtMTQyNjEwNDIsNjU5MTg3MTQsLTIxMTI5NTksNTY4NTI5MDYsLTExNjEyMzkyLDY2MDYyNzcyLC0xNDk0NTg1OSw2NDAwNzE3MiwtMTYzNTc4ODEsNTYzMTkzMzQsLTE0MDg4NjE2LDYyMTYyODUwLC0xMDQ4MzYwMSw2MDgyMDI2NiwtODQ4NTI1Miw1MzY4NDU0MiwtMjg3MzkzLDU4NzY2MTU4LC04MjY4NDM5LDU5NjEwNTg0LC0xMjgwNjUyMCw1NDA0MTcwMCwtMTAyNjg3MTUsNTc1MzU2NzAsLTk5MTY3NzgsNTYyODM1MDYsLTQzOTIzNDUsNjUwODU0MTYsLTE4ODQ5ODksNjE1NDUzNTksLTEzOTYyMDMzLDU4MjE2ODE3LC03Nzk1OTgxLDU3NjA4MTg3LC0zNTUzNTg4LDU4NTg2MzA2LC0xMTc0ODc5LDYyMjE3NDgwLC0xMzQ0MTYyOCw1ODExMjU0MCwtMjcwNTQ1Niw1NDY2OTMyNywtOTA2NDU4NCw1MzI4MDkzNiwtNjgwNTQxLDU3NjU4ODEwLC0xMTE1MTA2NCw2MTUwNTc3NiwtODA1NDIwMiw1MjY0MTQ1MSwtMTYzNjk4MzksNjAxNzA0MzIsLTE2MDY4OTIxLDYxODg0NjcwLC0xNTU3OTg1LDYwNzg5MzUxLC0xNDI2Mzc5MSw1NTQxMDk5NywtNjExMTA2NCw1ODQxMTQ5MywtODYyODA2Niw2NTUyMzMxNSwtMTA1NTkwMjgsNTEyOTc5ODEsLTE1ODYwOTMsNTkyODQ2MjIsLTEwMDE1OTA1LDU3MzM3NzU3LC02ODc1MDAzLDY2MzYxOTg5LC04MTE5ODIwLDYzNjM3OTk2LC0zMTA0OTE3LDY1NDg4MTcxLC01MDkyODcyLDUyMzUwMjA2LC0xMDM1NzkxNSw1NjU3NjQzOSwtMzkwNTk3OSw1Mjg1NDYzOCwtODA1Nzk1OCw2MjQ5MDYxMiwtMzIzMTM1LDY1OTQwMjc4LC0xNDgzMDY1MSw1NTQzMjc1OSwtMTIyMDgzNzUsNTQyNjc5MjksLTE2MTI4Mzc5LDYyNTU4OTE4LC0xNTI5MzcwMSw1ODM2MzQyOCwtNzc5MzQ0OSw1NTY0NjMxOCwtMTYyNjYwOTAsNjMyNTQ3MTgsLTE1MjU0MDQ2LDUwNDMwNjE5LC0xMzU1MjUyNiw1MjYzMjkxMCwtMTQ1MTAzNjQsNjU0Njg0NDNd", 8294260);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="southsea parkrun portsmouth" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-southsea" class="card-map-inner"></div>
     <div class="card-map-badges">

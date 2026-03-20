@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Poole, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="2 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole." />
+<meta name="description" content="3 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Poole, United Kingdom" />
-<meta name="geo.position" content="50.7276195;-1.991152" />
+<meta name="geo.position" content="50.729918;-1.9982593333333334" />
 <meta property="og:title" content="parkrun Events in Poole, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="2 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole." />
+<meta property="og:description" content="3 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/poole/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Poole, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="2 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole." />
+<meta name="twitter:description" content="3 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/poole/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Poole","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/poole/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Poole, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/poole/","spatialCoverage":{"@type":"Place","name":"Poole, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.7276195,"longitude":-1.991152}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Poole, United Kingdom — Hotels & Course Maps","description":"3 parkrun events in Poole. View course maps, find nearby hotels and plan your parkrun visit to Poole.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/poole/","spatialCoverage":{"@type":"Place","name":"Poole, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.729918,"longitude":-1.9982593333333334}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Poole</h1>
-    <p class="hero-sub">2 parkrun events in Poole</p>
+    <p class="hero-sub">3 parkrun events in Poole</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Poole?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(50.7276195,-1.991152,'Poole parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(50.729918,-1.9982593333333334,'Poole parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -362,6 +362,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="upton house junior parkrun poole" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-uptonhousejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Upton House junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Poole</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/U/uptonhouse-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-uptonhousejuniors');
+  if (!el) return;
+  var map = L.map('cmap-uptonhousejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05NTc5OTc0LDU4MzY5Nzk2LC0xMDIwMzU2Niw1OTQ0Nzk0MCwtMTI5MzY5MTIsNjQ5NTE3OTYsLTM2NDA3OTQsNTY1NzEyMjIsLTYyNTUxMzQsNTc5NDM5MzIsLTE1NDY2NTc4LDU0MTcxNzQ0LC00NDExNzc2LDY3MDIxNDc2LC04NDgyMDAxLDUzNTc0OTM1LC0xMjI3MjMwMiw1OTEyNDExNCwtNDIyMjE3MSw1ODM2ODYyOSwtMTE4NDQxNDMsNjY0OTk2MTYsLTExMzI5MzA2LDUwMzkzMzY2LC04ODQ0NzQzLDYyNzUyNDE5LC05MTY1MzU3LDU3NTAwNzA4LC0yMDk0NTUxLDYzNTQ2MTQ0LC0xMjY5NzU2MSw2NTYyMzA0MiwtMTI5NDEyNTAsNjM2MjgzMjgsLTE2MjYyOTE1LDY0NzgxNjcyLC0xNDA1MzMzMCw1ODYxNjQyMSwtNzk1Nzc5NSw1MTAwMjE5MiwtODk4NTc2NSw1ODEyMTA0NywtMTIwNjkxNjQsNjM1MTcxNjYsLTE1MzY2MDMsNTI5MjEwNTMsLTEzMzg2NTM2LDY1NzQ4MjUzLC0xMzEyNTE5Miw2NjE4MjM5MSwtMTE3ODQ4NjYsNTA2ODE1MTYsLTE1NzI4MjM0LDY0MjA3MzkwLC03NjE2MTQyLDUxNjQxNTY2LC0xNDYyOTI4LDYyOTUzNDY0LC0xMzIzNzM2Miw1Njc5NDYyNCwtNTE2NjExNCw2NjQxMDgwNiwtMTA2MTc5NjYsNTg0NTE2ODgsLTEwMzY0NjA5LDY0MjA0MDQ0LC0xMDEyNzcyMCw1OTkzMjE1MCwtMTkxNDk2LDYxNTM5ODg0LC0zNDM0ODgsNTE4NDI2NjQsLTE1NDQzNzc3LDU0MDAxNTA4LC00NDYyMTIsNTc1NzU1NDgsLTE1NzYyMDU4LDU5NzU5NTgxLC0yMzEzNjUsNTMwMDkwMTgsLTIwNDY2NTIsNTg1Njc2MjYsLTY0NjQ3OTYsNTc0NDcxMzIsLTEwMzMxNjE4LDY1MzkwMTUwLC0zNTg0NzIsNTMyNTIzODIsLTEyMjk4MjQ2LDU2NzQ5OTk0LC04NzUwOTgzLDU2NTI0NjkwLC0yMjcxMjQyLDU3NDI0MTE2LC0xMTI1ODYxOCw2MzU5MzIxMCwtMTQ0NDI0MzMsNTQwNjI4NjUsLTE2NDY4NjkzLDYxMTUwMzk0LC04NDM5ODg4LDYwMzY3MjI2LC01NDM2NzY0LDYzNTY1MzM4LC0xMjM2NjU2MCw1NjMyMzk4MiwtMTM1NTI0NTgsNjY1MTUyODIsLTEzNDcyNTI0LDU2NTgzMzQwLC0xMDAxMjAyMCw1Njc1ODA2NiwtNzU0MzYyMCw2MjI1NDc0NiwtNTAwODU3MCw2MDYxOTY1MCwtMzc4NzA0Myw1NDg4MDEyNSwtMTM2NzU0MTIsNjE1NTY5NzIsLTExMTY2MDExLDU0NjA4NjA2LC03ODM1MDg1LDUzMDI1MzYxLC05NjI1MTIzLDU2MjUzNjEwLC0xMzYzMTM4OCw1NDgzOTU0MCwtMTYwMjEyNjMsNjIyNzI0MjAsLTkyNDQ0NzYsNjU1OTE4OTgsLTYzMTIyOSw1NzY5MzIwNiwtMTg3NDE4OCw2MjI4MjM1OSwtMTYyNjMyMjcsNjA2MjY4MDQsLTQ3NzEwMzIsNTUxNzc4NzEsLTEwMzU0OTM5LDYyNzgzNzQxLC01NTEwNDgsNjYyODU2OTMsLTgyNTE4ODAsNTU0NzEzODMsLTEwOTUzNjg3LDU4NTg4Nzk2LC0xMjExNDY4OCw1MjA1NDAwMiwtOTk0Nzg2MCw1MDU3MDkyNCwtMTAzOTI4OTIsNTEwNjE1NjAsLTE0MTI0OTM0LDY0MzgxNzcwLC0xNTQzNTUyLDY2NTYxOTM0LC00MzMyMjgsNTU1MDI4NTIsLTYyMjM4MDQsNjQ0NzIzMzQsLTczMzk0Nyw1NjE3MzExOCwtNTMwMTkxNCw1NjQxMzEyOCwtNjAwOTE4Miw1MjIxNTYxNCwtMTMxNzgwMiw2MDEwMzU2NiwtMjg5ODg5MSw1NzM5OTM1MCwtMTA1MTEyNDYsNjM0NDk3MTQsLTEzMTQzMjA0LDU1MzQwMTc1LC0zNDE3ODQzLDY1NDg5ODIwLC0yNTQxNDEwLDY2Mjk4NzEyLC0xNDI0MjYzNiw1OTgwNDQ0Nl0=", 12085866);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

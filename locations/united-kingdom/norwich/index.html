@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Norwich, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich." />
+<meta name="description" content="5 parkrun events in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Norwich, United Kingdom" />
-<meta name="geo.position" content="52.620422;1.255682" />
+<meta name="geo.position" content="52.627342999999996;1.2722114" />
 <meta property="og:title" content="parkrun Events in Norwich, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich." />
+<meta property="og:description" content="5 parkrun events in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/norwich/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Norwich, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich." />
+<meta name="twitter:description" content="5 parkrun events in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/norwich/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Norwich","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/norwich/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Norwich, United Kingdom — Hotels & Course Maps","description":"1 parkrun event in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/norwich/","spatialCoverage":{"@type":"Place","name":"Norwich, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.620422,"longitude":1.255682}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Norwich, United Kingdom — Hotels & Course Maps","description":"5 parkrun events in Norwich. View course maps, find nearby hotels and plan your parkrun visit to Norwich.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/norwich/","spatialCoverage":{"@type":"Place","name":"Norwich, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.627342999999996,"longitude":1.2722114}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Norwich</h1>
-    <p class="hero-sub">1 parkrun event in Norwich</p>
+    <p class="hero-sub">5 parkrun events in Norwich</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Norwich?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.620422,1.255682,'Norwich parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.627342999999996,1.2722114,'Norwich parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -330,7 +330,72 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 })();
 </script>
   <div class="section-heading">Events in Norwich</div>
-  <div class="event-grid"><div class="event-card" data-search="norwich parkrun norwich" data-junior="false">
+  <div class="event-grid"><div class="event-card" data-search="eaton junior parkrun norwich" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-eatonjuniors" class="card-map-inner"></div>
+    
+  </div>
+  <div class="card-body">
+    <div class="card-name">Eaton junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Norwich</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/E/eaton-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-eatonjuniors');
+  if (!el) return;
+  var map = L.map('cmap-eatonjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  map.setView([52.619606, 1.25856], 14);
+  L.circleMarker([52.619606, 1.25856], { radius: 8, fillColor: '#40e0d0', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  
+})();</script>
+<div class="event-card" data-search="lea bridges junior parkrun norwich" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-leabridgesjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Lea Bridges junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Norwich</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/L/leabridges-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-leabridgesjuniors');
+  if (!el) return;
+  var map = L.map('cmap-leabridgesjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wzg4MjU5NzQsNTUyNTg3NDgsNzMzODgzOCw2NjU2MzUwMyw5NDk2LDYzMDA5MDg5LDMwMjYzMDQsNTc3Mzk1NzksOTQzMDQ5NCw1NzUwNTA0OCwxMTA5ODcwOCw1ODE2NjkxOSw1MTU3MDM5LDY0MjczMDM2LDI3MTQ3NDcsNTA5OTQ4OTYsMTA2MDIwMjcsNTI5NDgwNzYsMjU0MDE2Niw1NDQ4ODQ3OCw3Mjc4NTI0LDY2MzMyODA3LDEzOTE4NDQ0LDU0ODc2ODY2LDEwNTcyMjExLDU1ODE3MDIwLDgxMTY5MTMsNTY3MjM4NzksMjg2MDcwMyw1NzQ2NDkyMCwxMzE1NDM5Nyw1ODAwOTQzOSwxNjY1MjQxMCw1ODUyMTM1NSw3ODA0MzEyLDU4NzEwMzkzLDE3OTE3MTQsNTcxNzUzMjBd", 15115527);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="norwich parkrun norwich" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-norwich" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -362,6 +427,78 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="sloughbottom parkrun norwich" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-sloughbottom" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Sloughbottom parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Norwich</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/sloughbottom" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-sloughbottom');
+  if (!el) return;
+  var map = L.map('cmap-sloughbottom', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzIxMDI5OTAsNTQ5OTE0MzEsNzg5ODI1Miw1MzAyMTA0OCwyNjk0NjUzLDUzNDk5MjY2LDQ5Njg5OTMsNTczMzg0MzEsMTA3NjcxNTIsNjQ3MzQ1MzIsMTQxMDQsNTczOTEzMTUsODQ4ODY1NCw2MjkzNzI5MSwxMjE4MjczNiw1NjMwNTM4MCwxMzU1ODA3Myw1NDM4NDkzNiw0Mjk3NjksNTg4NjA2NTUsMTE1NDA2NjMsNTIwOTY5NjksMzgxMTk3OCw1NzM4MjE0NywxNTU4NjEyMCw1MzExMTAwNiwxNDIwODA4NCw1ODE1ODIzMyw4MzE0NjE0LDYzOTE0MDk2LDc2MDI5OTYsNjM5NDE2ODEsNzc4ODkwMCw1NzQ2NjY0NCwxMTY3MTY0OCw1OTEzNDE1MSwzNDMwMjUzLDU1NTc4OTI3LDU3OTAxOTEsNjY2ODYzNjQsMTI2NzI0NzAsNTU0NjI5NTcsODcxNTYzMCw1ODY2NjY4MywxMTE5MDkwOSw1NTU3MTg5NiwxMDIzMTc0MSw1NzY2MTU2MSwxNDk3OTAyNCw1Njg3NDgyNSwxMzY0NTYyOCw1Njk1MTk2NSw1MzYzODYxLDU0MTYxNTg0LDUzNjA2MjQsNjUyMjQzNTUsMTU1NDI0NDIsNjE3NDA3MzcsMTQ2NTU4MDQsNTk4OTY4OTgsODQ1MDQyMSw2NzAyNjAyMiw1NTU5NjgwLDU2MzQ5MzY0LDEyMjIyODQsNTYxNzc2NDAsNjQzNjQ5MCw2NDQwMTM5MywxMDYxMTg5OSw2NTQ5OTE4NCwxMzA4NTQ4MCw2NDU5ODE4OCw4NjMyMzc2LDUzNDk1MTMyLDEyNTQ1MjIsNjM2NTM1MDUsNDg2OTE1OCw2NDcyOTk1NCwxNTA4NjgyMCw2MjAzMjcyNywzOTc3MTY1LDY1MzY5OTIzLDEzMzc5Njc1LDU0OTQzMjIwLDY4MTExNzAsNTc1NDU5MDMsMTMzMTgxNCw2NTU2NDQ0OSwxMjkzMzIzOCw2MzE5OTk4NSwxNDI1NTEyLDY1OTM1ODI4LDExOTExMjE3LDYwMTQ3MDU5LDMwMzI0MjQsNjQ2MTk2NTEsODE5MTUwNiw1MTM1NDE0NSw5NDYwMjA5LDYxMzEzNzYxLDE0MDQ3MzA4LDY1OTg2MjE1LDg5NjExNiw1OTgzOTU0Nyw0NzgwNTI5LDUxNDg5Nzk4LDE1MTIyMjUyLDU1NjExNTI5LDQ4NTMxOTEsNTc0NDI1MTksMTUwNzcwMCw1Nzg4MzU2OSwxNjY1NzU0MSw2NDIzNDc2NywxMzMwNTIsNjExNjQ2NDYsMzMzNjMwNCw2MjczNjM5Nyw5MjczMzA2LDU1ODE2MTIwLDE2Njk4NTA0LDU4NTM2NzQ0LDMzODc3NDAsNTEzMzM1NDYsMTAzNTM3MDAsNTIzNTQ5NjAsNjUxMjE5Miw1NTg1NjA4OCwyODEwMjgsNTk2MDkxOTYsNzE0MjY3OCw2Njc1MDg1MSw1NTczMDc3LDU3OTg5NzIwLDYxNDY4OTcsNTMxNjIxOTUsOTA5MjI2Miw1MzUzOTc1Myw4NjE2NTYsNjEwOTAwNTYsMTE2NTc0NDYsNTIwNTk0ODAsMTYxNDEyNDMsNjE2MDg3NTMsOTA0OTU4OCw1NDQ4NjQ0MiwxMTMzMzcyLDUxNTMxNTMwLDIyNDU0MzgsNjYwNjI0NzEsMjE5MTU5Niw2MDQ4ODEyMywxMjQ3NDE4Miw1MTkwODg4NCwxMzY2MzU1OCw1ODAzNDUzNiwyMTE3Njg2LDUxOTA0Njc0LDE3ODAzNTcsNjQ2NTc1NDUsNzU5ODM5OCw1NzM1MDI0NCwxOTA0MDc1LDU2NTk2MDAyLDg2NjQ2Miw1MDk0NjcxOSwxMDI5OTczMiw1Mjg1NzY3MiwxMDk2MzM0MCw2NDgyMTg0OSwzMTg5OTczLDU5Mjc0MTMzLDEwNDU2MTYsNTY1MTEwNTIsMTEyOTIyNDgsNTc5OTQwOTksOTA0Mzg1OCw1NjU3MzgyNCw0OTYwOTg0LDYzNzg3Mzc0LDEwMDExMTYxLDYwMTg0Mzk4LDE2NTAzMDQ5LDU5NjkxOTExLDczMDE4MjcsNjU0NDQ3MjIsODgyNjI5Miw2NjUwNTY3OCw3MzI1MzM0LDU1ODQ4MDA1LDQxMTIyNTYsNjE1MTE4ODMsMTA5NjcyMzksNTY3NjYxMDAsMTI4NDYyNjUsNjQ0MDUxNTksMjQ5NzMzNCw1MzM3MjgxNiwxNDk3MDU0LDU5ODYyMzIyLDk1MDY3LDUyMDIwMTU0LDEyNDg2MTM2LDU0ODEwNDI3LDEyMzc3Mjk1LDYyOTY5MzAxLDExMTAwNzg3LDU5OTE2NzAxLDQ4OTc2NTAsNTQ3MjMwMDYsMTEzNzAzODAsNTcwNDQ3ODUsNzU0MTE3LDUzMDA3NzgyLDE2MzM0MTY5LDU4MTg1Nzk0LDEzNjQ4ODMwLDU3MDU2NTI3XQ==", 5134303);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="waterloo park junior parkrun norwich" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-waterlooparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Waterloo Park junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Norwich</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/W/waterloopark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-waterlooparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-waterlooparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzEyMTI1MTAyLDU4MzY3MTU5LDgwODg2MjcsNTI4ODgzMjksOTQ5MDk3Nyw2Njk5OTY2Nyw4MDUxMjA2LDY0OTYwOTE0LDg0NTMxOTgsNjAwNDk3ODQsMTYxMTcwNzQsNTgzNzUxNTYsMTUyOTc4ODMsNjExMDcwOTEsODYwODAzNCw2NjYwNjk1NCwxMTE0NTE5Niw2NTA0MDA3NCw3MzMwODExLDU5NTg4NjU2LDExMzUzMjksNjQ0OTMwOTQsODYwMjkwOSw1ODEyNjg4MSwxMjc1MDA2NCw1ODYzOTQ5MiwyOTE1NTIyLDY2MDU0NzE5LDExMTQ5MTY0LDU2MjE0OTEwLDY1NzYxODksNjM1MDY1MjAsMTE4OTk0Nyw1NzI5NTEyOSwxMzI3ODA2OCw1Mjg2MTg4MywxNDg3NzQ2Niw1NTEzNjk4OSwzODcyNDU0LDY2NjA1MTI4LDc3MTg4NjgsNTk3NDgzMTQsMTQ4MzI0Myw1OTY3NzQ5MywxMjUwMzg5Nyw2NjA3NzA1NSwxMzI3MDE4OCw1OTYwMTg3M10=", 8364919);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Canterbury, United Kingdom — Hotels &amp; Course Maps</title>
-<meta name="description" content="2 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury." />
+<meta name="description" content="4 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Canterbury, United Kingdom" />
-<meta name="geo.position" content="51.3323815;1.049472" />
+<meta name="geo.position" content="51.349707499999994;1.06658075" />
 <meta property="og:title" content="parkrun Events in Canterbury, United Kingdom — Hotels &amp; Course Maps" />
-<meta property="og:description" content="2 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury." />
+<meta property="og:description" content="4 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/canterbury/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Canterbury, United Kingdom — Hotels &amp; Course Maps" />
-<meta name="twitter:description" content="2 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury." />
+<meta name="twitter:description" content="4 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/canterbury/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Canterbury","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/canterbury/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Canterbury, United Kingdom — Hotels & Course Maps","description":"2 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/canterbury/","spatialCoverage":{"@type":"Place","name":"Canterbury, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.3323815,"longitude":1.049472}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Canterbury, United Kingdom — Hotels & Course Maps","description":"4 parkrun events in Canterbury. View course maps, find nearby hotels and plan your parkrun visit to Canterbury.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/canterbury/","spatialCoverage":{"@type":"Place","name":"Canterbury, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.349707499999994,"longitude":1.06658075}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -229,32 +229,32 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Canterbury</h1>
-    <p class="hero-sub">2 parkrun events in Canterbury</p>
+    <p class="hero-sub">4 parkrun events in Canterbury</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">5k events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Staying in Canterbury?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(51.3323815,1.049472,'Canterbury parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(51.349707499999994,1.06658075,'Canterbury parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
   <button class="toggle-btn" id="filter-5k"
     onclick="setFilter('5k')" title="">5k Events</button>
-  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
-    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
   <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR   = true;
   var HAS_STANDARD = true;
 
   // Read filter from URL param first, then localStorage, then default to 5k
@@ -364,6 +364,71 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="herne bay memorial park junior parkrun canterbury" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-hernebaymemorialparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Herne Bay Memorial Park junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Canterbury</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/H/hernebaymemorialpark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-hernebaymemorialparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-hernebaymemorialparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzI4ODM1MDEsNjM1MDE4NTQsNzkwMzgyMCw1MjY2NDU4NywxNDA2MjE5Nyw1NjA0NDUyOCwxMDIzODI2Niw1ODk5ODI3NCwxNjcwNjEzMiw2NDE5ODA1NSwxMTM2NDY1Myw2MzkzNDIyMiwxNjU5MDAwMCw1Njc5MzY0NCw1MzM4ODQxLDU4MjE1MjU1LDM5MDY1OTgsNTU3Nzc2MDcsOTk5NzkyNCw2NDEwNjUyNCwxMTgzMjg3LDU2Mzg5MjUyLDEyMTI2NDYsNTc1NTQ4MTcsMTIyNTU2MzQsNjI0NjQ3MzIsMzY5OTg1OCw2MjM2MTgwOSw3NjM2OTk4LDU0NzcxOTk4LDEzMjA3MjMwLDUzNDc0ODU2LDExNzg0MDYsNTE2MDQxNjcsMTYyNDM1NTgsNjU2MTkyNzdd", 15580773);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="whitstable junior parkrun canterbury" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-whitstablejuniors" class="card-map-inner"></div>
+    
+  </div>
+  <div class="card-body">
+    <div class="card-name">Whitstable junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Canterbury</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/W/whitstable-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-whitstablejuniors');
+  if (!el) return;
+  var map = L.map('cmap-whitstablejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  map.setView([51.364939, 1.042448], 14);
+  L.circleMarker([51.364939, 1.042448], { radius: 8, fillColor: '#40e0d0', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
   
 })();</script>
 <div class="event-card" data-search="whitstable parkrun canterbury" data-junior="false">

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>parkrun Events in Tauranga, New Zealand — Hotels &amp; Course Maps</title>
+<meta name="description" content="3 parkrun events in Tauranga. View course maps, find nearby hotels and plan your parkrun visit to Tauranga." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="Tauranga, New Zealand" />
+<meta name="geo.position" content="-37.70031933333333;176.1906743333333" />
+<meta property="og:title" content="parkrun Events in Tauranga, New Zealand — Hotels &amp; Course Maps" />
+<meta property="og:description" content="3 parkrun events in Tauranga. View course maps, find nearby hotels and plan your parkrun visit to Tauranga." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/tauranga/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="parkrun Events in Tauranga, New Zealand — Hotels &amp; Course Maps" />
+<meta name="twitter:description" content="3 parkrun events in Tauranga. View course maps, find nearby hotels and plan your parkrun visit to Tauranga." />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/tauranga/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"New Zealand","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/"},{"@type":"ListItem","position":4,"name":"Tauranga","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/tauranga/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Tauranga, New Zealand — Hotels & Course Maps","description":"3 parkrun events in Tauranga. View course maps, find nearby hotels and plan your parkrun visit to Tauranga.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/tauranga/","spatialCoverage":{"@type":"Place","name":"Tauranga, New Zealand","geo":{"@type":"GeoCoordinates","latitude":-37.70031933333333,"longitude":176.1906743333333}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
+/* breadcrumb */
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+/* page hero */
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+/* stat strip */
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* section headings */
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+/* country grid */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+/* tiles */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+/* search */
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+}
+.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
+/* hotel CTA */
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+/* toggle buttons */
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.2s; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+}
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
+/* download footer */
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/">New Zealand</a><span class="breadcrumb-sep">/</span><span>Tauranga</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">New Zealand</div>
+    <h1 class="hero-title">parkrun Events in Tauranga</h1>
+    <p class="hero-sub">3 parkrun events in Tauranga</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">5k events</span></div>
+    
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in Tauranga?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(-37.70031933333333,176.1906743333333,'Tauranga parkrun')">Find Hotels</button>
+  </div>
+  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
+    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = false;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+
+  window.setFilter = applyFilter;
+
+  // Wait for DOM to be ready so event cards exist before we filter them
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyFilter(getInitialFilter()); });
+  } else {
+    applyFilter(getInitialFilter());
+  }
+})();
+</script>
+  <div class="section-heading">Events in Tauranga</div>
+  <div class="event-grid"><div class="event-card" data-search="gordon carmichael reserve parkrun tauranga" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-gordoncarmichaelreserve" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Gordon Carmichael Reserve parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Tauranga</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/gordoncarmichaelreserve" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-gordoncarmichaelreserve');
+  if (!el) return;
+  var map = L.map('cmap-gordoncarmichaelreserve', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE3MzczMTcyOCwtNDIxODIwOTUsMTcyMjgzODI0LC0zNTA2NjU0NCwxNzYyOTM4NTMsLTQzNDk1NDYxLDE4MjAyMjk0NywtNDIzNjkxMzgsMTgxNDEwMzg2LC00MjY0NTg5MSwxNzA3NDg5MDcsLTM0MzIwNjU5LDE3NzE2NTQ3NywtMzcyMjk3MzEsMTgyMDYwMjAzLC0zODA1ODI1MiwxODMyNDU3NzQsLTQ4ODY1NzE2LDE4MjA1MzQ2MSwtMzU2Mzk4NzgsMTc4MjQzMDI0LC00MjQzMTI2NSwxNjg3MjkwMDUsLTQxMjcyMzg4LDE3MzcwNDMxMSwtMzU3NjM5NDgsMTc3MzU3NzM2LC00ODcyNTcwMSwxODM3NDE0NDcsLTM1NzE4MjY5LDE4MDczNzA1MiwtNTAwNjU1MDksMTczMTAyMDg0LC0zODY2OTU4NCwxNjg5NTAwODgsLTQ5NTkxMTEzLDE2OTQyODM5OSwtNDIxOTMxNTcsMTc1OTk0OTU2LC00MTExNDIxNywxNjkzODU3NjcsLTM2NDE0NTU2LDE4NDA4OTg5NywtMzg5MTE1MDQsMTc0OTI2MzYwLC00MjAxNTA2NSwxNzQxNzY1NzcsLTQ1NzQxNjQyLDE3NTk5NzM1OCwtMzQzMjYxNjQsMTczNTEzNDcxLC00MjM3NTM2OCwxNzc1NzA5ODksLTM4OTE3MzM5LDE4MDY3MTI3OSwtNDgyNDAyODcsMTczOTIzODQ3LC0zOTgxNjA2NSwxNzA1MjE2OTIsLTQzNDgzMTAwLDE2NzkxNDQ5MywtNTAyODYxNzksMTc4ODgyMTQ0LC0zNzYwMTQzNywxNjk5OTA5MTcsLTM3MDg3NjU0LDE4MTgzNzc3OSwtNDIyMzQyMjcsMTc1NDE1NTUzLC00OTgzOTA4OCwxNzE3MTg0MDgsLTM5NTI3MDUyLDE3MTgyNzYzMSwtMzY5NzUzNzMsMTc5MzE5OTg1LC0zODM4NTgwNiwxNzUzODkwMjIsLTMzNzI2MjQwLDE3MzU5MTUyNSwtNDIzNTgyOTYsMTc5NDA0MTczLC0zNTgxNzgzNiwxNzU2NDY4NzksLTQ4MDEzNjgyLDE4MjEwNzAyMiwtNDYyMTczMTIsMTY3ODQzMzA1LC0zNzk3NTczNCwxNzY5MTk2ODQsLTQwMDMwNTI4LDE4MjA1Mjk2OSwtMzcwNjExNzEsMTcyNDYwMDgzLC00NTA5NTAxMSwxODMwNTYzMjUsLTM5MTAzMDU1LDE3NDE3ODcxOCwtNDkxMTExMjQsMTgzMTYyMTMyLC0zNzc2ODIwOSwxNzg4NjY5MjUsLTQ1MDY4NTA3LDE4MzQwMzI3OCwtMzcwOTY4ODIsMTgyMDM4NTYwLC00ODEyNjIyNiwxNzkxOTA5OTYsLTQ5MDExMDk0LDE4MDExMzYwOCwtNDEwNzEzNzUsMTc3Nzc1Mzc3LC0zNjAyNTY3NCwxNzAwMTk4NjgsLTQ4OTM3MDgxLDE3NzU1MzU5OSwtMzU0MDMyMzYsMTc2NjA5MzEzLC0zNDM1OTQxNCwxNzgxMTA4OTYsLTM0OTkxNDUwLDE3NTc5MDMyMSwtMzk5NTMzMjEsMTg0Mjc2MTgxLC00NTcyNDUzNSwxODE5NTIwMjIsLTQwNzI2NTIwLDE3Mzk2MTgyNSwtMzcyNjA0MDQsMTc4OTA5NTYzLC0zNjczMTk0NywxNzg3MDgyMDAsLTQ0MDU1NTY2LDE4MTUzNTM4MywtNDgxOTQ5NDEsMTc0NzYyNTkxLC00MTgwNDk1OSwxNzYzOTU5MzksLTQ4MzU4Mzg1XQ==", 11155383);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="gordon spratt reserve parkrun tauranga" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-gordonsprattreserve" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Gordon Spratt Reserve parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Tauranga</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/G/gordonsprattreserve" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-gordonsprattreserve');
+  if (!el) return;
+  var map = L.map('cmap-gordonsprattreserve', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2ODk5ODE5NywtNDg3MDQxMzIsMTcyMzk4MDAzLC00NjIzNTUxMiwxNzAwNTA3MTMsLTM4NjE4ODkwLDE4MjQ2Mzg1MSwtNDI5MTM5MDgsMTc2NjY4OTA5LC00NzUxOTU0MCwxODQwNTI4MzMsLTM3MDA4NDYyLDE3OTg5NDU1OSwtNDQ3MTI5MTAsMTY4NDg4MTI1LC0zNTEyNjE1NiwxNzAyODk1NTEsLTM0ODY4NzY2LDE3MDg1NzQ3NSwtNDY0MTU5OTQsMTc3NzIxMzUxLC0zNzc5ODQ2MCwxNzI4NDUxMDksLTM1NDc2MDU0LDE2OTI5Mzg3NSwtMzg3MTU4OTIsMTc2MjU0MDAzLC00NjQ1OTA1MiwxODI0MzIzNTEsLTM1NDY4ODYyLDE3OTI3NDYzNywtNDY2MDQzMzYsMTc4NzQyODc3LC0zOTM3MDM1MiwxNzQzNzY2OTUsLTM0NTkyMTcyLDE3MDAzODE4NSwtNDYwNjM1OTIsMTcwMDE1NzYzLC0zNDAxMzI4MiwxODA2NDQwNjksLTM2OTQ3OTYwLDE3NjQyNTU1NSwtMzQ0Mjc4OTIsMTgxNDM3MjIxLC0zNDIwMzg5OCwxNzAxNzc3NzMsLTM1MzQzOTMwLDE3NzEzNTAzOSwtMzQ0NTU3ODgsMTczMDkwMTE5LC00NTQwMzg2NCwxODA5MDExNTEsLTQ3MzE3NzA4LDE3MjQ1NDQ5NSwtMzQ0ODEyMzAsMTc5MzU1MTQ5LC0zNzY4ODg2NCwxNzYyNjM0MzEsLTMzNzkzNjg2LDE4MDQyNTIyMSwtNDc4MjM0MjIsMTc2NTgwNDM3LC00NTQ4ODA4MCwxNjkyMzgzMzcsLTM4Nzg5NjQ0LDE3NzIyOTMxMywtMzM5NjQ4ODQsMTgyMzI1NTgxLC0zODMyNDE5MiwxODM2MzI0NjEsLTQ1NTE1OTYwLDE3MDk5Njc0NSwtNDkxMTg1NTQsMTcxOTEwOTM1LC00NzY1Nzg5NCwxNjk0NzcxNTMsLTQ1NTcxODY4LDE2OTQ5MjgwNywtNDE2Nzg5MDIsMTc5NzA1NjUxLC00MTQzOTg0MCwxNjgyODA0ODcsLTQzNjA2MTM2LDE4MjIzNDAwMywtMzYzMDgwMzIsMTc3NDI1MzMzLC00NjE1NTU4NiwxODI2MjM0OTcsLTQxNTQ2OTQyLDE3OTM4NTIxOSwtNDE4NTc2MDQsMTc1NjU5Njg5LC00MzA0NjU0OCwxNzUyMDg3NzksLTQyNzYxNzU0LDE3MDM4ODgzNywtMzYwMTYzNzIsMTgxMTc3OTExLC0zNzc2MzMwOCwxNzc3OTAyNzEsLTQ2NDQzNzgyLDE4MTkzMDQyOSwtNDUxNzE5NjAsMTc3NjIyMzEzLC0zOTY4MjE4NiwxNzAxODE0MTcsLTQ0NjM5MDkwLDE4MTQ3Njc5MSwtMzQ0MTY0NDgsMTc0MzU4MTk3LC0zODcxNDYxMCwxNzQzMDk5MTMsLTQ0OTgzNDY4LDE3MzAwNzMxNywtNDI4MTE0MDgsMTY5MzQ3MzQzLC00NDA5NTM2MiwxNzk5NDA3MDEsLTM4NTgzOTc2LDE3NDQxNTY3NSwtMzkwMTk0MDgsMTY5NTk1NDk3LC0zODY1MDAxNCwxNzI1ODg2NTUsLTM1MzU5MTc0LDE2NzgwNDYzNSwtNDAwMjAzNTAsMTc4NDkxNzQ5LC00NTE1ODU1NCwxNzAyNjM4MzUsLTM5MDU5NzY2LDE3ODc0MTQxNywtNDI1NDUxNTIsMTc0MzQ3MzkxLC0zNDc1NTA3NCwxNzkzMjc1MDksLTQ3ODE0OTk4LDE3MjYwNzk0OSwtNDM3Mzc3NDYsMTcyNTkwNzgzLC00ODQ5Mzk0OCwxNzc4NjUyMjEsLTQ0ODYwOTY2LDE3MzgzMTIxOSwtMzQwMzc1MjQsMTcwOTc2NzI5LC0zNjE0MTg5MCwxODA4MzU0OTEsLTM0Mjc1NjA4LDE3MjYxODI1MywtMzgyODU2ODgsMTY4NjAwMjgzLC00NDU0MzQzMiwxODAxNjc0MjEsLTM0MDkxMTgwLDE3NjEzNzA2MSwtNDcyNjc1ODAsMTgwMDMxMjc1LC0zODY4Njc5NCwxNzMxNjQ1MjMsLTQ2OTM1NjAwLDE3Nzc5NTczNywtMzk0NjIyMDYsMTcyMDUzNjk5LC00MDkyNDMyNiwxNjk3Nzc5ODUsLTQwOTExODQ2LDE3MzQ2NDg3MywtNDU2ODAzMTIsMTc5NzEwNTg1LC0zODIwNTI4MCwxODExMzkwOTMsLTM0NjI5ODE2LDE3MTE4NTA2NSwtNDQ5NTAwNjYsMTc1MzEzNDgxLC0zOTU3ODM2MiwxODAyNzc1ODksLTMzNjAxNTY4LDE3MDUyOTk5OSwtMzgwMTI3ODYsMTgwODkxNDg3LC00NzEyMDMxOCwxNzgwMjY5NDMsLTQ2ODkyNTIwLDE3ODg5MjY0NSwtNDY2OTk4NDIsMTczNzc0MjI5LC00MjY5NjIwNiwxNzAwMjQ3NzcsLTQ4ODk4OTM0LDE4NDI3MDY5NSwtMzg2NzgxMTIsMTcxNDU5MzE1LC00ODk5ODcxNCwxODAyNzc1OTksLTM4ODg5NjAyLDE3NjYwODI4MSwtNDg1MzA3NDgsMTcyMzY5NTUzLC0zOTIyMjQ2NiwxNzQzOTQ1MzMsLTM3ODU3MDMwLDE3NzcxNjY2MSwtNDkxMTY3NjAsMTgxMDM1OTU3LC00MDQzNzc0MCwxNzQxMDQ0OTcsLTMzNjc4MDk2LDE4MzkwMzY5MywtNDQ5NjQ4MDIsMTc2NzI3MTg3LC0zNTg5ODE5OCwxODAxMTM1ODksLTQ5NjUyMjE4LDE4MjI1MzI5OSwtNDM0NzMzMDQsMTgyODA3ODE1LC0zNTg3Nzg4NiwxNzAyMTI2NDUsLTM1NzI2Mzk2LDE4MDE4NDE0NSwtMzg2NjIwNDgsMTc0NTQ4NTQ3LC0zNDU3MTI2NCwxNjgzNzU3MTMsLTM1NDYxMDQ0LDE3MzU1MDA2NywtNDIyNTYxMDQsMTcwMjI1MzY1LC00MjIwNjQzOCwxNzIzMzQ2MzUsLTQyNDg3MzQwLDE3NTA3NTI3MywtMzU4Njc2NjYsMTgzODIxODU1LC0zODkzMTg2OCwxODE2ODY4NDksLTQ5OTA2NzI2LDE4NDA2MDYyMSwtNDczODA3MTgsMTgyNjEzMDQzLC0zODUxNjY0NiwxNzEzMjkyMDksLTUwMjg2NjA4LDE3OTUwMDM0MywtNDc1Njk0NTgsMTc3NTk3ODg1LC00ODU5NTYxOCwxNzU2NTc4NDksLTM2OTIwMTQ0LDE3MDY3NjM3MywtNDkwMDQ3ODQsMTY5NjU3NDIzLC0zNDUzODc3MiwxNzM2NjU2NDcsLTQwMjg4NTQyLDE2OTI1MDYyNywtNDI2NDIwNjYsMTc0MDk2ODczLC00ODIzNzIxMiwxNzY3ODQ3MjksLTQ4OTQzOTM4LDE3MDIzNzU0MywtNDQ1NTk3MDAsMTgxMTk1NjU3LC00MjM1MjcwNiwxNzE0MzU4MzcsLTQzNDg4NzM4LDE4MzE2NzMwNSwtNDk0OTczMDgsMTY3OTY5NDI5LC00NDM5NDQxOCwxNzY5MzI1MjUsLTQwNzMwMjUwLDE3NTA5Mzg4MywtMzY3OTU2MDgsMTcwNTkyODU3LC0zMzk1NTUxNiwxNzc0MzE2MjEsLTQyNjk4NTk0LDE3NDY5MTM3OSwtMzQ1Njc3NTAsMTc5NjI2MDU1LC0zNzc1MDk5MCwxODA4NTEwMzUsLTQ2NjgxOTc0LDE3ODcwNzg1OSwtMzY0ODI1MjAsMTczOTE3NzkzLC00Njc3MzE0MCwxNjk2OTQ2MjMsLTQ2MDEzNzAwLDE3MTQ0Njg1MSwtMzY1Mzk4NTQsMTc5MjI5NzcxLC0zNDIyNzMwNiwxNzcyNTI4OTksLTQyMTExMTU4LDE3Nzc1NjIwMSwtMzQ4MzU1NTgsMTc2NDY3Nzc3LC00MDk2OTg2MCwxNzE3MTkwNjMsLTM5MTAxMjUyLDE4Mzg3MjE0MSwtNDQ5ODY3MzAsMTc1OTQ1MDgxLC00MzA3MzEyNiwxNzkxNDY2NDEsLTQ0MDY3MzAwLDE3NzMwNjQ0OSwtMzk5MzM4NjIsMTgwODEwODQxLC00NzIzMzIwMiwxNjg0NjY5ODcsLTQ5ODczOTEyLDE3MTkyMDc2OSwtNDMxMDk3NTQsMTY4MTQ3MjM3LC00NTYzMzQyNCwxODM1ODA1NDcsLTQxMDY2ODM0LDE4MTcwNDA5OSwtNDEzMzAwNTgsMTc5ODY4MzExLC00MDIyMjEyNCwxNzgyMzY2MzMsLTQyNjE3MDM2LDE4MDM1NjI2NSwtNDQ5NTUwNzIsMTc1MDAwMDE3LC00Mzk0MDU4MiwxNzE2NjkwNjEsLTM0MjM0MjgwLDE3NTY2MzYyNywtNDU0NjUzODQsMTcwOTg1MzY5LC00NDQ3MzA2OCwxNzkxNTM1NjcsLTQxNDAwMTgwLDE4MTI5NzcxNSwtMzc0ODkzMjYsMTc0NTg0MzA5LC00NjI0OTc3NCwxNzcxMjA0ODcsLTQyNzQzMjI0LDE3NTAyMzYyOSwtNDA4MDYwMjYsMTY4Njk5NzI3LC0zMzY1ODUyNCwxNzI5OTgwMjMsLTQ4NTQyODE0LDE4MjA2NTYwMSwtMzU1MTM1MTQsMTgxNDMyNjQ5LC00ODE3Mzk5MiwxNzc2NzgwNDksLTQ0NzU3MDUyLDE4MDQ1OTU4MSwtNDE4ODQ0NDYsMTc0NTIyMTM0LC00NDA2NTEzMCwxODM2MTczODcsLTQzMTgxNTM1LDE3NjU0MjA4OCwtMzkyODkyOTksMTc2MDQ0MjY1LC0zNTY2ODQ3NiwxNzIwOTQwMDcsLTQ5MDE0Mjk4LDE3MjM1NzM3MSwtNDU4MDA2MzQsMTY4MTE3NjUxLC00MTAyNTI4NiwxODE1ODM4NDMsLTQyMDQ5NjM2LDE4MDk5OTU0MSwtNDgwOTM3NTIsMTcwNjMyNDY5LC00OTY4MjgyNiwxNzk5MzMwNjMsLTQ1MDUyMzEwXQ==", 1577550);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="tauranga parkrun tauranga" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-tauranga" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Tauranga parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Tauranga</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/T/tauranga" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-tauranga');
+  if (!el) return;
+  var map = L.map('cmap-tauranga', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE4MjE2MjgyNywtMzc3NDAwMjIsMTcxMjY2ODIxLC00MTc2MzUwNCwxNjk5Nzg3MDksLTM3MDM0NjMwLDE3NTM2MTc5NSwtNDk4NTE1OTQsMTcwNDkwNDg1LC00MzMwODQ4NiwxNzUyMzI1MDcsLTQ4Mjc1NDc0LDE2ODQ4NDQ2NywtNTAyMzIzMTAsMTgwMjg3MDc1LC0zNjE5ODI4NCwxNzg1NDI5NjEsLTQ0MTgwMzM4LDE3NTQ5NDg3NSwtMzk3NzE3NDQsMTY5MTkwMDU3LC00MjI0NjA1NiwxNjk1MjEzODEsLTQ3MjA0NDE2LDE4NDI3NTM0MSwtNDI3MDUzODAsMTcxMTM1MDM1LC0zMzY3NTAyMCwxNzUwMjQ2NzEsLTM4NjM1MTY2LDE3ODcyMTkxNywtMzg3MDEzNjYsMTgwMDAzODE5LC00Mzc3NzUzMiwxODE5MzAzODcsLTQ4MDQ5NTEyLDE4MjM1Nzk2MywtMzg2NDc3ODAsMTc2MjA1Njk3LC00NjkwNTYwNCwxODA4Mzc4MzksLTM4NTYwNjA0LDE3Mjg4OTQwNSwtMzQ3NTgwNjYsMTcyNjgwMzA3LC00ODQ4MTIyNiwxNzE4OTA0NTcsLTQ2MDUxNjU0LDE4MjgwNDQ0MywtNDY0Mjc2NDAsMTgwMDU2Njc3LC00NzA4ODM1NCwxNzExNTc2ODcsLTQ3OTYwOTAyLDE3NTQ2MzI1OSwtNDA0NDY0NzQsMTcxMTExNjM1LC0zOTA2NDQ1NCwxNjc4NjUxNDMsLTM4MjY0NjU2LDE3MTM3NTY5OSwtNDA2NDQ4ODYsMTcxMTYzMzgxLC0zOTU0Njk0MiwxNzg5OTU1MzcsLTQ5ODkzMTc2LDE3MTgxNDIwOSwtNDYzOTcwMzIsMTc2OTc5NzU3LC0zNzM5MjQ5MiwxNzY2NDI1NTksLTQ5MjgwMjU4LDE3ODU2MTE2NywtMzk2NzY5ODYsMTcyNjk3MzA1LC0zNDc3ODI0MiwxNzY3ODE0MDksLTM4OTk5ODAyLDE4MzkwMDgxMSwtMzg0NTQ2NDYsMTczMjEzNTg5LC0zOTEzMDA2MCwxNzE5MDk2MzEsLTQzMDMyOTg2LDE2OTc5NTc4OSwtMzcwMTI0NzQsMTY4MTUzOTAzLC0zOTgzMDMxMCwxNzIyNzY1MjcsLTQwMDg2MTk2LDE4MzIxMDc2MywtNDQzNzE2NTYsMTczNjA5NjQ3LC00NjMzODYzNiwxNzk2MzE2MDEsLTQwNjM5NTMwLDE4Mjc1Mjg1OSwtNDUzMjA5MDIsMTczOTg3NzE3LC00NjY1Njc2NCwxODI2MTUxNzksLTM5MTY4MDM2LDE4NDUzOTk0NSwtNDE3MDg1MjIsMTg0MTI4NTY5LC00NDAyODM3NCwxNzQxNzk4MzUsLTQxMjg2MDg2LDE3NjA1Mzg0NSwtMzYxMTQwNzIsMTczOTU2MzYzLC00ODU5Mjg3MCwxNzAyOTU2MjEsLTM2NTY3NDUyLDE4NDIxMTk5NSwtMzc1MzIzODIsMTc3MDQ3NTE3LC00ODczNzk3NiwxNzIyNTIzODksLTQ2ODQzNDcwLDE3NDc3MTg5MywtNDI5MDg0ODIsMTgzMTg0MTA5LC0zNzAwMzY1MCwxNzcwOTIyOTksLTM2MzE2NTAwLDE3ODMzNzAzMywtMzUxNTM5NDYsMTc4Mjg2ODAzLC0zNTYyMDYzNiwxNzEwNzQ4NTMsLTMzNjczNzU4LDE3Nzc4NTY5MywtNDEyNzkyMjQsMTc0MjE1OTUxLC0zNDMyNTM1MiwxODQ0NDYwNTksLTQwNDY4MDI4LDE3Njc0ODI3NSwtNDc0NzI5ODIsMTgyNTE3ODY1LC00NTYwODQxNCwxODMzNjQ2MzEsLTQ0NTc2MTE0LDE3NzcwMjU0OSwtMzU4NjMyNjgsMTgyNzY2NDExLC00MDU2NTQ0NiwxNzE1MTY2ODksLTQ2OTIzMzcyLDE3ODc5NzA5MywtNDYyNjg1MzYsMTgyMTg0MzkxLC00NDkyMDYxNCwxODQwNDkyOTUsLTM0MjIyNDEwLDE3NzA0Nzk4MSwtNDE1MjY2MTAsMTc1MjY0MzkxLC00OTg1MjY3MCwxNjkxMTg2NzUsLTQzMzQ0MDg2LDE3OTM0NDc3MSwtMzQxNzE3ODgsMTc0NTM2NTg5LC00MTA5Mjg0MiwxNzAyNjMwNjksLTQ1MzI0MTI4LDE4MzEyNzE5MSwtNDMyNzI5NjIsMTc5ODkzMTQ1LC0zODMyNTU3MCwxNzQ4MDg5ODEsLTM5NDUzNjQ0LDE2OTY3ODY1NywtNDQ3NDc0OTYsMTgyMzI3NzUxLC00MzAwNTM2NCwxODM4OTI0MzksLTM2ODU5MjAwLDE4MjA0OTI2NSwtMzczNTM1MjIsMTc4OTUzNDExLC0zOTg5MDg2NiwxODE0MDkxNDMsLTM1Mjk2MDI4LDE2ODQxNjU1MywtMzc4NzY3MTgsMTY4NzkzODczLC0zNDA0OTI4OCwxNzgxNzk3MjUsLTM1Nzg4NzAyLDE3NTg1NTg4MywtNDA4NjQxNDYsMTgxNTU5OTA1LC00MTQ2ODkzMiwxNjgyMjU0MjcsLTM2MTY4MDcyLDE4MDY4MjYzMSwtMzQzODQyOTYsMTgzODI5ODQ3LC00OTgyMjQyMCwxODMxMDcyODMsLTQwNDI1NjcwLDE4MTYzMDMwMywtNDA0NTA2ODIsMTc0MzYwNzE1LC00MjE5OTE3NCwxNzEwODAxMjEsLTQ2OTc5MzIwLDE3MDI0ODMyOSwtNDQ5NTIzMTAsMTcwMjg1OTMzLC00MjU3MDE5OCwxODA1NzcwOTMsLTM3MzcxMzg0LDE3NjE3MDM1OSwtNDQ4MTUxMTQsMTY5MzE4NzkxLC00MDk1MDcyOCwxODExNTg5OTksLTQ0OTI5MjU2LDE3ODIyMTIzNSwtMzY3NDY5ODgsMTY4NDkyMTA3LC0zMzc4Mzk2MCwxNzcxMjk2MzEsLTQ4NTk4NTcwLDE3MDc5MDUxNywtNDA0NzY1MTQsMTc5NjE3MDY5LC0zNjYzNDUwNCwxNzM1Njc0ODEsLTQ5MTIyODE0LDE2OTA3ODM1OSwtNDY5NzcxMDAsMTgxNTI0NDg5LC0zNzUzNjE5MCwxNzE3MTY0MTEsLTQ2ODY4ODUwLDE4MTA4MDMzMywtMzY1NzA3MjYsMTc0ODU4MTgzLC00MTA3OTg2OCwxODE4MzQ5MzEsLTQzMTg3MDM2LDE3NDY3NDcwNywtNDg5NTM4MzQsMTcwMTIwMjQzLC0zNzMyNDEwMiwxNjk1NTc2NjksLTM2Njg2NTMwLDE3NTgwNjIzMSwtNDYyNzE3MTYsMTgzMTc5MzE1LC00NTcxNjg5OCwxODQyNzQ3NzUsLTQ0NjUzMTEyLDE4MjM0OTE1NywtNDAzMzI0NzAsMTc3NjY3MjQzLC00MzAzNTc0OCwxNzUwNzE2NjMsLTM2Nzg3ODk2LDE3MjY0NDY1NSwtNDY4MzQ3MzAsMTcwNzg5MDI3LC00MjczNDQzMCwxNjk3OTI2MDEsLTM2MzI4MTkwLDE2OTU5ODExMywtMzUzNTk4ODIsMTgyNjA1OTc3LC0zNDU1MTkxMiwxODA0OTQzNzEsLTQzNjM2NTAwLDE3ODUzNjMzNywtNDQ5NTI5MzQsMTY5MTYyODAzLC00MjQ2NTIyNiwxODM2ODkyNTEsLTQzNzE0NTIyLDE2ODU0ODQ1OSwtMzUwMDQ3NDYsMTgxNjg4OTMzLC0zNTYwOTU3MCwxODQyNjU3NzMsLTM5MTU5OTEyLDE3NjU3NDgwOSwtNDU4NTc5NTYsMTc5ODM5MDAzLC0zNTIzMTAzNiwxODM5ODI0MzcsLTQ5NjUyNTM4LDE3NDgwNTIwNywtMzY2MjU1MDIsMTY4MDE1MDgxLC00MDQwNjEzMCwxNzEwNzE4MzMsLTQ2MTY1NjM0LDE3NTI2MDExNywtMzQzNjUxMzYsMTc1ODYyMjczLC0zNDE1NjkzMiwxNzkxODAxNTMsLTM4MjY1NTE4LDE2OTgyOTQwOSwtMzc0MjA4NDAsMTcyMzgxODc3LC0zNjg3ODUwOCwxNzE5MDkwMTEsLTQ0NjM2MTE4LDE3MDE3NTI1MSwtNDQ3MDU5ODIsMTgyNDg5MTA1LC0zNzY2MTI0NCwxNzcxODgxNTcsLTQzNzk2MjM2LDE3MjUxMTc3MSwtNDM4MjYyNzQsMTgyNjEyMDYxLC0zNDU4NzExOCwxNjkyMTExMTEsLTQzMDUwOTQ0LDE2ODMxNTY4NSwtNDA4NDU4NTAsMTY5OTU2MDg3LC0zNzUyNDc3MiwxODAxMzk0NjMsLTM1NTIyNDg2LDE2OTI1Mzc1MSwtMzM2ODU0NzYsMTc2NDUwNzUxLC0zNzM2MjMzNCwxODE1NDczNDUsLTM2NjM2MzA0LDE3NDYxOTY0OSwtMzY1NDg0NzQsMTc1ODE2MjU3LC00OTEyODg2OCwxNzUzODMzODUsLTQ5ODYwMTE4LDE3NDAwNDA4MSwtNDA0MDg0MzQsMTgzNjkxMTIxLC0zNzY4MTc4MCwxNzc0MzIxNzMsLTM3NTk0NjkyLDE3NDQyNzY5OSwtMzQ2NzYwMDAsMTcyNDk2NTEzLC0zNjEwMjkzNiwxNzI0MzMzNTMsLTUwMjMwNTcyLDE4MzM1NDM5NywtNDAyMTU1NDIsMTc2MjgwNjE3LC00Nzc0MDIzMCwxNjgzODYwNjEsLTQ5NTEwNzkyLDE3OTEyNDc5MywtMzgxMjg0ODIsMTgxNzI4MDkzLC00ODY3ODEwOCwxNjg1NjMxNjcsLTM0Mzc3NzkwLDE3Nzg2Mjg0MywtNDQzMDI0NTYsMTcyNDUwMTc1LC0zNTI4Njc2NiwxODEyMTEyNTksLTM4NTMwNTY4LDE4Mjk0MTUyNSwtMzkzNDI2MDIsMTgzMzEzODAzLC00ODEwMDczMiwxNzc0NTQ5NDksLTM2NjcwMzI2LDE2OTQ5NjMxMSwtNDQ5MDc3NjYsMTY4NjkwNTU3LC0zOTEzNTMwOCwxNzU0MzU1MTcsLTQyNzc1NjAwLDE4MzM5MzcwNywtMzk4NDUwMzAsMTcxNDg0MTU5LC00NTE1ODE2MiwxNjk2MDU1NzMsLTMzOTgxMjQ0LDE3Nzk2MTUxNywtNDA2MDc4NzYsMTY4NjQ1MTg1LC00NTQyMTU1OCwxNzQyODIxODksLTM0MDU4OTA0LDE4MDU3NDM4OSwtMzk0MzYwMTYsMTcyNTQ1MjM3LC00MTk1MzIzOCwxNzY0MTczNjEsLTQ4NjQzODE4LDE2ODcyNjQyNywtNDA2MDkyNzQsMTczNDMyNTk3LC00NDcwNTg5OCwxNzQxNDk0OTUsLTM1NjI4MzUyLDE3MTk3MTE2OSwtNDc0OTk1MTYsMTc0OTk1MTM3LC0zNTk5ODI2MCwxNzIwMzM3NjUsLTQ2MjEyNDUwLDE3MjI3ODkxOSwtNDAxMzg3ODIsMTY4NjkyNzYzLC0zNDI3OTU1NCwxODM0MDYxNzUsLTQyNzI2MDk0LDE3NzA0Nzc3NywtNDcyNjcxMjYsMTcyOTE3ODcxLC00NTkzNDI2NCwxNjkwODg1NDUsLTM4MTg3Nzc2LDE4MDAxMjMzMywtNTAxMzExNjYsMTc0MDc3NDk3LC00MTU4OTIxNCwxNzM1Mjg5NDMsLTM5NjIyOTg2LDE3MzQwMDA4NywtNDA0NzY3ODYsMTcxNDM2MTk1LC00ODYwNzUwOCwxNzU3NTY1MDcsLTQ2NTc3NjUyLDE3MTE0NTIyNSwtNDY1NjM5NTQsMTcwOTE5OTE5LC00MjM4MzY2NCwxNzY2Mjc5MzUsLTM3NjU1MjIyLDE3OTczNDEwMywtNDQ5NDQ1NDgsMTcwOTU5OTQ1LC00NjY5Mzk3NCwxODI0NzkzNzEsLTM5NTEyMDMwLDE2ODI3ODkxMSwtMzQzMzk2MzAsMTc3MjYxNTA3LC00MzIyNTE2NCwxNzgwNTAzNzksLTQxODM2NTc2LDE4NDIzMTM0OSwtMzg3OTU4MzgsMTgxNjE3OTExLC00ODA0OTg5NCwxNzgwMjE0ODEsLTM4MTQ0Nzk4LDE3MTg3ODIzNSwtMzg2Njk2MDAsMTgzNzk3OTUzLC00OTk4ODgzOCwxNzE4NzM4ODksLTM4OTE5ODQ0LDE2ODQxNzI4NSwtMzM4MDQwODIsMTgyMTA0MzA3LC00MDU0NjQ3OCwxNzc5NjY4MzUsLTQzODAyMzIwLDE3Mzg4OTExOSwtNDI5MjE2NjQsMTcwMzE5MTkxLC00OTI5NTMzNiwxNzkzNDc4MTksLTM4ODM1NjA0LDE3Nzk0ODExMSwtMzU4NzY2OTAsMTc1ODc2MzkzLC0zODM1NDI5MiwxODIxNzI0NDUsLTM1ODE4Mzc0LDE4NDMwMDQ4NSwtMzg0MTczNjIsMTg0MTAwOTkzLC00NDY4MTcxMiwxNzg1NzQ3MjcsLTQ2Mzc1Mzc4LDE3MDgwNzEwMywtNDM0MDgwOTAsMTc1NDk4NTI3LC00OTMzNjE0NiwxNzc4NTg1NDMsLTQxMDY3NjYwLDE2OTY3MzQ4MywtMzgyMTA0MzYsMTgwMjU0MTc5LC0zNzM5OTE5MiwxODE0NTg5NTcsLTM1OTA4ODA4LDE3OTk5NTk1NSwtNDkzMjEyMjYsMTgyOTk1NTUzLC00NTA1OTMzOCwxNzI1Nzk0MDksLTQwMDY3OTEyLDE3MTc2NjcyNSwtNDMxNzMxMTQsMTc1NjMzMzU5LC0zNzc4MzU1NiwxNzIxNjE0NTUsLTQ4MTQ5MzY2LDE3MDM4MzIzMywtNDc2MDY2OTAsMTgyODY1MTE1LC0zNzE2OTgyMCwxNzI0NDE4NTUsLTM2MzkzOTY0LDE3MDMwOTc3MywtMzgwMzMxNDAsMTgxMzI1ODEzLC0zNzg4MjA5MiwxNzU0MjUwNDUsLTM5NDQ1MjcwLDE3NTg3NTExOSwtMzYyMDIzOTQsMTgxMDcyOTc3LC0zOTg5Mzc1NiwxNzI5NzAyMzcsLTQ2Mjk2MjUwLDE3Njk3NjM2NywtMzQxNjQzNjgsMTgwNzA3ODE5LC0zOTM2NDQ5NCwxNjk4NDg5MzksLTM3MTc2NzQ2LDE4MTc3MDAyOSwtNDgxMTMxMDYsMTcyODA4ODAzLC00NDUxODY4NiwxNzkxNzIwOTUsLTQyNDQ1MTgyLDE3MzI4NjcyOSwtNDgyMzcxNzIsMTcwNjUzNTM3LC00MjU3MTA2OCwxODE1Mjc1NTksLTQ4MDU0MTE0LDE2OTYzODQ0NSwtMzY2OTM2MjgsMTczMTc4MjY3LC00OTk3MDIxNCwxNzEzMDIxNTMsLTQ0MjMwNjU0LDE3OTUxMTYxNSwtMzU3ODExODYsMTgxNjY1MzYzLC00MTMzMDUzMiwxNzE4NzcxMjMsLTQ1MjQ3Njg0LDE3NTM3NTQwNSwtNDk2NTUxNDQsMTc2NTQ4NjgxLC00NTQyOTk3OCwxODM3MTc5OTUsLTQ0ODI5OTU2LDE4NDM1MDE4MSwtMzc3Nzk0NzAsMTc2NDcxNjkxLC0zNzI0MzQxMiwxNzM1NDEzNzcsLTM2MTkwOTk4LDE3NTQ1NjY1MywtNDcyMDAyMTgsMTc4ODc5ODgxLC00ODg4MTI5MCwxNzgyODkwNjksLTM0NzI3MDgwLDE3MTQwMzkyNywtNDc0NzcyNDIsMTc5MzY0ODYxLC00MjcyMzUyNCwxNjk3NTAyMTUsLTQxNzAzNTM4LDE2OTUxNzg3NywtNDI4MDY4NDAsMTc4OTQzNDc5LC00ODIzNDg5OCwxODE5NjA3MDUsLTM2NzgzMDU0LDE3NTI3MDI0NSwtMzkyNTc1NTAsMTgyODY4OTg3LC0zNjE5NzIzNiwxNzEyNzU0OTcsLTM3NjcwMDE2LDE3NTkwMTkyMywtMzgxODQzNTAsMTc1NTEyMzQ5LC00MDAyMDM1MCwxNjg3NDIwNjMsLTM4NTEzNzQwLDE4MTk1MTk3NSwtMzY0NDgxNDgsMTY4MTQxMjA3LC00MTE3NDUwOCwxNzE0NzkxMDcsLTM0NjU4MjEwLDE3MTc5MjMxNywtNDY2NDEzMjIsMTc3MTQwNjU5LC0zNzA4OTIxNCwxNzE3NjU2NzcsLTM1MDgwNjYwLDE3NjQxMDI0NywtNDAwNzk2NTAsMTcxMzc0ODQ5LC0zOTYzOTY0MiwxODE0NTAwMDUsLTQ1MDU2NzkwLDE4MDU1ODM5MSwtNDUzNTk0NTgsMTczODA0OTE1LC00MDI2NTI1NCwxNzM4MDE4MjEsLTQ1NDk2OTU2LDE2OTAxMTI0NSwtNDU5MjkxMjQsMTc3Nzc4MjgxLC00MTcyNTg3MiwxNzY0NjkwMTcsLTM2OTQ4NjUwLDE3MDU3NzkzOSwtNDkwNTMyNzAsMTcyMTk3ODUxLC0zODQ4Mjc4MCwxNzc3NjI0MTEsLTQ2ODg3MzI2LDE4NDIzNTMxOSwtNDA3MTM0MjIsMTgwMDEyOTk5LC00MjA4NDU2NiwxNzMwMzkyMDksLTM1MDE2MDA2LDE4NDA0NTAyNywtNDQ5NTE3MjgsMTc1NzU5NTczLC0zODA3OTA1OCwxNzIwNDc2MzUsLTQwMzM5OTQ2LDE3ODIzNTU2OSwtMzU5NDQ2NzgsMTgxMDk5ODk1LC00NzU0NTI4NCwxODM4NTMyNjEsLTQ5ODUwNTM2LDE3NzEzNTU0NywtNDk2MjgzNDAsMTc3NjE2NjM5LC00NjU5Nzk4OCwxNzYyMzg4MDMsLTM2MDcyMzU2LDE2OTkxNzU4NSwtNDY5NDQ2MTAsMTc3Mjg4MzUxLC00OTc0MDMxOCwxNjkwNDA1OTksLTM1NDg1MjgwLDE3NDMxNDQyMSwtMzY1NTg1MjQsMTgzMDU2NTIxLC00MzUzODc0OCwxODE0Mjk3MjEsLTM1MzI5NTI4LDE4MzcxMzk0MywtMzQ2NzQ2ODQsMTY5NTMwODI1LC0zNTkxMDYzNCwxODQwNjYwMzEsLTM3NTUwNTYwLDE4MzU5OTYzNSwtMzM5Mzc2MjIsMTc3MDg0OTgzLC0zOTM4NzE0MiwxNzA0NTI4MTMsLTQwNzIzMzU4LDE3MTI2NzU5OSwtMzU5MDQzNjYsMTcxMjk2MDM3LC00NjAyMjkzNCwxNzE0MDM4ODEsLTQxNDY2NDc2LDE3NDg5MTgyNywtMzU1NTUwNTRd", 9724382);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
+    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
+      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
+        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.style.display = 'flex';
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  document.getElementById('stay22-modal').style.display = 'none';
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+
+</body></html>
