@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -252,11 +255,11 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/petersfield/" class="tile" data-search="petersfield">
   <span class="tile-name">Petersfield</span>
   <span class="tile-count">2</span>
-</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/basingstoke-and-deane/" class="tile" data-search="basingstoke and deane">
-  <span class="tile-name">Basingstoke and Deane</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/basingstoke/" class="tile" data-search="basingstoke">
+  <span class="tile-name">Basingstoke</span>
   <span class="tile-count">1</span>
-</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/test-valley/" class="tile" data-search="test valley">
-  <span class="tile-name">Test Valley</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/penton-mewsey/" class="tile" data-search="penton mewsey">
+  <span class="tile-name">Penton Mewsey</span>
   <span class="tile-count">1</span>
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/havant/" class="tile" data-search="havant">
   <span class="tile-name">Havant</span>
@@ -271,29 +274,82 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in Hampshire..." /></div>
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
-  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
-  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
-  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
-  var KEY = 'prt-filter-hampshire';
-  var saved = localStorage.getItem(KEY) || '5k';
-  applyFilter(saved);
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = true;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
 
   function applyFilter(val) {
-    localStorage.setItem(KEY, val);
-    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
-    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
-    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
     document.querySelectorAll('.event-card').forEach(function(card) {
       var isJunior = card.dataset.junior === 'true';
-      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
       card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
     });
   }
 
   window.setFilter = applyFilter;
+  applyFilter(getInitialFilter());
 })();
 </script>
   <div class="section-heading">All events in Hampshire</div>
@@ -369,7 +425,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
 })();</script>
-<div class="event-card" data-search="andover parkrun test valley" data-junior="false">
+<div class="event-card" data-search="andover parkrun penton mewsey" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-andover" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -379,7 +435,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   </div>
   <div class="card-body">
     <div class="card-name">Andover parkrun</div>
-    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Test Valley</span>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Penton Mewsey</span>
     <div class="card-badges"></div>
   </div>
   <a href="https://www.parkrunnertourist.com/explore/A/andover" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
@@ -405,7 +461,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
 })();</script>
-<div class="event-card" data-search="basingstoke parkrun basingstoke and deane" data-junior="false">
+<div class="event-card" data-search="basingstoke parkrun basingstoke" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-basingstoke" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -415,7 +471,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   </div>
   <div class="card-body">
     <div class="card-name">Basingstoke parkrun</div>
-    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Basingstoke and Deane</span>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Basingstoke</span>
     <div class="card-badges"></div>
   </div>
   <a href="https://www.parkrunnertourist.com/explore/B/basingstoke" class="card-cta" target="_blank">View Guide &amp; Hotels</a>

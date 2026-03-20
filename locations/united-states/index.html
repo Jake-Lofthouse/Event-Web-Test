@@ -7,7 +7,7 @@
 <meta name="description" content="Find all 9 parkrun events across United States. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="United States" />
-<meta name="geo.position" content="37.93493677777778;-79.10288655555556" />
+<meta name="geo.position" content="37.93493677777778;-79.10288655555554" />
 <meta property="og:title" content="parkrun Events in United States — Hotels, Course Maps &amp; Visitor Guides" />
 <meta property="og:description" content="Find all 9 parkrun events across United States. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/" />
@@ -21,7 +21,7 @@
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United States","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in United States — Hotels, Course Maps & Visitor Guides","description":"Find all 9 parkrun events across United States. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/","spatialCoverage":{"@type":"Place","name":"United States","geo":{"@type":"GeoCoordinates","latitude":37.93493677777778,"longitude":-79.10288655555556}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in United States — Hotels, Course Maps & Visitor Guides","description":"Find all 9 parkrun events across United States. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/","spatialCoverage":{"@type":"Place","name":"United States","geo":{"@type":"GeoCoordinates","latitude":37.93493677777778,"longitude":-79.10288655555554}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -238,13 +241,13 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       <h2>Need accommodation in United States?</h2>
       <p>Compare hotels and rentals near any parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(37.93493677777778,-79.10288655555556,'United States parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(37.93493677777778,-79.10288655555554,'United States parkrun')">Find Hotels</button>
   </div>
   
   <div class="section-heading">Regions</div>
   <div class="tile-grid">
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/district-of-columbia/" class="tile" data-search="district of columbia">
-  <span class="tile-name">District of Columbia</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/virginia/" class="tile" data-search="virginia">
+  <span class="tile-name">Virginia</span>
   <span class="tile-count">2</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/maryland/" class="tile" data-search="maryland">
@@ -259,12 +262,12 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Michigan</span>
   <span class="tile-count">1</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/florida/" class="tile" data-search="florida">
-  <span class="tile-name">Florida</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/district-of-columbia/" class="tile" data-search="district of columbia">
+  <span class="tile-name">District of Columbia</span>
   <span class="tile-count">1</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/virginia/" class="tile" data-search="virginia">
-  <span class="tile-name">Virginia</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/florida/" class="tile" data-search="florida">
+  <span class="tile-name">Florida</span>
   <span class="tile-count">1</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/north-carolina/" class="tile" data-search="north carolina">
@@ -346,4 +349,22 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
 });
 </script>
 
+<script>
+// Propagate current filter preference to region tile links
+(function() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var f = params.get('filter') || localStorage.getItem('prt-event-filter') || '5k';
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', f);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  } catch(e) {}
+})();
+</script>
 </body></html>

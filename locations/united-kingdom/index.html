@@ -7,7 +7,7 @@
 <meta name="description" content="Find all 392 parkrun events across United Kingdom. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="United Kingdom" />
-<meta name="geo.position" content="52.677872502551;-1.6173487959183668" />
+<meta name="geo.position" content="52.67787250255098;-1.6173487959183672" />
 <meta property="og:title" content="parkrun Events in United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
 <meta property="og:description" content="Find all 392 parkrun events across United Kingdom. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/" />
@@ -21,7 +21,7 @@
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in United Kingdom — Hotels, Course Maps & Visitor Guides","description":"Find all 392 parkrun events across United Kingdom. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/","spatialCoverage":{"@type":"Place","name":"United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.677872502551,"longitude":-1.6173487959183668}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in United Kingdom — Hotels, Course Maps & Visitor Guides","description":"Find all 392 parkrun events across United Kingdom. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/","spatialCoverage":{"@type":"Place","name":"United Kingdom","geo":{"@type":"GeoCoordinates","latitude":52.67787250255098,"longitude":-1.6173487959183672}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -226,37 +229,37 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">🇬🇧 United Kingdom</div>
     <h1 class="hero-title">parkrun Events in United Kingdom</h1>
-    <p class="hero-sub">392 parkrun events across 124 regions</p>
+    <p class="hero-sub">392 parkrun events across 116 regions</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">311</span><span class="stat-strip-label">parkrun events</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">81</span><span class="stat-strip-label">Junior events</span></div>
-    <div class="stat-strip-item"><span class="stat-strip-value">124</span><span class="stat-strip-label">Regions</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">116</span><span class="stat-strip-label">Regions</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in United Kingdom?</h2>
       <p>Compare hotels and rentals near any parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.677872502551,-1.6173487959183668,'United Kingdom parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.67787250255098,-1.6173487959183672,'United Kingdom parkrun')">Find Hotels</button>
   </div>
   <div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="loc-search" class="search-input" type="text" placeholder="Search regions in United Kingdom..." /></div>
   <div class="section-heading">Regions</div>
   <div class="tile-grid">
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/england/" class="tile" data-search="england">
-  <span class="tile-name">England</span>
-  <span class="tile-count">21</span>
-</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/london/" class="tile" data-search="london">
   <span class="tile-name">London</span>
-  <span class="tile-count">19</span>
+  <span class="tile-count">29</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/surrey/" class="tile" data-search="surrey">
   <span class="tile-name">Surrey</span>
-  <span class="tile-count">17</span>
+  <span class="tile-count">24</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/" class="tile" data-search="kent">
   <span class="tile-name">Kent</span>
+  <span class="tile-count">18</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/manchester/" class="tile" data-search="manchester">
+  <span class="tile-name">Manchester</span>
   <span class="tile-count">15</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hampshire/" class="tile" data-search="hampshire">
@@ -271,44 +274,44 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Essex</span>
   <span class="tile-count">12</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/manchester/" class="tile" data-search="manchester">
-  <span class="tile-name">Manchester</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-wales-and-the-valleys/" class="tile" data-search="west wales and the valleys">
+  <span class="tile-name">West Wales and the Valleys</span>
   <span class="tile-count">11</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/hertfordshire/" class="tile" data-search="hertfordshire">
   <span class="tile-name">Hertfordshire</span>
   <span class="tile-count">9</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-wales-and-the-valleys/" class="tile" data-search="west wales and the valleys">
-  <span class="tile-name">West Wales and the Valleys</span>
-  <span class="tile-count">9</span>
-</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/gloucestershire/" class="tile" data-search="gloucestershire">
   <span class="tile-name">Gloucestershire</span>
   <span class="tile-count">8</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/nottinghamshire/" class="tile" data-search="nottinghamshire">
-  <span class="tile-name">Nottinghamshire</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/south-yorkshire-mayoral-combined-authority/" class="tile" data-search="south yorkshire mayoral combined authority">
+  <span class="tile-name">South Yorkshire Mayoral Combined Authority</span>
+  <span class="tile-count">8</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/" class="tile" data-search="west midlands combined authority">
+  <span class="tile-name">West Midlands Combined Authority</span>
+  <span class="tile-count">8</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/oxfordshire/" class="tile" data-search="oxfordshire">
+  <span class="tile-name">Oxfordshire</span>
   <span class="tile-count">7</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/" class="tile" data-search="lancashire">
   <span class="tile-name">Lancashire</span>
   <span class="tile-count">7</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/south-yorkshire-mayoral-combined-authority/" class="tile" data-search="south yorkshire mayoral combined authority">
-  <span class="tile-name">South Yorkshire Mayoral Combined Authority</span>
-  <span class="tile-count">7</span>
-</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/norfolk/" class="tile" data-search="norfolk">
   <span class="tile-name">Norfolk</span>
   <span class="tile-count">6</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/oxfordshire/" class="tile" data-search="oxfordshire">
-  <span class="tile-name">Oxfordshire</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/" class="tile" data-search="northumberland, and tyne and wear">
+  <span class="tile-name">Northumberland, and Tyne and Wear</span>
   <span class="tile-count">6</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/" class="tile" data-search="west midlands combined authority">
-  <span class="tile-name">West Midlands Combined Authority</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/nottinghamshire/" class="tile" data-search="nottinghamshire">
+  <span class="tile-name">Nottinghamshire</span>
   <span class="tile-count">6</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-sussex/" class="tile" data-search="west sussex">
@@ -323,10 +326,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Devon</span>
   <span class="tile-count">5</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridgeshire/" class="tile" data-search="cambridgeshire">
-  <span class="tile-name">Cambridgeshire</span>
-  <span class="tile-count">5</span>
-</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/merseyside/" class="tile" data-search="merseyside">
   <span class="tile-name">Merseyside</span>
   <span class="tile-count">5</span>
@@ -334,10 +333,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/county-antrim/" class="tile" data-search="county antrim">
   <span class="tile-name">County Antrim</span>
   <span class="tile-count">5</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/greater-manchester/" class="tile" data-search="greater manchester">
-  <span class="tile-name">Greater Manchester</span>
-  <span class="tile-count">4</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/buckinghamshire/" class="tile" data-search="buckinghamshire">
   <span class="tile-name">Buckinghamshire</span>
@@ -351,12 +346,8 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Cumberland</span>
   <span class="tile-count">4</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derbyshire/" class="tile" data-search="derbyshire">
-  <span class="tile-name">Derbyshire</span>
-  <span class="tile-count">4</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/" class="tile" data-search="northumberland, and tyne and wear">
-  <span class="tile-name">Northumberland, and Tyne and Wear</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cambridgeshire/" class="tile" data-search="cambridgeshire">
+  <span class="tile-name">Cambridgeshire</span>
   <span class="tile-count">4</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/worcestershire/" class="tile" data-search="worcestershire">
@@ -371,8 +362,8 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Middlesbrough</span>
   <span class="tile-count">3</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/wokingham/" class="tile" data-search="wokingham">
-  <span class="tile-name">Wokingham</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/edinburgh/" class="tile" data-search="edinburgh">
+  <span class="tile-name">Edinburgh</span>
   <span class="tile-count">3</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/dorset/" class="tile" data-search="dorset">
@@ -381,6 +372,14 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/east-sussex/" class="tile" data-search="east sussex">
   <span class="tile-name">East Sussex</span>
+  <span class="tile-count">3</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/nottingham/" class="tile" data-search="nottingham">
+  <span class="tile-name">Nottingham</span>
+  <span class="tile-count">3</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/wiltshire/" class="tile" data-search="wiltshire">
+  <span class="tile-name">Wiltshire</span>
   <span class="tile-count">3</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/central-bedfordshire/" class="tile" data-search="central bedfordshire">
@@ -399,6 +398,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Warwickshire</span>
   <span class="tile-count">3</span>
 </a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derbyshire/" class="tile" data-search="derbyshire">
+  <span class="tile-name">Derbyshire</span>
+  <span class="tile-count">3</span>
+</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/bournemouth-christchurch-and-poole/" class="tile" data-search="bournemouth, christchurch and poole">
   <span class="tile-name">Bournemouth, Christchurch and Poole</span>
   <span class="tile-count">3</span>
@@ -415,20 +418,20 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">South Gloucestershire</span>
   <span class="tile-count">3</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/alba-scotland/" class="tile" data-search="alba / scotland">
-  <span class="tile-name">Alba / Scotland</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/glasgow/" class="tile" data-search="glasgow">
+  <span class="tile-name">Glasgow</span>
   <span class="tile-count">2</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kingston-upon-hull/" class="tile" data-search="kingston upon hull">
   <span class="tile-name">Kingston upon Hull</span>
   <span class="tile-count">2</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/caerphilly/" class="tile" data-search="caerphilly">
-  <span class="tile-name">Caerphilly</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/" class="tile" data-search="aberdeen">
+  <span class="tile-name">Aberdeen</span>
   <span class="tile-count">2</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands/" class="tile" data-search="west midlands">
-  <span class="tile-name">West Midlands</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/peterborough/" class="tile" data-search="peterborough">
+  <span class="tile-name">Peterborough</span>
   <span class="tile-count">2</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cornwall/" class="tile" data-search="cornwall">
@@ -437,10 +440,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newport/" class="tile" data-search="newport">
   <span class="tile-name">Newport</span>
-  <span class="tile-count">2</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/edinburgh/" class="tile" data-search="edinburgh">
-  <span class="tile-name">Edinburgh</span>
   <span class="tile-count">2</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/bedford/" class="tile" data-search="bedford">
@@ -495,14 +494,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Dumfries and Galloway</span>
   <span class="tile-count">2</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/wiltshire/" class="tile" data-search="wiltshire">
-  <span class="tile-name">Wiltshire</span>
-  <span class="tile-count">2</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/nottingham/" class="tile" data-search="nottingham">
-  <span class="tile-name">Nottingham</span>
-  <span class="tile-count">2</span>
-</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/south-ayrshire/" class="tile" data-search="south ayrshire">
   <span class="tile-name">South Ayrshire</span>
   <span class="tile-count">2</span>
@@ -511,20 +502,16 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">East Riding of Yorkshire</span>
   <span class="tile-count">2</span>
 </a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/wokingham/" class="tile" data-search="wokingham">
+  <span class="tile-name">Wokingham</span>
+  <span class="tile-count">2</span>
+</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/fermanagh-and-omagh/" class="tile" data-search="fermanagh and omagh">
   <span class="tile-name">Fermanagh and Omagh</span>
   <span class="tile-count">2</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/cardiff/" class="tile" data-search="cardiff">
   <span class="tile-name">Cardiff</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/glasgow-city/" class="tile" data-search="glasgow city">
-  <span class="tile-name">Glasgow City</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/north-east/" class="tile" data-search="north east">
-  <span class="tile-name">North East</span>
   <span class="tile-count">1</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/east-renfrewshire/" class="tile" data-search="east renfrewshire">
@@ -543,20 +530,12 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">North Somerset</span>
   <span class="tile-count">1</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/tyne-and-wear/" class="tile" data-search="tyne and wear">
-  <span class="tile-name">Tyne and Wear</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/southampton/" class="tile" data-search="southampton">
+  <span class="tile-name">Southampton</span>
   <span class="tile-count">1</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/swindon/" class="tile" data-search="swindon">
-  <span class="tile-name">Swindon</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northern-ireland-tuaisceart-eireann/" class="tile" data-search="northern ireland / tuaisceart éireann">
-  <span class="tile-name">Northern Ireland / Tuaisceart Éireann</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/south-yorkshire/" class="tile" data-search="south yorkshire">
-  <span class="tile-name">South Yorkshire</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/newry-mourne-and-down/" class="tile" data-search="newry, mourne and down">
+  <span class="tile-name">Newry, Mourne and Down</span>
   <span class="tile-count">1</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/staffordshire/" class="tile" data-search="staffordshire">
@@ -607,6 +586,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">West Northamptonshire</span>
   <span class="tile-count">1</span>
 </a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/derby/" class="tile" data-search="derby">
+  <span class="tile-name">Derby</span>
+  <span class="tile-count">1</span>
+</a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/inverclyde/" class="tile" data-search="inverclyde">
   <span class="tile-name">Inverclyde</span>
   <span class="tile-count">1</span>
@@ -653,14 +636,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/isle-of-wight/" class="tile" data-search="isle of wight">
   <span class="tile-name">Isle of Wight</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/aberdeen/" class="tile" data-search="aberdeen">
-  <span class="tile-name">Aberdeen</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/peterborough/" class="tile" data-search="peterborough">
-  <span class="tile-name">Peterborough</span>
   <span class="tile-count">1</span>
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/westmorland-and-furness/" class="tile" data-search="westmorland and furness">
@@ -733,10 +708,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </a>
 <a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/mid-ulster/" class="tile" data-search="mid-ulster">
   <span class="tile-name">Mid-Ulster</span>
-  <span class="tile-count">1</span>
-</a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/glasgow/" class="tile" data-search="glasgow">
-  <span class="tile-name">Glasgow</span>
   <span class="tile-count">1</span>
 </a></div>
 </main>
@@ -823,6 +794,24 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
       el.style.display = (!q || (el.dataset.search || el.textContent).toLowerCase().includes(q)) ? '' : 'none';
     });
   });
+})();
+</script>
+<script>
+// Propagate current filter preference to region tile links
+(function() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var f = params.get('filter') || localStorage.getItem('prt-event-filter') || '5k';
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', f);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  } catch(e) {}
 })();
 </script>
 </body></html>

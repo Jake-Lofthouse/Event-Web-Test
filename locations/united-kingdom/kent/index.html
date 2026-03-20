@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Kent, United Kingdom — Hotels, Course Maps &amp; Visitor Guides</title>
-<meta name="description" content="All 15 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent." />
+<meta name="description" content="All 18 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Kent, United Kingdom" />
-<meta name="geo.position" content="51.33691386666666;0.5819694" />
+<meta name="geo.position" content="51.352491;0.4967124444444445" />
 <meta property="og:title" content="parkrun Events in Kent, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta property="og:description" content="All 15 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent." />
+<meta property="og:description" content="All 18 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Kent, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta name="twitter:description" content="All 15 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent." />
+<meta name="twitter:description" content="All 18 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Kent","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Kent, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 15 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/","spatialCoverage":{"@type":"Place","name":"Kent, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.33691386666666,"longitude":0.5819694}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Kent, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 18 parkrun events in Kent. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Kent.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/","spatialCoverage":{"@type":"Place","name":"Kent, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.352491,"longitude":0.4967124444444445}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -226,25 +229,28 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Kent</h1>
-    <p class="hero-sub">15 parkrun events in Kent</p>
+    <p class="hero-sub">18 parkrun events in Kent</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">12</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">15</span><span class="stat-strip-label">parkrun events</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Junior events</span></div>
-    <div class="stat-strip-item"><span class="stat-strip-value">10</span><span class="stat-strip-label">Cities</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">9</span><span class="stat-strip-label">Cities</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in Kent?</h2>
       <p>Compare hotels and rentals near any Kent parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(51.33691386666666,0.5819694,'Kent parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(51.352491,0.4967124444444445,'Kent parkrun')">Find Hotels</button>
   </div>
   <div class="section-heading">Browse by city</div><div class="tile-grid"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/london/" class="tile" data-search="london">
   <span class="tile-name">London</span>
-  <span class="tile-count">5</span>
+  <span class="tile-count">8</span>
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/canterbury/" class="tile" data-search="canterbury">
   <span class="tile-name">Canterbury</span>
+  <span class="tile-count">2</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/margate/" class="tile" data-search="margate">
+  <span class="tile-name">Margate</span>
   <span class="tile-count">2</span>
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/maidstone/" class="tile" data-search="maidstone">
   <span class="tile-name">Maidstone</span>
@@ -255,14 +261,8 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/royal-tunbridge-wells/" class="tile" data-search="royal tunbridge wells">
   <span class="tile-name">Royal Tunbridge Wells</span>
   <span class="tile-count">1</span>
-</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/thanet/" class="tile" data-search="thanet">
-  <span class="tile-name">Thanet</span>
-  <span class="tile-count">1</span>
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/west-malling/" class="tile" data-search="west malling">
   <span class="tile-name">West Malling</span>
-  <span class="tile-count">1</span>
-</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/margate/" class="tile" data-search="margate">
-  <span class="tile-name">Margate</span>
   <span class="tile-count">1</span>
 </a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/cliffsend/" class="tile" data-search="cliffsend">
   <span class="tile-name">Cliffsend</span>
@@ -274,29 +274,82 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in Kent..." /></div>
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
-  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
-  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
-  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
-  var KEY = 'prt-filter-kent';
-  var saved = localStorage.getItem(KEY) || '5k';
-  applyFilter(saved);
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = true;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
 
   function applyFilter(val) {
-    localStorage.setItem(KEY, val);
-    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
-    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
-    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
     document.querySelectorAll('.event-card').forEach(function(card) {
       var isJunior = card.dataset.junior === 'true';
-      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
       card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
     });
   }
 
   window.setFilter = applyFilter;
+  applyFilter(getInitialFilter());
 })();
 </script>
   <div class="section-heading">All events in Kent</div>
@@ -336,6 +389,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
 })();</script>
+<div class="event-card" data-search="avery hill parkrun london" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-averyhill" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Avery Hill parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> London</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/A/averyhill" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-averyhill');
+  if (!el) return;
+  var map = L.map('cmap-averyhill', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzEwMjY0ODUxLDUyNTEyMzgxLDI0MDMzMjYsNTU4ODgzMDgsMTEyNDk3Miw2Mjk4NDg1OCwxNDc1ODM5LDU3NDY0NTczLDExNzA0NzA4LDUxODQyNjcxLDE0NjMyNDMyLDUxNzY3MDA0LDcyNTc5Niw1MzU5NTIzNSwxMzE0OTU3MCw1NzY3NjcwNCwxNjIwNjE0Niw2MzkyMDkwMSw2MTI0NDI4LDUyNjM5OTUzLDMyNzQ4MDEsNTQ1NTU4ODMsMTQ4MTAyNTgsNjEzMTAzOTIsMTY0OTU0NTIsNTE2NDI1NzQsNDAzNzQ0Myw2MDc4OTk4MywxMjYxNzYwLDU3NzUwMDM0LDM5MTU0Myw2Mzk3MTk3OSwxNTI5MjI0MCw1NjMxODA1OCwxMzYzNzgzNSw2NTk0MzYwMCwxMTEyNTIyLDUyMzA2NzcwLDEzNjU3MDY3LDU0MDc2NTU2LDE2NjM2MTQ3LDU5OTk2MDIxLDEwNDAwODI4LDUyMTg3ODE2LDE0OTg2OTkwLDU4MDI2MTkzLDU1NTUzNjAsNTcxMjA1NDksNjM1NTU2LDUxNjcwNjAzLDE0NzExMjA5LDU3OTk0NzI1LDE2NDQxMDIsNTQyMDU5NDgsOTkyMTE0NSw1OTQxNzAwMSwxNTY1MTYyMCw1NDQyMTM5NiwzMzk1MDIsNTUyNjAzOTksOTAwNDU2MCw1ODY4MDYwNSw1ODM1MTcsNTg0MjAyMDAsMjc5MzYzNyw2NjE1NzY2MywyNjYzNDQzLDU1NDYwNjI1LDE1MzMzNDEwLDUxNTMyNTc4LDE5NDc5MDMsNTEwNTI5ODksNDgyNDg3NCw2NTkxNzQ1OSwxMDkxNzE1MCw2MDc2NTIxNyw0MjY4NzAyLDY1OTM5Njc4LDExNDc2NzkyLDY0MjcwMDQxLDY4MDY0MTAsNjY5NTIxMjUsODc4OTA4OCw1MzgxODMzMCw2OTM4MjQxLDUzMTM5MDcyLDk0ODM4NTAsNjY5MzUzNzIsMTIyMjgxMjksNTEwNDM1NDVd", 11366337);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
 <div class="event-card" data-search="beckenham place parkrun london" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-beckenhamplace" class="card-map-inner"></div>
@@ -365,6 +454,78 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
   
   var route = _d("Wy0xNDA0NDc0MCw1MjE5NDg5NSwtODc0ODkyMSw2MDY5MDExMywtOTUwMDA5NCw1MjIzNDE3NSwtMTA1MzIwMzYsNTE5OTI2NzMsLTkxNjg2MzQsNjQ1NTAxOTcsLTQzNjczNDcsNTMwMTcwNzEsLTMyNjQzMjYsNTc2NzIxMzMsLTkxNDg1OTQsNTMzNDEwODcsLTYxOTE4MDUsNTMwODM1NDksLTYyNjU4OTAsNjIxOTk1NTcsLTEzODA5MDQ2LDYzNTgzNTI1LC0xNjQxNjAyNCw2NjkwMTM4OCwtMTUzMzg0MDksNTA2NDY4NjMsLTEyNzAwMTYyLDUzNDU0OTEzLC05MTQyNjc0LDU3ODUwNDA5LC02MDI1MDc1LDU5ODUzNzU5LC02MzA1MjcyLDU4NzUyMDQ1LC0xMjY0ODEsNTg4OTc0ODEsLTQ2Mzg5NTcsNjE5NzYxOTMsLTEyODYwMzUsNjQ3NjcyMjksLTM0MzI5OSw2Njc5MzMyNywtMTU1NzA4NTQsNjQ5NzYyMjQsLTQzMDM1NDQsNjAxMDEyMjAsLTE2Mzk0ODQzLDU5NzcwMzMyLC0xMTYzOTQ0NCw2NjM4NjQzMSwtNTE5MTgxLDU2NDI5NjA1LC05NDUxODg5LDY0MDQ1MTQ0LC0xNDMzODQ5MCw2MTEyNDAzNCwtNTM3NDk3Myw1MzQxMjcwMSwtMzIxNzcwLDUxNjA4MzM5LC0xMDAyMDc1MCw1NjMxMTk3NCwtMTYwNjMzMzYsNTc4MTg2NTAsLTY3ODI0MjEsNTU4NjcxNjcsLTUxNjUwNzgsNTAzOTA2NzMsLTk4MDEwMjQsNjM3Nzg5MDAsLTgxNzU2MTMsNjY4MzQ5ODYsLTg3NjA4NDgsNTU2MDY5MzMsLTg2MzEwOTIsNTI3MjQ2OTIsLTE0MTQ0NDEsNTY5NjM0MzcsLTE2MzgxMTUsNTg4MzA0NjIsLTE0MDIzOTM1LDUxNTgyNjIxLC0xNjAxOTM1MSw1NDc0ODU4MSwtODA4OTkwOCw2MzI2NzgyMCwtNjY2Nzk4Myw2NTc5MjM4OCwtOTc0NjIxNiw1NzY5MTQ4OCwtMjUzOTg0NSw2NTY1ODg3MCwtODE5NTkxOCw1MTcwMTU5MiwtNzQ5MzczOSw2MTE5MzQ1NywtOTU4OTcyMyw2MDkxNjg1MywtNTU1NzQ4Myw2MzAyNzMzNSwtMTA4ODU0MzQsNjQ3NDc1MzAsLTQ0MDE5NjAsNjI3Nzg3MTksLTExODEwMTU4LDU0NTgzMjM4LC0xNTQ3NTYxOCw1NDI3MjE3NSwtMTM5MzMxMTIsNTI5Nzc3MzYsLTUxNjQzNDIsNjEyNzg3OTQsLTc0ODczNTcsNTEyNTg0MTMsLTkxMTIwMCw1OTc5ODM3NywtMTIyNzY1NjMsNTEzNTgxODEsLTExNDkzMSw1MjA5Njk2NiwtNTg0NjM2NCw1MTQzMzIyMiwtMTAzNTE3MCw2NjU2NzI1MywtNjM0MTUyMCw1OTAyNDkwOSwtMzkxMTM1MSw2NDA3NTA5MSwtOTAzNjA4Myw1NTQyOTYwMSwtMTY1MDIxNTEsNTk1NzIxNDcsLTEwNDcxMTY2LDU2Nzk4NTU2LC0xMzU5Njc3Niw1NTI4OTM5OCwtMzcyODQwMCw2MTk0NDkzMSwtMTAwMjU1Miw1OTg2MTEyMywtMTA5NTQyODMsNjM0MTU0MTcsLTMxODA5NCw1MzIwMzYyOSwtMzA0ODYwMCw2MTY5MTg2MCwtMzkzMzY1Miw1OTUxMzEyOCwtNzkyNDYxNyw2MjI1MjE1MCwtMTU3MzU4NSw1NDAyMjkwOCwtNDcyODc3Myw2MjIwNzEwNywtMTA5NzgwODgsNTkwNTY3MDgsLTcwNjI5OTIsNTE1MzczNTIsLTEyMDc2MDg4LDY0ODk5MjY3LC0xNjEwMDQ2MSw2MzAzOTgwOSwtMjg2NjcwOCw1MzEzNDQxMSwtMTEyMTcwNzQsNjM1Mjk2ODIsLTkwMDE1NjQsNTMyNzk1MDcsLTEyMzE5NDczLDYxNzEyODA0LC0xNDAwNTY2NSw2NTc0NTg0MCwtMTE4MzI0MjEsNTUxMDk2NjMsLTEwNjc1OTEyLDU3OTQ0NDA3LC0xMTc3NDMwNyw1ODI5NjY5MywtNjc1NDM0MSw1ODYwMDE0MywtMTQzOTQ4OTgsNTY2MzI4MTksLTEwNDkyNTYsNTk2NzA0MjQsLTU5NjE3NCw2MzU2MDQ2MywtMTQwMzE2OTUsNjQ3NTk3ODgsLTEyOTgwNjg3LDU1MDcyMjg4LC01MzE0MTIzLDUzOTEwOTEyLC04MjMzODE3LDU5MDcyMDM3LC0xMzM4MDY1MCw1Njc3ODE0MiwtMTU2ODQ0NDAsNTIwNTc5NTksLTE0MjQ4ODY3LDU5MzY1ODkxLC0xNTAwOTQwNiw1NDE1MzMyMCwtMjUzNTg3Niw1Nzc2MjE1NiwtMjQ2NDkzMiw2NDI0MzY4MSwtOTQ1NTk5NSw1NzM1NTIzNSwtMTEwNDY3MTgsNjI0NDk4MDMsLTc4MDM3OTQsNjE4NjExNjYsLTc2NDc1Niw2MDQwNTgyNywtNTM4ODc0OSw2MTEzNzk5MywtNDQ5MDQwNiw1MzYyNzg3MCwtODYyODkyNCw1NDgzODYxOSwtOTk1NTcwMiw1OTU4MjY0NiwtNzE3NzM2NSw1MjMyMTkwMSwtMTMyMjk3NDAsNTI1OTM1NzUsLTEyOTI3OTIyLDUyMjU1MTEzLC05Nzc4NTI0LDUyMTc2Mjk5LC0yNTY5MzYzLDYxNDIyNjIyLC02MDkwNzkzLDU2ODE3MDMwLC0xNTM2MDE4Miw1NzQyNzM1NiwtMjIxOTgyOCw1Mzc5MjgyOCwtMzUyNzA4Niw2NDUzMDE5MiwtMTE5Mjg4NzIsNTE2MDYwODEsLTU0OTMxMDIsNTQ5MjYyOTYsLTMxOTUzNDgsNjU0MTg1NjMsLTQ1NTY3ODAsNjA4ODU1OTMsLTEwNjY0ODI0LDUyMDkyODUzLC05OTU3MTc3LDY1MjgzOTcwLC01ODI4MzksNjM1MDY5MzYsLTc3NDE1NTUsNjMwMjYyNzIsLTg1Njg0MjMsNTQ0MDYyMTMsLTE2NzU0MjAzLDYzMTcyNzg3LC0xMjg0NzYyMiw2NjUyNDc1NywtMTQzMTk5NzksNjY0MDAzMTAsLTEzMzAxNDgzLDUxMTY0MjQ5LC01NzcwOTYsNTA2NTQ4NTMsLTEzNzM4ODM3LDU3NTY4Nzg5LC0xNjQ0OTk1Myw1ODkxMjAyOCwtODY2MjYxOSw1MTYzMzEyNCwtMTUwMjcwOTMsNjU4MDEzOTQsLTc1NzAzMDAsNjQwNjMzOTMsLTU0NTU0ODMsNjM4OTc0NjIsLTEzMjc3NjA3LDUwOTAwNjg2LC0xNjQ0MjIxNiw1Njk5MjQ2NywtNDI2Mzg2NCw1MDYwNTgwOCwtMTM3NzQxODMsNjExMDkzMzUsLTUyMTQwMTYsNTA1Njc4OTcsLTY0NjI3MjEsNjA1NTAwMTUsLTEwNzc0NTQ3LDYyMDg1NTYwLC02MDM2NTkzLDU4MDM1MTQzLC0xNDEwNDM2MSw2Mjg2ODcwMiwtNjk2NTY5Myw2NTA2MzQ0OSwtNjA1OTA5OSw2Mzc1MTY5MiwtNDcyOTk4Nyw1MzU2OTYwNywtMTIyMDI0MjYsNTQ0MTg3OTUsLTEzMDA0NjQsNTcxNzM0MTQsLTE2NDgyNzkyLDY1MDI0MzY4LC0xNDg0Mzg3NSw1OTkxMzQzMywtNjYzMTExOCw2MzEzNDEyOSwtOTczNTc0Myw1OTY0ODUxMSwtNjg2Mzk0MSw1NDk0Njg1MSwtMTUzNDgxODMsNTE1NzUwNDksLTE0MjA1NDA0LDU4MTQyNTg4LC0xNDA0NzMwNyw2NTk2MjA4MywtNjE3NTIyNCw1NjEzMDE0NywtMTI1MDQ0Myw1OTgwMTc5MSwtMjc0NzI0Nyw2MTE0NjMzMiwtMTYxNjUwMDcsNjM0NTYxMjgsLTE1MzY5NzkzLDU1ODU5MzgzLC04NzMxNjk0LDYxODMzNDM5LC00NzQyMCw1MjM2MzIzOSwtMTMwMzMyNDEsNTg5MzkzNTksLTE1Nzc5MTU5LDYwNjgzNjU1LC01OTg2MjAwLDY2NDYyNzUwLC0xNjkwMzA2LDY0MzE3NDYyLC01MDQ2NjU5LDUzMDAzMDE2LC0xMDk5MDI5NSw2MjM0NTk1MiwtMjQ3NTQ3Niw1MTUxMDk0NywtMTI5OTQxNjEsNjExMTI2NTcsLTQzODUzMDAsNjUyNTg1MDcsLTE2NTQzMzYsNjM5NDI0OTAsLTY4MjM1MTksNTc1NjU5NTIsLTY5ODQ3NTIsNjExNTQ4MDcsLTk4MTMzMTEsNTkxNTc4MjgsLTEwNzQ5MDQyLDYzOTY1NzU3LC0xNjk2NjI0LDYwOTAxNTI5LC0xNjczMDQ0MCw1NDA5MTMwMiwtMTUxMzA0NDgsNTA3MTM2MDEsLTgxMDQxNzQsNTk3NDU0ODQsLTI1MTg2MjEsNTQ2MTEyNDcsLTk1MTg1NzgsNTY5NTYxMDcsLTgyMzg1MCw1MjA2NDUxMywtMjQ1OTI4NCw1MDM2Nzc2MCwtMTU1NzQ0MjEsNjU2MTkzNjAsLTEyNjA1NzU0LDU5Nzg4OTA2LC05NDM4OTczLDUyNjY5OTg0LC0xNjYwODA2OSw1ODY0NDgzMywtMTI3NjQzOTksNjI0MTY5MDIsLTQzMTAwODYsNTI5NDkyODMsLTMxMDMyMzksNjcwNTA0NzVd", 13264913);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="bexley parkrun london" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-bexley" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Bexley parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> London</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/bexley" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-bexley');
+  if (!el) return;
+  var map = L.map('cmap-bexley', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzM0NTA2NTEsNTI4MDg5OTYsMTMwODk2OTksNTk1MTY2NjYsNTQ5NDkzMSw2MTI5MjgzMiwxNDUzNjcwOSw1NDM2MTE2MCwyOTQyNDcxLDY0MDAzMzcyLDY0MjQ1NjksNTc5OTg1MTQsMTU1MzEzNDcsNjIyNTExNTYsMTM3NTA5MzksNTQ0MDUzNjAsNzQxMzYzNyw2MDMyNzU5OCwzNDUxNTM1LDU0MjQ1ODMyLDExNzAzNzY3LDYwMzA4MTI4LDUyMjA4OTUsNjY5MzM4MzYsNzQ1MDQxNSw2NTk0MjY0MCwxMjY4NDQ3Nyw1ODUwOTc5Nyw0NjE0OTcsNTEzNzUxMjgsMTA0NjkwNDksNjM5ODQ0NzQsMTAzOTcyMDMsNjQzNTcyMTgsMjkzNTM5MSw1MTg3OTA3Niw5MjE1ODAzLDU5MDM5Njc2LDE1NDYxOTgzLDU5NzUwNDU4LDE2MDA1MTMxLDUzMTI1MjAwLDEzMzYyNDA1LDU5NjY4ODQyLDExNTc2NDQxLDUwMzYxMTE4LDEyNTk5MjI5LDYwMzk2ODQyLDc0MDgzODMsNjY4MDA0NDgsODgxMjU2MSw1MjkyODI1MCwyMTU5NjYxLDU0MDE4ODI0LDEwMDYwMjQ1LDUwNzg4MjY4LDkzMTM5MDEsNTA2OTQzMTAsODA2NjgzOSw1OTY0NTQ4OCw1MTk1NTQxLDU4MjE0NTA2LDQ1NDQzNzcsNjU1NDM1NzIsMTQwODA1NDUsNTI0OTg1NjIsNjExMjY2NSw2NTk3NjYxNCwxNTYwMDczMiw2MzAzMTY0Nyw4NDE3MDc5LDU4NDY2MDA2LDUxODA3OTUsNTgxNjc1MzAsNjkzNjM3LDU0NzUzNTU2LDgzNTE3NDEsNTQ3MTk2NDgsNzI0NDYxMSw2NDU3MjEzNF0=", 10229652);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="bromley parkrun london" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-bromley" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Bromley parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> London</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/bromley" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-bromley');
+  if (!el) return;
+  var map = L.map('cmap-bromley', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzEwMDIxNDcxLDU4OTUwNzg0LDEyNTUwNTU0LDYzNDc4NzA5LDE1NzYxNjk4LDU1MTA1NDE3LDEwMzQ3NzUsNTA5NTIzMjcsMTYyMDI2LDUwMzQ5ODM0LDE0NTY4ODY2LDUyNzQxMzcwLDg4NzcwMTAsNTY1MDMwMTIsMTUxMDk0ODksNjAyMTg5MjUsMjQwMDU0Niw1MjE0MjA4Miw4OTg4NDE3LDU1NzM5MTc0LDE1NjM2NTY1LDU1MjU1MzI2LDE1NTY1NTY5LDU2MDMwOTYwLDI3NzgyODMsNTUzMzgzMDMsNjgzNDcwMiw1MjUzNDY5OCw1NDIwNzI5LDU2NjQwNzUzLDE4ODk0MDIsNjEwMzY1NzcsNjE5OTcxNiw2MjcyMTM5NSwxNDk2NDk4OSw1MzgwNjkzMCw0Mzc1NjgyLDU4ODc5MTYxLDczMzYxNzQsNTUxOTQ4NjgsMTE3OTY1MjIsNjU4MjE0NjcsMTEyNDMwNjEsNjExNDU1MDksMzIzNjQ1NCw1NTE2MzIzOCw2NzQ4MzIwLDU3NDI3NTM5LDQxODkyNzksNTExNzEzODUsMzIyNDM0Miw1ODUyNTQyOSwxNjA2NTIyMiw1NjgwODM4OCw4NzYxMDY3LDYwODA4NDQxLDEyMTc2MDY0LDUyNzg0NjkxLDI3NTMyMjYsNTY0MDE3MzQsNDkwNzcxMSw1MTMwMDk3MywxMzk2MTI2OCw2MTc1Nzg5NywxNjc0ODcwNyw1NTU4ODgxMCwxMTc1Mjc2LDU2MDgwMDc0LDUyMTI0MTMsNjA5NTExODMsNjQxMjkzNyw1ODA0MjkxMyw5NjUxMTk3LDYwNTQ0MDAxLDEwNzkzNTgwLDY0MzE2MjEyLDU4ODA0Myw1MDY4OTY3NCwxMjE5NTAwOCw1OTE3NDQwNywxNjE2MDgzLDUzMTkyNTU4LDY3MDU1MjIsNTM1NjQ3ODEsMTQzNTQ4NzcsNTU4OTI1ODMsNzU3MTM4Myw1OTI0MjY1NiwxNDI2NTQ5MCw2NDMyMDYxOCwxODEzMTU3LDU0MjU0NDc4LDEyODgwNDksNjMwMzUzODQsMTA4OTAwNDksNTc4MjMwMDZd", 5850702);
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
@@ -552,7 +713,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
 })();</script>
-<div class="event-card" data-search="margate junior parkrun thanet" data-junior="true">
+<div class="event-card" data-search="margate junior parkrun margate" data-junior="true">
   <div class="card-map-wrap">
     <div id="cmap-margatejuniors" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -562,7 +723,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   </div>
   <div class="card-body">
     <div class="card-name">Margate junior parkrun</div>
-    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Thanet</span>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Margate</span>
     <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
   </div>
   <a href="https://www.parkrunnertourist.com/explore/M/margate-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>

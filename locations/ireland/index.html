@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -251,8 +254,8 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <span class="tile-name">Cork</span>
   <span class="tile-count">2</span>
 </a>
-<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/county-meath/" class="tile" data-search="county meath">
-  <span class="tile-name">County Meath</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/meath/" class="tile" data-search="meath">
+  <span class="tile-name">Meath</span>
   <span class="tile-count">1</span>
 </a></div>
 </main>
@@ -330,4 +333,22 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
 });
 </script>
 
+<script>
+// Propagate current filter preference to region tile links
+(function() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var f = params.get('filter') || localStorage.getItem('prt-event-filter') || '5k';
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', f);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  } catch(e) {}
+})();
+</script>
 </body></html>

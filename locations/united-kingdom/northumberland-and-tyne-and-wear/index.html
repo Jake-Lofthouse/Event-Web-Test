@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Northumberland, and Tyne and Wear, United Kingdom — Hotels, Course Maps &amp; Visitor Guides</title>
-<meta name="description" content="All 4 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear." />
+<meta name="description" content="All 6 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Northumberland, and Tyne and Wear, United Kingdom" />
-<meta name="geo.position" content="54.982371;-1.5054767500000001" />
+<meta name="geo.position" content="54.966974333333326;-1.5080248333333335" />
 <meta property="og:title" content="parkrun Events in Northumberland, and Tyne and Wear, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta property="og:description" content="All 4 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear." />
+<meta property="og:description" content="All 6 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Northumberland, and Tyne and Wear, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta name="twitter:description" content="All 4 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear." />
+<meta name="twitter:description" content="All 6 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Northumberland, and Tyne and Wear","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Northumberland, and Tyne and Wear, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 4 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/","spatialCoverage":{"@type":"Place","name":"Northumberland, and Tyne and Wear, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.982371,"longitude":-1.5054767500000001}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Northumberland, and Tyne and Wear, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 6 parkrun events in Northumberland, and Tyne and Wear. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Northumberland, and Tyne and Wear.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/","spatialCoverage":{"@type":"Place","name":"Northumberland, and Tyne and Wear, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":54.966974333333326,"longitude":-1.5080248333333335}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -226,23 +229,108 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Northumberland, and Tyne and Wear</h1>
-    <p class="hero-sub">4 parkrun events in Northumberland, and Tyne and Wear</p>
+    <p class="hero-sub">6 parkrun events in Northumberland, and Tyne and Wear</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">6</span><span class="stat-strip-label">parkrun events</span></div>
     
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">Cities</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in Northumberland, and Tyne and Wear?</h2>
       <p>Compare hotels and rentals near any Northumberland, and Tyne and Wear parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(54.982371,-1.5054767500000001,'Northumberland, and Tyne and Wear parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(54.966974333333326,-1.5080248333333335,'Northumberland, and Tyne and Wear parkrun')">Find Hotels</button>
   </div>
+  <div class="section-heading">Browse by city</div><div class="tile-grid"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/newcastle/" class="tile" data-search="newcastle">
+  <span class="tile-name">Newcastle</span>
+  <span class="tile-count">5</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland-and-tyne-and-wear/newcastle-upon-tyne/" class="tile" data-search="newcastle upon tyne">
+  <span class="tile-name">Newcastle upon Tyne</span>
+  <span class="tile-count">1</span>
+</a></div>
   
-  
-  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn filter-btn-disabled" id="filter-junior"
+    onclick="" title="No Junior events here">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = false;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+
+  window.setFilter = applyFilter;
+  applyFilter(getInitialFilter());
+})();
+</script>
   <div class="section-heading">All events in Northumberland, and Tyne and Wear</div>
   <div class="event-grid"><div class="event-card" data-search="gateshead parkrun newcastle" data-junior="false">
   <div class="card-map-wrap">
@@ -280,6 +368,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
 })();</script>
+<div class="event-card" data-search="silksworth parkrun newcastle" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-silksworth" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Silksworth parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Newcastle</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/silksworth" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-silksworth');
+  if (!el) return;
+  var map = L.map('cmap-silksworth', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMjg4NjU5OSw1OTk0ODgwNiwtMTI1NDgyNDMsNjU1ODIwMDQsLTEzMzExMzA1LDUxMjA1MzY3LC0xMTA5NzgwNSw2NzAwMjE1OCwtMTMyNTY3NzUsNTIxMzMxNDIsLTExMTk2MzkxLDU5ODEwNDc2LC0xMzg3NDMxLDYxMzkwOTE0LC0yNDY0MjkzLDU4ODE3MTU0LC0xNDU1MTkxOSw1NTcwNDQ1NCwtMTM4NzA5MzEsNjUxNDI4MDIsLTE2MzQ2OTE5LDU3MTYzMTcwLC0xMjcxMzQ0OSw1NTk0NzAyMCwtMjIyOTE3Myw1NDk1NzMxOCwtMTY0NTI4MjMsNTE0Njg1NDMsLTE2NjQxMjk3LDUxMTc0MzI5LC0xNDI1MzEzMiw1NjIwMzA5MiwtNDE1MTgzNyw1MTIxNzU0OSwtNzk0NjAzMSw1MDYzNzkyNywtMTMyMjkyNzgsNjA1NTgyNDIsLTY5MDM3NjcsNjA2MzYyMTAsLTg3MjUwOTMsNjQwNTU4MjAsLTE1NTUwMjc5LDYzNzQ1MTYyLC0xMjYwMTAwNSw1MDQ5MDU5MywtMzAzNDM1LDU2ODIwNDMyLC0xMTM3MTcyOSw2NTg0NDcyNiwtNTk4NjU5Nyw1NDMxMTIyMCwtOTQ2NDI3OSw1MTY1NDY4MCwtMTQ4NDY5ODcsNTIxNDQ2NDIsLTEyNjkxNTMzLDYxMjM4MzUwLC0xMjIyNzU0Myw1NjAzMTUxOCwtMTM5MTQ2NDEsNjM5NTM5MDgsLTc2NzM2NTQsNTkyNTcwNDAsLTY5MDQ2OTcsNjU2MDYyNzgsLTQ3MTk1NDcsNjM1NjQ5ODAsLTE1MTYzODEsNjA1OTEwMDIsLTE0MDU1NDE5LDU3OTQ3NTEyLC00MDkwNzkxLDU0NzM1NDIwLC0zNjE1MDkxLDU5NTAzNjY4LC0xNTcyOTIzNSw2MjcwNzQwNCwtNTE3MjM1Nyw1ODQ1MTI3OCwtMTQwMDYyNTMsNTQ1Mjk5NTIsLTE0NDIwNTAxLDYyMDIyOTc4LC0xMjUwNzM4Myw2MjcyMzE2MCwtMTE2MDAzNjMsNTYyMTc3NDYsLTE1NDUyNTM5LDUxOTAyMDU0LC0xMTkzMDA2NSw1OTk1NjAwMCwtMTEyOTcwOTcsNjY5NTE1NTAsLTE2MjI2MjY3LDYwOTYzNjM4LC0xNjYwNTU3LDY2MDE0MTM0LC0xMTc2NDc5LDUzNjk1ODM2LC04NDE0MDksNTM3ODUyMjYsLTk0MTk1NzEsNTczNzUyNTAsLTE0ODU2NjAzLDUyMDA1NDY4LC0xNDA0NTgzNSw2MzUzNTI0MCwtMTQ4MTkxNDMsNTcxOTc4MDAsLTI1MDM0MSw1MzYwNTUwOCwtNDA4OTM3Myw1OTM3ODU3MiwtMTEyMTgxNjcsNTQ2ODgzNDgsLTMxNDc3MjMsNTEyNzYxNDIsLTE1NzkyNjg1LDY2NTE5NDI0LC0xNTQzNDc2Nyw2Mjg2NTA2OCwtNDMxOTIyMyw2MzgyMzc4MiwtOTMwMzQ2Myw2MjUxODY0OCwtNTA2ODE0MSw2MDE3Mzc4NCwtMzE5NTA2OSw2MTgxMTg1MiwtMTY1NTM5ODksNjEwNjcyNTYsLTE2NjAwMTY3LDU5NTMzNTg0LC0xMjQxNjQ3LDU3OTI1NDM0LC0yNzAyMDE5LDU4Mzc1OTI2LC03MzU2Mjk1LDY2MDU1NTMyLC0xMjY2MDY4Myw1NTU0NDExOCwtNjIzMTgwNyw1ODAwMjk4NiwtNTcyMzk0OSw2NTcxNzU1MCwtMTA1NDIzODEsNjQyNjQ0ODQsLTExMTM3NTM1LDUzODQ5MDM4LC0xMzk0MDg0OSw2MzA4NjM5MCwtOTc0MDM1LDYzMzc4OTM2LC02MTIxODI5LDU1MzA5NTE0LC0zMTUxNzc5LDU0MDY1MzQwLC0xNDI3MzE2OSw2Mjc1MzUzOCwtMTU4MTM0Myw1NTY5NDMzOCwtODUwMDg0OSw1ODc1OTYyMCwtMjk3NTE0Nyw1NDcyMjA0MiwtNDAxNDA3LDY2NDc5MTEyLC01Njg2MDgxLDUxNTQyMTY0XQ==", 7244306);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
 <div class="event-card" data-search="south shields parkrun newcastle" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-southshields" class="card-map-inner"></div>
@@ -309,6 +433,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
   
   var route = _d("Wy05NDAwNTgzLDU5NTMzNjEzLC03Njg3NDQ4LDYzNTExNjk3LC0xNjE4OTMxLDU3MzI2NDI1LC04MDM2NDI1LDYzNzQzOTQ3LC04MDc0NzY3LDUxMjY4MDE3LC0zNTMzNTU3LDYzMTAwMDc2LC01NTUxMDY3LDYzNzA3NzYxLC0xMjE5MDMyOSw2MTQ1OTQ3NywtMTI1OTU0OTIsNjIzNzgxMDcsLTI4ODQxMzEsNTYyMzk0OTksLTY5ODU3MDEsNTQxNzQ4MTQsLTExODYyNzc3LDYwNDg3NDExLC0zMzY3NTYzLDYxNDIxOTExLC0xMjI2Mjc1MSw1MTMxMDI2NiwtMTQxODQ5OCw2NTczNzE3OCwtNzA4NjUyOSw2MDc5OTcyNSwtODk4MTk1MSw1NDg3MDYxNSwtMTIwMzE4NCw2NjIyNzYyMSwtMzQzNzE4Myw2NDM2MDA4NiwtMjU1NDAxNiw1MTc0OTI3MCwtMTI3ODQxMjIsNTQ5NjIxNjgsLTEyODUwODIzLDU4MzcyMjUyLC0xNjE0ODU0Miw2MjY1NDQyMSwtMTgwMjQwNSw1Nzk2NTY0OSwtNDM0NDc2NCw1MTYzODI4MywtOTY0NTM4LDUzNjc5NTMwLC04Mjk1NzcxLDYzNjgwOTY4LC0yMDE0MDMxLDUxNDk5OTEwLC0xMzA1ODIzLDU0NTA3NjQwLC0xNTcwNjcxOSw1NjE4MTQxNCwtOTg0NTI1MSw1ODQ0MTQ1NSwtNjY4MDQyMCw1NTIzMDg5NiwtMTIyNDk3ODAsNTQyMjA2OTksLTEzMDAxODAsNjYyNjU0NDIsLTE1MDgyNSw1OTk4MjE5NiwtNjEzODAzNSw2NDA2OTM3NCwtOTczNTgzNCw2Mzg3NTI3OSwtMTM1NTUzNTMsNjE3NzA3MDQsLTExMjgyMTkxLDUzNTI1MjQ2LC0xNTk5MDg1Niw2NTYwOTMzMiwtMTAyMjI1NzgsNTE4Nzc5OTAsLTkyMzYyOTUsNTU2NTU4NjAsLTU3NTgzNSw1NjA5ODI3MiwtNTg0MzU3OSw1NTAyMTQ5OSwtNTkxNjAwNSw2NTE4MjM4MSwtNzM0MjEwMCw2MDcxODc0OCwtOTEyMDcwNyw2MTU4NzI3Nl0=", 11074330);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="town moor parkrun newcastle upon tyne" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-townmoor" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Town Moor parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Newcastle upon Tyne</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/T/townmoor" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-townmoor');
+  if (!el) return;
+  var map = L.map('cmap-townmoor', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy04OTc1MzEsNTE0NjUxMjcsLTMyNjM5LDUwNzA5NDg2LC03ODQzNzAwLDU2NTcwNzAwLC0yNjUxNDQ1LDUwNTU3Mzc5LC0zNzEyNTk0LDU1NTE4NDgxLC05NzA5Mzg5LDU5NDc0OTI1LC03Njc0MzI3LDU3NjAxMTIwLC03MjQ1ODk4LDU4NzUyODYwLC0yNzQ4MzEzLDU0Mjk0ODQ3LC03NDg5OTE3LDUxNTU4MzIyLC03NTk0NTMwLDU0NDA1NTYxLC0xMzI5Mjc4Nyw2MjM0NjIxMSwtOTQ4NzM4LDYxMjQyNDI5LC0xNTI4MDk2NCw1OTQ3MjI1NSwtMjYwMzQxMyw2Njk4NjczNl0=", 2844027);
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);

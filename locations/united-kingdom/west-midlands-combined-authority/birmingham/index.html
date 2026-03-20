@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Birmingham — Hotels Near Each Event &amp; Course Maps</title>
-<meta name="description" content="5 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham." />
+<meta name="description" content="6 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Birmingham, West Midlands Combined Authority" />
-<meta name="geo.position" content="52.548787000000004;-2.029638" />
+<meta name="geo.position" content="52.52511483333333;-1.9854638333333332" />
 <meta property="og:title" content="parkrun Events in Birmingham — Hotels Near Each Event &amp; Course Maps" />
-<meta property="og:description" content="5 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham." />
+<meta property="og:description" content="6 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/birmingham/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Birmingham — Hotels Near Each Event &amp; Course Maps" />
-<meta name="twitter:description" content="5 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham." />
+<meta name="twitter:description" content="6 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/birmingham/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"West Midlands Combined Authority","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/"},{"@type":"ListItem","position":5,"name":"Birmingham","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/birmingham/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Birmingham — Hotels Near Each Event & Course Maps","description":"5 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/birmingham/","spatialCoverage":{"@type":"Place","name":"Birmingham, West Midlands Combined Authority","geo":{"@type":"GeoCoordinates","latitude":52.548787000000004,"longitude":-2.029638}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Birmingham — Hotels Near Each Event & Course Maps","description":"6 parkrun events in Birmingham, West Midlands Combined Authority. View course maps for every event, find hotels nearby and plan your parkrun visit to Birmingham.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/west-midlands-combined-authority/birmingham/","spatialCoverage":{"@type":"Place","name":"Birmingham, West Midlands Combined Authority","geo":{"@type":"GeoCoordinates","latitude":52.52511483333333,"longitude":-1.9854638333333332}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -226,10 +229,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">West Midlands Combined Authority, United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Birmingham</h1>
-    <p class="hero-sub">5 parkrun events in Birmingham</p>
+    <p class="hero-sub">6 parkrun events in Birmingham</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">5</span><span class="stat-strip-label">parkrun events</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
@@ -237,34 +240,87 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       <h2>Staying in Birmingham?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(52.548787000000004,-2.029638,'Birmingham parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(52.52511483333333,-1.9854638333333332,'Birmingham parkrun')">Find Hotels</button>
   </div>
   
   <div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
-  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
-  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
-  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
-  var KEY = 'prt-filter-birmingham';
-  var saved = localStorage.getItem(KEY) || '5k';
-  applyFilter(saved);
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = true;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
 
   function applyFilter(val) {
-    localStorage.setItem(KEY, val);
-    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
-    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
-    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
     document.querySelectorAll('.event-card').forEach(function(card) {
       var isJunior = card.dataset.junior === 'true';
-      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
       card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
     });
   }
 
   window.setFilter = applyFilter;
+  applyFilter(getInitialFilter());
 })();
 </script>
   <div class="section-heading">Events in Birmingham</div>
@@ -300,6 +356,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="brueton parkrun birmingham" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-brueton" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Brueton parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Birmingham</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/brueton" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-brueton');
+  if (!el) return;
+  var map = L.map('cmap-brueton', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05NDk5MjE1LDUyNjk1MTM3LC05Mzc4MjQwLDYyMDkzMzczLC05MjY5MDUsNTgzMTcxMjUsLTc0MTYxNzEsNTEzMzk0MDYsLTY0MjIxNDEsNTE0MjQzOTQsLTc5NTE1MjksNjE1MDY1NzEsLTE2MTc1OTk0LDYwNjM4NjA3LC00NTU2NjU1LDYyMDk3Nzg2LC02MTQ2NjcsNTcyNDg4MDUsLTE0OTUzODA1LDUzNDA2Nzg2LC00MTA0MDA3LDYzMzg2MTYwLC04MjMyOTQ5LDU4ODg3MTM5LC04MDkzMzMzLDY2NTIwNzQ4LC0yNTMyMzU4LDU5MTM1NzQ3LC04ODczNjYyLDYwMjYwMjI1LC0xNTQ5MzU5MSw1OTM1OTc1MSwtMjg5MjMyNyw2MzgwNDAxMCwtNTExNTE4NSw1Njk0MDE5NSwtMjk4MjQwMSw2NjUxMDkxMiwtMzIxNTcwMyw1ODgwMDI2MiwtMTIwNDA5MTksNTEyMjAxNDcsLTgwODc5MTQsNjU2MDgwMTQsLTQ2NTY4NjQsNTIxOTUyODAsLTIxNTIwMzcsNTk3NTExODMsLTgzOTc2MzUsNTY4MzUyMjQsLTEyOTY2Nzk1LDU2NjAxODUyLC02NDI0MDc2LDUxMDEzMDI3LC0xNDkxNDE1LDU5MTI0ODU5LC0zOTEyNzkyLDU0OTg3MDcyLC0yNjUyNjY2LDU0NTEzMzExLC02NzI0NzE0LDUxMjkzOTcwLC0xMjU4MDkxOSw2MDk3MTk1NywtMjg5ODMwLDY2OTcwMTkwLC00MDk2NDQxLDU3NDA0NDI2LC00NjUyNTc4LDUwNjM4NjU5LC0xMTYzODYxNiw1NTMyNjY3OCwtMTA5MTAwNDAsNjQzOTUwNTQsLTQ1MjE5NjcsNjIxMjM3MTMsLTg5OTM5NjUsNTE1MjY2NjUsLTE1Nzc3NTc1LDYwNDY1NzcwLC0xNjc3MzU5MCw2MTgwNjU3NywtMTUyNzU2MzMsNTU3NDM3ODEsLTkyNzQ3NTUsNjU2NDc3OTUsLTEyNzQ5OTI5LDYzODY4MzY2LC0xNDYxNjMyNCw2MTgxMzMyNSwtMTQwMTc2NDIsNTc3MzA5NjUsLTc0NjM5ODksNTkzNDI5MTIsLTExODkxMDUsNjAxMDkxNzIsLTU3NTIwMzcsNjM2ODg2NjAsLTU2NzI3ODIsNTI0MzgzMzksLTU1NzMyNCw2Njg0ODEzMCwtMTEwNTE3NDksNTUwODI3NTQsLTExNDI0MjYyLDU5MDEyNjgyLC0xMTY3NjU2Miw1Njc0MTQ0MiwtMTYwODE3LDYwMjcwMjI0LC0yOTM4NTI0LDYxNjU3OTEwLC0xNTU0Mjk0MSw1Njk2NTE2OCwtMTAxMDAxMDMsNTIzNzQ2NDgsLTE4OTgxMzUsNTg2NzYzODIsLTkxMjA3NDQsNTc5MDU0NTMsLTQ3NTY4NTMsNTUwMjA2MzUsLTUwNTUxMzgsNTM1NTEyNjAsLTE2MTcxMTA3LDUyNDA5ODAxLC0xNTgwNTM5OSw1NDE5ODgzMSwtMTQ1Mzg2MTYsNTEzNTUzMDksLTEwMzcwMjMsNjA0NzIwMzIsLTEyOTcwNTM3LDUzNzg0Mzg2LC0xNTYxMzkzLDYzNzU2OTIzLC04ODM2OTc2LDY1OTE2MDMyLC0xMDAyOTY3MCw1MTA3OTY2NSwtNzA4MTU5MCw1NDgzOTc5OSwtMTYzNjg5MTgsNTYzOTUyMjUsLTEyNjY5NDMxLDU2NDg1MTY4LC0xMzIxNzQ1Nyw1MjI3MTQwNywtNTU4ODU5MSw1MjUyMjcxNiwtMTQ5NjQyNDAsNTk1ODMxNjUsLTEzMTg4MDgzLDYxMzU3MDA3LC04MzI3NDIsNTIwMTI3NjYsLTk2NjYxMTksNTMwNDk5NDksLTEwNDY3NzYsNjE1ODE4MDgsLTkyMDc2NjIsNjUxNzIxNjIsLTE0NTkyNjIzLDY2Mjc1MzIyLC01MzgzMzQ1LDYzMzQ3MTM1LC02NjUyNDQ2LDY2MTc4MzQzLC02MzQ1NzU2LDUzMTU0NzE0LC0yMjgxNTEzLDUwOTA2ODIwLC0zMTIzMjU3LDU3NjgzNTQ2LC0xMDUwOTczNyw1NDc2MTgzMCwtODU0MzMzNSw1NzcwMDQwMiwtMjg3MjEyNCw2NTM3OTg0NiwtMTQ3OTQ2NDUsNTcyMTA1NzgsLTE1OTE0Mjc3LDU3OTE0MTE2LC00ODk2MjE1LDUzMDQ3OTU3LC00NzU3MjYzLDU4ODgxMjA3LC0xMzc1ODA5NCw1NDM4MDk4MiwtNTY0MDYyOSw1ODY2MjU2NSwtMTQyODQwNDMsNTIxMDAwNDksLTEyMTg0NjM0LDUwMzczODk2LC0xMjc1NDQ0Nyw2MzU0NDM0OSwtMTMxNTkxNzksNjM5MDE0NTUsLTUwOTk2NTksNjQzMTA0MDUsLTEzNzQ2MDEsNTM1OTYwODIsLTEyNjU5NjM4LDYyMTE5MjM5LC0xMDM2OTg1Nyw1NDA3NTc0NywtMjg5NDA1Myw1Nzk3MTMwMCwtMTYyNzYxMjAsNTk3MTM5MzAsLTkxNzIyNjgsNjU4OTE1MDUsLTg0MTgxMiw1NDQzODQ4NSwtMTM5NjQyMjMsNTI1Nzk3MzcsLTUxNzEwODQsNTg4Mjg1MDYsLTIyNTg5NzUsNjIxOTk1NjMsLTQzMDQ1NTgsNTUzODQ0ODgsLTUxMjk3MTIsNTk4NTAzMTMsLTE0OTI0Mjk1LDY0NzYxNjAwLC04Mzc4MjIsNTE3NTI5MDUsLTE0MTI5MjU1LDYyNzU4MzI0LC0yMjA1NjI0LDUwNTQ2NzY2LC01NzM2NjQxLDUyMzA0MjQ3LC0xNTI0Nzc2NSw2NTM3Njc3MSwtMTI3NzQ5Niw2NDMyNDk5MiwtMTA5NTE2MzUsNTg5NjYyMjEsLTM0ODYyMjYsNTc4NDk0NzUsLTg1MjY0NTAsNTkyMDA5NjIsLTQ4NjM3MDgsNjMzNDQ2NTQsLTQyOTM2MjMsNTMxNzYxNjIsLTc4ODM1MjYsNjE5ODY4OTEsLTQyNjc2MTAsNjEzNTk3NzksLTEyNjYxMTIsNjE3NTU0NDksLTQ3NDAwNzUsNTIyOTgzMDEsLTEzMTk0MjAsNjA2NzkwODUsLTk1MDgyMDAsNTQ3MjgzNDksLTIyNDg1MjgsNjAwNzMxNzgsLTM1MDU3NDYsNTk1Nzg1ODMsLTI0NTQ3MDksNTI4ODU1MzIsLTE4Mjc1MTQsNTY1ODk2NTMsLTc3MzE2Nyw1NzcxMDE5NCwtMjk1MDQ2OSw1Nzk4NzM1MCwtODA4NzA1OCw1MjkzNTM1NCwtODUwNTUyMyw1NTQyMzI5MCwtNDUxMzgyMyw2MTA0NDQ2OCwtMTQ4OTExMjIsNjA2MDc0MzcsLTEzODM0NzgyLDU3MTgwNDYzLC0xMTMxODM3Miw1MzM2NzI1NywtNTM2OTEsNjI0NjQ2NTEsLTE0NDE3OTczLDY0NTYzNDA1LC0zNjQ0MDk4LDUyMjIyMjYzLC0xMDU0ODE2NCw2MTQ1MjA1NywtMTMwMjQ3OTksNjE2Njg2NDksLTIzNDEyMjUsNTk1MDY1MDIsLTMyODA1NDEsNTY3OTA2OTYsLTk3MzYyMjksNTgxNjU3MzEsLTc5Njg1NDQsNTI2MTY1NDMsLTEyMzM5MzAxLDU2NTkyNTE5LC0xMDk4NDE2Niw1OTE3Njg1OSwtMzczNzEyLDUyMDYwMzkzLC0xMDg5NDA0LDY1ODA4MjQ2LC0xMTI2ODk3Miw1OTY1NTY2NCwtMTM3MjMzNjIsNjI5MTA2NjYsLTEyNzQzMTUxLDUyMzY2MTUwLC00NjQ5OTQ5LDU1MDAxMDQwLC0xMTMyNTIwOSw1NjI5MTQxNywtODU1NDcwMSw2NjE1NTA1OCwtMjY4MzE4MCw2NTEzNTE2MywtMTAwNzE2MzIsNTY0NTUyMzIsLTgwNTg5NTMsNjAxNjgyODMsLTUxMjEyMDIsNTczMjkwODEsLTQwMTkxNTgsNTUwMzgzMDMsLTE0NTQ1MDU2LDU0NzQxMjIwLC0xNjg4MTksNjA2NDU5ODAsLTk5MTg3NTUsNTI5MTQzNDAsLTEyMDM5MzM2LDU4OTI5NTA4LC01ODU1MSw2MjU1MTExMCwtOTk0NjY1Myw2NDQ3OTQ3NSwtMTEwOTU3MzgsNjM4MzMxOTEsLTYwNDMzNDgsNTE2MzQ4NjksLTkyODEzNDksNjYwODg0MjgsLTM1ODE1NjUsNjY3NDAzNzEsLTg3MjA3MzYsNjYyNjgyOTUsLTY0ODU2MzEsNTA1MTU1MzMsLTE1Mzg1NjgwLDU4NjA1MDMzLC0xMTA1NDk0OSw2MzI2MjE3NywtMTA2MDU4NCw2NDM3NzAyOCwtNTc1OTM4Miw2NTQ1NDE1MSwtMjAzODUwNiw2NTY5NzQ0MywtOTMwNzM1MSw1OTAyMTA4NiwtODc0ODYwLDYwODg3OTM5LC0xNDA0NDA1Nyw2NTE2NDE0MywtNDM0MjIxNiw2NTMxMTk0MCwtOTAwMDY1OCw1OTg5MDIxNSwtMTQ0OTYxNjgsNjE2NjY4NTksLTk2OTY0MzEsNTI2Mjk4MTUsLTk5MDQ2MDgsNTk1MDQ4MzUsLTI3Nzk2MDIsNTEzNTA1MDksLTEwMDExMzI0LDYyNTk5MDk2LC04NDQxNjYsNjUzMzQ2NTcsLTE2MDM4MTI4LDUyOTYwODQzLC0yODQwMzgwLDY2MDgyOTc3LC04OTc3MDgyLDU0MzYxNzYwLC05NTEwMzI0LDUzMjUzODA2LC0xNjYxNjMzNSw1MzQ1OTE4NCwtMzkxMzMyMyw2NTk4Mjc4OSwtMTIzNDY5MDMsNjM3ODQzMjksLTE4NDg1NzcsNTEyNDQ4ODMsLTk1MDI2MjEsNTA1NzEzNjMsLTE0MTE5NjMxLDU1ODIzMDg1LC00NzI3NjA0LDY2MjQ0MTI1LC0zOTMyNDgzLDU3MDM5ODY4LC0xMTQ2MzY2LDU3NzcwNTU2LC0xMzgwMzQ5OSw1MzczMzIzMSwtOTkwODMxMiw2MDkxMjU5MCwtOTA5OTI1MCw1NjY0NTc5NCwtNjI4NDU5MCw2NjIyNTI4NCwtMTU5MTQ4ODYsNTM0MzY4MDQsLTI2MzU4NjAsNTM5Nzk3NDQsLTczNTQ1OTcsNjYyMTA1MDMsLTI3MjU2ODEsNTMyMjc3MTQsLTE0NDMzNzE0LDY2MTk5NTY4LC0xMDA5ODU4MSw1MDUxNTI5NiwtMTYzNzY3MjAsNjQ5NDIwODMsLTY0ODEyNjQsNTM0NTgwODQsLTU3OTkzNzAsNTgwMzYwODMsLTg0OTk5ODUsNTQwMDgxODAsLTExNjc3ODgzLDYyMTA2MjExLC0xMzQzNjI5Myw2MjU4MzU2MCwtMTUxNzY5NzYsNjI3NTU5ODMsLTEzMDMwNjYsNjY4NTgzMzAsLTY5ODA2NjMsNTk1NjM0NDAsLTEwOTM0MTAyLDYyMjc1NTkzLC0xMzA2Mzk2NCw1MjA5MjEzNCwtMzEzNTE3MCw2MDc0MDMyOCwtNzAyNjI3OSw1MTMxMTQ4OSwtMTEwNzU0NTMsNTM5ODc4NTUsLTk5MzQ0MTgsNjU1ODUyNTIsLTE2MTE4NTIwLDU2MjA0ODIyLC0xNTk3MzE3MSw2NTg1ODAyNSwtMTU3NjAxNTMsNTQ1Mzc3OTIsLTE0NzAwNzAyLDU1NTgyMjA4LC0xNTk2MDYxNCw1MTc3MzI3MiwtOTE4NjM0NCw2MTE3NTEwMCwtMTA0OTgwMzEsNTg2MjE2ODIsLTEzNDYxNzQ3LDYzMjg2NDA5LC0yMTc0MDc3LDYxMTk4OTY3LC0yMzgwNzA3LDUwNDg5ODk1LC00NTY4NDksNTkzOTcwMDMsLTQ0NDQzLDYzNTg3Mzk2LC0xNjM5NDQ3Nyw2MzQ5OTg1NCwtMzQwMDUxNCw2MDQzNzQyMywtMzE2Mjc0NSw1MzAzMzM1MywtNjY4NDcwMCw1NzE5NDg0OSwtMjMzMTA3MCw2NTczMDYyMiwtMTIyMjczMTIsNTk3OTA0OTAsLTExNzA4MzAwLDYzODI3NTgyLC0xNTEyMzE2OCw1ODM3MzY3NCwtMTAzNjc1ODUsNTI2MTkwNTEsLTY1NDgyNjksNTk4NDg1NTMsLTY3Njk1MDgsNjQyMzAzNTMsLTQ1Njc0OTksNTI3MDEzOTYsLTc2ODE5NTYsNjYzNTEzMjIsLTk5NjQ2NDQsNTE5OTA5MzksLTM2MzEyNTcsNjMzNjg4MTBd", 15489216);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

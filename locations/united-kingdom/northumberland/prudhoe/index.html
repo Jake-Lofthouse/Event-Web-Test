@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Prudhoe — Hotels Near Each Event &amp; Course Maps</title>
-<meta name="description" content="1 parkrun event in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe." />
+<meta name="description" content="2 parkrun events in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Prudhoe, Northumberland" />
-<meta name="geo.position" content="54.96663;-1.865981" />
+<meta name="geo.position" content="54.9673505;-1.864561" />
 <meta property="og:title" content="parkrun Events in Prudhoe — Hotels Near Each Event &amp; Course Maps" />
-<meta property="og:description" content="1 parkrun event in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe." />
+<meta property="og:description" content="2 parkrun events in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland/prudhoe/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Prudhoe — Hotels Near Each Event &amp; Course Maps" />
-<meta name="twitter:description" content="1 parkrun event in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe." />
+<meta name="twitter:description" content="2 parkrun events in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland/prudhoe/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Northumberland","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland/"},{"@type":"ListItem","position":5,"name":"Prudhoe","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland/prudhoe/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Prudhoe — Hotels Near Each Event & Course Maps","description":"1 parkrun event in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland/prudhoe/","spatialCoverage":{"@type":"Place","name":"Prudhoe, Northumberland","geo":{"@type":"GeoCoordinates","latitude":54.96663,"longitude":-1.865981}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Prudhoe — Hotels Near Each Event & Course Maps","description":"2 parkrun events in Prudhoe, Northumberland. View course maps for every event, find hotels nearby and plan your parkrun visit to Prudhoe.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/northumberland/prudhoe/","spatialCoverage":{"@type":"Place","name":"Prudhoe, Northumberland","geo":{"@type":"GeoCoordinates","latitude":54.9673505,"longitude":-1.864561}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -192,8 +192,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -226,10 +229,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="hero">
     <div class="hero-eyebrow">Northumberland, United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Prudhoe</h1>
-    <p class="hero-sub">1 parkrun event in Prudhoe</p>
+    <p class="hero-sub">2 parkrun events in Prudhoe</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">0</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">parkrun events</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
   </div>
   <div class="hotel-cta">
@@ -237,10 +240,89 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       <h2>Staying in Prudhoe?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(54.96663,-1.865981,'Prudhoe parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(54.9673505,-1.864561,'Prudhoe parkrun')">Find Hotels</button>
   </div>
   
-  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = true;
+  var HAS_STANDARD = true;
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+
+  window.setFilter = applyFilter;
+  applyFilter(getInitialFilter());
+})();
+</script>
   <div class="section-heading">Events in Prudhoe</div>
   <div class="event-grid"><div class="event-card" data-search="prudhoe riverside junior parkrun prudhoe" data-junior="true">
   <div class="card-map-wrap">
@@ -274,6 +356,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   var lls = route.map(function(p) { return [p[1], p[0]]; });
   L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
   L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="prudhoe riverside parkrun prudhoe" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-prudhoeriverside" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Prudhoe Riverside parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Prudhoe</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/prudhoeriverside" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-prudhoeriverside');
+  if (!el) return;
+  var map = L.map('cmap-prudhoeriverside', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05Njc2NzA2LDU1NzE2ODI1LC03Njg5MjgwLDUwNzM4MDEzLC03MjU1ODA2LDY0NzcyMTY5LC04OTc1NzY2LDU1MzAzOTQ3LC02ODU1ODY4LDU2NzQzMjczLC0xMDg5NjQwNiw1NzMzNTY2MywtOTcwOTg5NCw1ODUzNjU1OSwtNTc4MTgzNCw2Mjc5ODU0MSwtMTYyNzcxMzQsNTIwNDc4NjUsLTQ3MzkxMTAsNjQ4NjkwMTksLTEwNzg0OTI0LDU4NzAxNDczLC05MDUwMDg0LDU5MzMwMjU3LC0zNjczODg0LDU1NDExNzA5LC00ODg0MTQ4LDYwOTE1Njk5LC03OTU1NzYwLDU4MzI4NjkzLC0xMzE2MjYwMiw1NTEzODUxMywtNTQ4NTg4Miw1MTAwNTY1MSwtMTMyMzI5MDAsNjAyNzM3NzUsLTE5MzcwNDgsNjIzNDc1NDgsLTYzMTM3ODAsNjA3NTY3ODksLTEzMjIyMTEwLDU0MDEwNzkxLC00NDY4OTg0LDYyNzY2MzAxLC05MTM4MTcyLDYyOTkyOTIxLC0xMDY1ODU0OCw1Mzg0MTkyOSwtMTU0NDI5MzgsNTg5MDAyMjksLTQ2MjQ1ODAsNTMwODU3NjksLTYxNjk2NDQsNTc4NjAxMDksLTE5ODU5NjIsNTg5NTA5NTMsLTUzNTA0MDgsNjMyNzU2MDksLTEzNjQ0MDQ4LDU1OTg5Njg1LC0xMTQ2OTYxNiw2NTU5NzU0NCwtODE0OTA1Niw2MDQ1MzgxNSwtNjEwMjE2Niw2MTAzNTgzNiwtOTE5MTM1Niw1Nzg4MTI0NSwtMTE3NDIwMDcsNjYzNTU1MzUsLTM4NDMwNzAsNTMyMTg0MDksLTkyNjg5NDIsNTI0MDY2ODksLTE0ODQ5NzMwLDU2MDE5OTkxLC05NTk2NDI0LDYzMzI4NDYzLC00ODU2MDc3LDUwNDY1ODgxLC0xMzQzMjg1OCw1NjA4NDYzNSwtODMxNDY0OCw1NzcyNzU3OCwtMTA1OTg2NjIsNTIwNTE0MjUsLTM3NjUzMzQsNjExNjkxOTgsLTE2Mzg5NzI2LDYzMjIwMjI3LC02MzQyOTM0LDU3MDAyMDk1LC0yMTgwODIwLDU1MTE4MzgzLC02MzU3MTM4LDYwOTg5NTk1LC05OTU0MzA2LDYwOTEyOTQzLC0xODM2ODkyLDY2MTEwNDAzLC00MTI0MzYyLDUyNjc4ODc5LC02ODE0Nzk2LDYzODc0MDgxLC0xMzQzMDMwMiw2NjcwNDIzMSwtNTM0MDMyLDY2MzYyMzEzLC02MjY0OTYsNjU3ODg4ODQsLTE1NjEyMjI0LDU3ODMxOTU1LC05MTQxNDUwLDUxMTQ1NDc1LC0xMzE5NDA3MCw1ODIwNzE0OSwtMTM1Njc3MjAsNTg1MjY5NDEsLTE2NDMyODI0LDYyMTcyNDIxLC02NzgyODgsNTU5ODcyNzksLTEzNDcyNDY0LDUyNTQzNzQ1LC0xMTU1MDc0OCw2MTg0MjA3MywtOTU3NDEwLDYxMzcwMzU3LC00OTQ5MTExLDUyMTc1MDAyLC05NTczMDU2LDY0OTc2Mjc1LC0xNjI2MjE4LDY0NDM3NzIzLC04MzU3MjgxLDYyNjc0MzcwLC0xMDk3MzgzMSw2NjEyNjI3MiwtMTk3NTY2Miw1NzQ2NjQxNSwtMTMyMjAxOTYsNjQxOTE4MTcsLTY3NzQ0NzQsNTU0MTI4MzUsLTcyNzQyNjEsNTQ1MDM4NzYsLTMxMjQ4NCw1OTM1MDE2OSwtMzYyODgzMSw1MjMyMzYxNCwtMzM3MzgyNyw2NzA0Nzg0NiwtMTY0NDM0Miw1Nzg3MTI2MywtMzA0Njc0Niw1Njc3MTU4MSwtMTIyNjMwNjYsNTkwOTg5MjksLTEzODY3ODQsNTkwOTQ1NzUsLTEzNjk3ODEyLDUwNDU4MDExLC0xMjQ1MzgxMiw1NzU1Mjc1OSwtMTQ3MzI0NTAsNTkxMjMyNDMsLTE0MzIyNzc2LDYzOTMzMTI3LC02NjI3MTEwLDUxMjA2MzQxLC0zMzc3MzcyLDY2Njk4NTczLC02OTE0Mzc4LDU5MDI5MzA5LC0xMjkyMDUyOCw2NDM5MTQzNSwtOTkzNzU2Miw2NTI3MTM3OSwtOTA5MjY5Miw1NzI1MzM1NSwtNzQ1NjA1Miw1ODU1NDE0MywtMTY0MjAxNDIsNTQ5ODYyMzUsLTEzMDc5OTQwLDYyNzA5NjgzLC0xNzYzMzY5LDY1MzY0ODQ1LC0xMzI0NDc3NCw1Njc1NjU5MSwtNTUyMzg4NCw1NzQxNDgyMiwtMTAxNjgzNCw2NjIzMjg3NywtMTI1NTgzMjIsNjU4OTIyNTAsLTExNDkyNjI2LDU0NDcxMzE5LC05NDY3NzcwLDYyNTM5MTM5LC0zMDE3MzA0LDYzMjE0NzA3LC0xNjI4MDIyLDY2ODg2ODYzLC04NTA1MDU0LDY2OTcwNjgzLC0xNTY5ODYzMiw2MzYyMjM2NywtMTQyMjAzMCw1OTk3ODc3MSwtMTExNjc5MTAsNjUwMTcxOTUsLTYyMTE4MTgsNTMxMTA2MjMsLTE1MjYyNzU2LDY0MjY4OTg5LC0xNDUzNDk5MCw1MjY2NjkyNywtMTEyMjU5MzAsNTczMTU1MTgsLTE2NjE5ODA2LDYzOTg1ODIxLC0xMDc2MDMyOCw2MTQ3NjQ4OSwtNTIzMTcwNCw2NTgwMTg2NywtMTUxNTUzNzgsNTM0MjU3OTksLTEzMzc0ODMwLDUwNDc1NDczLC04NDQ3NTkwLDU2MjcwNjk1LC0xMjMxMTM0LDUyNjIzNjkxLC0xNjE1MjU2Miw1MjY5MjkwOSwtMTUzODc2MDYsNTQ2MDY1MjUsLTExNDg5NDkwLDU4NzgzNTYzLC01OTY0NjIsNTU5Mjc1NzUsLTEyODM5MTgyLDU0MjE3ODYxLC01MTExMTkyLDUzODM2ODU3LC02MTU0NjM0LDU4MDUwMDc1XQ==", 11866037);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   

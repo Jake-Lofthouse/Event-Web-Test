@@ -191,8 +191,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -229,7 +232,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">500</span><span class="stat-strip-label">Events worldwide</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">8</span><span class="stat-strip-label">Countries</span></div>
-    <div class="stat-strip-item"><span class="stat-strip-value">158</span><span class="stat-strip-label">Regions</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">150</span><span class="stat-strip-label">Regions</span></div>
   </div>
   <div class="section-heading">Select a country</div>
   <div class="country-grid">
@@ -285,7 +288,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="country-card-flag">🇬🇧</div>
   <div class="country-card-body">
     <h3>United Kingdom</h3>
-    <p>392 events &middot; 124 regions</p>
+    <p>392 events &middot; 116 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
