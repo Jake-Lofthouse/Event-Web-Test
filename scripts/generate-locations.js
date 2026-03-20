@@ -33,7 +33,7 @@ const COURSE_MAPS_URL = process.env.COURSE_MAPS_URL;
 if (!COURSE_MAPS_URL) throw new Error('COURSE_MAPS_URL secret not set');
 
 const BASE_EXPLORE_URL   = 'https://www.parkrunnertourist.com/explore';
-const BASE_LOCATIONS_URL = 'https://www.jake-lofthouse.github.io/Event-Web-Test/locations';
+const BASE_LOCATIONS_URL = 'https://jake-lofthouse.github.io/Event-Web-Test/locations';
 const SITE_NAME          = 'parkrunner tourist';
 const OUTPUT_DIR         = path.join(__dirname, '../locations');
 const GEO_CACHE_FILE     = path.join(__dirname, '../geo-cache.json');
@@ -221,12 +221,18 @@ function saveCache(cache) {
 const CACHE_FAILED = '__failed__';
 
 function cacheHit(cache, k) {
-  return Object.prototype.hasOwnProperty.call(cache, k);
+  if (!Object.prototype.hasOwnProperty.call(cache, k)) return false;
+  const v = cache[k];
+  // Treat empty objects {} (legacy failure marker) and CACHE_FAILED string as misses
+  if (!v || v === CACHE_FAILED) return false;
+  if (typeof v === 'object' && Object.keys(v).length === 0) return false;
+  return true;
 }
 
 function cacheAddress(cache, k) {
   const v = cache[k];
   if (!v || v === CACHE_FAILED) return null;
+  if (typeof v === 'object' && Object.keys(v).length === 0) return null;
   return v;
 }
 
@@ -236,8 +242,8 @@ async function geocodeAllEvents(events, cache) {
   for (const ev of events) {
     if (ev.lat === 0 && ev.lon === 0) continue;
     const k = cacheKey(ev.lat, ev.lon);
-    // Only skip if we have a genuine cached result (not a failure marker)
-    if (cacheHit(cache, k) && cache[k] !== CACHE_FAILED && !seen.has(k)) continue;
+    // cacheHit returns false for missing, failed, and empty-object stale entries
+    if (cacheHit(cache, k) && !seen.has(k)) continue;
     if (!seen.has(k)) { seen.add(k); missing.push({ lat: ev.lat, lon: ev.lon, k }); }
   }
   if (!missing.length) { console.log('Geo cache: all coordinates resolved, skipping Nominatim.'); return; }
@@ -435,7 +441,7 @@ function htmlFooter() {
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>`;
 }
 
@@ -540,7 +546,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -706,7 +716,42 @@ function searchScript(inputId, itemClass) {
 }
 
 // ---------------------------------------------------------------------------
-// Event card with course preview mini-map
+// Junior / 5k filter — rendered above event grids on region and city pages.
+// Default is 5k. State persisted in localStorage so it survives page navigation.
+// Only shown when both junior and standard events exist on the page.
+// ---------------------------------------------------------------------------
+function filterScript(hasJunior, hasStandard, pageKey) {
+  // If only one type exists, no filter needed
+  if (!hasJunior || !hasStandard) return '';
+
+  return `<div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
+  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+</div>
+<script>
+(function() {
+  var KEY = 'prt-filter-${pageKey}';
+  var saved = localStorage.getItem(KEY) || '5k';
+  applyFilter(saved);
+
+  function applyFilter(val) {
+    localStorage.setItem(KEY, val);
+    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
+    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
+    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  window.setFilter = applyFilter;
+})();
+</script>`;
+}
 // Exactly mirrors the initCoursePreview logic from generate-events.js
 // ---------------------------------------------------------------------------
 function eventCardHtml(ev) {
@@ -746,7 +791,7 @@ function eventCardHtml(ev) {
   `}
 })();`;
 
-  return `<div class="event-card" data-search="${longName.toLowerCase()} ${(city || '').toLowerCase()}">
+  return `<div class="event-card" data-search="${longName.toLowerCase()} ${(city || '').toLowerCase()}" data-junior="${isJunior ? 'true' : 'false'}">
   <div class="card-map-wrap">
     <div id="${mapId}" class="card-map-inner"></div>
     ${hasRoute ? `<div class="card-map-badges">
@@ -930,6 +975,7 @@ ${breadcrumb([
   </div>
   ${hasCities ? `<div class="section-heading">Browse by city</div><div class="tile-grid">${cityTiles}</div>` : ''}
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${name}..." /></div>` : ''}
+  ${filterScript(juniorCount > 0, standardCount > 0, regionSlug)}
   <div class="section-heading">All events in ${name}</div>
   <div class="event-grid">${cards}</div>
 </main>
@@ -987,6 +1033,7 @@ ${breadcrumb([
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${cityName.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${cityName}..." /></div>` : ''}
+  ${filterScript(juniorCount > 0, standardCount > 0, citySlug)}
   <div class="section-heading">Events in ${cityName}</div>
   <div class="event-grid">${cards}</div>
 </main>
