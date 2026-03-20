@@ -668,8 +668,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   transition: all 0.2s; background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
 }
-.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
 .toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
 /* download footer */
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -782,43 +785,106 @@ function searchScript(inputId, itemClass) {
 }
 
 // ---------------------------------------------------------------------------
-// Junior / 5k filter — rendered above event grids on region and city pages.
-// Default is 5k. State persisted in localStorage so it survives page navigation.
-// Only shown when both junior and standard events exist on the page.
+// Event type filter — shown on all region/city pages that have event cards.
+//
+// State priority: URL param (?filter=5k|junior|all) > localStorage > default (5k).
+// URL param is written when the user clicks a filter button, and appended to
+// every city/region tile link so the preference carries through navigation.
+// localStorage key is global ('prt-event-filter') so it follows the user
+// across all location pages.
 // ---------------------------------------------------------------------------
-function filterScript(hasJunior, hasStandard, pageKey) {
-  // If only one type exists, no filter needed
-  if (!hasJunior || !hasStandard) return '';
+function filterScript(hasJunior, hasStandard, cityTileLinks) {
+  // Always render the filter when there are any events
+  const totalEvents = (hasJunior ? 1 : 0) + (hasStandard ? 1 : 0);
+  if (totalEvents === 0) return '';
+
+  // Build the city tile link injection — appends ?filter=VAL to each tile href
+  // so clicking through carries the current filter to the next page.
+  const tileSelector = cityTileLinks ? `'.tile'` : 'null';
 
   return `<div class="filter-bar" id="event-filter-bar">
   <span class="filter-label">Show:</span>
-  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
-  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
-  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+  <button class="toggle-btn${hasStandard ? '' : ' filter-btn-disabled'}" id="filter-5k"
+    onclick="${hasStandard ? "setFilter('5k')" : ''}" title="${hasStandard ? '' : 'No 5k events here'}">5k Events</button>
+  <button class="toggle-btn${hasJunior ? '' : ' filter-btn-disabled'}" id="filter-junior"
+    onclick="${hasJunior ? "setFilter('junior')" : ''}" title="${hasJunior ? '' : 'No Junior events here'}">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
 </div>
 <script>
 (function() {
-  var KEY = 'prt-filter-${pageKey}';
-  var saved = localStorage.getItem(KEY) || '5k';
-  applyFilter(saved);
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR   = ${hasJunior};
+  var HAS_STANDARD = ${hasStandard};
+
+  // Read filter from URL param first, then localStorage, then default to 5k
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        // Validate: if the page doesn't have that type, fall back
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      // Validate saved value against what this page has
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
 
   function applyFilter(val) {
-    localStorage.setItem(KEY, val);
-    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
-    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
-    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+
+    // Update URL param without adding history entries
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+
+    // Update button states
+    var btn5k     = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll    = document.getElementById('filter-all');
+    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
+
+    // Show/hide event cards
     document.querySelectorAll('.event-card').forEach(function(card) {
       var isJunior = card.dataset.junior === 'true';
-      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
       card.style.display = show ? '' : 'none';
+    });
+
+    // Append ?filter=VAL to all tile (city/region) links on this page
+    // so clicking through carries the preference forward
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
     });
   }
 
   window.setFilter = applyFilter;
+  applyFilter(getInitialFilter());
 })();
 </script>`;
 }
-// Exactly mirrors the initCoursePreview logic from generate-events.js
+// ---------------------------------------------------------------------------
+// Event card with course preview mini-map
 // ---------------------------------------------------------------------------
 function eventCardHtml(ev) {
   const { slug, longName, lat, lon, city, isJunior } = ev;
@@ -978,6 +1044,24 @@ ${breadcrumb([{ label: name }])}
 ${htmlFooter()}
 ${stay22Modal()}
 ${showSearch ? searchScript('loc-search', 'tile') : ''}
+<script>
+// Propagate current filter preference to region tile links
+(function() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var f = params.get('filter') || localStorage.getItem('prt-event-filter') || '5k';
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', f);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  } catch(e) {}
+})();
+</script>
 </body></html>`;
 }
 
@@ -1041,7 +1125,7 @@ ${breadcrumb([
   </div>
   ${hasCities ? `<div class="section-heading">Browse by city</div><div class="tile-grid">${cityTiles}</div>` : ''}
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${name}..." /></div>` : ''}
-  ${filterScript(juniorCount > 0, standardCount > 0, regionSlug)}
+  ${filterScript(juniorCount > 0, standardCount > 0, true)}
   <div class="section-heading">All events in ${name}</div>
   <div class="event-grid">${cards}</div>
 </main>
@@ -1099,7 +1183,7 @@ ${breadcrumb([
     <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${cityName.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${cityName}..." /></div>` : ''}
-  ${filterScript(juniorCount > 0, standardCount > 0, citySlug)}
+  ${filterScript(juniorCount > 0, standardCount > 0, true)}
   <div class="section-heading">Events in ${cityName}</div>
   <div class="event-grid">${cards}</div>
 </main>
