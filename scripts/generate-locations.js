@@ -189,6 +189,10 @@ async function reverseGeocode(lat, lon) {
       region:                data.principalSubdivision || null,
       country:               data.countryName || null,
       country_code:          data.countryCode || null,
+      // City/locality centre coordinates returned by BDC — much more accurate
+      // than averaging the lat/lon of individual parkrun events in that city.
+      _city_lat:             typeof data.latitude  === 'number' ? data.latitude  : null,
+      _city_lon:             typeof data.longitude === 'number' ? data.longitude : null,
       // Extra BDC fields for richer UK county resolution
       _bdc_admin1:           data.principalSubdivision || null,
       _bdc_admin2:           data.localityInfo && data.localityInfo.administrative
@@ -240,12 +244,17 @@ function snapCity(city, countryCode) {
 }
 
 function extractFromAddress(address, countryCode) {
-  if (!address) return { city: null, region: null };
+  if (!address) return { city: null, region: null, cityLat: null, cityLon: null };
   const { regionFields, cityFields } = getAddressFields(countryCode);
   const region = regionFields.reduce((f, k) => f || address[k] || null, null);
   let city     = cityFields.reduce((f, k) => f || address[k] || null, null);
   city = snapCity(city, countryCode);
-  return { city: city || null, region: region || null };
+  return {
+    city:    city    || null,
+    region:  region  || null,
+    cityLat: address._city_lat || null,
+    cityLon: address._city_lon || null,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -508,7 +517,60 @@ function htmlFooter() {
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
   data-message="" data-color="#40DCA5" data-position="Right"
-  data-x_margin="18" data-y_margin="18"></script>`;
+  data-x_margin="18" data-y_margin="18"></script>
+<script>
+// Count-up animation for .stat-strip-value elements.
+// Triggers when the stat strip scrolls into view. Each digit ticks up
+// independently like an old terminal display, starting slightly offset
+// from each other for a typewriter feel.
+(function() {
+  var strip = document.querySelector('.stat-strip');
+  if (!strip) return;
+
+  var items = strip.querySelectorAll('.stat-strip-value');
+  if (!items.length) return;
+
+  // Store raw numeric targets (strip commas/non-digits)
+  var targets = Array.prototype.map.call(items, function(el) {
+    return parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
+  });
+  // Hide the real values; we'll animate to them
+  Array.prototype.forEach.call(items, function(el) { el.textContent = '0'; });
+
+  function animateItem(el, target, delay) {
+    setTimeout(function() {
+      var duration = Math.min(1200, Math.max(400, target * 0.8));
+      var start = null;
+      function tick(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        // Ease out: decelerate toward the end
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        el.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toLocaleString();
+      }
+      requestAnimationFrame(tick);
+    }, delay);
+  }
+
+  function runAnimation() {
+    targets.forEach(function(target, i) {
+      animateItem(items[i], target, i * 120);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { runAnimation(); obs.disconnect(); }
+    }, { threshold: 0.3 });
+    obs.observe(strip);
+  } else {
+    runAnimation();
+  }
+})();
+</script>`;
 }
 
 // Exact CSS from generate-events.js (non-junior palette) — extended with warmer location styles
@@ -568,7 +630,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   border-right: 1px solid #dde5d8;
 }
 .stat-strip-item:last-child { border-right: none; }
-.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-value {
+  font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1;
+  font-variant-numeric: tabular-nums; font-family: 'Courier New', 'Lucida Console', monospace;
+  letter-spacing: -0.5px;
+}
 .stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 /* section headings */
 .section-heading {
@@ -953,7 +1019,7 @@ function eventCardHtml(ev) {
 // ---------------------------------------------------------------------------
 
 function generateWorldIndex(countries) {
-  const sorted = Object.entries(countries).sort((a, b) => a[0].localeCompare(b[0]));
+  const sorted = Object.entries(countries).sort((a, b) => b[1].totalEvents - a[1].totalEvents);
   const totalEvents    = sorted.reduce((s, [, d]) => s + d.totalEvents, 0);
   const totalCountries = sorted.length;
   const totalCities    = sorted.reduce((s, [, d]) => s + d.cities.length, 0);
@@ -1074,8 +1140,11 @@ ${showSearch ? searchScript('loc-search', 'tile') : ''}
 // City page — shows all events in a town/city directly (no region middle tier)
 // URL: /locations/[country-slug]/[city-slug]/
 function generateCityPage(countrySlug, countryName, citySlug, cityData) {
-  const { name: cityName, events } = cityData;
-  const c             = centroid(events);
+  const { name: cityName, events, centreLat, centreLon } = cityData;
+  const eventCentroid = centroid(events);
+  // Prefer the geocoded city centre; fall back to event centroid if not available
+  const geoLat = centreLat !== null ? centreLat : eventCentroid.lat;
+  const geoLon = centreLon !== null ? centreLon : eventCentroid.lon;
   const showSearch    = events.length >= SEARCH_THRESHOLD;
   const juniorCount   = events.filter(e => e.isJunior).length;
   const standardCount = events.length - juniorCount;
@@ -1088,7 +1157,7 @@ function generateCityPage(countrySlug, countryName, citySlug, cityData) {
     title: `parkrun Events in ${cityName}, ${countryName} — Hotels &amp; Course Maps`,
     description: `${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${cityName}. View course maps, find nearby hotels and plan your parkrun visit to ${cityName}.`,
     canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/${citySlug}/`,
-    lat: c.lat, lon: c.lon, locationName: `${cityName}, ${countryName}`,
+    lat: geoLat, lon: geoLon, locationName: `${cityName}, ${countryName}`,
     breadcrumbItems: [
       { name: countryName, url: `${BASE_LOCATIONS_URL}/${countrySlug}/` },
       { name: cityName,    url: `${BASE_LOCATIONS_URL}/${countrySlug}/${citySlug}/` },
@@ -1116,7 +1185,7 @@ ${breadcrumb([
       <h2>Staying in ${cityName}?</h2>
       <p>Find hotels and rentals near your parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(${c.lat},${c.lon},'${cityName.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(${geoLat},${geoLon},'${cityName.replace(/'/g, "\\'")} parkrun')">Find Hotels</button>
   </div>
   ${showSearch ? `<div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in ${cityName}..." /></div>` : ''}
   ${filterScript(juniorCount > 0, standardCount > 0, true)}
@@ -1204,7 +1273,7 @@ async function main() {
   // Enrich with geocoded admin data + course routes
   const enriched = rawEvents.map(ev => {
     const address = cacheAddress(cache, cacheKey(ev.lat, ev.lon));
-    const { city, region } = extractFromAddress(address, ev.countryCode);
+    const { city, region, cityLat, cityLon } = extractFromAddress(address, ev.countryCode);
     const isJunior = ev.longName.toLowerCase().includes('junior');
 
     const courseKey = Object.keys(courseMaps).find(k =>
@@ -1217,7 +1286,7 @@ async function main() {
     const route = (courseData && Array.isArray(courseData.route) && courseData.route.length > 1)
       ? courseData.route : null;
 
-    return { ...ev, isJunior, city, region, route };
+    return { ...ev, isJunior, city, region, cityLat, cityLon, route };
   });
 
   // Build 2-tier hierarchy: country → town/city
@@ -1235,7 +1304,14 @@ async function main() {
     hierarchy[countrySlug].totalEvents++;
 
     const cities = hierarchy[countrySlug].cities;
-    if (!cities[citySlug]) cities[citySlug] = { name: cityName, slug: citySlug, events: [] };
+    if (!cities[citySlug]) {
+      cities[citySlug] = {
+        name: cityName, slug: citySlug, events: [],
+        // City centre from BDC geocoding — more accurate than averaging event lat/lons
+        centreLat: ev.cityLat || null,
+        centreLon: ev.cityLon || null,
+      };
+    }
     cities[citySlug].events.push(ev);
   }
 
