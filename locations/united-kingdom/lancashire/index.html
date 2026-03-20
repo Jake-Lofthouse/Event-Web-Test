@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Lancashire, United Kingdom — Hotels, Course Maps &amp; Visitor Guides</title>
-<meta name="description" content="All 1 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire." />
+<meta name="description" content="All 7 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Lancashire, United Kingdom" />
-<meta name="geo.position" content="53.751374;-2.703902" />
+<meta name="geo.position" content="53.75186942857143;-2.4843951428571427" />
 <meta property="og:title" content="parkrun Events in Lancashire, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta property="og:description" content="All 1 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire." />
-<meta property="og:url" content="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/" />
+<meta property="og:description" content="All 7 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Lancashire, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta name="twitter:description" content="All 1 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire." />
+<meta name="twitter:description" content="All 7 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/" />
-<link rel="sitemap" type="application/xml" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Lancashire","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Lancashire, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 1 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire.","url":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/","spatialCoverage":{"@type":"Place","name":"Lancashire, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.751374,"longitude":-2.703902}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Lancashire","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Lancashire, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 7 parkrun events in Lancashire. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Lancashire.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/","spatialCoverage":{"@type":"Place","name":"Lancashire, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":53.75186942857143,"longitude":-2.4843951428571427}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -136,7 +136,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -217,29 +221,244 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
   <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
 </header>
-<div class="breadcrumb"><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><span>Lancashire</span></div>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><span>Lancashire</span></div>
 <main>
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Lancashire</h1>
-    <p class="hero-sub">1 parkrun event in Lancashire</p>
+    <p class="hero-sub">7 parkrun events in Lancashire</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">parkrun events</span></div>
-    
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">Junior events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">5</span><span class="stat-strip-label">Cities</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in Lancashire?</h2>
       <p>Compare hotels and rentals near any Lancashire parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(53.751374,-2.703902,'Lancashire parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(53.75186942857143,-2.4843951428571427,'Lancashire parkrun')">Find Hotels</button>
   </div>
+  <div class="section-heading">Browse by city</div><div class="tile-grid"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/preston/" class="tile" data-search="preston">
+  <span class="tile-name">Preston</span>
+  <span class="tile-count">2</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/burnley/" class="tile" data-search="burnley">
+  <span class="tile-name">Burnley</span>
+  <span class="tile-count">2</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/accrington/" class="tile" data-search="accrington">
+  <span class="tile-name">Accrington</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/west-lancashire-district/" class="tile" data-search="west lancashire district">
+  <span class="tile-name">West Lancashire District</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/lancashire/clitheroe/" class="tile" data-search="clitheroe">
+  <span class="tile-name">Clitheroe</span>
+  <span class="tile-count">1</span>
+</a></div>
   
-  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
+  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+</div>
+<script>
+(function() {
+  var KEY = 'prt-filter-lancashire';
+  var saved = localStorage.getItem(KEY) || '5k';
+  applyFilter(saved);
+
+  function applyFilter(val) {
+    localStorage.setItem(KEY, val);
+    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
+    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
+    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  window.setFilter = applyFilter;
+})();
+</script>
   <div class="section-heading">All events in Lancashire</div>
-  <div class="event-grid"><div class="event-card" data-search="preston parkrun preston">
+  <div class="event-grid"><div class="event-card" data-search="avenham park junior parkrun preston" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-avenhamparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Avenham Park junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Preston</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/A/avenhampark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-avenhamparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-avenhamparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMjk3MjAzOCw1NzY3Mjg4OSwtMjEwNzIyMiw1NTI0ODk3MywtMTMwOTc1MjQsNjY1ODAwNTYsLTEzNzMwNjk3LDYxODUxNjY1LC01NzA2NTM1LDY0MTMwOTczLC02OTY1MTUyLDUwOTIzMDc0LC04MTU2NTQ0LDY1NzgzNzg5LC0xNTkzMDQ3OCw1MjUyODQzMiwtOTAwNTMwMyw1MTgyOTgwNywtNTg4NDk2MCw1ODA4Mzk2NiwtNTg1NDYwNyw1Nzg5NjQ2NywtMzgwODA0MCw2Njc3NDU3MywtNTg0ODI2Miw1MTk2NzEyNywtMTQ1NTE5OTMsNTUzMTQ0NzksLTE2NzQ4NTcyLDU3NDA3MjI0LC0xMjIxOTM5MSw1OTE0NTcwNSwtMTE4MzcxMzgsNTkyNzkxMjgsLTE0MjQwODEzLDY0OTc2NTE2LC0xNDMxODM3Miw1NzEzMjk4MiwtMTUyNTczMSw1NDIxOTkxNCwtMTMwNTUyMDIsNjI1NDE2NTgsLTg1MTMzODcsNTgyNjUzMDYsLTExMzQwMDIwLDYxMTkwODk1LC00MzI2Mzk5LDUzMzA4NTU2LC05NjUzOTY0LDY0Mzc5MTU3LC02ODIxNjksNTQ5NzQwNzYsLTM0OTYxNzAsNTg2NDc1MjEsLTUxOTkwOTQsNTU3ODEyNTIsLTQ2NjgyNzAsNjM0NzcxNTEsLTEyMzQ1MDgxLDY1MDk0NTkwLC05MTIxNjk3LDYzMDMwNTgzLC0xMzAwNzkzOCw1NTA0NTMyOSwtMjI1MzcyOCw1OTg0MTQyNiwtMTM1MzUzMDksNTI4MzE4NDQsLTE2MzYxMDQ4LDY2NjYxMDM2LC05NDY3MDA1LDUzMTI2ODU1LC05MTk4NTI2LDYwNTgwMTIzLC0xMDcwMDE4LDU2NDgzODQ2LC0xMDQ0MDg3NCw1ODMyOTQxMCwtMTI5MTgzNzksNTIzMzg3ODUsLTEzNDkwOTYwLDU2NzY2MzAyLC03NTU0OTY3LDU4MDU4OTcxLC0xODcwMTYzLDU5NzIyMzk1LC05MDkxMTY5LDU5NDMxNjk5LC0xMTQzNDIxNCw1Mzg4ODgxNiwtNzkwMDE2Myw2MDI1OTY5NSwtMTEzMDQzODksNjE4MTI2MDgsLTQ3MDUzNDMsNjQxNTYzMDMsLTE2MDkyOTcwLDYxOTk1ODA3LC0xNTgxNDEzNiw1OTczNTk2NV0=", 5929233);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="burnley junior parkrun burnley" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-burnleyjuniors" class="card-map-inner"></div>
+    
+  </div>
+  <div class="card-body">
+    <div class="card-name">Burnley junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Burnley</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/burnley-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-burnleyjuniors');
+  if (!el) return;
+  var map = L.map('cmap-burnleyjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  map.setView([53.777385, -2.219036], 14);
+  L.circleMarker([53.777385, -2.219036], { radius: 8, fillColor: '#40e0d0', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  
+})();</script>
+<div class="event-card" data-search="burnley parkrun burnley" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-burnley" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Burnley parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Burnley</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/burnley" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-burnley');
+  if (!el) return;
+  var map = L.map('cmap-burnley', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00MTE0MjU3LDUxMTkzNjI2LC01MjY0OTI4LDYzMjczOTI1LC0xMjQ1Mjg3Myw2NzA3ODc3OSwtNjkwMTE3NSw2MDc0MTIxMSwtMTQ0NDAxMTMsNjQxODEyNjcsLTc5MzY1ODksNTMzODE5MTksLTM2OTU5OTEsNTY4NTI3NDksLTEyMTg2ODcsNTkxNDQ4MzcsLTEzOTI4MTE1LDUzODgwNjM0LC05NjQ5OTQzLDUxOTU0ODY4LC0xMjA1MTc5OSw2MjQyOTkxNSwtMTA1MzcxMTgsNTA0NjQ1NTMsLTc4NjAxMyw1MzE2OTQ2NywtMTYzMDY1MDYsNTYzNTU1NTksLTQ4OTMyMTQsNjI3MzAyNjAsLTExMzY0MzEwLDYwOTA0NTU3LC02NjYzOTQyLDYyNjc2OTIzLC02OTMxMDg1LDYzNTM2NjM1LC05NTczMjYxLDU2MDM5OTYxLC0zNDQ4OTg3LDU3NzkxMTg3LC0xMzczNzE5NSw1OTc2Njg3OSwtMzM5MDcsNTc4MDc4MzAsLTE1NTI5NzY3LDYwMTQ2NjQyLC0xMDQ2ODE3NSw1ODI4MDc5NywtODE1MTkzNiw2NDg1ODU4OSwtODkxMzUzNSw2Mjg3NjU5NiwtMTYyODUwMjgsNTkzODE2MDksLTExNDc3MDY0LDY3MDU4NzcwLC0xNDc0NjAzNiw1NDc0MDg4NywtMTU0MTAwNDAsNTU1ODQ1MjUsLTE5OTE4MzIsNjA3MDYyODgsLTUyNzI3NDcsNTYzMTgyMzAsLTE1NzMzNjMyLDYyMTUxMjQwLC0xMTU4ODQ4Nyw1MTM3MDMzMSwtNjAzODgxLDU4NTUwMTkzLC05NzA0OTE2LDYzNTgyODA1LC03MTM0NTA3LDU2OTY5NjU3LC05NDA3NTI0LDY2NzIyNDIwLC0yMjU0NzAxLDYzNDM1MTAyXQ==", 5252764);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="clitheroe castle junior parkrun clitheroe" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-clitheroecastlejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Clitheroe Castle junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Clitheroe</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/clitheroecastle-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-clitheroecastlejuniors');
+  if (!el) return;
+  var map = L.map('cmap-clitheroecastlejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0zODY0MzY4LDU2ODUwODM5LC0zMjg5MjUxLDUyNDgxNDcyLC0zMjcwNTU1LDYwODAzNDAyLC0xMDM3ODM1MCw2MTU1ODYzMSwtNjQ2OTg4Myw1MjI5NDQxMCwtNDUxNDE2Niw1MDY2NDQyNywtODA3MDY1NSw2Mjc0OTEzOSwtNDc1NjQ5Nyw1NTI3NTczMSwtNTUwOTI5LDU0NjI3ODQ1LC0xMzQyMDMzNyw1MjI2NjUwNywtMTkwMTU4OCw2NTE0MDcyM10=", 10416904);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="hyndburn parkrun accrington" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-hyndburn" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Hyndburn parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Accrington</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/H/hyndburn" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-hyndburn');
+  if (!el) return;
+  var map = L.map('cmap-hyndburn', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00ODE5NDg5LDUxNzU3MzUwLC0xNTU0NzM1MCw1ODU4OTkzNywtMTY3NzQxOCw1MzYyMDcxOCwtODYxNzQzMyw1MjY0NzI3NiwtMTM4NTU3NDksNTUxMDE1NDksLTE0NTc3OTE1LDU2ODY3ODYzLC0xMzgxODcxNCw2MDcxNjkzNywtMTI3MTE0NDcsNTQwNzA4OTUsLTc4NDgzNzgsNTkyNzY1MjEsLTk2NzIyOCw1OTI4NzUzMSwtMTM2NzA1NjUsNjQ0NjI4ODksLTgzMTI2NTEsNTM1MzMzMjIsLTEyNjM4MzIxLDYxNjYyMTg5LC02ODk4OTE2LDYyNDMwNTYzLC0xMjYwOTU1Niw1MTQ3NDIzMiwtMTYxMzc1MzIsNTE2NTUyODcsLTE4MTUyMjEsNTU3NzY2ODksLTkxOTA1NzAsNTI5NTM5NzgsLTEyNjA3MDk3LDY2NzMzMjkzLC05MDIxNjQ1LDU0NDM5NzUxLC05MTE1NTg1LDU5OTk2ODE1LC03NTYxMjMxLDYyNzAwMTI2LC0yOTE1MzU1LDYxMzczMTI4LC00NTgwOTU1LDU2MjIwMTMwLC05NzMxMDIxLDU1NDk0NTMxLC0xNTQ5ODY5MCw1MTkxMDgzMywtMTY1NDU5NjEsNTA4Mzg5NjAsLTEzNzc1MTgyLDU1Mzk5NjcyLC01Mjc0NjY5LDUxNDI4MDYyLC0xNjk4NDQyLDUxOTE2MjIwLC0xNTQ1MDI1Myw2MTYwNTMxMSwtMTEzMjUzOTksNTU2Mzg5MzBd", 197443);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="preston parkrun preston" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-preston" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -274,6 +493,42 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
+})();</script>
+<div class="event-card" data-search="skelmersdale junior parkrun west lancashire district" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-skelmersdalejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Skelmersdale junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> West Lancashire District</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/skelmersdale-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-skelmersdalejuniors');
+  if (!el) return;
+  var map = L.map('cmap-skelmersdalejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMTI1MTQzMiw2NjkxMzEwNiwtMTY2Mzg3MzMsNjEzMTI4MDQsLTE3NjEyNjIsNTgxNzQwMDYsLTE2MjM5OTY0LDUzMDM3MDcxLC0xMzE0OTA5Nyw1MzYzNjY5NywtMTA1ODMzMzAsNjQ5NjMyNzQsLTEwMDcyMjE0LDU4MDQ5MDA3LC0xMjYwNzQ3LDUxMjE1NzUzLC00MjE2MzAsNTg1ODc3OTAsLTk1OTYyNDAsNjAxODk4MzQsLTEzMjEzMDg1LDU4ODA2NDA5LC0xMjI1NTM5OSw2NjYxNDU5MywtNTA4OTE0NSw2NDgyNDI5MywtMTA5OTQ0NDAsNjQyODE1NTQsLTc3NzMwNjYsNTA3NDAwMzQsLTYxMDM4OTksNjU4NDk5NDUsLTEzNTIwNDcyLDYxNDUyOTgwLC0zNTAyMzI1LDU1NzE5NTY2LC0xNDE1MjY2LDUxMDczNzM0LC0xMTg5NzM4Miw1NjQ2Mzk5OCwtMTAwNDY3MzIsNjM5MTEwMjIsLTEzMTkyNDMxLDY0NjIzMjIxLC04NzExODYyLDU2NzAxMjYzXQ==", 9609880);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
 })();</script></div>
 </main>
 <div class="download-footer">
@@ -296,7 +551,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 <div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);

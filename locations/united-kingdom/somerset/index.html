@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Somerset, United Kingdom — Hotels, Course Maps &amp; Visitor Guides</title>
-<meta name="description" content="All 1 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset." />
+<meta name="description" content="All 3 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Somerset, United Kingdom" />
-<meta name="geo.position" content="51.273808;-2.77921" />
+<meta name="geo.position" content="51.222948333333335;-2.9304206666666666" />
 <meta property="og:title" content="parkrun Events in Somerset, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta property="og:description" content="All 1 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset." />
-<meta property="og:url" content="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/" />
+<meta property="og:description" content="All 3 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Somerset, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta name="twitter:description" content="All 1 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset." />
+<meta name="twitter:description" content="All 3 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/" />
-<link rel="sitemap" type="application/xml" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Somerset","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Somerset, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 1 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset.","url":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/","spatialCoverage":{"@type":"Place","name":"Somerset, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.273808,"longitude":-2.77921}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Somerset","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Somerset, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 3 parkrun events in Somerset. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Somerset.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/","spatialCoverage":{"@type":"Place","name":"Somerset, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":51.222948333333335,"longitude":-2.9304206666666666}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -136,7 +136,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -217,29 +221,65 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
   <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
 </header>
-<div class="breadcrumb"><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><span>Somerset</span></div>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><span>Somerset</span></div>
 <main>
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Somerset</h1>
-    <p class="hero-sub">1 parkrun event in Somerset</p>
+    <p class="hero-sub">3 parkrun events in Somerset</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">0</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">2</span><span class="stat-strip-label">parkrun events</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Junior events</span></div>
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Cities</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in Somerset?</h2>
       <p>Compare hotels and rentals near any Somerset parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(51.273808,-2.77921,'Somerset parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(51.222948333333335,-2.9304206666666666,'Somerset parkrun')">Find Hotels</button>
   </div>
+  <div class="section-heading">Browse by city</div><div class="tile-grid"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/somerset/" class="tile" data-search="somerset">
+  <span class="tile-name">somerset</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/shepton-mallet/" class="tile" data-search="shepton mallet">
+  <span class="tile-name">Shepton Mallet</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/somerset/minehead/" class="tile" data-search="minehead">
+  <span class="tile-name">Minehead</span>
+  <span class="tile-count">1</span>
+</a></div>
   
-  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn active" id="filter-5k" onclick="setFilter('5k')">parkrun</button>
+  <button class="toggle-btn" id="filter-junior" onclick="setFilter('junior')">Junior parkrun</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All events</button>
+</div>
+<script>
+(function() {
+  var KEY = 'prt-filter-somerset';
+  var saved = localStorage.getItem(KEY) || '5k';
+  applyFilter(saved);
+
+  function applyFilter(val) {
+    localStorage.setItem(KEY, val);
+    document.getElementById('filter-5k').classList.toggle('active', val === '5k');
+    document.getElementById('filter-junior').classList.toggle('active', val === 'junior');
+    document.getElementById('filter-all').classList.toggle('active', val === 'all');
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all' || (val === '5k' && !isJunior) || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  window.setFilter = applyFilter;
+})();
+</script>
   <div class="section-heading">All events in Somerset</div>
-  <div class="event-grid"><div class="event-card" data-search="cheddar junior parkrun ">
+  <div class="event-grid"><div class="event-card" data-search="cheddar junior parkrun " data-junior="true">
   <div class="card-map-wrap">
     <div id="cmap-cheddarjuniors" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -274,6 +314,78 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
   map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
+})();</script>
+<div class="event-card" data-search="minehead parkrun minehead" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-minehead" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Minehead parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Minehead</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/minehead" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-minehead');
+  if (!el) return;
+  var map = L.map('cmap-minehead', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05MTk0MDM3LDU3OTEyMjkxLC05NDgwNDA1LDY1NTQ2MDcwLC03MjQ2NjkwLDU4MDc5NzIxLC00Mzk0ODczLDU4ODU1MDcwLC01NTAzMDM5LDY2NjU5NDIzLC0xMjAxMjM5NCw2MDAyNzg0NiwtMTY2MTM1NjYsNTQ0MjI4NzAsLTEzMDMxMTExLDU2MjUyNzg1LC0xNTgzNzYzLDYzODU1OTQ5LC0xNTU1Nzc0Niw1NzYxOTcyMiwtMTM5NDA4MTIsNTA2ODM1MDcsLTkyNjIwNjcsNTk3NjY1Mjld", 5135548);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="shepton mallet parkrun shepton mallet" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-sheptonmallet" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Shepton Mallet parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Shepton Mallet</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/sheptonmallet" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-sheptonmallet');
+  if (!el) return;
+  var map = L.map('cmap-sheptonmallet', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMDA4NDg3OCw1Mzk2NjAxMywtMTY1NjM4MjcsNjU3NTM2MDEsLTE3NTc5NjAsNTUxOTc2MjQsLTM4Njk4OTQsNTcwMzM0NDYsLTE1MzAxODY4LDUxOTEwMTc2LC0xMzA1MzczMyw1ODAwOTY5MCwtNTMxNjgxMCw1MzY5MDc0OCwtNzY2Njc2Myw2MjExMDMzOCwtNzY5NjE5Niw1ODczMDMzNSwtMTEyMzc4MjQsNjM0MzczMjEsLTMyNDg1NDQsNjU4ODcwMjAsLTE4MzYyNzEsNTkzOTExMDMsLTEwMDQxMzA3LDU0NzY0NzM0LC04MjQ0NzUwLDY2MjU2MjkzLC0xMTQzMTI3NSw1OTEzODI1NSwtNzk2NjExNiw1NzMzNTg5NCwtMzkyNDg1Miw1OTA0MzY0MF0=", 13490305);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
 })();</script></div>
 </main>
 <div class="download-footer">
@@ -296,7 +408,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 <div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);

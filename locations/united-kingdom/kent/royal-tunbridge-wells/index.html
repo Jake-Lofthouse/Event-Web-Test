@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>parkrun Events in Royal Tunbridge Wells — Hotels Near Each Event &amp; Course Maps</title>
+<meta name="description" content="1 parkrun event in Royal Tunbridge Wells, Kent. View course maps for every event, find hotels nearby and plan your parkrun visit to Royal Tunbridge Wells." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="Royal Tunbridge Wells, Kent" />
+<meta name="geo.position" content="51.133614;0.284851" />
+<meta property="og:title" content="parkrun Events in Royal Tunbridge Wells — Hotels Near Each Event &amp; Course Maps" />
+<meta property="og:description" content="1 parkrun event in Royal Tunbridge Wells, Kent. View course maps for every event, find hotels nearby and plan your parkrun visit to Royal Tunbridge Wells." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/royal-tunbridge-wells/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="parkrun Events in Royal Tunbridge Wells — Hotels Near Each Event &amp; Course Maps" />
+<meta name="twitter:description" content="1 parkrun event in Royal Tunbridge Wells, Kent. View course maps for every event, find hotels nearby and plan your parkrun visit to Royal Tunbridge Wells." />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/royal-tunbridge-wells/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Kent","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/"},{"@type":"ListItem","position":5,"name":"Royal Tunbridge Wells","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/royal-tunbridge-wells/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Royal Tunbridge Wells — Hotels Near Each Event & Course Maps","description":"1 parkrun event in Royal Tunbridge Wells, Kent. View course maps for every event, find hotels nearby and plan your parkrun visit to Royal Tunbridge Wells.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/royal-tunbridge-wells/","spatialCoverage":{"@type":"Place","name":"Royal Tunbridge Wells, Kent","geo":{"@type":"GeoCoordinates","latitude":51.133614,"longitude":0.284851}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
+/* breadcrumb */
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+/* page hero */
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+/* stat strip */
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* section headings */
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+/* country grid */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+/* tiles */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+/* search */
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+}
+.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
+/* hotel CTA */
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+/* toggle buttons */
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.2s; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+}
+.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+/* download footer */
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/kent/">Kent</a><span class="breadcrumb-sep">/</span><span>Royal Tunbridge Wells</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">Kent, United Kingdom</div>
+    <h1 class="hero-title">parkrun Events in Royal Tunbridge Wells</h1>
+    <p class="hero-sub">1 parkrun event in Royal Tunbridge Wells</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">parkrun events</span></div>
+    
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in Royal Tunbridge Wells?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(51.133614,0.284851,'Royal Tunbridge Wells parkrun')">Find Hotels</button>
+  </div>
+  
+  
+  <div class="section-heading">Events in Royal Tunbridge Wells</div>
+  <div class="event-grid"><div class="event-card" data-search="royal tunbridge wells parkrun royal tunbridge wells" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-royaltunbridgewells" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Royal Tunbridge Wells parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Royal Tunbridge Wells</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/R/royaltunbridgewells" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-royaltunbridgewells');
+  if (!el) return;
+  var map = L.map('cmap-royaltunbridgewells', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzcwODc3ODUsNjA4NjM4ODAsMTIzMTgxMSw1NzYzNzc0NCw4MjI4MTU3LDY2MTA2NzMyLDg5NDE5MzgsNTE5MzkwNDMsMjcyOTEyMyw1NDAwNjg2MSwxNDQ3NzU5LDU4NzU5NDkyLDE4MTAyNjgsNjEwODQ5MTQsNzAwNTA5LDU0Mjg2MTc3LDQ4MDkzNTMsNTQyNDQ0MDIsNjkwNjAwNyw2MTE3OTk3NywxMTUyODg5NSw2MzE1MTA5Nyw1NjMxMDUyLDUwNzUwNTkyLDE2NzUxODA2LDUyNjg0MDE1LDYzMTUzMCw1NDMwNzEyOSwxNDI0NzcwNCw2NTE1NDAyOCw1MzI2NDQ5LDU3MDUxNjM2LDI1ODQzMDAsNjIyNTk5NzcsMTEyMzQ1MDksNTYwNTczMjEsNzEwMDgzMCw2NTk3MDk0MywyNzI0NTk3LDUxNDkxMTI3LDE1MDM1NTk3LDUyMTM0NDIxLDYwMjA4ODIsNjExMTE2NzQsNzg2NDEyNiw1ODQ4NDAwNSw4Mzg5ODg3LDU4NjM5OTk5LDIxMjIwNCw2MDkzMTgwMywzODEwODQsNTU5MjY4MjcsMjA2ODkwNSw2MjAxMzg1MywxMTIyMzg1LDYyMDYzMTU5LDEwNDMzOTU0LDU5MjgwNzE3LDEzNjAxMjkyLDY2NjIwNjEyLDE2MDExNzA1LDY0MjM5ODkwLDM1MzEyNTAsNjQzODc3ODAsNTQxMzk1NSw2MzMyODA1OCwxMzQ2NTcwNCw2MzQ4MTU3NCw3ODQyNzQxLDUyNDMxNjAxLDM3OTU4NzUsNjE2MjQ0ODgsMjMyMTkwNCw1NDc4MTk1OCw2MDUzNTcyLDU2Mjc5OTY1LDEwMTU5MzEzLDUwNDY4MTM5LDM1Njg1MDMsNTg1NjE3OTMsMTExNTQyNzYsNTA3MzkyMjgsMTE0OTkxNjgsNjYyMDYxMDEsNTg5Nzc3Myw1NDA1NjgwMywyMDg4OTI5LDYyNzk1NDE0LDEyOTUwOTMwLDYwNjkxMzIxLDUwNjMyMjgsNTQ3NzM0OTksNzA3NjYyLDUzOTgwODQyLDEwNDA3MzA0LDU0OTAzNTQ4LDE1Njk1NDgyLDYxNDM2NDgzLDg5MjE4MjcsNjE1MzY0MDUsMTA2Mjk0LDUzMzAzNjgwLDY3OTIzMjcsNTMwNDMyNzQsMTU0ODQ4ODIsNjEzODM5NzMsMjYwMjAyNyw2MTYzNjkzNyw5NTMxNTAsNjMyNjE4ODQsMTI4NzAwMDgsNjI0MTY1MjgsMzA0NzAxOCw1MTk3NDI4Nyw5ODQ3NjQyLDYwMDIzODMzLDE0NDk1ODUxLDU4MTI2MjUyLDEwMjU1NjYsNTcwOTE2MjksNTQ2MzQ3MSw1MzIyMDYxMSwxMTEyNTExNiw1NDkyMTI0MywxMDgzNjQyNSw1NzQ0NTE5NCwzMzc3OTcxLDU1NDExMTgzLDEzMzczMDU5LDUyMzM2MDE3LDI0NDY2MDAsNTA3MzYwNzIsODQ2OTMzMiw1MDczMjUxMCw1MDMyNTk0LDU0MDI2MzEzLDEwNDUwNTgsNjQwODgwMzksMTU2Nzk2OTIsNTg4MzI2MDgsMTcyOTc1Myw2NTQzMzE3NSwxMzgxODA2OSw2MzkwNzgzNCw2NzIwMjAxLDYwNDg5NDQ1LDE0Mjg3MjI0LDU1MjE5OTI3LDE1OTAzNDkyLDY0MjQ3NzI2LDkxMDMwNTksNTg2MDAwMDcsNDY3NDMzOSw2Njc1NjEzNywyNDM1NzkwLDY1NTEyOTk0LDcyMzUxOCw1ODkzOTM4MSwxMTg3NDI0Nyw1NDg3MzU0MywxMzc3Mjk4Myw2NDM5ODQ2MywxMTE4MjgzMiw2NjczMzM2Niw2MTk3ODUyLDUyNTc5ODczLDk5MDc5MzcsNTYxODQ5MDUsODI4OTg0NSw2MzkzNjE2NSwxMzc0OTcxOSw1MzA0MDk0Miw0NTIzNzE5LDYyMTg2MzI5LDE2Mzg4MjIsNTMwNzM0NTAsNDQ4Nzg2NSw1NjMwODI3NywxMTc2ODc4Nyw2NjUwMDY3NiwxNzMzODU2LDYwMzc4ODY3LDUyNDA4NzEsNTQ3MzA0NjAsNjkyODI3OSw2NDA5MjE0NCwxMzE1ODYyNCw1Mzk4ODQ2NiwxMjkxMTE5Niw1MDU2NTc5NCwxMTIzNzIwMCw2NTM2NTU5OCwxNjM1MTIwNSw2MzUxMzc2Niw1OTIwNTA5LDU4NzA3Nzc5LDE1MzU5NTI4LDY0NjM4ODAyLDE1MjU4OTA0LDUyMTg3Mjg5LDIwNDY3OTYsNTE1MjA4MjAsOTg5MDQ5LDU4NDg5MjI3LDE0MTg2NzcyLDU3NzM1MjI5LDM2NzMxNTgsNTcyMDYzMDUsMTE0MTM1OTAsNTE1MDQ0NDUsNDM4NzAyOCw2MzkxODk5MSwxMTc0MDQ0OCw2NjQ1NTY1NSwxNTY4MzAzNCw1OTE0NDgzMywxMjMxNTU2Miw1OTg1ODAyOCwxMzgwOTYxNiw1NTUzMjI0OCwxNzk0NDc2LDUyNzgwNjg3LDE0NDk1NDc2LDYxMTczMjgwLDIxMzc2MTEsNjAxNjU1MzIsNTQzMzIwNyw1OTE0Mjg1MiwxMDcwODkwMiw1NDkxOTEyMCwxNjI3NDA4NSw2NTExMDE5OSwxMzg4MzI3Miw2MjQ0NDUxMCwxMTU0NTQxMCw1ODM1ODcyMSw1NDIyMTYzLDU3ODE5NDQ1LDE0NjcxNDA3LDUxMDkwOTc4LDkyNTUyMjksNjI4NTIxNDYsMTE5Njg1NzQsNjExODkxMzIsMzAyMTU4MCw1NDY3NjY2NSwxMTA5MzU2LDYxMzE4OTAyLDIzODc0MjMsNjYxNTkwNzEsNzEzOTU0Miw1MDcxNDUwOCw5NzM1NTI1LDUzMDEyMTg1LDEzODY5MjE1LDUyMjM2Nzg0LDMyMTM4NjYsNTMzNDA1NTYsMTI4NTgyNzUsNTU0MjgwODksMTUzNTMzMzUsNjQ4MTM1NDksNzE4NTYwNyw1ODI0NTQyOCw5NTg0NDAzLDU2NDA0ODg4LDE2NTUzMDAyLDUzNjkzNjgzLDE5NTQ4NzYsNTA5Njk0MTAsMTA5NDYxNDksNjA0NjMwNDQsMTI2NTI2NTksNjQxNjg2NjcsMjEwNzAzOCw2MjQzOTA5MiwxNDM3NTA1Nyw2NDM1NzMxNSw3NjYwMTA3LDUzOTM0ODIwLDc1NTE2MjEsNjM1OTEwNTAsMTEzNzE2MTgsNjA1Mzg1NjAsNzk5OTM4MSw1NDg5MDUxOCw1Njk1MzI0LDYxMTczNDg5LDEyMzU0OTksNTM0NjcyMTQsMTMwOTYxMDgsNjE3Nzk4MzQsMzA3Mzk4Niw2Mjg2OTEwMywxNDI2NzU1Miw1MjU2NDc4NCw0NDg3NTUwLDYyMTc2OTkwLDMxMTMzMCw2NDk5MDQxMyw5NDE5MDYzLDU1OTk1NTc0LDQxNTk2NDMsNjAxNTUzMjAsNDM0NDcxMCw1Njk3MjcwOSwxMzA2Nzk0NCw2NTA0ODcxOCwzNzk5NDUwLDY1NjQ1MzQ4LDEwNjU4MTgyLDYzNzA1MDY3LDExMTMwNjc3LDYyMTI2NzkyLDEzMDA0MzE1LDY2NTg5Njk4LDQ5NzE0MzMsNjU4MDYyOTEsMTYwODkxOTksNjY0MTg0MDcsMTE4NTc4ODUsNTY5MjQ0NDQsOTE5ODQ2Miw2MjM5NjEyOSwxMjY3NDczNSw1Mzg0Njc3MSwyNzIzMjgsNjE3MTQ1OTcsMTIxMjA0NzIsNjI0NTk5MTgsMTYyNDI3MDMsNTM5MDc4NzAsMTIwNzgyNiw2MzQ4MjY2MCw1MTkzMzM1LDYwMDg2MDE3LDE2MjAxMzEyLDUxODE0NDI5LDExNzMxNjQ4LDU1OTU0MzQ4LDExMTYyMTY3LDYyMTQ3OTI4LDYwMTY2NDUsNjM5NDEzMDAsMTE0NTI2NTksNjI3NTcyMDgsMTQ1MjI3NzIsNTMyMDM2NzQsNjg3NTA5OSw1NDI4OTAzNCw1ODYzODM4LDU5MDkyMjM5LDE1NzEzMzg1LDYyMTM3NzgzLDMyNTAxODQsNTc4NTQxOTMsMjE3Njk5MSw2MTI4MTI1Miw4MjE3OTg0LDU2MzAzNzE3LDE1NzUyNDE1LDUwNDgyOTUyLDE2NjIyNzA2LDU3NzI1Nzc5LDIzODYyNzcsNTg3Mzc4MjksNzg4MjY4NCw1MTM4MTg2NiwxMTYzNDM0Nyw2MjI3MzY1MiwyOTQyNjA0LDUwODYxMjg5LDEwMjMxNzE1LDYwMjExNTUxLDQ2MDIzMTYsNjI5OTAwNjIsNTM4MTI0Miw1NzE1NTU0OSwxODY4ODMzLDUzOTEwMjI0LDM3ODU4NzksNTk2MjMzMDcsMzcxODg5MSw2NTkyMjUyNywxMTIzNDY0Niw2NDM1NDczMywxNTc3Njc1MCw1MDc2NTU0OCwxMjA0NDczMiw1NjM4MTY5NCwxNjAxNzU1OCw2NDY2MjU3MCwxMzI2NDk2NSw1ODcyMTY2NCw0MTc4MjY1LDYxNzYzMTMzLDE0MTg1NzQsNjY0NDkwMzksNzM4NzU5Nyw2MTI5NjQ3NCw3Mzg3MDk5LDUyMTk0Mzc0LDM4NzYzOTEsNjcwODczNjMsNjI5MTU1MCw2NDUzODQ4NCwxNTk3NzAzMSw1NzE4ODUwNCwxMDI1ODg3OSw1OTk5MzMyOCwxMDcxMTI2Niw1NDA1MDU3MSwzMDIwODEwLDUxNDU1MTk2LDM5NzY4MjcsNTkxMjM2MTcsMTUxNzc0NzQsNjA0NDk4MTYsMTUyNzU2NTcsNTU4MTk5NTgsMTM4ODQ4OTUsNTg1NDkxNTcsNjM4OTc2LDYxMDk0MjczLDM2MzEzMjcsNjY3NTk1MzEsMTQ5OTY5NzksNjI4MTk1NjcsNTc1MTAxMiw1NjEzNTgzNywxNDMwNDQyNiw2MzA4MzU4OCwxODcwMjYwLDY1NTg5NDE0LDI1NjU4MjgsNTI2NzU4OTQsODI4Njk4OCw2MDk5MjM4NiwyMzI2MTU1LDUyMzExMDM1LDYxODU3OTAsNTI4NzQ0NTIsMTEwNTA3MzYsNTE0NjY3MjEsMTAzODc1MjgsNTQ5MTI4MjMsMTY1ODE1MjAsNTA3NDQyMTYsNzY4NDkwNyw2MjQ4MDczNyw0NDEzMDE4LDU5MzU0NDQzLDE2NTg2Mzc0LDU2MTk4NDkzLDgxOTY5NTYsNTY1OTc4NDUsOTYxNzk2LDUxOTkwMjY3LDEzNDUxODMsNjI1MzYyMTcsNDgwNjc5NCw2NTYyOTYxNCw2MDE2NTg0LDUwNDc2ODYwLDkyOTY0ODMsNTExNDYyODUsMTYyODg2ODAsNjM3OTUyNTQsNDU1NDgzNSw1Njg2MDA5OSw4MTcyMTA0LDU1Njk5NzEwLDg3OTEwOTEsNjMxMjA5MTUsNTYzNDM2MCw2NjE0ODU4OCwxNTk1Nzg0Myw1NjM3NDQ1OCwyMjA4MTA0LDY1NDY5NjI4LDM4OTc3MjgsNjYyNTMwNzEsMzAzMjcwMCw1OTI2NjAwNyw4NjkxMzg1LDU1MTYyMDAxLDE0NjE2NTg2LDU3NTAzNzc0LDM3OTI4MjMsNjI3MTYzMDYsMTU3Mzc2NzgsNjI0Mzc4NzMsNjQyMzEzOSw2NzA3NDg0NCwxMDgyODg3OCw2Njk1Mzg5OCwxMTIyOTU2MSw1MjgzNTY4MSwxNjIzODUxNCw2MTA2Njk1NCwyNTU4NzAxLDU3NDI3NTQyLDk1MzA1NjYsNjMxMzI3MTEsMTY1ODk5ODcsNTY2MjA3MDgsMTIxNzEyMjEsNjM5ODI5MDMsMTA2ODUzNzIsNTg0NDM0MjYsNjQ2NTk1NCw2Mjg4MDYyNywzMzA4MTE1LDUzOTIyMzIxLDEyMTkzMTA0LDU3MTk1MzUyLDEzNzk0NDQzLDU5MDU4MjE4LDE0NjY1NTg0LDU1OTEyNjk2LDExOTcxMjUzLDYwNjE2MzI0LDExOTk0NTgzLDYyNTI2Mzc1LDE5OTE5OSw2MzYyMjcwNSw1MjI2NzE4LDUxMTk4ODUzLDc2NzcyNDksNTI4NjgyNDMsMjg3MTgxOCw1MTMzMTMzMSw4NTc2MjUxLDYzMjExNDE1LDI2MDU2NTYsNjUyMzgxNjIsMTA3MDc1NzcsNTk1ODE1ODEsMTk1NDE5Myw2Mzg3MzIxNSwxNTExMjAxLDUwNjgxNDYwLDYyOTkzNTYsNjU1Mjc5NTUsMzc4MTQwNSw1NDM2OTgyNCwyNjQ1NDcxLDUyNTMxOTczLDY2MTk0OTksNTY4OTE4NzQsMjUxODYwOCw2Mzg4ODk5MSw1NzI5Njc2LDU3NzYwMTcyLDc0NTkxNjgsNjM4OTQxNzAsMTAyMzE0MzQsNjEwODY0NDYsMTUzNzk0LDYzNDc3MTQ1LDEyMzcwMzc3LDYzMjYyMDg2LDE0NDU0MzYxLDYzNDUwODgyLDE0MTU1NjAwLDY2ODk1NTQwLDEzMTA3NDA4LDU1MTI0Njg4LDc4NDY1MDQsNTE1NjcxMDMsODkxNTM5NSw2MjYyMTgyNiwxMDk3Njg3OCw1NDU0Nzc5OCwxMjY5NzA4OCw1MTQwMzM5OSwzODU5MzM4LDYxMjY3ODM0LDEwMzkzNDk2LDY1NzkxODI4LDkzMjA1MzAsNTI4ODYzNDMsNTQ1NjgyMSw1MzE0OTEwMSwxNTQwOTMsNTM2NTA2OTEsNjc4MDM4MSw2NTk0NjIyNCw4Njg4NTgyLDY0MTQzNTY1LDgxNjk3NzAsNjM0Njg2NzIsNjg3OTUzOSw2MzA5NzI1MywxMjQ3ODcwLDY2NDUxNzQ5LDc3OTEyODYsNTE2MjY5ODUsMzM0NzMwOSw1NTg4ODQyMSw0NDAyNDA2LDY2Njc4NzI2LDM4NjY1MzEsNjM5NTAyNTIsMTIyNDY0NzQsNTkwMzcxNTMsMzY0OTQ3Miw2Mjk4ODU0MywxODAyNDQ0LDU2Nzg3MDIxLDM2MjgyMDMsNjAyNDE4NzgsMTI0MDMwNjAsNTE2OTMyNTQsMjQ5MTc0OCw1MDM2NzcwOSwxMTU2MTY3Nyw1OTc5OTk4MiwxMDk4MjYzMyw1MTQ0OTE2MSwyOTU1MjMyLDYyODc3ODI3LDUyMjQ3MzQsNTk0OTQyNjYsNzQwNjA5Niw1MTMyNjMwNiwxNTIxNzg0LDYwODYyMDUyLDEzNTkwMzM2LDU5OTUzNTc3LDU3MjcyOSw2MjgzNDg1Nyw5MTIwMDEsNjI5NDMxMzMsNjA2MDAzNiw2NTIwODY2MywxMzI1NDg0Myw1MTA2NjM2OSw1NDAwMTY4LDU5MzY5NjE1LDEzNTMyMTAxLDU1MTI1MjM3LDE2MTc0MTcsNTQ3NDg3MjIsNTM1MDQ3Nyw1ODEyOTQ0MiwzMTI1MzM2LDY2MDk1NDUzLDQyNTM4MjgsNTU3NTM0NTksNjU3MTYzNSw1ODE0NTcxNSwxNjYyMDEzOCw1NjY5MzUwOSwyMzE4ODg1LDYwNTI1MzI1LDEyNTQxMTIxLDUyNTI3NjMyLDE1NzgwODYxLDY1NTU5MTUwLDQzMDAxNjEsNjI0NzUwMzIsMTU3ODE3OTQsNjQ0MDcwNTdd", 7547275);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
+    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
+      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
+        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.style.display = 'flex';
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  document.getElementById('stay22-modal').style.display = 'none';
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+
+</body></html>

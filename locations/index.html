@@ -9,7 +9,7 @@
 
 <meta property="og:title" content="parkrun Events by Location — Find Hotels &amp; Plan Your Visit | parkrunner tourist" />
 <meta property="og:description" content="Browse parkrun events by country, region and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend." />
-<meta property="og:url" content="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/" />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -17,10 +17,10 @@
 <meta name="twitter:description" content="Browse parkrun events by country, region and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/" />
-<link rel="sitemap" type="application/xml" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events by Location — Find Hotels & Plan Your Visit | parkrunner tourist","description":"Browse parkrun events by country, region and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend.","url":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/","publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events by Location — Find Hotels & Plan Your Visit | parkrunner tourist","description":"Browse parkrun events by country, region and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/","publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -135,7 +135,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -225,19 +229,19 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">500</span><span class="stat-strip-label">Events worldwide</span></div>
     <div class="stat-strip-item"><span class="stat-strip-value">8</span><span class="stat-strip-label">Countries</span></div>
-    <div class="stat-strip-item"><span class="stat-strip-value">61</span><span class="stat-strip-label">Regions</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">158</span><span class="stat-strip-label">Regions</span></div>
   </div>
   <div class="section-heading">Select a country</div>
   <div class="country-grid">
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/" class="country-card">
   <div class="country-card-flag">🇦🇺</div>
   <div class="country-card-body">
     <h3>Australia</h3>
-    <p>60 events &middot; 3 regions</p>
+    <p>60 events &middot; 8 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/denmark/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/denmark/" class="country-card">
   <div class="country-card-flag">🇩🇰</div>
   <div class="country-card-body">
     <h3>Denmark</h3>
@@ -245,51 +249,51 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/ireland/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/" class="country-card">
   <div class="country-card-flag">🇮🇪</div>
   <div class="country-card-body">
     <h3>Ireland</h3>
-    <p>6 events &middot; 2 regions</p>
+    <p>6 events &middot; 3 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/new-zealand/" class="country-card">
   <div class="country-card-flag">🇳🇿</div>
   <div class="country-card-body">
     <h3>New Zealand</h3>
-    <p>4 events &middot; 1 region</p>
+    <p>4 events &middot; 2 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/poland/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/" class="country-card">
   <div class="country-card-flag">🇵🇱</div>
   <div class="country-card-body">
     <h3>Poland</h3>
-    <p>7 events &middot; 1 region</p>
+    <p>7 events &middot; 6 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/south-africa/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/south-africa/" class="country-card">
   <div class="country-card-flag">🇿🇦</div>
   <div class="country-card-body">
     <h3>South Africa</h3>
-    <p>15 events &middot; 1 region</p>
+    <p>15 events &middot; 4 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/" class="country-card">
   <div class="country-card-flag">🇬🇧</div>
   <div class="country-card-body">
     <h3>United Kingdom</h3>
-    <p>392 events &middot; 47 regions</p>
+    <p>392 events &middot; 124 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-states/" class="country-card">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-states/" class="country-card">
   <div class="country-card-flag">🇺🇸</div>
   <div class="country-card-body">
     <h3>United States</h3>
-    <p>9 events &middot; 2 regions</p>
+    <p>9 events &middot; 7 regions</p>
   </div>
   <i class="fas fa-chevron-right country-card-arrow"></i>
 </a></div>
@@ -314,6 +318,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 </body></html>

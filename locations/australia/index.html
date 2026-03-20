@@ -7,10 +7,10 @@
 <meta name="description" content="Find all 60 parkrun events across Australia. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Australia" />
-<meta name="geo.position" content="-30.896453666666666;145.67479991666661" />
+<meta name="geo.position" content="-30.896453666666666;145.6747999166667" />
 <meta property="og:title" content="parkrun Events in Australia — Hotels, Course Maps &amp; Visitor Guides" />
 <meta property="og:description" content="Find all 60 parkrun events across Australia. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
-<meta property="og:url" content="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/" />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -18,10 +18,10 @@
 <meta name="twitter:description" content="Find all 60 parkrun events across Australia. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/" />
-<link rel="sitemap" type="application/xml" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Australia","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Australia — Hotels, Course Maps & Visitor Guides","description":"Find all 60 parkrun events across Australia. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/","spatialCoverage":{"@type":"Place","name":"Australia","geo":{"@type":"GeoCoordinates","latitude":-30.896453666666666,"longitude":145.67479991666661}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Australia","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Australia — Hotels, Course Maps & Visitor Guides","description":"Find all 60 parkrun events across Australia. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/","spatialCoverage":{"@type":"Place","name":"Australia","geo":{"@type":"GeoCoordinates","latitude":-30.896453666666666,"longitude":145.6747999166667}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -136,7 +136,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -217,38 +221,58 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
   <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
 </header>
-<div class="breadcrumb"><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><span>Australia</span></div>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><span>Australia</span></div>
 <main>
   <div class="hero">
     <div class="hero-eyebrow">🇦🇺 Australia</div>
     <h1 class="hero-title">parkrun Events in Australia</h1>
-    <p class="hero-sub">60 parkrun events across 3 regions</p>
+    <p class="hero-sub">60 parkrun events across 8 regions</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">60</span><span class="stat-strip-label">parkrun events</span></div>
     
-    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Regions</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">8</span><span class="stat-strip-label">Regions</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in Australia?</h2>
       <p>Compare hotels and rentals near any parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(-30.896453666666666,145.67479991666661,'Australia parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(-30.896453666666666,145.6747999166667,'Australia parkrun')">Find Hotels</button>
   </div>
-  
+  <div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="loc-search" class="search-input" type="text" placeholder="Search regions in Australia..." /></div>
   <div class="section-heading">Regions</div>
   <div class="tile-grid">
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/australia/" class="tile" data-search="australia">
-  <span class="tile-name">Australia</span>
-  <span class="tile-count">58</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/" class="tile" data-search="queensland">
+  <span class="tile-name">Queensland</span>
+  <span class="tile-count">24</span>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/new-south-wales/" class="tile" data-search="new south wales">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/new-south-wales/" class="tile" data-search="new south wales">
   <span class="tile-name">New South Wales</span>
-  <span class="tile-count">1</span>
+  <span class="tile-count">13</span>
 </a>
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/australia/victoria/" class="tile" data-search="victoria">
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/western-australia/" class="tile" data-search="western australia">
+  <span class="tile-name">Western Australia</span>
+  <span class="tile-count">7</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/victoria/" class="tile" data-search="victoria">
   <span class="tile-name">Victoria</span>
+  <span class="tile-count">6</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/tasmania/" class="tile" data-search="tasmania">
+  <span class="tile-name">Tasmania</span>
+  <span class="tile-count">4</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/australian-capital-territory/" class="tile" data-search="australian capital territory">
+  <span class="tile-name">Australian Capital Territory</span>
+  <span class="tile-count">3</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/south-australia/" class="tile" data-search="south australia">
+  <span class="tile-name">South Australia</span>
+  <span class="tile-count">2</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/northern-territory/" class="tile" data-search="northern territory">
+  <span class="tile-name">Northern Territory</span>
   <span class="tile-count">1</span>
 </a></div>
 </main>
@@ -272,7 +296,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 <div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
@@ -325,5 +349,16 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStay22();
 });
 </script>
-
+<script>
+(function() {
+  var inp = document.getElementById('loc-search');
+  if (!inp) return;
+  inp.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.tile').forEach(function(el) {
+      el.style.display = (!q || (el.dataset.search || el.textContent).toLowerCase().includes(q)) ? '' : 'none';
+    });
+  });
+})();
+</script>
 </body></html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>parkrun Events in Gold Coast — Hotels Near Each Event &amp; Course Maps</title>
+<meta name="description" content="4 parkrun events in Gold Coast, Queensland. View course maps for every event, find hotels nearby and plan your parkrun visit to Gold Coast." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="Gold Coast, Queensland" />
+<meta name="geo.position" content="-28.0273345;153.41098075000002" />
+<meta property="og:title" content="parkrun Events in Gold Coast — Hotels Near Each Event &amp; Course Maps" />
+<meta property="og:description" content="4 parkrun events in Gold Coast, Queensland. View course maps for every event, find hotels nearby and plan your parkrun visit to Gold Coast." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/gold-coast/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="parkrun Events in Gold Coast — Hotels Near Each Event &amp; Course Maps" />
+<meta name="twitter:description" content="4 parkrun events in Gold Coast, Queensland. View course maps for every event, find hotels nearby and plan your parkrun visit to Gold Coast." />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/gold-coast/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Australia","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/"},{"@type":"ListItem","position":4,"name":"Queensland","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/"},{"@type":"ListItem","position":5,"name":"Gold Coast","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/gold-coast/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Gold Coast — Hotels Near Each Event & Course Maps","description":"4 parkrun events in Gold Coast, Queensland. View course maps for every event, find hotels nearby and plan your parkrun visit to Gold Coast.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/gold-coast/","spatialCoverage":{"@type":"Place","name":"Gold Coast, Queensland","geo":{"@type":"GeoCoordinates","latitude":-28.0273345,"longitude":153.41098075000002}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
+/* breadcrumb */
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+/* page hero */
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+/* stat strip */
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value { font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1; }
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+/* section headings */
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+/* country grid */
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+/* tiles */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+/* search */
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+}
+.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
+/* hotel CTA */
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+}
+.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+/* toggle buttons */
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  transition: all 0.2s; background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+}
+.toggle-btn:hover:not(.active) { background-color: #f0faf0; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+/* download footer */
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/">Australia</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/australia/queensland/">Queensland</a><span class="breadcrumb-sep">/</span><span>Gold Coast</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">Queensland, Australia</div>
+    <h1 class="hero-title">parkrun Events in Gold Coast</h1>
+    <p class="hero-sub">4 parkrun events in Gold Coast</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">4</span><span class="stat-strip-label">parkrun events</span></div>
+    
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in Gold Coast?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(-28.0273345,153.41098075000002,'Gold Coast parkrun')">Find Hotels</button>
+  </div>
+  
+  
+  <div class="section-heading">Events in Gold Coast</div>
+  <div class="event-grid"><div class="event-card" data-search="coomera parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-coomera" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Coomera parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/coomera" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-coomera');
+  if (!el) return;
+  var map = L.map('cmap-coomera', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2Mjk3MTAxMCwtMjI0MzA5MzAsMTU0NDQ0MzU2LC0xOTY2NjQyOSwxNjI4ODIzMjYsLTI1MDYxMDc3LDE2MTkxNTc5MiwtMzMyMzgyNzksMTY3MjY5NTY5LC0yOTEwODgyMSwxNTMxMDA0NjksLTE4NzQ5Mzc2LDE1OTY0ODUyNCwtMjgyOTQ5NjAsMTUyNTM1MTIxLC0zMjY0MzI2NiwxNjQ3Mzg4NTksLTMzMTM0NDQ3LDE2NjM4OTM4NSwtMjQ2OTY4NzQsMTUxNzM2MDk0LC0yMTk4MDc3MCwxNjY3MzY5ODIsLTE2OTgyODc1LDE1MTc0MzQ0NiwtMjY2MTM1NzksMTU3MDgxMzY4LC0yMzQwNDExMywxNjI0MDU0NDYsLTIzOTgzOTk0LDE2Mzg1MDA4NSwtMjc5ODM1MjYsMTUxOTU1MDczLC0xODk3MTMzNywxNTc1MzA5MTQsLTI1MTIzNjIyLDE2Mzc3NzM0MiwtMjY0OTA3MDQsMTUyOTUwNTYyLC0yMDE5MTQ5NiwxNjIyOTM4NDksLTMwMjI0MTMxLDE2MDY1OTA4NywtMjQ2NjA4NjAsMTU5MzM3MjkxLC0yMzg5MjU5NywxNTYwMjQxMjcsLTE3NjQ1NzU2LDE1ODAwMDg3MiwtMjg3NjQ5NzAsMTU2MzU4MTM0LC0yNDgwODU3NCwxNjc0OTA1MDAsLTI1NzQ0MzIwLDE1Nzg1Njk4NywtMTc4OTI0NjgsMTUyMTU0NDQ4LC0xOTk0MTkxMywxNjAyMTk4MDQsLTE3NjQ2NTkzLDE1ODM5NDIyMywtMjEyNjY0MDgsMTU2MjI4MDI2LC0yOTc1MTM4NSwxNjIzNTUwOTYsLTIzMTM3MDgwLDE2MjI5NDUzNiwtMzIyMTQ0MzYsMTU1ODU5MTA1LC0yOTMzOTY1MiwxNjA5NDQ0MDYsLTIzMTQ0NTg2LDE2MTY1NTYxMSwtMjY5MDYyMzUsMTY2MTAwMTU2LC0yOTk5MzI5NSwxNjM3MDMwNDMsLTI5ODk2Nzk2LDE2NjEwMzIyNSwtMjQwMzgyNDcsMTYyNDQxMTMzLC0zMDQ0MDgyNSwxNTM1MjE0MzAsLTIxNjkxODkzLDE1MTc0MzEyNiwtMjE2NTI1ODcsMTYxNjI2ODMyLC0yNDMzNTkzNywxNTQ5NDYzNzIsLTIzMTQ5ODk4LDE2MTgwNzUzNiwtMzAyNjY0MzIsMTY2NDE0MjM0LC0xOTkwMTU0NCwxNjI5MzM4NTEsLTMwMDIyOTk0LDE1MzM3NTAyMywtMzAzNTg5OTcsMTYxOTUwMDc3LC0xODM5MjM1MSwxNjUwNTI0MTYsLTE5MDUwODU1LDE2NDQwNzAxMywtMjY0NDAxNjMsMTY0OTkxMTA5LC0yNTMwNTM2OCwxNjU3NzIzMDksLTMxNzk4MzA3LDE2NTQxNTE5MywtMjgwMDEwNTQsMTUyOTMzNzY4LC0yNTU1ODUxNywxNTM4MDY5OTAsLTI4MDgyNjI5LDE1MzE4NjE1OCwtMjExOTA2OTMsMTYzNjEyNDQ1LC0zMzQwMDM3OCwxNTcwNjI1NTEsLTMxMzM4MjU1LDE1MjE0MDY4OCwtMzEwOTg4ODMsMTYyMzE2NDg0LC0yMjgzNjY1OSwxNjEwMzUyOTcsLTE3ODU1NTg4LDE1NTY4MTQ4MywtMzMxMzA0NDUsMTY3NDg4NzQ5LC0yNzUxNDcxMiwxNjAyOTcxOTIsLTI3NDAwOTUxLDE1ODI0NDIxMCwtMjM4MTQ4NjEsMTY0NjYzMDEwLC0zMjgyMjUyMCwxNTMwMTM5MTksLTIyNjgwODk3LDE1MjMyMzk1MSwtMzA3MzAwMzAsMTU3MDA1NDg2LC0yNDY0NDMxNCwxNjM5MzQ2NjksLTI2MzgzOTY1LDE1MzE5MzA5MywtMjk1NDQwOTUsMTY1NDA1MDEzLC0yNDczODIwMywxNjYyODY2NjcsLTIwMjUyMjg0LDE1Nzk0MDAxMywtMjIxMTQzOTgsMTYxMDE4ODEzLC0zMjIyMjA0NCwxNTgxMjk1OTYsLTMyMDgxMDY3LDE2NDc4Njk4NSwtMTcyOTc5MTksMTYzOTY3Nzk0LC0yMDEyMjY2MiwxNTgxNzI3MzcsLTMyODUzNDMzLDE2MjU2Njk0MSwtMjYzMTk0NDgsMTUyODI2NjA4LC0yMTc4NzQ1MSwxNjY0MjQ2MDMsLTIwODQyMTUwLDE2MjgyNzE2NiwtMjY4OTA2NzcsMTU5ODU3MTMwLC0yNDMzNjQxMiwxNTQ3MDEzMzAsLTIyODE3OTkzLDE2NjA3NzQ4MiwtMzI3MDIzNDcsMTY1OTc4OTAzLC0zMzE4NjkyNiwxNTYxNDA2NTEsLTMwNjk4MzQ2LDE2MDM5NzE3NCwtMjE4NjkyOTksMTY0MzgwMTQ0LC0yNDA4NTQxOCwxNjUyMDM0NDIsLTI0Mzg2ODczLDE1ODEwNTYzMSwtMjUzODcxODUsMTUxODQ4OTM5LC0xOTI1MDUwNCwxNTEyMDI2ODYsLTE2OTk0OTM3LDE2MDY5MDczOCwtMjgwNTI1MTMsMTYwNzYwOTA4LC0yODc2NzU0MCwxNjE1MjQ2MzEsLTI4NjkxNTU1LDE1NjgyOTk4MiwtMzMwMzExMDMsMTU4MTEzNTA4LC0yMDgzNTcyNSwxNjMzMDgyODMsLTMxNzYzODU5LDE2MDExMTc2NSwtMjA4Nzg3NTYsMTY3NjM3MTk0LC0yMjgxNzgwOCwxNjMxOTQyMDksLTMwMzYyNDExLDE2NDAzNzE4NywtMjQxMjg5NTQsMTU4NTMwMjE1LC0zMzIwNzYwMCwxNTY0NjY2NDMsLTMyNDcwMjc2LDE1MjY0MjM5MywtMjEyNDYzNjgsMTU0NDE5NDE5LC0yMDQzOTMzNCwxNTc1MDY1MjAsLTMwNTUzNzYwLDE1NTE1NTQ2MiwtMjEwNzA3NzYsMTU3NTkzOTMzLC0xNzE2MjQ0NCwxNTk3NDQ2MzcsLTE2ODM1NTI2LDE2NDgxNzY3NiwtMTkxNzIxMzEsMTU0Mzg2ODgyLC0yMjY4MzgxNywxNTk5OTAyMjIsLTE4MTAyNTk0LDE2MzIyNjA3MywtMTgxNjc2NzQsMTY0ODEwMDgyLC0yNDQyMDcxOSwxNTI4NjYwNzIsLTMwOTgzOTU4LDE2NTY4NTcwNSwtMzE2MjQyMTQsMTY0NTk3NDE4LC0yMzQxNjc4MywxNTY4Nzc0MTAsLTI4ODk3NTQ2LDE2NzM1MTIxMywtMjE2ODE3NjIsMTY1OTM5Mzg1LC0yODMxOTg1NiwxNTE3ODQxOTcsLTE5NTUyOTYxLDE2NDQxNjUwMywtMTc0ODcxNzIsMTYzNjE1MDE2LC0xODE5Mjc0NiwxNTg3MTQ3MDYsLTIyMDU0MTI1LDE2NDIzNzUyMiwtMTgzNDU4MDIsMTU3ODQzOTU0LC0zMDEwODgxMSwxNjI3NTI0MDYsLTIxODU0NDc4LDE2NDkxOTg5OCwtMzM1NTM0MTcsMTUxNjE1OTI5LC0yODk0NzA3MSwxNjA4NDExMzEsLTIyNTY4MDYyLDE2NDExMjYzMCwtMjcxMzQ0MTcsMTYyNDMyOTc2LC0xNjkwOTA1NCwxNTM2MjQ4MjksLTI2NDg0NDA5LDE2NDg5NjY4NCwtMzI0MTY1NDQsMTUyNDg0ODk5LC0yODE2Mzg2NywxNjM2NjI0MTMsLTI3Mjc2MDUwLDE1NTAzNDQwMSwtMjM3MjA5MzQsMTY1NjYxNTk1LC0yNTQ4ODMwNywxNTY5Mjc1MTIsLTE5MzQ0MzE4LDE1MTYwOTY3NywtMjA3MjExMDIsMTUzNTE2MzQ0LC0zMjQ5MzU4NSwxNTkwOTk1ODEsLTIzNzcyNjUxLDE1MzQ5MzQzMSwtMTkzOTM3NTgsMTU2NjE2NzIxLC0yODIxMTMyOCwxNjcyNTI2NjQsLTI2ODMyMTMzLDE2NTg1Nzg4MCwtMjIxOTk4MDEsMTY0NTQ5OTg3LC0xNzIxNjk0NSwxNTMwNTczOTIsLTI1NDgzMzM4LDE2NTk1NDI0NSwtMjkxMTgzODgsMTYyMDA4MzgzLC0yODY3NzUwNywxNjE5MTkxOTEsLTI4OTA1NjA4LDE2NzQ1MjEyNiwtMzA0MDAwMDcsMTU2MDYyNDIyLC0yNjY3OTE2OCwxNTIzMzAxNTAsLTMyMTA2Njg0LDE2Mzk1NDQxOSwtMjQwOTY5NDYsMTUzNzIxMzA4LC0yNjA5MzE1MV0=", 12597410);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="kirra parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-kirra" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Kirra parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/K/kirra" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-kirra');
+  if (!el) return;
+  var map = L.map('cmap-kirra', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE1MzAyMDA5NCwtMzIzODk2NjAsMTUyODE2NjM5LC0yMDYxNDQ1MiwxNTM0OTE3MzIsLTMxNDkxODcyLDE1NjIyMDczNiwtMjI3NzYzOTYsMTYxNjY1Mzc0LC0xOTYyMjAwMywxNjE1NzY5MzIsLTI2NDI2MTE1LDE1NTU1OTk5NSwtMTc4MzI1MTIsMTU1NTUyODA5LC0yNjE2ODk4OCwxNjA2ODE0MjIsLTI5Njk0MDA1LDE2NjIyNjA2OSwtMjk5NjE1NDAsMTUzNDg5MDk4LC0yNzU1ODE0MSwxNjEwMjM0ODEsLTI0MzQ1MzE0LDE1NjA4MzEyMSwtMjUxNDgxMDksMTYzNDI4ODM5LC0yMzYyNzY3OSwxNTIzNzI4MjYsLTE5MTQ2Nzk5LDE2NzAxNjMzMCwtMjU2NzM2NjAsMTU5MDQ3NzQzLC0xNzAwNTY4MCwxNjAwNjA4OTksLTIzODc3NDU4LDE2MDE3NTI5OSwtMjQxNjM5NDksMTU1NDYxMTY0LC0yMTY1MjQxOCwxNjcxNjg5MjEsLTI5NTI5NDM5LDE1NjcxOTkzNCwtMjE4Nzg5MzVd", 12511289);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="main beach parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-mainbeach" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Main Beach parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/mainbeach" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-mainbeach');
+  if (!el) return;
+  var map = L.map('cmap-mainbeach', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2MDc3OTA1MiwtMzA1ODUzMDEsMTYyOTcyNjg0LC0yOTU0MzAwNiwxNTU0NDkzMjMsLTI4NzIwMzgyLDE1NTcxNDk5NCwtMjU0MTk5MDIsMTU5NTY4MzUwLC0yODg4NzIwNCwxNjM1OTE3NTAsLTI0MTM3NzExLDE2MjE5Mzg5MiwtMzI1NzczMDYsMTY0NTg4ODM3LC0yMjU4NjU2MCwxNjM0MjgyODEsLTMyMzIwNjE2LDE1OTgxNjc2MSwtMzIwMzAxNjUsMTU5MTA1OTIyLC0zMDAyNDI5NCwxNjY4MzMwNjEsLTI3MzQyNDY2LDE1OTQwMzI5MiwtMTczMDQxNTksMTYxODIwMzU1LC0zMzIzNDMwMiwxNjMzNDA1NzMsLTIxMjQzMTkyLDE2NjI1MzMyNSwtMzExMDIxNTAsMTU4MzY4NDQxLC0xODIwMTg2NSwxNTE3MzE0NDgsLTIxNDQxNjYzLDE2MDI0NzY3OCwtMjgzODQ4MzYsMTYxMDU4NDMzLC0xOTIyOTQyNywxNTQyMzQ2OTIsLTIzNTgwNTczLDE2Mzc4NTc4NywtMTcxMjM0MDUsMTU1MDEwMTc0LC0yNDY0OTMyOSwxNTgzMzM2ODAsLTIzMzg5MzIxLDE2MDgwNjEyNCwtMjg4NDEwNDgsMTY0MDI3NzkwLC0zMDE5Nzg1MywxNTUwNzU1ODIsLTMzMDg5MTk4LDE1NTQzMzk0MiwtMjc4OTkxNTEsMTY3MjkzMDM0LC0zMDI3NTMwOSwxNjQ0NDEzMjksLTIwNDU4MDkyLDE1MzI5MTIxMiwtMTcyODQzNTMsMTY2MTQzNzg5LC0yMjIzNjQ1MSwxNjA5MDk4MjcsLTE4NzAxOTk5LDE2MDY0NTU0MywtMjExOTk4MDMsMTY3MDQ5Njk3LC0zMTY2MzkyNCwxNTg3NTM4MzgsLTIyNTk1NjcwLDE1MTk4NTc0NywtMTk5MTE1MzUsMTYyNjc0NDU4LC0yNDk0NjAwMiwxNjM0OTM0MDcsLTI5OTA0NDk3LDE2NjgxMTA2OCwtMjg2Njc4MTcsMTU5NDUwMjEyLC0yOTk2ODQ1MiwxNjY5NDcyMzAsLTIzMDM5MzU2LDE1MTA4MjA5NywtMTk3NjEyODQsMTU3NzE5MTY4LC0yNTIyODUwNCwxNTU2MDk2NjYsLTMwODUyMjA3LDE1NzM1MjcxMiwtMjAwOTg1MTUsMTU4NjMwMzk0LC0yODQ2OTA4MiwxNTU1OTU4NTIsLTE3MzAwNzUwLDE1Mzg2OTE4MCwtMjczNzk0NzksMTYwNTQwNDQ4LC0zMjQ3NDI5MCwxNTk5ODQxODcsLTIzNDM1OTg0LDE1Mjk1NzI0MCwtMTc5NjQ4MzMsMTUyMzQ4MTc1LC0yMTc1MDA5OCwxNjE4MjA1MzQsLTI3MjQ4ODMxLDE2Mzg1OTg2NiwtMjcxODE3NjQsMTYyMTUxNDI5LC0zMTg0OTk2MCwxNjEzNzYwNDEsLTIxNjEzNDA2LDE1MzU4NjA4MywtMjQ5MTM5OTQsMTU3NzQ2NzI1LC0yNjA1MTE1NywxNTY2OTQ0MTYsLTIxMTg0MTI1LDE1Njk5NjA1NCwtMTkwNzgxNTgsMTU0NzU1OTA3LC0zMTQ3MDQ1MiwxNTc3MTQ0NjEsLTMyNTQ0NzQ3LDE2MTIzNTExOCwtMjI1NzQzNjEsMTYwOTM2NzAyLC0zMDAzNDkxMSwxNjA2OTQ3MjgsLTIxNzg2MTM4LDE2NTI5ODEzMSwtMjQ3Mjg4ODIsMTU2Mjg1MTM4LC0zMTQ2OTI3MCwxNTY3NTIwOTYsLTE5MDkyMDEzLDE1MTc5OTAwNSwtMTg4NTM0OTYsMTYwNzQyNTUyLC0yOTcyNTE3NiwxNjE5ODkwMTQsLTI0MDA5NDgzLDE1MjYyNjg4NiwtMjY0NTMzMjQsMTY0ODkwOTA3LC0yMjU2ODI1NiwxNTI2NTQzNTIsLTMyNTU2Nzk4LDE2NTI5NTYzMCwtMTY5MTM1MzgsMTU2NDAwNjUxLC0yNzEwMTAzNCwxNjU1MDU1OTYsLTIwNjY2MDk1LDE1OTQ1NzA3MywtMjAxMDg3ODUsMTY2Mjk4MzMzLC0yNjc4NzUzMywxNjM3NzY0MTEsLTMwMDQyOTkyLDE1MjQ4Mjk2OCwtMTg2ODU5MTEsMTYzMDM2NDkwLC0zMDc2MjQ3NSwxNTQ0MjMyNDQsLTI4OTgwNjU0LDE1MjA2MDgxOCwtMjU5NjEwNzMsMTU1MTU5MjkzLC0yNjY5MjkwMSwxNjY4MzA0NDAsLTI2MzE1MjI3XQ==", 11021586);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="varsity lakes parkrun gold coast" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-varsitylakes" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Varsity Lakes parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Gold Coast</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/V/varsitylakes" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-varsitylakes');
+  if (!el) return;
+  var map = L.map('cmap-varsitylakes', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("WzE2MTc5NDkxMCwtMjAxMTMyMzEsMTYyNTEyNjUzLC0yNDI0MzMwMCwxNjMxNzQ4MDQsLTI4MzYwMDIxLDE2NTkxMjIyOSwtMjY1OTM0NDcsMTU3MDQ3MDY0LC0yMDUxMjc4NywxNjEyNDc4NTcsLTIyNjIyMjQwLDE1ODU3NTE2NSwtMTc2MTcyMzgsMTUyMDQ3MTgzLC0yMzg3ODQ1NCwxNTM4Nzk1NTEsLTMzMjQ3MzE4LDE1ODQxODQzOSwtMzIyNzY5OTIsMTU2MDQxOTE3LC0yOTE2MzA1NiwxNjMwODUyOTEsLTIxOTcyNzMyLDE1MTk2NjY5NSwtMzE5NDgwNTIsMTU5MTU2MTA3LC0yMjUwNjEyMCwxNjY0NjA1NTUsLTIxMDg2NTM2LDE1NzQzMTMyMSwtMjc3Mjg3MzIsMTY1NTE2MzI1LC0xNjc4MTYxNiwxNTcyNzQzNTMsLTMyNjA5OTU4LDE2MzcyNjI0MywtMjM1ODA4NTgsMTU2OTc2Njk5LC0yNDczOTE1NCwxNTIyNjk1ODUsLTI3NTc1MzE0LDE2MTQyMDY4NSwtMjc3NjEzNzgsMTY1MTQzNjYzLC0yNTE1MjY4OCwxNTQyODc1NjMsLTIwNDQ4MTcwLDE2NjYyNTkwOSwtMjM5MzA0NzQsMTY3Mjc4NjI5LC0xNzYzNjY2MiwxNjMxMTg2NDMsLTMyMzI2OTYwLDE2Mzk1NzA1NywtMjMwOTQ4NTQsMTUzMDA1MzA1LC0xOTEyODEyNCwxNjQwNTA1MDEsLTI3MDQ2NDg2LDE1NTc0MDY1MywtMjE3NTEzMzQsMTUyMTIxNTgzLC0xODA5OTQ5NiwxNTIwNTcyNDksLTIyMDUzMzQ0LDE2MzUzODU0MywtMTgyMjQ1ODYsMTU4ODIzNDY1LC0xNzA1Njk4MCwxNTY1NzgyMzUsLTIzNjYwOTM2LDE1NDEwOTg0MSwtMjE2NzY1MzYsMTU0NDgyMTQ5LC0xODEzNzI1NiwxNTEwNDI3MTksLTIyMTUxNDk2LDE1NjM1NjUxMSwtMjg5MzY1MzQsMTUyNDk3MTI3LC0yODA2MzA5NiwxNTQ5NDg4ODcsLTIwNDc3NTYwLDE1NDMxMzg5NywtMzEwNTIwOTQsMTUxNTA4OTg1LC0yMjA0MzUzOCwxNjYxOTU0ODMsLTMzNDU3MTI0LDE2NTgwODE2NywtMjcwNTY1NDAsMTU3NzQ3MjAxLC0yNTI0ODMzMCwxNjM2ODM1NDksLTE5NTMxMzgyLDE2NTY3Mjg4MywtMTgzNjcxNDAsMTY0NzQ1ODk3LC0zMjU5ODE3NCwxNTE1NzU5MDgsLTMyNTA4MDYyLDE1MTE4MDU5MiwtMjExODk1OTYsMTYxNDY3NjE3LC0zMzIzODA1NSwxNjYxNjY3NTUsLTI5OTk5NTEwLDE1MjU2NjU3OSwtMjM0OTg4MDMsMTY2OTgzMTYyLC0yNTYwODU5OCwxNTM5MDExMTQsLTI2MzIxNjI3LDE1NDU3Mzk1OCwtMTk4Mzk2MDgsMTU0ODcxNTMwLC0zMzUzNDE3NywxNjQ1ODI0MDEsLTMyOTY0NzM1LDE2MjAzNzA5MSwtMTc4NjQ4MjQsMTUzOTMxNjM0LC0yOTkyOTM1OCwxNjMxMTc2NzMsLTI5NjI2NDg5LDE2NzMwMzA3NSwtMzI2MjU4MDIsMTU0MTgwMzMwLC0yMjE4MTg1MiwxNjI4MjgxODEsLTE2OTM0NTc4LDE2MTIyNTg4OCwtMTkwMDc5MzgsMTUxMDE3NzQwLC0yNjMxOTI3MiwxNTQ0MzU2NzYsLTE5NDUyOTEwLDE2NjkzNDYyMiwtMzA4MzU3NzEsMTU1Mzg4Mjg5LC0yNDI4NzMwMiwxNjU3NTUyMDIsLTE3ODg4MjI3LDE1NDMxNjcyNCwtMjAwODMwMjMsMTY3MDAxOTA0LC0yNTAxMDM4NCwxNTMzNjQ0MDcsLTE5OTE4ODQxLDE2NjEyNDY1MywtMjUwMTYzODEsMTU5MDE3Mzc4LC0yMjY2MDUzNywxNjA4MTk5MTAsLTI3MjI1NTk4LDE2MTEzNzc2OCwtMjY0MTY5OTMsMTU5ODQ5NjQzLC0yNTcxMDg1NywxNTc0OTM3ODYsLTI4MjM0MzY5LDE1NjI4MDM5OSwtMjg5MzM3NjQsMTU3NTk4NzAzLC0yMTY1ODUzNSwxNjQ3NDI0NDYsLTIwNDcyOTQyLDE2NzA2NjIwOSwtMjA1MDA2ODAsMTU4NDg4Mjc3LC0zMjY0OTQ1NCwxNTM5NTA4ODgsLTIxOTM3NTk5LDE2NTg5NzY4MiwtMTg4NjQzMzUsMTUxMzU0OTE3LC0zMTU1NDM5OSwxNTkzMzk0NTUsLTIxNDA1MTAxLDE1MzQ1Mjk4NCwtMTY4NzE3MjEsMTUxNjY5NzMzLC0zMjA0OTgzOSwxNTM0NzQ4OTIsLTI1Nzg1NzU2LDE2NjU2MDQ2NiwtMjgwNDcwMjcsMTY1MDUyNDI2LC0zMjkyNDU2NSwxNjYxODI2NjcsLTIzNjk2MTM1LDE1ODkzMzQ5MywtMjE2NTU3MzYsMTYwMTg3NzQ3LC0yMjQyMTkzMCwxNTQxMDMxMTcsLTI3MzMzOTI2LDE1MTMwMjcyNSwtMjQzMjgwNjIsMTY1OTI0MTM3LC0xNjk3NDQ1NiwxNTgxOTc4NDcsLTMwOTE0NjkyLDE1NTU1Mzk2MSwtMzA1NTUxNDYsMTU1MzU0NjUzLC0yMjc3OTkyMiwxNjQ2NzExNDEsLTMxMzgyNDc2LDE2MDk5NjEyOSwtMjY3NTQxMDYsMTU2MDgxOTQ3LC0zMDgyNDczMCwxNjEzMDg5NzUsLTE3NTc4MjI4LDE1MjU5MDg4NywtMzEwMjQ0ODQsMTU5MTg0NjUzLC0zMjEzNzA1NiwxNTY5NzU0MDcsLTMwMjgyNDY2LDE2NjExMTE2MSwtMjU4NjkwMzIsMTU0ODU0MjIzLC0yNDY3MjU2MiwxNTIxODY5NDUsLTIzNzAzNjM2LDE1NTU4MzY1NSwtMTcxNzcwOTQsMTUxNTQ4MTQzLC0yNzkwNjMyMCwxNjEyOTQ3NTksLTIyMTkzNzE0LDE2MDU2OTQxMSwtMjY5OTg2ODIsMTYwNTk5NTg3LC0zMjk2ODA4MCwxNTE4MDcwMTMsLTI5NTYzMjA2LDE1ODM0NTAyNywtMjcyMjg3NTQsMTY1NDgyNTExLC0yODY4NDA2MCwxNjE4NTkzNTMsLTIwODA3MTA4LDE2NDUzMDQ0NSwtMjM0NzU1NTgsMTY3NTQ0MjQ3LC0yNzM3Mjk5NiwxNTUzODAyNjcsLTMyOTMzMjY4LDE2MDA4NTQyMSwtMjIxNTQxNzgsMTUxODYyMTQ1LC0yNzA0NzI3MiwxNTg3MDIwOTEsLTIyNTk3OTc2LDE1MTE4MDI1NSwtMjQxODg4OTQsMTYyMTEwNzQ4LC0yOTk3NjU4NiwxNTk4ODY5NjcsLTIxMDUyODgwLDE1NjUxNTgzMSwtMTcwNzU4NTAsMTU5NjI2MjM5LC0yMjQ4MDYwOCwxNTg2MTMzMzUsLTI1OTYyNzU4LDE2Mjc4ODUxMSwtMjc4MTgxODYsMTUzNjU1MjA5LC0xODI1MDQ0NiwxNTQ3MDg3NTcsLTIyMjc4MTg0LDE2MjgzODc4NywtMjA0NDM1MTYsMTU4MTg4Njc5LC0xNzIzNjIwOCwxNjMwNzA4ODMsLTI5MzQ0MTkyLDE2NTY0NjIwNSwtMTcwNzM2MTYsMTY1ODA5MzY3LC0yNDgxNDYyOCwxNjE4NTI5MTEsLTIzNDk2ODkyLDE2MTA5NzMzMSwtMjkzOTU1NDYsMTU2OTU3NjkzLC0xNzI4NDkyNiwxNjcyMzAyMTEsLTIxNzU0OTA4LDE1MzY1OTY0NywtMTk2OTU3MzIsMTYwNDcxODQ5LC0yNDcyMjIwNiwxNTE1MTIzMzEsLTI1MzY5NTg2LDE1NzE1NDU2MywtMzEwODg3NjIsMTUyOTE5OTg1LC0yMDE0MjQyMCwxNjQwMTMyODUsLTI1Mzc3Njg4LDE1MTU4MzM2NSwtMzE3MTg2NTgsMTY3NTAwNDQ5LC0yNjQzMDg0NCwxNTg5MjkyNjksLTI1NjQ3NjU0LDE1ODcwMzU0NywtMTg3MzY3NzIsMTU0OTAyMDM5LC0yMDQzMDE0NiwxNTQ0MTMyNDEsLTIwOTA5NDUyLDE1ODcyMjYxMywtMjQzMTM4MjAsMTUxNzY5MTAzLC0zMDA1NTM1MiwxNTc1MzAyMDEsLTIwNjk1MDg4LDE1Njc2NzU0NywtMjQ4Mzg0MDYsMTY0MzUxOTEzLC0xNzQ2NjQ1MiwxNTc4NDEzODEsLTE2ODg5ODI2LDE1MjM5NDgwMywtMjY3MDEyOTYsMTU2MzcxNDk5LC0yODI4NTQzMiwxNjMzNTA2MzEsLTI1ODQzOTE2LDE2MzE5NDE5MSwtMTgxMjc5ODAsMTUyMzE0OTUzLC0zMTI2NzcxMiwxNjA1MTY3OTgsLTI1NzcwNjIwLDE2MDcwNzQ3NywtMjcxMjk4NjgsMTYxMDg3OTg3LC0yNzQzNjkyNiwxNjc2NjI4NjksLTIwMzI2MTI2LDE2Njc3MjExMywtMjQxMjcyMDQsMTUxMjc4MjA5LC0zMzQ2MTY1OCwxNTYxNjQ5ODEsLTI3Njc1MjM0LDE2MjM2MTEzMywtMjc2NTM2OTYsMTY3MTY5OTQxLC0yNDIzNTM0OCwxNjY3ODY3MTUsLTMyMjIxNTg4LDE1MzQ2NTA2MSwtMzI4ODk2NzIsMTY3NzQ0ODYzLC0xOTU4ODk0NCwxNjI5Nzc4NTcsLTMxMjk2Nzc4LDE1MzA4ODY5NywtMTk3NjM2ODYsMTUzOTQ1MzE1LC0zMDY0OTQ4NiwxNTI0NTcxMzMsLTIzMTU4NTc0LDE1OTMzNTUyNywtMjI2NjE0MjAsMTY2NTMwMzY1LC0xNzQ3ODMyNiwxNTk5MjM3MjUsLTMzNTAwNjU2LDE1MjA1MzI0MywtMjczMDk1MTQsMTU5MjI5NDEzLC0zMjg5MjExMCwxNTcwNjkwMTcsLTI5MTIyODA0LDE1MjI4Nzg1MSwtMzA1ODc2MDAsMTU3ODExNTYxLC0yOTczMTY4MCwxNTUwNzE1NzcsLTE3NzQ1MjQ0LDE1Nzc5NjkzOSwtMzE5ODA1NjYsMTYzNDY2NDI1LC0yODA2OTY0OCwxNTE4MTg4NDksLTMwNzYzMjA0LDE1NDY1MTU5MywtMjk2NzczMzgsMTYwMjM1NzI5LC0yMDMxNzUyMCwxNjQ1ODM2NDksLTE2ODEzNzU0LDE1Mjk0MDczOSwtMjM0NzEzNjAsMTU1MDU0NTIzLC0zMjgyNzc3OCwxNTIzMDg5NjUsLTMxMzQ5ODkyLDE2NDA4Mzg2MywtMTc1NDAzNjAsMTUyMjA3NjI3LC0zMjk5ODc4MiwxNjQ0MjU5MjcsLTE4ODQ5ODM4LDE2Mzg5OTY0OSwtMjIxOTQwMjgsMTU5MDg4ODExLC0yMDk4MjkzNiwxNjM0Mzg5ODksLTI4NDUwMTA4LDE2MzMxMDQzMywtMjMxNzU1NjIsMTY1NzM3NjkxLC0yMDI4MDI2MiwxNjM4ODUzMzEsLTIzNTgwNDUwLDE1MTMxODg0NywtMzA1MDg1MjIsMTU3NjMxNzQ5LC0xOTEwNDIzMCwxNTU3NDU5NjcsLTMzMjU3NTA2LDE1NDA4MTk4NSwtMjk5NTQ0NDgsMTU3OTEzODU3LC0yNDk5OTkyOF0=", 9917550);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
+    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
+    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
+      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
+      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
+      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
+        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
+        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.style.display = 'flex';
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  document.getElementById('stay22-modal').style.display = 'none';
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+
+</body></html>

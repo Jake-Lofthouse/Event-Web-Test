@@ -4,24 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>parkrun Events in Devon, United Kingdom — Hotels, Course Maps &amp; Visitor Guides</title>
-<meta name="description" content="All 1 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon." />
+<meta name="description" content="All 5 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Devon, United Kingdom" />
-<meta name="geo.position" content="50.535163;-4.201763" />
+<meta name="geo.position" content="50.7025998;-3.7724128" />
 <meta property="og:title" content="parkrun Events in Devon, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta property="og:description" content="All 1 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon." />
-<meta property="og:url" content="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/" />
+<meta property="og:description" content="All 5 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="parkrun Events in Devon, United Kingdom — Hotels, Course Maps &amp; Visitor Guides" />
-<meta name="twitter:description" content="All 1 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon." />
+<meta name="twitter:description" content="All 5 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/" />
-<link rel="sitemap" type="application/xml" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Devon","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Devon, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 1 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon.","url":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/","spatialCoverage":{"@type":"Place","name":"Devon, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.535163,"longitude":-4.201763}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"United Kingdom","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/"},{"@type":"ListItem","position":4,"name":"Devon","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Devon, United Kingdom — Hotels, Course Maps & Visitor Guides","description":"All 5 parkrun events in Devon. View course maps, compare hotels near each event, check the weather and plan your perfect parkrun weekend in Devon.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/","spatialCoverage":{"@type":"Place","name":"Devon, United Kingdom","geo":{"@type":"GeoCoordinates","latitude":50.7025998,"longitude":-3.7724128}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -136,7 +136,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -217,29 +221,182 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
   <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
 </header>
-<div class="breadcrumb"><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><span>Devon</span></div>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/">United Kingdom</a><span class="breadcrumb-sep">/</span><span>Devon</span></div>
 <main>
   <div class="hero">
     <div class="hero-eyebrow">United Kingdom</div>
     <h1 class="hero-title">parkrun Events in Devon</h1>
-    <p class="hero-sub">1 parkrun event in Devon</p>
+    <p class="hero-sub">5 parkrun events in Devon</p>
   </div>
   <div class="stat-strip">
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">parkrun events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">5</span><span class="stat-strip-label">parkrun events</span></div>
     
-    
+    <div class="stat-strip-item"><span class="stat-strip-value">5</span><span class="stat-strip-label">Cities</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
       <h2>Need accommodation in Devon?</h2>
       <p>Compare hotels and rentals near any Devon parkrun event.</p>
     </div>
-    <button class="hotel-cta-btn" onclick="openStay22(50.535163,-4.201763,'Devon parkrun')">Find Hotels</button>
+    <button class="hotel-cta-btn" onclick="openStay22(50.7025998,-3.7724128,'Devon parkrun')">Find Hotels</button>
   </div>
+  <div class="section-heading">Browse by city</div><div class="tile-grid"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/west-devon/" class="tile" data-search="west devon">
+  <span class="tile-name">West Devon</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/plymouth/" class="tile" data-search="plymouth">
+  <span class="tile-name">Plymouth</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/broadclyst/" class="tile" data-search="broadclyst">
+  <span class="tile-name">Broadclyst</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/barnstaple/" class="tile" data-search="barnstaple">
+  <span class="tile-name">Barnstaple</span>
+  <span class="tile-count">1</span>
+</a><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/united-kingdom/devon/seaton/" class="tile" data-search="seaton">
+  <span class="tile-name">Seaton</span>
+  <span class="tile-count">1</span>
+</a></div>
   
   
   <div class="section-heading">All events in Devon</div>
-  <div class="event-grid"><div class="event-card" data-search="tamar trails parkrun west devon">
+  <div class="event-grid"><div class="event-card" data-search="barnstaple parkrun barnstaple" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-barnstaple" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Barnstaple parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Barnstaple</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/barnstaple" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-barnstaple');
+  if (!el) return;
+  var map = L.map('cmap-barnstaple', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMjUyODI2Niw1NjMyNDgwOCwtNTYzMTIyMCw1NjE5NDgxNCwtMTEyNTI1NCw2MzU4NTQxNSwtODkwMTkwNSw2MTY5NjQzOSwtNzg3MDExNiw1MTk0NDAwMiwtMTU3ODE4MDcsNTA1NDE4MzQsLTYwNTk2Myw2NTY1NTAxMiwtMTI2NzYxNjQsNTQwMjUxMzMsLTk5MzIxMDQsNjcwNjkwMDMsLTcwNDU5MDEsNTcwNTk0NTEsLTQxNzg3NzYsNTQ5MTIzOTAsLTEwNTAxMjQ3LDYzNTI1OTU1LC0xMzk2NzEwMiw1ODczODcxOSwtMTEzMzA4MTcsNTcwMjY0ODIsLTIwMTUxNiw1NjgxOTQxMywtNTMzODQ3NSw2MDYxNjIzOCwtNjA1NzgsNjE2ODc0NTIsLTk2NjE2MTEsNTU0OTMxNDAsLTE0OTk3NDc4LDUwNDQzMTIyLC0yMjI3MzE4LDU5MjE3NzMwLC01OTA2MjMwLDYzODI0ODI5LC00MDcyMjU2LDUwNTY3MTg2LC0xMjUyNDAzMyw2NjM5MTk4NywtMTY2ODY1NDIsNTkwNjQ4MDcsLTExNDQyOTUsNjE0NTkwMDYsLTEyMDQ0OTUyLDUxNzIzODE0LC0xMDA3Mjg0LDU5MjQ2Nzg4LC02Mjk0MDU4LDUxNDQxNzMzLC0xNTYwMjE5Niw2MTM2NTkyMSwtNjUzMzMzNSw2MjE3MDM4NCwtMTA0NjYyOTEsNjMzMTUzMzQsLTc4NTYyMTAsNjMwMjA5MzAsLTk3NDEzMTcsNTc1MDk2NjYsLTgxMzA4NTUsNTgxMzA4MDcsLTE1NTk1NDc2LDU5NzE0NjA4LC0xNjEyMzQwMCw2MzQ3OTU0MiwtNDE5NzQ0Nyw1MzgwNTI5MCwtMjQwMzY2MCw2Mjc4MjE4Ml0=", 15396708);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="killerton parkrun broadclyst" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-killerton" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Killerton parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Broadclyst</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/K/killerton" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-killerton');
+  if (!el) return;
+  var map = L.map('cmap-killerton', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy04NTEyMzk5LDYyNTU0MDY3LC0yMjQyNDcwLDUwMzcxMjE0LC00OTA0MjcyLDY0NzgyNDI3LC0xMzE0MjQ5Nyw1MjY4ODEwMiwtOTI4NTg2Nyw1NTk0Mzg5NCwtNjQzMzg1Niw1MzI5ODM3OSwtMTA1MTQzMTgsNTU2MDE0NDUsLTE1MzMwNzgyLDYyODMyNDgzLC0xNTQ2NjI0NCw1MTYxNzg4OSwtNDcxODcyOCw2MDY2NjgyNSwtMTE1ODMwNTcsNTQzNzg5NTcsLTM4MDExMjcsNjY4MDk1NjQsLTQzMDc2NzksNjE4ODI1MTUsLTc1Njc1MTEsNjMwODM1ODYsLTEwMjY0MTY2LDYyNTQ2MjAxLC0xNDE4NDkyMiw1MzczODgwOSwtNDgzODMxMiw1MTE5NDM4NSwtODI0NzQ3Nyw2NDk5NjkzMCwtODI1NDE4OCw1ODE0NTE0NiwtMTQwODMyOTUsNjEwOTc0MjIsLTE1OTU0MjcsNTk0NDY1MDIsLTYwNTc1MDEsNTUxMjYwMjksLTEyOTE5MzUsNjQxNjE0NDYsLTEyOTAzNDc5LDUwODY3MTk3LC01Nzk0NTYwLDY0ODE0NDI5LC01NTM3MDY2LDU2OTI1MDAxLC0xMjcyMzcwMSw2Mzg3NzQ1MSwtMjA1Mjk3Nyw1NDc1OTUyNSwtNzMyMTU2Nyw1Mzk4NDMwOSwtNzQ5NTc5LDU5MzczNDcxLC0xNTQzNTEyMSw1MTE5ODA5OSwtNTM3NzI0LDU5Nzk1NTYwLC0xNjY5MDM4OSw2Njk4NjI5MiwtMTQ0NjY2NTMsNTE0NTQyNTAsLTEzMTY3OTAyLDYzMDA0NDQwLC0xMzg5NjgwNCw1NTYwMTY5NSwtOTE0ODU2NCw1NDQ3MzIzNiwtMTA4MjQwODAsNTg5ODM4NTgsLTE1MzA2Nzg1LDUwMzMyMTI1LC01NDY4NzU0LDU2MzMzNTk2LC0xMzEwNDg3MCw1Mjg0MDA0OF0=", 8882299);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="plymvalley parkrun plymouth" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-plymvalley" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Plymvalley parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Plymouth</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/plymvalley" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-plymvalley');
+  if (!el) return;
+  var map = L.map('cmap-plymvalley', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy01MzMzMjg1LDU1OTkwMjA0LC05NDAzNTU0LDY0MTYwNjA2LC0xNDAyMjM4Myw1NzM4MTE4NSwtNzM5MTMxMiw2MTUyNTQ4MCwtNzg5MTk1OCw2NTEzMTY1OSwtNjkyMjc2Nyw1MjIzOTA5NiwtODA3MjQ2NCw2MzAyOTU5OCwtODQxMjE0NSw1MzgzMTE3MywtMTc5NjY2Miw2MDg4ODYyOCwtMTE3MTIxMiw2NjAxMzE5NCwtNTM0MTkxNyw1NzA5MzM4MSwtMzkyOTk3Miw1OTg4MDQwMiwtMzUyNDEzNyw1NTY2MDU5NywtNDUwOTg4Myw1NTU5NjkxMCwtMTEyMDc0NjcsNTM5MDMwOTEsLTIyMTExMDQsNTQyNTk0ODUsLTEzODkwMDg0LDUxNDgxNDAxLC0xMTczOTEzMSw1NTY3MDg1NSwtMjk4MTI2Miw2MjE4MjgzOSwtNjU3NTMzNSw2NjE2ODI0MiwtODAzMjUwLDY1MzQ2MjE4LC03NDA4NDAzLDU4NTQyMzUwLC0xMjk2MTcwMiw1OTIwNTMwMiwtMTUxMjE1MTcsNTM3NDE3NjcsLTc1Nzc5Nyw1MzY3NDY5NSwtODYzNjU1MCw1NzI2MjA4OSwtMTEzODEwMTcsNjYyODc1ODQsLTMxMzQ0ODksNjM3NDY4NzUsLTE2MzA0NjczLDU0ODQ3NTg2LC01NzY0MjIzLDUzMjYxMTM5LC0xNTQxNjY0OSw1NzE0NzE1MCwtNzQ2Nzc5Miw1NDgxMTMxNywtOTcxNDUzNSw2MzczODk5NCwtMTMxOTg4OTEsNjU2MjcyODIsLTEzODc2MjU1LDY2NDM5NDE3LC05ODMxMzcsNTcyNzI5NzksLTI2Mzg3MzUsNTYzODMwMjAsLTEwNTgyMjMyLDUzOTI1MzI4LC04NDUxODIyLDY0MDE0MDg5LC0xNTAyODY4LDYzNTcwOTYxLC02NDc3NjksNjU3MTcxNzgsLTk0Njg5ODksNjMwMTk1NTEsLTYzMjEzMDQsNjQ0ODE5NTAsLTEyODA0MjgxLDU0NzQ0NjU2LC05NjkyNDY0LDU1OTE5NDExLC0zODU4MzExLDYxNTk2MTExLC0xMTI0NzQ0NSw1MDQ1ODc0MywtNzgyNzczNCw1NzI1NjA4OCwtMzI4NTQzNCw2NDQzMTMwMCwtMTExMzQ4NjcsNTI2NzY0NDMsLTYwNjcxOTksNjYxNjkyMjcsLTEyOTQyMzU0LDUyMDczMDc0LC02NTU1MzI4LDU5OTQ2MDM0LC0xMzczOTgxOSw2NDM5NDgyMSwtNDc4MTcxMCw1NzQ3ODk4MiwtMTUyMjAyNzMsNjcwNzU5ODQsLTExNDAwOTg5LDUxNjcwMjY0LC05ODgzNDc4LDU4Njk2NTUzLC05MDExNDIzLDY0ODM5NjM5LC0xMzUyMjA4Nyw2NjM3MDY3MiwtMTQ5MTY0OSw2MzI4MjQwNiwtMTMyNDgwOTUsNTU0ODM5OTIsLTg0NjIzMjAsNjM3MTExMDYsLTY3ODM3MSw2MTYzMjE4NiwtNDU2NzY4Miw1Nzg4OTA1NywtMjY3ODc5Niw1OTIxNDUzMSwtNjYwNjYyNSw1NzY4NjUyOSwtMTQ2MTI0NzAsNTE0MjY0ODUsLTU5OTgzMjEsNjQwNDgzOTYsLTE0MDI1ODk2LDY1MTc5NTU3LC0zNTMwODA0LDUyMTkzNDk5LC0zNTg5NDg1LDY0NDI3MTE1LC05NDI2NDI1LDY2MzY2NDQ2LC03MDU0MjE5LDUzMTE2MzUxLC0xMTk0NzEzMSw2MzQ4NTkxMywtMjkwOTkxNCw2NjE4MjYyOSwtMTA1MzI5NzcsNjQ5ODQ0NTEsLTE0NTc4MDk4LDYxMTgyMDAwLC00ODIyMDgsNjAxNDk5NzYsLTM5MzIzMiw1MjE2MzY0OSwtNjI2NTg3NCw2NTU5NDQxNSwtMjQ4ODQzOCw2MDU3NzA4NiwtODYxNDgxOSw1NDQ3NTQzNCwtMzYyNzM5OCw1NTcyMjc5OCwtMTA0MjQ3NDgsNTYxMzYzMTYsLTk4NDkwMyw2NTE4NTg1MCwtNTk4ODYzOCw2MTcyOTIwNSwtMTQwNTY2MjIsNTYyNDkzNTYsLTEzMDQ3NzI5LDY0NDUwOTM0LC02NDk2MjIxLDU1MzYwODk3LC04OTg2MzU0LDU3MjE0NjkxLC0xMTkwOTA5OCw1NDIwMTU4MywtNDY4MjIxNiw2NTc2MzcyMCwtNTE0NDUwNSw1MzUyOTkzNiwtMTM3Nzk2NDgsNTIzODk4OTAsLTQ0MjQ5ODUsNjI0MTM1NjMsLTE3Nzk5NzgsNTkxMTI4NzQsLTc0MTE2NTcsNjU4MTQ3MDksLTUwNDMyNTMsNTI0OTgwNzQsLTEwNzAyNDg3LDY1NDEyNjExLC00ODc3NzEyLDU4MjExMjU0LC01MDAwMzI4LDU2Njk4MjA3LC01NjMyOTY0LDY1MjQ5MTA0XQ==", 4280943);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="seaton parkrun seaton" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-seaton" class="card-map-inner"></div>
+    
+  </div>
+  <div class="card-body">
+    <div class="card-name">Seaton parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Seaton</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/seaton" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-seaton');
+  if (!el) return;
+  var map = L.map('cmap-seaton', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  map.setView([50.703349, -3.072064], 14);
+  L.circleMarker([50.703349, -3.072064], { radius: 8, fillColor: '#4caf50', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  
+})();</script>
+<div class="event-card" data-search="tamar trails parkrun west devon" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-tamartrails" class="card-map-inner"></div>
     <div class="card-map-badges">
@@ -296,7 +453,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 <div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);

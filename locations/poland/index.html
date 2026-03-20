@@ -10,7 +10,7 @@
 <meta name="geo.position" content="52.35606071428571;18.80134457142857" />
 <meta property="og:title" content="parkrun Events in Poland — Hotels, Course Maps &amp; Visitor Guides" />
 <meta property="og:description" content="Find all 7 parkrun events across Poland. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
-<meta property="og:url" content="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/poland/" />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -18,10 +18,10 @@
 <meta name="twitter:description" content="Find all 7 parkrun events across Poland. Browse by region, view course maps, find hotels near each event and plan your parkrun trip." />
 <meta name="robots" content="index, follow" />
 <meta name="language" content="en" />
-<link rel="canonical" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/poland/" />
-<link rel="sitemap" type="application/xml" href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Poland","item":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/poland/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Poland — Hotels, Course Maps & Visitor Guides","description":"Find all 7 parkrun events across Poland. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://www.jake-lofthouse.github.io/Event-Web-Test/locations/poland/","spatialCoverage":{"@type":"Place","name":"Poland","geo":{"@type":"GeoCoordinates","latitude":52.35606071428571,"longitude":18.80134457142857}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Poland","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"parkrun Events in Poland — Hotels, Course Maps & Visitor Guides","description":"Find all 7 parkrun events across Poland. Browse by region, view course maps, find hotels near each event and plan your parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/","spatialCoverage":{"@type":"Place","name":"Poland","geo":{"@type":"GeoCoordinates","latitude":52.35606071428571,"longitude":18.80134457142857}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -136,7 +136,11 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* event cards */
+/* filter bar (junior / 5k toggle) */
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
 .event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
 .event-card {
   background: white; border-radius: 0.875rem; overflow: hidden;
@@ -217,17 +221,17 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
   <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
 </header>
-<div class="breadcrumb"><a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><span>Poland</span></div>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><span>Poland</span></div>
 <main>
   <div class="hero">
     <div class="hero-eyebrow">🇵🇱 Poland</div>
     <h1 class="hero-title">parkrun Events in Poland</h1>
-    <p class="hero-sub">7 parkrun events across 1 region</p>
+    <p class="hero-sub">7 parkrun events across 6 regions</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">7</span><span class="stat-strip-label">parkrun events</span></div>
     
-    <div class="stat-strip-item"><span class="stat-strip-value">1</span><span class="stat-strip-label">Regions</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">6</span><span class="stat-strip-label">Regions</span></div>
   </div>
   <div class="hotel-cta">
     <div class="hotel-cta-text">
@@ -239,9 +243,29 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   
   <div class="section-heading">Regions</div>
   <div class="tile-grid">
-<a href="https://www.jake-lofthouse.github.io/Event-Web-Test/locations/poland/poland/" class="tile" data-search="poland">
-  <span class="tile-name">Poland</span>
-  <span class="tile-count">7</span>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/pomeranian-voivodeship/" class="tile" data-search="pomeranian voivodeship">
+  <span class="tile-name">Pomeranian Voivodeship</span>
+  <span class="tile-count">2</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/wojewodztwo-lodzkie/" class="tile" data-search="wojewodztwo lodzkie">
+  <span class="tile-name">Wojewodztwo Lodzkie</span>
+  <span class="tile-count">1</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/greater-poland-voivodeship/" class="tile" data-search="greater poland voivodeship">
+  <span class="tile-name">Greater Poland Voivodeship</span>
+  <span class="tile-count">1</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/masovian-voivodeship/" class="tile" data-search="masovian voivodeship">
+  <span class="tile-name">Masovian Voivodeship</span>
+  <span class="tile-count">1</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/lesser-poland-voivodeship/" class="tile" data-search="lesser poland voivodeship">
+  <span class="tile-name">Lesser Poland Voivodeship</span>
+  <span class="tile-count">1</span>
+</a>
+<a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/lower-silesian-voivodeship/" class="tile" data-search="lower silesian voivodeship">
+  <span class="tile-name">Lower Silesian Voivodeship</span>
+  <span class="tile-count">1</span>
 </a></div>
 </main>
 <div class="download-footer">
@@ -264,7 +288,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 </footer>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
-  data-message="Support The App" data-color="#40DCA5" data-position="Right"
+  data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 <div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
