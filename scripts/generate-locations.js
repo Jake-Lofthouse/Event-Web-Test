@@ -1037,8 +1037,8 @@ function generateWorldIndex(countries) {
   }).join('');
 
   return `${htmlHead({
-    title: 'parkrun Events by Location — Find Hotels &amp; Plan Your Visit | parkrunner tourist',
-    description: 'Browse parkrun events by country and city. Find hotels near every parkrun, view course maps, check weather and plan your perfect parkrun weekend.',
+    title: 'Find parkrun Events Near You — Hotels, Course Maps &amp; Visitor Guides | parkrunner tourist',
+    description: 'Planning a parkrun holiday or visiting somewhere new? Find parkrun events near your destination by country and city. Compare hotels, view course maps and plan your perfect parkrun trip.',
     canonicalUrl: `${BASE_LOCATIONS_URL}/`,
     breadcrumbItems: [],
   })}
@@ -1048,8 +1048,8 @@ ${htmlHeader()}
 <main>
   <div class="hero">
     <div class="hero-eyebrow">parkrunner tourist</div>
-    <h1 class="hero-title">Browse by Location</h1>
-    <p class="hero-sub">Find parkrun events near you — browse by country and town, then plan your visit with hotels, course maps and weather.</p>
+    <h1 class="hero-title">Find parkruns Near Your Destination</h1>
+    <p class="hero-sub">Going on holiday or visiting somewhere new? Browse parkrun events by country and town — then find hotels nearby, check the course map and plan your parkrun trip.</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">${totalEvents.toLocaleString()}</span><span class="stat-strip-label">Events worldwide</span></div>
@@ -1081,8 +1081,8 @@ function generateCountryPage(countrySlug, countryData) {
 </a>`).join('');
 
   return `${htmlHead({
-    title: `parkrun Events in ${name} — Hotels, Course Maps &amp; Visitor Guides`,
-    description: `Find all ${totalEvents} parkrun events across ${name}. Browse by town and city, view course maps, find hotels near each event and plan your parkrun trip.`,
+    title: `Find parkruns in ${name} — Hotels, Course Maps &amp; Visitor Guides`,
+    description: `Looking for parkrun events in ${name}? Browse every town and city, view course maps, find hotels near each event and plan your parkrun trip to ${name}.`,
     canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/`,
     lat: c.lat, lon: c.lon, locationName: name,
     breadcrumbItems: [{ name, url: `${BASE_LOCATIONS_URL}/${countrySlug}/` }],
@@ -1094,8 +1094,8 @@ ${breadcrumb([{ label: name }])}
 <main>
   <div class="hero">
     <div class="hero-eyebrow">${flag} ${name}</div>
-    <h1 class="hero-title">parkrun Events in ${name}</h1>
-    <p class="hero-sub">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${cities.length} town${cities.length !== 1 ? 's' : ''} &amp; cities</p>
+    <h1 class="hero-title">Find parkruns in ${name}</h1>
+    <p class="hero-sub">${totalEvents} parkrun event${totalEvents !== 1 ? 's' : ''} across ${cities.length} town${cities.length !== 1 ? 's' : ''} &amp; cit${cities.length !== 1 ? 'ies' : 'y'} — pick a location to see course maps and nearby hotels</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">${standardCount.toLocaleString()}</span><span class="stat-strip-label">5k events</span></div>
@@ -1146,8 +1146,8 @@ function generateCityPage(countrySlug, countryName, citySlug, cityData) {
     .map(ev => eventCardHtml(ev)).join('\n');
 
   return `${htmlHead({
-    title: `parkrun Events in ${cityName}, ${countryName} — Hotels &amp; Course Maps`,
-    description: `${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${cityName}. View course maps, find nearby hotels and plan your parkrun visit to ${cityName}.`,
+    title: `Find parkruns in ${cityName} — Hotels Near Each Event &amp; Course Maps`,
+    description: `Planning a visit to ${cityName}? Find ${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${cityName}, ${countryName} — view course maps, compare hotels nearby and plan your perfect parkrun trip.`,
     canonicalUrl: `${BASE_LOCATIONS_URL}/${countrySlug}/${citySlug}/`,
     lat: geoLat, lon: geoLon, locationName: `${cityName}, ${countryName}`,
     breadcrumbItems: [
@@ -1165,8 +1165,8 @@ ${breadcrumb([
 <main>
   <div class="hero">
     <div class="hero-eyebrow">${countryName}</div>
-    <h1 class="hero-title">parkrun Events in ${cityName}</h1>
-    <p class="hero-sub">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${cityName}</p>
+    <h1 class="hero-title">Find parkruns in ${cityName}</h1>
+    <p class="hero-sub">${events.length} parkrun event${events.length !== 1 ? 's' : ''} in ${cityName} — view course maps and find hotels nearby</p>
   </div>
   <div class="stat-strip">
     <div class="stat-strip-item"><span class="stat-strip-value">${standardCount.toLocaleString()}</span><span class="stat-strip-label">5k events</span></div>
