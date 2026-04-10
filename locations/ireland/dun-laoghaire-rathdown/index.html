@@ -1,0 +1,774 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Find parkruns in Dun Laoghaire-Rathdown — Hotels Near Each Event &amp; Course Maps</title>
+<meta name="description" content="Planning a visit to Dun Laoghaire-Rathdown? Find 6 parkrun events in Dun Laoghaire-Rathdown, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="Dun Laoghaire-Rathdown, Ireland" />
+<meta name="geo.position" content="53.27689;-6.271777" />
+<meta property="og:title" content="Find parkruns in Dun Laoghaire-Rathdown — Hotels Near Each Event &amp; Course Maps" />
+<meta property="og:description" content="Planning a visit to Dun Laoghaire-Rathdown? Find 6 parkrun events in Dun Laoghaire-Rathdown, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/dun-laoghaire-rathdown/" />
+<meta property="og:image" content="https://www.parkrunnertourist.com/Images/Feature.jpg">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:image" content="https://www.parkrunnertourist.com/Images/Feature.jpg" />
+<meta name="twitter:title" content="Find parkruns in Dun Laoghaire-Rathdown — Hotels Near Each Event &amp; Course Maps" />
+<meta name="twitter:description" content="Planning a visit to Dun Laoghaire-Rathdown? Find 6 parkrun events in Dun Laoghaire-Rathdown, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<meta name="language" content="en" />
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/dun-laoghaire-rathdown/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Ireland","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/"},{"@type":"ListItem","position":4,"name":"Dun Laoghaire-Rathdown","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/dun-laoghaire-rathdown/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Find parkruns in Dun Laoghaire-Rathdown — Hotels Near Each Event & Course Maps","description":"Planning a visit to Dun Laoghaire-Rathdown? Find 6 parkrun events in Dun Laoghaire-Rathdown, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/dun-laoghaire-rathdown/","spatialCoverage":{"@type":"Place","name":"Dun Laoghaire-Rathdown, Ireland","geo":{"@type":"GeoCoordinates","latitude":53.27689,"longitude":-6.271777}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+body.modal-open { overflow: hidden; }
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+  overflow: hidden; transition: background 0.3s ease, color 0.3s ease;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; }
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value {
+  font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; position: relative; overflow: hidden;
+  transition: opacity 0.18s;
+}
+.card-cta:hover { opacity: 0.87; }
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.hotel-cta-btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+  position: relative; overflow: hidden;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { outline: 2px solid #4caf50; outline-offset: 2px; background-color: white; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; border-color: transparent; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
+/* Ripple effect */
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  transform: scale(0);
+  animation: ripple-anim 0.55s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+/* Contact footer */
+.contact-footer {
+  background: #f0faf0; border-top: 1px solid #dde5d8;
+  padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.875rem;
+  text-align: center;
+}
+.contact-footer p { margin: 0; color: #5a6e52; font-size: 0.925rem; }
+.contact-footer-btn {
+  padding: 0.6rem 1.75rem; background: white; color: #2e7d32;
+  border: 2px solid #4caf50; border-radius: 0.5rem;
+  font-weight: 700; font-size: 0.875rem; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.contact-footer-btn:hover { outline: 2px solid #4caf50; outline-offset: 2px; box-shadow: 0 2px 8px rgba(46,125,50,0.12); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+/* Modal base */
+.modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 9999; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 20px; max-width: 900px; width: 96%; max-height: 92vh;
+  overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.4); display: flex; flex-direction: column;
+}
+.modal-header {
+  padding: 13px 16px 11px; border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: #fff;
+}
+.modal-header-title { font-size: 15px; font-weight: 700; color: rgba(0,0,0,0.87); }
+.modal-close-btn {
+  background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.5);
+  position: relative; overflow: hidden;
+}
+/* Contact modal iframe */
+.contact-modal-iframe {
+  flex: 1; border: none; min-height: 520px;
+}
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/">Ireland</a><span class="breadcrumb-sep">/</span><span>Dun Laoghaire-Rathdown</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">Ireland</div>
+    <h1 class="hero-title">Find parkruns in Dun Laoghaire-Rathdown</h1>
+    <p class="hero-sub">6 parkrun events in Dun Laoghaire-Rathdown — view course maps and find hotels nearby</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">3</span><span class="stat-strip-label">Junior events</span></div>
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in Dun Laoghaire-Rathdown?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(53.27689,-6.271777,'Dun Laoghaire-Rathdown parkrun')">Find Hotels</button>
+  </div>
+  
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR = true;
+  var HAS_STANDARD = true;
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+    var btn5k = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll = document.getElementById('filter-all');
+    if (btn5k) btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll) btnAll.classList.toggle('active', val === 'all');
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+  window.setFilter = applyFilter;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyFilter(getInitialFilter()); });
+  } else {
+    applyFilter(getInitialFilter());
+  }
+})();
+</script>
+  <div class="section-heading">Events in Dun Laoghaire-Rathdown</div>
+  <div class="event-grid"><div class="event-card" data-search="cabinteely junior parkrun dun laoghaire-rathdown" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-cabinteelyjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Cabinteely junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Dun Laoghaire-Rathdown</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/cabinteely-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-cabinteelyjuniors');
+  if (!el) return;
+  var map = L.map('cmap-cabinteelyjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMzE2MDE2Niw2MjAwNjc3OSwtODI1NTc2Nyw2NTUzMTQzMywtMzAyODcxNyw1MjU3MzM5NywtMTI3NTM1OTMsNjEwNTI0NjAsLTkwMTQ1OTksNjY5OTg0NzgsLTk0MDQ3MDEsNjMyNzk5MzMsLTk5NTczMzgsNjAxNjA5MTIsLTgxMzg0NzEsNTk5NjczODgsLTEwMzY4MzcwLDU5OTU3Nzc2LC04NTA5MzQ0LDUwNzQ3MTA2LC03MTQ0MzgxLDU1NDgzMzM4LC0yNTg3MTIwLDYzNjU3OTk4LC0zNzE4NTE0LDUxNDE4MjQ2LC03OTgyMTc5LDUyNTI3MTc1LC0xNDc2Njg0Niw2NTE3NDEwMSwtMzA5NjcxMCw2NDE1MTUwNSwtMTA2Nzc1MDUsNjE5MTQ0NDQsLTI2NDA5NjEsNTk1MTkzNzAsLTU4MjI2ODYsNTU4NTMyNjUsLTExMTg1NzAyLDY1MDk0NDYwLC0xMzAxMzU2Miw1MTE4ODU2OSwtMTA2Mjc2MTYsNTI3ODgzNDEsLTE2NDY2ODcwLDUyNjA4Njc0LC0xMjg2MzQwMyw1NjEyMDIzOSwtMTQwMTA5NzUsNjEzNzAwNzMsLTg5MzA5MjMsNTMzMzA1ODYsLTEwMjY3MjU4LDYzMTMxMzA0LC01NDQ4MzExLDYzNjMwOTc2LC05MDYyMzg0LDU2Mzg1OTM4LC0zMzgxOTUyLDU4MjQwMjE1LC0yNDA4MDAzLDYwMzM2NTkzLC0xNTg2OTEyMiw1NDg0MDU0NywtMTI0NDc0ODMsNTMwNjkyMTdd", 11784264);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="cabinteely parkrun dun laoghaire-rathdown" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-cabinteely" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Cabinteely parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Dun Laoghaire-Rathdown</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/C/cabinteely" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-cabinteely');
+  if (!el) return;
+  var map = L.map('cmap-cabinteely', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05NjcwMTQwLDUyMjgzNjY0LC05MjEyMCw1NDU3MDkwNSwtNjQ0Mzk1OSw2NDgzNDM3NiwtNjEwNDY4OSw2MTUwNDU5MywtODQ5MTIxNiw1MTQzODgzNiwtMTIzNDE4OTMsNjY2MzYwMDQsLTE2MTE1NzUwLDYwNzU0NjIwLC0zOTY1NzUwLDYwODQwMzgzLC04NDE3NzYsNTAzOTczOTEsLTExNDAwMDg5LDU0MDYzNzUyLC0xNTk4ODA4LDYwMzc5MDU5LC02NTMzMTMyLDYyMDIxMjU4LC02MDA4Mzk5LDY2OTg4NjY3LC0xNTcwOTEzNiw1NDA3OTc0NSwtMTUwODY2MzAsNTMxNzUxNjEsLTQ1OTU3MjQsNTE2NjU5MjksLTU1MzUzNzUsNjE5MDQwMjgsLTE2NDI4MjcwLDUzMTQyNzE5LC04MzYzNTg3LDYxOTIwNjA1LC01MjAwNDAxLDU4MTcyODU2LC00Mjg1MzA4LDUzNzI1NTI1LC04MTYwMDUyLDY2MzUzMTkyLC0xNDIyMDg1Nyw2NTQzMzY3NiwtMTIwMzE3Miw1MjgwODI2MSwtNjkwMzExMyw2MjQ1NzE1MCwtMTAxMzg5OTYsNjYwMzY4MTYsLTQxMTE5NTUsNjUxODA4MjYsLTEzNTQ4MzQ5LDY1MDQ3MTU1LC0xMDg4MzQ5MCw1NzcxODEyOCwtNTEyNTQ5Niw2MDAyMzE5MCwtNzE1NTkwMiw1NzIyMDY0NywtMTU3MTcxOTAsNTA1NzkyODcsLTEyMDY5MzQsNTY2MDY5NDUsLTg5NjM5NjQsNTI4ODk2MzEsLTg5NzA4NTgsNjAzNTExMTksLTQ3ODk4MTMsNTc2NjA2NTUsLTEwMjU5Mjg0LDUzMzE0Mzk2LC0xNTk2MDQ4Myw1OTE0NjI0MSwtNzczODg5Miw1MzMzNDU3MywtNjY2OTEzNiw1MzUyNTM2NCwtNDkwODczNCw2NTIwMzA1NywtMTMxMDc3NTIsNjM4MTM0MzUsLTE0MjMwMzA3LDY0NzAzMTU1LC03NDMwMDM0LDU4NTM5Mjc1LC05OTQ4ODc3LDY1MzE4MjUzLC03NTcxNzAsNjAyMjAxNTIsLTgyODY5ODgsNjU3NzYxNzksLTQ5MjYwMDUsNjE2NDk4MTcsLTE0MDAyNzU0LDU1ODMzNjQyLC01NDY2MjU4LDYxMzc3Mjk5LC0xNDgzNTg2Myw2MTY5ODk0MywtMTU4OTk5MTQsNjU3NjA1ODgsLTE1NjQ4MzI4LDU5MTAyNTIwLC0xNTU0MTMzNSw1ODQ2MjA0MywtNTg2MjU0Myw2MjA3MTQyNywtMTA0MTQ5OTAsNTY2MjUxMTgsLTEyNDMxMzQ1LDYyMDczOTA3LC0xNDU1MTA3MCw1NjE4NTk1NCwtNTIzMTMwMiw1NjA3MjQxOSwtMTU3MDgzOTQsNjA0NDYyNTEsLTMxMDA0MSw2NjIwNTc4MCwtMTY3NTA3MDUsNTI2MTkzMjgsLTEwNjEyOTg0LDY3MDYwOTExLC0xMTI4NzMwNiw2MDcxNzQyMywtMTI5ODIxOTgsNjE1NjMwNTEsLTI1NTUxMjUsNTYzMDA0MjUsLTEzMjIxODcsNTY2NDY3NDUsLTE0MTMyNTMyLDU2Mzk0NTU3LC04NjczOTcxLDYzNzU4NzI1LC04OTI1MDYsNjY2MjQ5OTcsLTI4MTA0MzUsNjMwNDMwMTIsLTEyOTY3MzkzLDUxMzcxNDgwLC0yNDY3NjI0LDY2OTc2MDY4LC0xNDk5MzAxMSw2MTI1ODgwNywtMzA2MDY4MCw1OTU1MDgzMSwtOTU1MDYxNiw2MTM5Mjk0MiwtMTM0MTgzMjcsNTUyNDg5MDMsLTQzNDA0MTcsNjYwNTU1NTgsLTgzNTcyNDgsNjAzNDUyMzEsLTExOTgwOTExLDU2ODM0ODMzLC0zMTIyMDA2LDU4MjI0MjgzLC0yMDI4MjU5LDYzMDgwOTE0LC04Nzg4NTQ5LDU3NzQ2MDU5LC0xMDg5MjcwLDY1NTM5MTc1LC00MjU1MzU2LDU0NTk1NDcyLC0xNTI0MDE2OCw1MTM4MzU4MiwtMTE5NzQyNDMsNTIzMDYyNTNd", 1339379);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="deerpark junior parkrun dun laoghaire-rathdown" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-deerparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Deerpark junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Dun Laoghaire-Rathdown</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/D/deerpark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-deerparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-deerparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNDU4NDY3MSw2MzI5MjMzMSwtMTU5NTY2MDksNTg3MzM5NDEsLTY4ODk1OTksNTA1MDUzMzQsLTExNzMyNjc2LDU5NTc4NzI4LC05ODIwNTcsNjA0MDY4ODMsLTk5NDc4OTUsNTE5MzMwMjQsLTEzNTIyMDY0LDU4NjQ4ODg5LC0xMDIwOTk4OCw2MDY0ODA3OCwtMTQ0NjgzODksNTE2OTM5ODksLTEwNzUzNTMyLDU2NzU0NTQ1LC0xMjQ0NjQwNSw2NTcxMzkzMSwtMTYxMTc2OTgsNjUyMTM4NzUsLTI3ODMzMyw2MDMxNzUxMSwtNTExMzE0MCw1MDc2MzYyOCwtMzE5NTM4Myw1NTk2NzE2NCwtMjcyMzM4NSw1ODgyODE1Nl0=", 13531809);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="marlay junior parkrun dun laoghaire-rathdown" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-marlayjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Marlay junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Dun Laoghaire-Rathdown</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/marlay-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-marlayjuniors');
+  if (!el) return;
+  var map = L.map('cmap-marlayjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNDUxNDYxNyw2Njc5Njk4NiwtOTc0Nzk3MSw1NzI4MjU0NiwtMTYyNTc2Myw1Nzg3ODcxOCwtOTQ3OTg1MSw2NTk5NTE1NCwtMTI1MzE5NzUsNjA2MzM4MDIsLTc2NDkyNTMsNjA0MTA4MjAsLTYzMDM1MjEsNTUwMjE1ODQsLTc2NTQ4Myw1MTExNDUwMCwtNjM2NTI1Myw1NjIxNTQ0NCwtNTEzMjI4Myw2NzA5NDk5OCwtNjAzOTMxMyw1NDE0MzI1MCwtMTQ1MzA1MjEsNTgyMTU0NjgsLTE2NDczNTc1LDU3MTE3NTQ2LC0yMjI0NjEsNjIzMzcyNzYsLTU0MjQzMjksNTgyOTQ1ODYsLTI1OTI4NTUsNTk1OTIxNTIsLTQyMjY1ODksNjI4MzIxOTgsLTEzODU5MDM1LDU3NzgxNjE0LC00NTIwMDk3LDYwOTU0MTcwLC02Njk1OTg3LDY0NjM5MzY2LC02MzU1NjUxLDU4MTc4NDkwLC0xNjEzNTMzLDUxNzkwNTg4LC0xNTczODIxNSw1MzYxODE2OCwtNzUwODAwNSw1ODUyMTg3OCwtMTMxMDcyMzcsNjI5NzgzMjAsLTkxMzI0NDcsNTkxNjAzMzgsLTEzNjUyODEzLDY2NTg3OTA0LC0xMjcxMDY0MSw1MTU0Mjc1NCwtMjA1NzkyNyw1MTU1MzA5NiwtMTY1NzM4ODMsNjQ2MjYwNTAsLTE2Njc1MjcsNTYxMTYzMjAsLTY1MzM0OTksNTUxODIzMTYsLTYxMzczNyw1NTgwMzA2NCwtMTAyODMxMjcsNjAwMTg1NzQsLTE2NjM5MzU5LDUxOTgyNTQ2LC0xMjk4NTQzOSw1MzI5ODIxOCwtMjQ4NTcyOSw2Mjc0MjYxNCwtMzUxODI0MSw1NjE5MTEwMiwtNzA2ODMzNyw1NzYxMzc1NCwtMTU4ODg2NDMsNTgxNjQ5MDQsLTExMzk1ODMsNjExNTM2NDIsLTMwODE1MzUsNjM3MTI3MzAsLTkyMzE0NDEsNTE1MzQ3MzAsLTc2MDAyNyw1ODIwNTYwNCwtMTA2ODQ2ODMsNTIyMzc1ODIsLTkxNjk0MjUsNjIzNjQ4ODgsLTQ2NDY2NDMsNjAxMTc4OTAsLTk3MTQ1NDcsNjM4NjUyMzRd", 15392132);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="marlay parkrun dun laoghaire-rathdown" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-marlay" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Marlay parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Dun Laoghaire-Rathdown</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/marlay" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-marlay');
+  if (!el) return;
+  var map = L.map('cmap-marlay', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00ODc5ODg3LDU3NjY1MDczLC0xMTY2MzE3Niw2NTM2ODMzMCwtMTEyMDkzMiw1NDc3NzQ0OCwtNDAxNDU1NSw2MzE1MzYwNiwtNDI4MzU5Miw2MTY0NDg3MSwtNzI3Mjc1Nyw2NTAwMjIzOCwtNDM4NTg4LDYwMDE4MzI1LC0xMDM0OTQyNiw2MTgxODM3NCwtNjg3NDc0LDY1NjM0MTk2LC00MjEwMjY5LDY1MDExMjQwLC02NzgzODAwLDY1MDA5ODQ1LC05MDI4NTE2LDY1NDE1MTEzLC0zMDMwMzk1LDUxMTY5MTE0LC00MzcxNjQ3LDYyMDgwMzU5LC0xNDM1MTE5OCw2MjgzNTE3MywtNzAwODI0MSw1MDg3MDE3MCwtNTQzNTg4OSw1MjIyOTYyOSwtNTE0MDMxNCw2MTY3OTI0MSwtMTA2NjYxNDIsNjQ2NjI0MzYsLTY3MjQwNTQsNjM1NTUxMTQsLTc4NDc4ODMsNTkxNTc4OTgsLTExOTAwMjkwLDU4Mzk2MzEyLC02MTY4NDQ3LDY1MTU4NDIyLC0xNDY2MTk0Nyw2NzEwNTM4NywtMTY0MTcxMjgsNjY4MDc4NDIsLTQ4MjcwNTUsNjI3OTM2ODAsLTQ3NzU1ODgsNjIwNTAzMDEsLTMzODU3ODgsNTkxNDU3MjEsLTk3MDM5NjEsNTQwNDQwMjQsLTU2NjI4NjgsNjYzMjU4NTUsLTM3MjU0NjEsNTE3OTEzMDIsLTE2NTI3Nzc0LDYyMzcwNzkyLC0xMDA4OTYwNCw1ODU1NjgxNCwtMTQ4MTUxMDksNjE4NTA3MTYsLTYzNzkwNTQsNTY4ODA3OTYsLTEzNTczMDkxLDY1Mjk0NTg0LC04MDc5NDgxLDYyOTA4ODQzLC03NTEwNjk0LDUzNjk4OTczLC0xMzcyMTE5OSw2NjUxNTQ2NywtMTI1MzU2NTMsNjU0NDI4NTksLTM3MjA5Nyw1NjU1NDgzMCwtODg3MDU2MCw2MzEzNjc5NCwtMzM2MzMwNCw1ODg5OTI3NiwtNTgxMDU2Nyw1MDM4ODg1MywtNjQ2NjE4Myw2MjM4MTI2MSwtMTc0Njk2OSw1NDc5MDY1OSwtMTM1MzI2NDAsNjQ5MTM1ODksLTE1MTYwOTc0LDYzMDA4Mzc2LC0xNDA2NzQ0MSw1Njc1NzIzNCwtMjU0MTc0OCw2MDQxMTE1NiwtODcyMDQ2Miw1OTUxMjY3NiwtMzEwOTQwOSw1MzM5NzEwMCwtMTY5ODc0LDYzNzY5NDcxLC0xNDU0NzA5OSw1MjIzOTE1NiwtOTkyODE3Miw1MjcxNzUyMCwtMTE3NjMwNjQsNjY5NDQ3MzAsLTE0OTI5NTE4LDUxMzk1ODE1LC0xMTU2NTg4MSw2NDc1NTAzNSwtNjE5OTQxMCw1NzA4NjY2MSwtMTU4MTE1NTYsNjA1MTk4NzgsLTUzNDY3OTIsNTc3MjMzMzIsLTYzMTQ5Miw1MjExNTE3NywtOTY1Njg1Myw2Mzc5MjE0OCwtMjI4MTg1NSw2MTgzMTM0MSwtMTI3NzkwNTksNjY4NTg0MzMsLTk2MDQ0MTcsNjQxNjYxNDcsLTEzMDEyNzA2LDU0MDUxNzA5LC0xMjQ0NTM4Nyw2NDMzODc2OSwtNDYyODc3Niw1MTY0MDY2MiwtMzA2NDQ5MSw1NjMzNzcwMywtMjY1OTk2MCw2MTc4MjE1OSwtMTU5OTgzMzQsNTg0ODQyMjQsLTQ5NzIzMzcsNjYyNjk5MzcsLTEyMzkwNzIxLDU1ODMwODYyLC0xMjg3MzE0OSw2MjAyMTc3NSwtMzQyNTUxMCw2MDMyMzQzMSwtMTQyNDk3NzYsNjQxNzkyNjQsLTEwMTM0MzMwLDUwNDQxNDE4LC0xMjUzMjczNiw1MDUzNzMzNSwtMTA5NzY3ODMsNjU2NDc5MDksLTEzNTg4NTQsNTU3MTU4OTgsLTE5OTkyMjIsNTcxMTI5MTYsLTE5NTgwNDgsNjY4NzU2MDcsLTExNzU4NDExLDU0MTc3ODYxLC0xNjc2NDQ5MSw1ODYwNjIxN10=", 2247898);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="shanganagh parkrun dun laoghaire-rathdown" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-shanganagh" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Shanganagh parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Dun Laoghaire-Rathdown</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/shanganagh" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-shanganagh');
+  if (!el) return;
+  var map = L.map('cmap-shanganagh', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0yNzQyMzI3LDU2Nzk1OTU2LC0xNjIyODY3OCw1ODUzMTY2NiwtMjc0OTc2Nyw1NzcyMDU3NCwtNDQxNTg5OSw2MjMxNjI0MywtMzgzODMwMyw1ODc0NzEwNCwtMTA0MTEyNzMsNjI0MjI5MjksLTczNTI3NzQsNTQ2NDkzMzQsLTYxOTM4NDUsNTA3Njk3NjcsLTEzOTI1ODQzLDYzMjAwNjEyLC0xMTIxNjU5Miw1OTc1NzExMCwtMTgxMjMyNCw1NjgxNTc3MywtNzk2NTcwNiw2MjQwOTc4MCwtMTI4MTQ4NTAsNjcwMzYxNTksLTEzODYyODI5LDU0MzI1MTYxLC04NjUzMDM5LDY0MzIwNTk1LC0xMTc0MTU4Niw1MTM0Mjg0MywtNzIyOTk2Myw1MDUyNTUwMywtNjcxNzkyNSw1NTgwMjYwOSwtNjEzMzExMCw2MjMyMDY5MSwtMjkzNTE5NCw1NjIwNDc3MiwtNTE3MzAxNiw1MTkwODcyMSwtMTM0OTQ0NDQsNTA2MjQyODQsLTg1ODUsNTQwNzMxMzQsLTEyNTEzMzkzLDY0MTI2OTM0LC05MzM1MzU1LDUyNTkzNTg0LC0xNDI1MTQ2OSw1Nzk1MzMyOSwtMTM1MzI2NjQsNTU2NzgyNTcsLTQyNTI1MTcsNjE4NTE1ODEsLTE3MTY1ODcsNTc3NzExMzUsLTExMzIyNDg3LDYzMTcyNDA0LC05OTA1ODc3LDYxOTkyOTM5LC00MjY1MDA3LDU5NTYxNTAzLC01NzA5NTU0LDYwMzQ0MDMwLC00NTI5OTExLDYzOTQ2ODg4LC03NTgyNTgxLDU2NjE5NzQ5LC0xNDQ3MDE5Miw1NzY1ODU4OCwtMTEwMDM0NjQsNTM5OTE4MzcsLTQ2MDU1MDcsNTk4MDMyNTUsLTI5MTE3NzcsNjA2MzQ5MjYsLTUwMjIzOTEsNTA1NzMwMzcsLTE1MTY4MDQ2LDYwOTk1MjM1LC0xNDQyNTQyMiw1NDE4OTUzNSwtMTU3MzE2Nyw1MTg1MDc3NywtNzA3NDc1OSw1NjAxNTQyMiwtNzU3NTQ4OSw1NTU5OTIwNiwtMTUyNTA5ODQsNTEzMzIyMjAsLTEyNDgyMDExLDU5MTk2NzQ0LC0yMTIxMDM0LDUyNjYyMTQ0LC02MTc2ODk5LDU2OTIzMzgzLC0xMzk2MzE0Myw1MTAyNjU2MiwtMTQzMTE4MDgsNjUyNjY5MTcsLTQ5MzkxNDEsNTAzOTk5ODJd", 7279600);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<div class="contact-footer">
+  <p>Have a question, suggestion, or found an issue?</p>
+  <button class="contact-footer-btn" onclick="openContactModal()">Contact Us</button>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<script>
+(function() {
+  var strip = document.querySelector('.stat-strip');
+  if (!strip) return;
+  var items = strip.querySelectorAll('.stat-strip-value');
+  if (!items.length) return;
+  var targets = Array.prototype.map.call(items, function(el) {
+    return parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
+  });
+  Array.prototype.forEach.call(items, function(el) { el.textContent = '0'; });
+  function animateItem(el, target, delay) {
+    setTimeout(function() {
+      var duration = Math.min(1200, Math.max(400, target * 0.8));
+      var start = null;
+      function tick(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        el.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toLocaleString();
+      }
+      requestAnimationFrame(tick);
+    }, delay);
+  }
+  function runAnimation() {
+    targets.forEach(function(target, i) {
+      animateItem(items[i], target, i * 120);
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { runAnimation(); obs.disconnect(); }
+    }, { threshold: 0.3 });
+    obs.observe(strip);
+  } else {
+    runAnimation();
+  }
+})();
+</script>
+<div id="stay22-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Find Hotels">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-title" id="stay22-modal-title">Find Hotels</div>
+      <button class="modal-close-btn" onclick="closeStay22()" aria-label="Close">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  var m = document.getElementById('stay22-modal');
+  m.classList.remove('active');
+  document.body.classList.remove('modal-open');
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+<div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Contact Us">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-title">Contact Us</div>
+      <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    </div>
+    <iframe
+      class="contact-modal-iframe"
+      title="Contact Us"
+      src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u/"
+      frameborder="0"
+    ></iframe>
+  </div>
+</div>
+<script>
+function openContactModal() {
+  var m = document.getElementById('contact-modal');
+  m.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function closeContactModal() {
+  var m = document.getElementById('contact-modal');
+  m.classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+</script>
+
+<script>
+(function() {
+  function attachRipple(el) {
+    el.addEventListener('click', function(e) {
+      var rect = el.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var x = e.clientX - rect.left - size / 2;
+      var y = e.clientY - rect.top - size / 2;
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple-effect';
+      ripple.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
+      el.appendChild(ripple);
+      ripple.addEventListener('animationend', function() { ripple.remove(); });
+    });
+  }
+  var selectors = [
+    '.toggle-btn:not(.filter-btn-disabled)',
+    '.hotel-cta-btn',
+    '.card-cta',
+    '.header-map-btn',
+    '.contact-footer-btn',
+    '.modal-close-btn',
+  ];
+  function initRipples() {
+    selectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        if (!el.dataset.rippleAttached) {
+          attachRipple(el);
+          el.dataset.rippleAttached = '1';
+        }
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRipples);
+  } else {
+    initRipples();
+  }
+})();
+</script>
+</body></html>

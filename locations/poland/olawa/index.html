@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -11,13 +10,16 @@
 <meta property="og:title" content="Find parkruns in Olawa — Hotels Near Each Event &amp; Course Maps" />
 <meta property="og:description" content="Planning a visit to Olawa? Find 1 parkrun event in Olawa, Poland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
 <meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/olawa/" />
+<meta property="og:image" content="https://www.parkrunnertourist.com/Images/Feature.jpg">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="parkrunner tourist" />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.parkrunnertourist.com/Images/Feature.jpg" />
 <meta name="twitter:title" content="Find parkruns in Olawa — Hotels Near Each Event &amp; Course Maps" />
 <meta name="twitter:description" content="Planning a visit to Olawa? Find 1 parkrun event in Olawa, Poland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
 <meta name="robots" content="index, follow" />
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
 <meta name="language" content="en" />
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
 <link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/olawa/" />
 <link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Poland","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/"},{"@type":"ListItem","position":4,"name":"Olawa","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/poland/olawa/"}]}</script>
@@ -26,8 +28,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
-<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -46,6 +46,7 @@ body {
   line-height: 1.6;
   color: #1a2318;
 }
+body.modal-open { overflow: hidden; }
 header {
   background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
   color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
@@ -63,11 +64,11 @@ header a:hover { transform: translateY(-2px); }
 .header-map-btn {
   padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
   border: 2px solid white; border-radius: 0.5rem; color: white;
-  font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+  font-weight: 600; font-size: 1rem; cursor: pointer;
   position: relative; z-index: 1; text-decoration: none; display: inline-block;
+  overflow: hidden; transition: background 0.3s ease, color 0.3s ease;
 }
-.header-map-btn:hover { background: white; color: #2e7d32; transform: translateY(-2px); }
-/* breadcrumb */
+.header-map-btn:hover { background: white; color: #2e7d32; }
 .breadcrumb {
   font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
   background: white; border-bottom: 1px solid #e5eae0;
@@ -76,13 +77,11 @@ header a:hover { transform: translateY(-2px); }
 .breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb-sep { opacity: 0.35; }
-/* page hero */
 main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 .hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
 .hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
 .hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
 .hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
-/* stat strip */
 .stat-strip {
   display: flex; margin-bottom: 2rem;
   background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
@@ -97,38 +96,36 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   font-variant-numeric: tabular-nums;
 }
 .stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
-/* section headings */
 .section-heading {
   font-size: 1rem; font-weight: 700; color: #1a2318;
   margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
 }
 .section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
-/* country grid */
 .country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
 .country-card {
   background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
   padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
   display: flex; align-items: center; gap: 0.65rem;
-  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
 }
-.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); transform: translateY(-2px); border-color: #b2d8b4; }
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); border-color: #b2d8b4; }
 .country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
 .country-card-body { flex: 1; min-width: 0; }
 .country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
 .country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
 .country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
-/* tiles */
 .tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
 .tile {
   background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
   padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
   text-decoration: none; color: inherit;
-  transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
 }
-.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); transform: translateY(-2px); border-color: #b2d8b4; }
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); border-color: #b2d8b4; }
 .tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
 .tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
-/* search */
 .search-wrap { position: relative; margin-bottom: 1.25rem; }
 .search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
 .search-input {
@@ -139,7 +136,6 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 }
 .search-input:focus { border-color: #4caf50; }
 .search-input::placeholder { color: #aab8a2; }
-/* filter bar (junior / 5k toggle) */
 .filter-bar {
   display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
 }
@@ -149,9 +145,9 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   background: white; border-radius: 0.875rem; overflow: hidden;
   border: 1px solid #dde5d8;
   display: flex; flex-direction: column;
-  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
-.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); transform: translateY(-3px); border-color: #b2d8b4; }
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); border-color: #b2d8b4; }
 .card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
 .card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
@@ -169,10 +165,10 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
   padding: 0.55rem 1rem; text-align: center;
   background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
-  text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+  text-decoration: none; position: relative; overflow: hidden;
+  transition: opacity 0.18s;
 }
-.card-cta:hover { opacity: 0.87; transform: translateY(-1px); }
-/* hotel CTA */
+.card-cta:hover { opacity: 0.87; }
 .hotel-cta {
   background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
   border-radius: 0.875rem; padding: 1.4rem 1.6rem;
@@ -184,23 +180,37 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 .hotel-cta-btn {
   background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
   padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
-  border: none; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; flex-shrink: 0;
+  border: none; cursor: pointer; flex-shrink: 0;
   font-family: 'Inter', sans-serif;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.18s;
 }
-.hotel-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
-/* toggle buttons */
+.hotel-cta-btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
 .toggle-btn {
   padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
   cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
-  transition: all 0.2s; background-color: white; color: #4caf50;
+  background-color: white; color: #4caf50;
   font-family: 'Inter', sans-serif; font-size: 0.875rem;
+  position: relative; overflow: hidden;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { background-color: #f0faf0; }
-.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { outline: 2px solid #4caf50; outline-offset: 2px; background-color: white; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; border-color: transparent; }
 .toggle-btn.filter-btn-disabled {
   opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
 }
-/* download footer */
+/* Ripple effect */
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  transform: scale(0);
+  animation: ripple-anim 0.55s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
 .download-footer {
   background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
   padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
@@ -209,8 +219,51 @@ main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
 .app-badges { display: flex; gap: 2rem; }
 .download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
 .download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+/* Contact footer */
+.contact-footer {
+  background: #f0faf0; border-top: 1px solid #dde5d8;
+  padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.875rem;
+  text-align: center;
+}
+.contact-footer p { margin: 0; color: #5a6e52; font-size: 0.925rem; }
+.contact-footer-btn {
+  padding: 0.6rem 1.75rem; background: white; color: #2e7d32;
+  border: 2px solid #4caf50; border-radius: 0.5rem;
+  font-weight: 700; font-size: 0.875rem; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.contact-footer-btn:hover { outline: 2px solid #4caf50; outline-offset: 2px; box-shadow: 0 2px 8px rgba(46,125,50,0.12); }
 footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
 .leaflet-control-attribution { display: none !important; }
+/* Modal base */
+.modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 9999; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 20px; max-width: 900px; width: 96%; max-height: 92vh;
+  overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.4); display: flex; flex-direction: column;
+}
+.modal-header {
+  padding: 13px 16px 11px; border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: #fff;
+}
+.modal-header-title { font-size: 15px; font-weight: 700; color: rgba(0,0,0,0.87); }
+.modal-close-btn {
+  background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.5);
+  position: relative; overflow: hidden;
+}
+/* Contact modal iframe */
+.contact-modal-iframe {
+  flex: 1; border: none; min-height: 520px;
+}
 @media (max-width: 768px) {
   main { padding: 1.5rem 1rem 4rem; }
   .hero-title { font-size: 1.7rem; }
@@ -257,16 +310,13 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
 <script>
 (function() {
   var GLOBAL_KEY = 'prt-event-filter';
-  var HAS_JUNIOR   = false;
+  var HAS_JUNIOR = false;
   var HAS_STANDARD = true;
-
-  // Read filter from URL param first, then localStorage, then default to 5k
   function getInitialFilter() {
     try {
       var params = new URLSearchParams(window.location.search);
       var fromUrl = params.get('filter');
       if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
-        // Validate: if the page doesn't have that type, fall back
         if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
         if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
         localStorage.setItem(GLOBAL_KEY, fromUrl);
@@ -275,32 +325,24 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
     } catch(e) {}
     try {
       var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
-      // Validate saved value against what this page has
       if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
       if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
       return saved;
     } catch(e) { return '5k'; }
   }
-
   function applyFilter(val) {
     try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
-
-    // Update URL param without adding history entries
     try {
       var url = new URL(window.location.href);
       url.searchParams.set('filter', val);
       history.replaceState(null, '', url.toString());
     } catch(e) {}
-
-    // Update button states
-    var btn5k     = document.getElementById('filter-5k');
+    var btn5k = document.getElementById('filter-5k');
     var btnJunior = document.getElementById('filter-junior');
-    var btnAll    = document.getElementById('filter-all');
-    if (btn5k)     btn5k.classList.toggle('active', val === '5k');
+    var btnAll = document.getElementById('filter-all');
+    if (btn5k) btn5k.classList.toggle('active', val === '5k');
     if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
-    if (btnAll)    btnAll.classList.toggle('active', val === 'all');
-
-    // Show/hide event cards
+    if (btnAll) btnAll.classList.toggle('active', val === 'all');
     document.querySelectorAll('.event-card').forEach(function(card) {
       var isJunior = card.dataset.junior === 'true';
       var show = val === 'all'
@@ -308,9 +350,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
         || (val === 'junior' && isJunior);
       card.style.display = show ? '' : 'none';
     });
-
-    // Append ?filter=VAL to all tile (city/region) links on this page
-    // so clicking through carries the preference forward
     document.querySelectorAll('.tile').forEach(function(tile) {
       try {
         var href = tile.getAttribute('href');
@@ -321,10 +360,7 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       } catch(e) {}
     });
   }
-
   window.setFilter = applyFilter;
-
-  // Wait for DOM to be ready so event cards exist before we filter them
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() { applyFilter(getInitialFilter()); });
   } else {
@@ -336,7 +372,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   <div class="event-grid"><div class="event-card" data-search="parkrun park miejski, oława olawa" data-junior="false">
   <div class="card-map-wrap">
     <div id="cmap-parkmiejskiolawa" class="card-map-inner"></div>
-    
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
   </div>
   <div class="card-body">
     <div class="card-name">parkrun Park Miejski, Oława</div>
@@ -358,8 +397,12 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
   
-  map.setView([50.933627, 17.294733], 14);
-  L.circleMarker([50.933627, 17.294733], { radius: 8, fillColor: '#4caf50', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  var route = _d("WzMzMjMwOTIwLDU5NzI5MTE4LDIzMDE0MjU1LDYzMjkwNzMzLDE5MjQ2MzIyLDU5NzE0MTk2LDI0ODE3NzQ1LDU1MTUxMjg1LDE4NDEzMDIxLDYxNTUyMzAxLDIwOTc2NzA2LDY0MTE5OTAwLDIzNDExNjk3LDU3OTQzMjg1LDI2NjUzMTkyLDU2Mzk1MjAwLDI4MDExNzI4LDUzOTA3MzA1LDI1NDY4MjA2LDUwMzM0MzM3LDIyNjYwNDc0LDY0MzUzNjc2LDE3NDYwOTQ2LDY0NjM4NDcxLDE4MjkyNDcyLDYwNjA4NzQzLDI3MjU2MjUwLDUzNzAyNjAxLDI0MDA3MTY5LDYyMzcyOTA1LDMzNTIwNTU2LDYzMzU4OTM3LDE5NjU1OTk4LDYzNTM0OTgzLDI3Mzg0NDc4LDY0OTg0MDYzLDI1NzQyNTA1LDU1OTk5MzI3LDE5NTkzMjQ0LDUzMjM1Mjc1LDMwODUwODMyLDUzNzk4MDQ5LDMxODA1MTUwLDU0NzYxMjE5LDE3NTUyOTY5LDYxNDExNDQzLDMxMzQ2NTgzLDY2NjM0NzYxLDIxOTgxOTQ4LDU4MjE5NDkzLDE3OTUxOTI1LDU5NzM0MzU1LDMwNzcyNjg3LDU5NzI3NzI3LDE3MjQyODcwLDUyMzMzMzY1LDMwMDY5MjkyLDUzMTcxODc5LDE4NTQ5ODgyLDU3OTczMDM1LDE2ODE0NTgzLDYyMDA1Mjg5LDMzNDU0MDk1LDYyMjMzODcxLDE3MzczMzgwLDY2MjQ2Nzc3LDIzMDczMDk0LDYwOTM4OTIzLDI1MzYzMTMwLDUwNDcwNjQxLDMyMDk5NTI2LDYzMDQ1NjgxLDI4NzQ1NDIwLDUwNjAzNTg3LDI0OTI3NjE2LDU5NTc3NjExLDIzMDUxNjIzLDY1MDg4ODM5LDIyNzIxNjkyLDU4MjAxNjQxLDMwMTI4MjAwLDU0NjU0NTkzLDI0NTc5NDAwLDUwNzcxNjM3LDIxMjYxNDY1LDY2MDQxMjQ3LDI3MTUzMDk4LDYxNDYyMDA3LDIzOTExNTQ5LDUxMzU5MzU3LDI0MzY0ODM0LDU0OTIzNTkxLDIwNzAyNTY0LDU1MTI5MzczLDIxODkzMDYwLDYwNDAwOTYzLDE3NDU0OTU1LDU5MjQ4MzU3LDIxMTA5NzM2LDYzMDczNTUxLDMyMjc3MjEwLDU2MTM1MzA5LDMyNDcwMTIxLDUzNjgzNTg5LDE4OTExMDQ2LDU2NTU1MzYzLDI5MTYxOTk4LDUwNzg1NzU1LDE5NDQ0MzU5LDUxNzQwNDIxLDIxMjE1MDA5LDY0MTM5NDYzLDI2NzQ0MjAzLDUwNjUyMzI1LDIwNjk1NDExLDUyODA3NTUzLDI3MTcyMDM2LDYzNzMyNjI1LDMzMDQxMzE0LDU4NjE5NDQ1LDIyMzQxNDYxLDU4OTI5MzM1LDIxMTE5NzcwLDU0NTI0MTE5LDMyMDI4Mjc0LDUyMjA3NTg5LDE4MjQzODM2LDU2MjUzMTE3LDI2NzI3OTQxLDYwNzQ4ODkxLDMyNDg1OTE1LDYzNzQ2MjkwLDI4MTM2MDg2LDY2MjkyMzUwLDIxMjEyNTQwLDU3NzI4NTg2LDI3MDUzMTM0LDU3NjExODQxLDIxOTYyODkyLDU4NDc2NjE1LDI1MDk3OTUyLDUxMTI1MTk3LDI4NDA2NDExLDUzNDg3NDYxLDE5Njk0Nzk2LDUwNDI4MTQwLDE4MzcwNTAyLDU3NjMxNDMyLDI5MDgyNTQ4LDY1MjU2NDI5LDIyODY4ODgwLDYxNjAzMDc2LDMyMjAwODQ1LDY2ODczNDkwLDIwODY4NTk4LDYyMjE1NTgyLDE3NzE5OTM1LDUxMDQ5MTMyLDI1MTM4OTExLDUwNjExMjAyLDMzMTI2NTIxLDU4Nzg1OTEzLDMyNTY3MDMyLDUzMDI5MTE2LDI4MTI4ODA4LDYzMzgwODM4LDE5ODMzNDAwLDYwNTQ2MDc2LDI0MzM3MTEwLDU5MzEwODk0LDMwMDkwMjk0LDUzNzU0OTg5LDE4NTA0NTI4LDU2ODUzODQ4LDMxMTg2NzgwLDYwMzM1NDEzLDMwNDk4NDExLDU5MzI4MjkzLDI5NjYxMjYwLDU1MjQyNDQ4LDI2NDk4NDIxLDUxODU1NTM0LDMwNjc5Njc1LDUyNTkxNDExLDI3NzcyNjA2LDU5MTY3NjM4LDMyNTI0NDYyLDU2Njg4Nzg1LDI0NDY5NTI5LDY0NzMwNTAyLDI3MzQ5NzE3LDYzOTIxNzUzLDI5ODM5NzAyLDU5OTc1MDM5LDE4NzQ4Mjg3LDU3MzY0Njk0LDMwNjc5MzExLDYwNjQ1NTA4LDI4ODU2MDQ2LDU5MTAxODA3LDE4NjEyMDkxLDY1MzA2NzMzLDMyMDQ0MjEzLDY1NTM1Nzk5LDE2OTcwMTc1LDUyMjY1MzUzLDMxMTI3Mzk5LDY1Mjg3MzQ3LDE3NzA2Njc1LDYyMzMzMjExLDI5OTE0NTUwLDU0ODE2MTEzLDE3ODI0NjE3LDUyNTU4NDU5LDI2NjE3MTUwLDUxNTAxNTUzLDMwNTczNzIwLDYxNTY4NjczLDE5OTIwMTcwLDYzNDg5NDMxLDE4MTk5OTU0LDU0NTgwNjEzLDI5NTk5MjgyLDU5NzUwODc5LDIwNTM0MTU3LDUyMTg0ODkxLDMzNDY0ODY0LDUyMTgxNDYxLDE3NDYzNTUyLDUyMjg1MzEzLDE5NDQyODY4LDU4MjcyNDQ3LDMzNDY2NzkwLDY3MTA1MjQ1LDIyMDQ0MzAxLDUyMTQ1NzY5LDE3ODc0MDg5LDYzMDc0NzM5LDMxODk4NTE5LDU2MjY1MzY3LDE5NjE0NzczLDUwMzYxMDgxLDMyMjM4NjI0LDUwNTg3MDI5LDE3MjEyNzk5LDY0NTUyNDE3LDI5MDI5MDEwLDU4Mzc2MDAxLDMyNzI4MDUzLDU4NTM1NjM1LDI0NDQ1NTE3LDU2MTYyODk5LDMwODczNjQxLDU0MDYzNDI5LDMzNDc1NDAxLDU2MzkzNzUzLDMxOTQyNDAzLDU1MjY0NjgzLDIwNjQ1NTE4LDYyMjk2NjM1LDIxNDgwNDIzLDUxNDQ4ODkwLDI3Nzc4ODQzLDU1NDA3NjQ2LDI0MzY5NDI2LDY1Njg3NjU5LDI3ODY5OTI0LDU0MDg3MzU2LDIwNjkxMDQ2LDU2NTc5ODI3LDE4MzAwOTE5LDYzMTk5NTA1LDI3MzA4NDQzLDYxMDI5MzE5LDI5ODI5NzQ4LDUxMjAxMDc0LDIzMTI1MzgxLDY1NTYwNzg5LDI0NzkzNDc2LDU1MjEwMjU0LDIzMjM0ODgxLDU0ODM2MTE1LDI0NjQ3NzY1LDYwMTk1NDMyLDI2MzE2MzY3LDU2MzAzNTU3LDIzNzcyNTg4LDUzNjY1MjE2LDE3NDMyNTM4LDU2NjM2ODUyLDI1ODk4NTI2LDY1MjM5NDY4LDIyMzA5MzM1LDU3NjIwOTQ4LDIwODE1MTM4LDUxOTUxMzUzLDMyNjk2NTYyLDY2MjM0MjUyLDI3MDAyNzI5LDY0NTc3MDI0LDIyNzk0Mjg5LDU4MTM5MzIyLDI2NDk5MDMwLDU3MzUxODIxLDMxODY0MDIxLDY1MTA0ODA5LDMyNjM3NjMwLDYzNjQyOTU5LDE5MjYxOTE0LDUxNzk3NzYxLDMzMzI0MjQ5LDYwMzcxMDE5LDI2NzIzMjk0LDU4NzAxNzI5LDMyNTQwMjEzLDU0MTczMzA3LDIxODQyMzI0LDU4MzMxNTIzLDIxOTY5NTkwLDU1MDUyMDg5LDE5NDIzODA1LDY0NDk4MTExLDI2NjY4MTQyLDUxNjU4NTQ3LDE5NDIxNjU1LDYzOTIwOTEzLDE5MDAzMjQ2LDY0NDIwMzAzLDMxNzM5MTk2LDU5NjYzMjQ5LDI5Mzk4OTcwLDU3ODg5MDg1LDIyNjI2MTUyLDUwNTUzNTQzLDI2NjIyMTQ2LDUxNDMwMjA3LDIxMjIwNTY4LDUwNjkwNjQ1LDIwMjI3OTc2LDYzMDk5NDU3LDE4NzYwMTExLDU2NDM3NjY5LDIyNjI0MzQ4LDU3MjA1NjU1LDMxMTQ3NTMzLDU0NDA3NDgxLDI1NjIzNDAzLDYwNTkzMjQ1LDMwNTY0MDA5LDU1OTM3MTU3LDI4NTkzMTkzLDU2OTMwNTY5LDI4MDA3NTYzLDYzNjk3MDI5LDMyOTI3NzQ0LDY0NDE2MTc3LDI5MDQxNDgxLDUwODgwNjI5LDI2MDIzMjcxLDYyNzg5Mjk1LDI4MzA4NjgzLDYzNDEyNzI5LDMxMzcxMjgzLDYyODY4Mzk3LDE5NjQwNTYwLDYzNTc0MzMzLDIwMjMxMjQ2LDY2NDQ1NjIzLDIwMDMyMzAyLDU1ODcwNzgzLDE5MzM5MDY3LDYwODUwMzM3LDIwMDQ5OTQ1LDU1NDczNDA1LDI5OTE5NTc3LDYzNTM3Mjg3LDI4NjQ2Mjk2LDY0ODg3NDA5LDI5NTU2Njg1LDU0ODUyMzExLDE4MzgxOTAzLDY1MDA4NTczLDMwNTUxOTg1LDYzMDMyNjMxLDMyMTIzMjUxLDU5NzE3NTY3LDIyMTMxMzAxLDYyMTAwNDE3LDMxODA0MTMyLDY0NDgwNjI1LDI2NjY5ODM0LDYwMjE3MDA3LDI4MTUwNTc0LDUxNDMxMDQ3LDI1MDU5MzI1LDUwNzEzODk5LDI4MDAxNjgxLDU4MzE0ODIxLDI3NzcxMTA1LDUyMTM3MTU1LDE5MzkxMTE3LDUzMzQ1NDU3LDIzMTQ0MDgwLDY1NzIzOTUxLDIyNTgxOTQwLDYzNDU5ODE5LDI0Mjg3OTk2LDYyNzgwMjQ1LDI0OTY4NDQ2LDYwMjY0MzAxLDIzODk5MDkzLDY1NzEwMTM3LDE4MzIxOTA0LDYwODMyMjgxLDMwNDQ5MTIyLDU1NzE1OTc3LDIyOTA0NzYzLDU3MzgyMTY5LDIzMDg2MzczLDU0MzE4NDIxLDI2MTQxNzU5LDUzNDU1NTI1LDIzNTU1NTc1LDYxMzYyNTM1LDIyMzk2Mjg0LDYxMjU2NzA3LDIxNTA0Nzg2LDUxMjE4MzAxLDI5Mzg4NDA5LDY0MjA4OTg1LDE3Mjk2MTIyLDU3MzEzMzE5LDIzOTk1OTUyLDYwODIzMDk5LDI3OTU1Mjg1LDUwOTEwNjQzLDI0ODA2MTgzLDU4NzI5MzU5LDI1MTQzODM5LDU1Mzc0ODAxLDI2OTIyMjkzLDY0OTYzNDE3LDE4NTk3ODQ4LDY1NjI3NTk3LDI1Njk2MDg0LDYwMTU5NjgzLDMxOTcxODYyLDUyODAzNTY1LDIyODQ1Mzc0LDYxMzcyMDU3LDMwMDY3MTY2LDY0MDgzMjQ5LDI3MjI3NzkxLDYxMzk0MjI5LDE5MjkyMDEwLDYzNjI2MDY1LDE3ODE4ODk2LDY0MDExNTkzLDE2OTc5MDQ1LDUzMzYzNzI1LDIzMjE3MTQ2LDYyOTMxNjI5LDI0OTIxNzQwLDY3MDE2OTY5LDI0OTI1OTA3LDU0MTQ1NzA3LDI3MDE0OTk0LDU4OTA2MzE5LDI1MTYxMDc5LDU2NjkxNjUzLDE3MjUwMTA1LDU3ODM5NTczLDI1NjI1NzY1LDYzODAxOTg3LDI0NjkzNjgwLDYzMTE5OTQ3LDI1MjgxMzUxLDU3NzUyMTc5LDE4ODYwMzI3LDU1MzY1MTM5LDIyMDI4MDkyLDU4NzQ1OTEzLDE5NDY1MzA5LDUyNjE2ODU5LDMzNDk5NDcxLDUyNDI3Nzk3LDMzMzIxNzQ1LDUwNzU1NzgxLDIwMTk4NDkyLDY0NDA3OTM3LDIwNDYwODA1LDY2MTk0NjUxLDIzNjkzNDkwLDUxMjA2NTA5LDIwODA4MTc3LDY0OTk1MjIzLDI5MDQzNDgzLDUwNDkwOTIzLDMxMjc1Nzc0LDUwMzkwODIxLDE5OTI0MzY4LDUzMjQ5OTk5LDIwMDEzMjE0LDU2MDc3NjA1LDI1Nzk5NTk2LDYyNTQ4NjQxLDIwNjc3NTM2LDUyNjkwMTg5LDMxMjUyNzQ4LDUxMjIyNjQ3LDI3MzA2MDI2LDYxMTA5MjQxLDI5MzQ5MzQ5LDU3NDAwNDA5LDIwMTI4Mjg4LDYyOTExNTQ3LDI2NTk3ODY4LDU0OTk4OTI1LDE3ODc2MjkyLDU4ODk0MjUxLDIwNjIzNTI4LDUwNDU3NDYzLDI4MjEzNzEyLDUwMzkyNTYzLDMwMjc4NTY4LDU2MjYzMzA1LDIzMzEyOTc0LDUwMzM2NjExLDI2MzQzODM1LDU3NzU3MTA1LDE4MjE2OTYzLDUxMDUwNTc3LDI3NDkyNTU5LDU4NzgyNjM3LDIxMzY3NjUyLDY2OTg1MDg3LDE5NTMyNzQ3LDY1MDIzNzIxLDMzMzAzNjE0LDU4NzI3NDUzLDI0MTgwMjQ4LDUwMzk2MTI1LDI4NDQyMTgwLDU2ODA4NTU3LDMxNzE2NTk2LDU4NDk2MjMzLDI1MjE0NzIyLDUwOTEzNDQ1LDIxNzcyOTcwLDUyMDMzNjUzLDI3MDE2Nzc4LDU1MDkwODUzLDI1OTEyNzMyLDYwMDU2MDM5LDMyNDI0OTc0LDY0MTY5NTc1LDIzNTg4MjIzLDU4MTE3NTcxLDE5MjkzNDM4LDYwNzcyODUxLDIzNjU2OTAyLDYzNjAxNjExLDMyNDAyMjg4LDUwOTA2NDMzLDI3NDI1Mzg1LDU1OTI2NjI1LDIxODYyNzc1LDU0ODc2OTM5LDI5NDEzNDUxLDYxMzIyOTUzLDIzMjAyNDk0LDU2OTI2OTYzLDIxMzc4ODU2LDU0OTUwODg3LDIzODU0NjY1LDU4NzU1NDAxLDIxMjIwNjY3LDUwNTYwMDM3LDI5OTk5OTI2LDYwNTY0MDY1LDE3Mzg0NTIxLDUzMjU1NzU3LDI4NzE0NjMzLDUzNTY0NTEzLDI2MDg1NjQ1LDY1ODQxMDU5LDI3MzI2NDAwLDY2OTUzMzk5LDE4Nzc3OTAzLDU2MTk5NjI5LDI3MTE1MTAzLDU5NzM3ODA1LDI3Nzk4MDUyLDU0MTcxMjA1LDE3NzEyOTY2LDU5MDQ5NDI5LDE5MTQ1NDAxLDU3NDU1MjY5LDI1MTU3ODIwLDU3NjM5NDMxLDI5NzQ5OTY1LDU0NzAxMzgzLDE5MjYyOTE1LDU3MjIyNjY3LDE5MTc1OTc2LDYwMDYwNTk3LDMyOTQzMDMxLDUwODM2NDMxLDIwNDUyMTY4LDU2NzA4MTY1LDI4NzY4Mjg1LDY2MTQ5MTg1LDI5NzM3MjgxLDU2MzcyMzk1LDI1NTkyNjUwLDU3NzY2ODExLDI2OTQyNDY4LDUyNDUxNzAzLDI1OTc0OTU3LDY1NTQ0MTg1LDMxMTAxMDc2LDU5MTkxNjU3LDMyNjA1NjE0LDY1NzQzNTUxLDI5ODM3NjgwLDUxOTQzMTA5LDE4NzQ4OTE4LDUyNjcyOTE1LDE2ODcxNDY2LDU2OTE1MzQ1LDMyODIyMTI3LDU0OTk0OTgxLDI1MjQ1MDc3LDUwNDA0MDc3LDMxNDEwNjgyLDY1MTEwNjc5LDE3MDQwNjMzLDYyMDUwNzQzLDIzNzA5NzIyLDUxMDcwMTUxLDIwNDgyNzkyLDY0MDMwMjUxLDMxNDE1ODI5LDYyNTU2ODExLDIxNjA1OTY5LDU3NTQ5ODY5LDIwMzAzMTI0LDUwMzMxODcxLDE5NTUzNzQyLDYyNTE5NTQ5LDIwNTcyNTAyLDUzNDA4MDczLDI2NDYyOTc2LDY2NTEwNjExLDIyNzA4MTI5LDYyNTAzOTI3LDE3NzQ5Mzg3LDYxNjA3OTUxLDI5NzI1MDA2LDU3NTI1ODIzLDIwMDM0OTA4LDUzNjU3NDcxLDMxNzY1ODI1LDUwNTcwNjcxLDI0NzkzNzI4LDUyNzgxOTg1LDIwMzYzMTY1LDU5MTQxNzk5LDMwMjAxMzE0LDU4MzM2Mjc1LDE3Njg0NzM3LDU2OTA5MzYzLDI4MTQ0NDk5LDYxMzYwNzI5LDMyMjQwMDYxLDU0OTIzODUxLDI3MDE5NjgwLDUzMTIyNjAzLDMyMjMwMDA5LDY2NzE3NDYxLDI3NTEzNTM5LDYzNjMyNDg3LDIzMTMwMDE0LDU2MTgwOTczLDE5MDM1MzcwLDU3MTA4ODkzLDMzNTQ2MzM4LDY2MjcxNTQzLDMyOTM2MjcyLDU0NDY0NDg1LDI4MTEzNjc3LDYzNTkyMDMxLDI3MDc4Mzg0LDU5ODU1Nzc1LDI0NTYzMTcyLDYxNjc4NjAzLDE3NDIyNTQ4LDUwOTM3MDQ5LDMwNjI0NDQ4LDY0Mjk5NTM5LDIzNTE1Nzg2LDU4OTgyMzQzLDMyMTUzMDE0LDU2NTA4NDYzLDMyMzc1MzM2LDUwNjg3NzYxLDI2NDc1NTQ2LDU2MzMzMTczLDI2NjI4Nzg2LDU2MzU3NjY1LDMwNDU0MDUyLDUzOTM5NTI3LDI0MDk2OTAyLDYxMDQzNTg3LDI3ODc3MTMwLDY1NjY3MjcxLDI1MDIxMTMwLDYxMzYyNzA3LDMyMTEwNjczLDYzOTQyNTI3LDMxODgzMzQ3LDUwNzEyODYzLDI0ODc4OTUwLDYzMjMxMjc5LDE4NTgyODc5LDU0NzIwMDExLDI5NjA5ODA3LDUzMTg5MjcxLDI3NzYwMDgwLDYzMDcyNzA1LDIzOTc1MTA2LDU2NjE2NTg1LDI3OTE5Mzc2LDYzMDU1NTU5LDIwNDQ5ODEyLDYzMDI4MDk1LDIzMjY4OTIzLDU3Mjc2ODM3LDI1MTQ1MTc5LDU1NTE1ODE5LDE4ODQ1NzcyLDYyMjEwMDYzLDE4NjAwNDkyLDY2ODA5MTM3LDMxODAzMjk5LDYxMTcwMjg5LDI5MDk3MDE5LDU2NzAxMjQ1LDI1MDcyNTkxLDU3MjYyODM5LDIzMTAxNjQxLDUxODQyMTM3LDIxNDIzMDc1LDU4MjA1MjA3LDMxMDkwNzM5LDUwNjc2ODkxLDI3NjMyMzI0LDUxNjc4NDQ3LDE3MDA3MDk0LDU5MjA0MjAzLDI2OTY4MjU0LDY0OTQ2OTU3LDI3MTM2MTUwLDU5Njc4NDcxLDI3MTc0NDUyLDY2MjQwNTQxLDE5ODE4NzcwLDYzMDEyOTk5LDI1NDQ1MDI3LDY2MDU3NTE5LDIxNDE4ODUwLDYyNDUzMzMxLDE3ODQxODc0LDUyNTI4MDk3LDMxODQwODc4LDUyMzQ1OTE5LDI0OTg4MDkzLDUxOTUzNzg5LDIwOTU4Nzc5LDU3NjY2MjE1LDE3NTk4NTcwLDU4NDY3MDMxLDI1OTY3NTY2LDUwNDUyODIzLDI1MTEzMDQzLDYxMDc0OTYxLDI0MTU5NzYzLDUxMjYwOTAxLDE3OTk5NjA4LDY0OTc1MDM5LDIyOTQ2NTQ1LDY1NDE3NjE1LDIzOTYwMTE2LDU2NzMzNDg1LDE3NTc4Nzg2LDY3MDg1NzY3LDE3NTc4Mjg0LDY1ODI0ODUxLDMwNzUwNDIzLDU2MDI0NDE1LDI3OTEyNTczLDY2MDIwNjk3LDI2MzU1ODY3LDUxNjY1MTgzLDI1MTM5OTY4LDU1OTg2MzAxLDIyNDUyMTc1LDYyNzE0NjUxLDI3MjQ1MjE4LDUzMDg4ODExLDMwMjU2ODc2LDU3NjA0OTk4LDE4ODYxNTMxLDYxNjY5MTEwLDI1NDUyMjU3LDU5MjE4NjExLDMzMDAxNTc0LDUxMDU0NDYzLDMyOTI2Mjg5LDU1Mzc3MzEzLDIyNzE3ODg0LDUzNzY3MDg5LDMyMTgwNDU3LDU0OTE4OTI5LDI0NTE2NjM5LDYzMTUzMzI2LDI0MDk2MzI2LDUyNjA4MzIzLDMyMTYzMTIxLDU0OTQ3MzQ5LDIzMzY2MjI2LDYwNzUzMTA4LDIxNzA5NjA4LDYxNzUzMjQ3LDE4NDAzNjI5LDUxOTExOTcxLDE5MzA1NTQ2LDUyNTU0MDY5LDI2NjIzNjIwLDY0NzU5Njc1LDI3NTE4NzIwLDUzMzk5OTI5LDE4NjkyNTAyLDY2ODQ2MjAwLDI1MTc4NDQ4LDYyMDExOTA5LDI0MTg0MDY4LDYyODAyNzkwLDE3MzA5OTUyLDYyMjY4MTkwLDMyNzcxNzA1LDU2MjEyMjY0LDIzNDc3MzY2LDUxNTI0MTE4LDMxNjM5MDY1LDYxMjU0MDI5LDE4NjUyMjU4LDU1Mzg4MzY5LDIyMDc3ODA5LDYxMzE4NTU0LDE5MDU5ODg5LDUwOTA5NjYyLDE3MDk1Mzc1LDU4Mzc0NDk4LDI5NDQwNzA3LDU4NDAzMDQ4LDI1Mzg2ODg0LDUyMjgxNjQ1LDMzMzMxNDQxLDU0OTE3NDQ0LDMwMTU1Mzg0LDU3OTU2Mzc1LDE2OTQ1OTY2LDU2Njg5NjUyLDMwODI2NDIwLDU5MTc0MTU1LDIxMzQ0MTAwLDU4MDU5NzMyLDI1ODY5MzE0LDU4ODc5NDI3LDIwNTE0NTk1LDUyNDc2MzU3LDE4OTU3MzAxLDYxMjM4MzQ3LDE3NjA2ODAxLDU0Mzk3MDI5LDIzOTQxNTUwLDUxODE5NDA5LDI5OTYyNTk1LDUxNjQzNjM5LDI1Njg1MzEyLDUxMjg3MjgzLDI2OTk3NDE1LDYzODE5MjM1LDMxMzA5MTc4LDY2NTA0MjY5LDI1MzY0MzgyLDU5MjA1ODE3LDIzNjg4MDQwLDYyNTIwNDE2LDMyMDkwNjcyLDYwNDU2NjE1LDE4OTQ0OTc0LDYyOTA4NzU5LDE5MDkwMzkyLDUyNzY3MDY0LDI2MjgzNzkyLDYzOTQ4NDQxLDE5NDI3OTkzLDYyNTUwODcxLDMyMDM0NDE3LDUyMTMzODE3LDMxNjAwNzI0LDU4NzY5MTM3LDIwMzMzNjM1LDY1MjM2OTk1LDIxMzg5MzUzLDU1Nzg0MzE3LDI3NDIwNjkxLDYxNjg3MjA1LDMyNzc1MTk4LDYwMDkxOTc3LDI1OTg2ODcwLDYyMzg5MzgyLDIwODQ4OTcyLDU3MjUyNDIxLDE4Mjk2MjI2LDU1MjA1MTAyLDMyMDcwNjE2LDU1Mzg0MTk1LDI1MzcxOTU3LDU2OTg1NjIxLDMxODU1NjU2LDYzNzk0MTExLDMwMTg2ODkyLDU4NzQ2MDExLDI0MDEwMDkyLDYyMDQ0NTY5LDE4MTkwMTM5LDUzMDI0MDkzLDE5OTQxOTEyLDUzNDEzMzgzLDI5NTk5NDQxLDU2NDUxNTAyLDIzODE4Nzg0LDUzMzQ5MTg2LDI5MDM2NjEwLDU4NzI3NTk5LDMyMjA4NjkwLDU0Njg3NDUwXQ==", 12726439);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
   
 })();</script></div>
 </main>
@@ -374,6 +417,10 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
     </a>
   </div>
 </div>
+<div class="contact-footer">
+  <p>Have a question, suggestion, or found an issue?</p>
+  <button class="contact-footer-btn" onclick="openContactModal()">Contact Us</button>
+</div>
 <footer>
   <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
     parkrun is a registered trademark of parkrun Limited.
@@ -386,24 +433,15 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   data-message="" data-color="#40DCA5" data-position="Right"
   data-x_margin="18" data-y_margin="18"></script>
 <script>
-// Count-up animation for .stat-strip-value elements.
-// Triggers when the stat strip scrolls into view. Each digit ticks up
-// independently like an old terminal display, starting slightly offset
-// from each other for a typewriter feel.
 (function() {
   var strip = document.querySelector('.stat-strip');
   if (!strip) return;
-
   var items = strip.querySelectorAll('.stat-strip-value');
   if (!items.length) return;
-
-  // Store raw numeric targets (strip commas/non-digits)
   var targets = Array.prototype.map.call(items, function(el) {
     return parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
   });
-  // Hide the real values; we'll animate to them
   Array.prototype.forEach.call(items, function(el) { el.textContent = '0'; });
-
   function animateItem(el, target, delay) {
     setTimeout(function() {
       var duration = Math.min(1200, Math.max(400, target * 0.8));
@@ -411,7 +449,6 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       function tick(ts) {
         if (!start) start = ts;
         var progress = Math.min((ts - start) / duration, 1);
-        // Ease out: decelerate toward the end
         var eased = 1 - Math.pow(1 - progress, 3);
         var current = Math.round(eased * target);
         el.textContent = current.toLocaleString();
@@ -421,13 +458,11 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
       requestAnimationFrame(tick);
     }, delay);
   }
-
   function runAnimation() {
     targets.forEach(function(target, i) {
       animateItem(items[i], target, i * 120);
     });
   }
-
   if ('IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting) { runAnimation(); obs.disconnect(); }
@@ -438,17 +473,11 @@ footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b;
   }
 })();
 </script>
-<div id="stay22-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-  z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
-  align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:20px;max-width:900px;width:96%;max-height:92vh;
-    overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);display:flex;flex-direction:column;">
-    <div style="padding:13px 16px 11px;border-bottom:1px solid rgba(0,0,0,0.08);
-      display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:#fff;">
-      <div style="font-size:15px;font-weight:700;color:rgba(0,0,0,0.87)" id="stay22-modal-title">Find Hotels</div>
-      <button onclick="closeStay22()" style="background:rgba(0,0,0,0.07);border:none;border-radius:50%;
-        width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;
-        justify-content:center;color:rgba(0,0,0,0.5);">&times;</button>
+<div id="stay22-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Find Hotels">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-title" id="stay22-modal-title">Find Hotels</div>
+      <button class="modal-close-btn" onclick="closeStay22()" aria-label="Close">&times;</button>
     </div>
     <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
       <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
@@ -472,7 +501,8 @@ function openStay22(lat, lon, name) {
   document.getElementById('btn-map').classList.remove('active');
   document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
   var m = document.getElementById('stay22-modal');
-  m.style.display = 'flex';
+  m.classList.add('active');
+  document.body.classList.add('modal-open');
 }
 function switchStay22View(mode) {
   document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
@@ -481,7 +511,9 @@ function switchStay22View(mode) {
     + (mode === 'listview' ? '&listviewexpand=true' : '');
 }
 function closeStay22() {
-  document.getElementById('stay22-modal').style.display = 'none';
+  var m = document.getElementById('stay22-modal');
+  m.classList.remove('active');
+  document.body.classList.remove('modal-open');
   document.getElementById('stay22-iframe').src = '';
   _s22Base = '';
 }
@@ -489,5 +521,74 @@ document.getElementById('stay22-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStay22();
 });
 </script>
+<div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Contact Us">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-title">Contact Us</div>
+      <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    </div>
+    <iframe
+      class="contact-modal-iframe"
+      title="Contact Us"
+      src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u/"
+      frameborder="0"
+    ></iframe>
+  </div>
+</div>
+<script>
+function openContactModal() {
+  var m = document.getElementById('contact-modal');
+  m.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function closeContactModal() {
+  var m = document.getElementById('contact-modal');
+  m.classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+</script>
 
+<script>
+(function() {
+  function attachRipple(el) {
+    el.addEventListener('click', function(e) {
+      var rect = el.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var x = e.clientX - rect.left - size / 2;
+      var y = e.clientY - rect.top - size / 2;
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple-effect';
+      ripple.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
+      el.appendChild(ripple);
+      ripple.addEventListener('animationend', function() { ripple.remove(); });
+    });
+  }
+  var selectors = [
+    '.toggle-btn:not(.filter-btn-disabled)',
+    '.hotel-cta-btn',
+    '.card-cta',
+    '.header-map-btn',
+    '.contact-footer-btn',
+    '.modal-close-btn',
+  ];
+  function initRipples() {
+    selectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        if (!el.dataset.rippleAttached) {
+          attachRipple(el);
+          el.dataset.rippleAttached = '1';
+        }
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRipples);
+  } else {
+    initRipples();
+  }
+})();
+</script>
 </body></html>

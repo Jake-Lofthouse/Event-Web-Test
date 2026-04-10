@@ -1,0 +1,1102 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Find parkruns in Fingal County — Hotels Near Each Event &amp; Course Maps</title>
+<meta name="description" content="Planning a visit to Fingal County? Find 15 parkrun events in Fingal County, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
+<meta name="author" content="Jake Lofthouse" />
+<meta name="geo.placename" content="Fingal County, Ireland" />
+<meta name="geo.position" content="53.444487;-6.162729" />
+<meta property="og:title" content="Find parkruns in Fingal County — Hotels Near Each Event &amp; Course Maps" />
+<meta property="og:description" content="Planning a visit to Fingal County? Find 15 parkrun events in Fingal County, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
+<meta property="og:url" content="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/fingal-county/" />
+<meta property="og:image" content="https://www.parkrunnertourist.com/Images/Feature.jpg">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="parkrunner tourist" />
+<meta name="twitter:image" content="https://www.parkrunnertourist.com/Images/Feature.jpg" />
+<meta name="twitter:title" content="Find parkruns in Fingal County — Hotels Near Each Event &amp; Course Maps" />
+<meta name="twitter:description" content="Planning a visit to Fingal County? Find 15 parkrun events in Fingal County, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip." />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/x-icon" href="https://parkrunnertourist.com/favicon.ico">
+<meta name="language" content="en" />
+<meta name="apple-itunes-app" content="app-id=6743163993, app-argument=https://www.parkrunnertourist.com">
+<link rel="canonical" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/fingal-county/" />
+<link rel="sitemap" type="application/xml" href="https://jake-lofthouse.github.io/Event-Web-Test/locations/sitemap.xml" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"parkrunner tourist","item":"https://www.parkrunnertourist.com"},{"@type":"ListItem","position":2,"name":"Locations","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/"},{"@type":"ListItem","position":3,"name":"Ireland","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/"},{"@type":"ListItem","position":4,"name":"Fingal County","item":"https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/fingal-county/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Find parkruns in Fingal County — Hotels Near Each Event & Course Maps","description":"Planning a visit to Fingal County? Find 15 parkrun events in Fingal County, Ireland — view course maps, compare hotels nearby and plan your perfect parkrun trip.","url":"https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/fingal-county/","spatialCoverage":{"@type":"Place","name":"Fingal County, Ireland","geo":{"@type":"GeoCoordinates","latitude":53.444487,"longitude":-6.162729}},"publisher":{"@type":"Organization","name":"parkrunner tourist","url":"https://www.parkrunnertourist.com"}}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REFFZSK4XK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-REFFZSK4XK');
+</script>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0; padding: 0;
+  background: #f6f8f3;
+  line-height: 1.6;
+  color: #1a2318;
+}
+body.modal-open { overflow: hidden; }
+header {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white; padding: 1.5rem 2rem; font-weight: 600; font-size: 1.75rem;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 4px 20px rgba(46,125,50,0.3);
+  position: relative; overflow: hidden;
+}
+header::before {
+  content: ''; position: absolute; top:0;left:0;right:0;bottom:0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+  pointer-events: none;
+}
+header a { color:white;text-decoration:none;cursor:pointer;position:relative;z-index:1;transition:transform 0.3s ease; }
+header a:hover { transform: translateY(-2px); }
+.header-map-btn {
+  padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.2);
+  border: 2px solid white; border-radius: 0.5rem; color: white;
+  font-weight: 600; font-size: 1rem; cursor: pointer;
+  position: relative; z-index: 1; text-decoration: none; display: inline-block;
+  overflow: hidden; transition: background 0.3s ease, color 0.3s ease;
+}
+.header-map-btn:hover { background: white; color: #2e7d32; }
+.breadcrumb {
+  font-size: 0.825rem; color: #64748b; padding: 0.65rem 2rem;
+  background: white; border-bottom: 1px solid #e5eae0;
+  display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;
+}
+.breadcrumb a { color: #4caf50; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.35; }
+main { padding: 2.5rem 2rem 5rem; max-width: 1300px; margin: 0 auto; }
+.hero { padding: 2rem 0 1.5rem; border-bottom: 1px solid #dde5d8; margin-bottom: 2rem; }
+.hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4caf50; margin-bottom: 0.35rem; }
+.hero-title { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; color: #1a2318; line-height: 1.15; margin: 0 0 0.5rem; }
+.hero-sub { font-size: 0.975rem; color: #5a6e52; max-width: 600px; line-height: 1.6; margin: 0; }
+.stat-strip {
+  display: flex; margin-bottom: 2rem;
+  background: white; border: 1px solid #dde5d8; border-radius: 0.875rem; overflow: hidden;
+}
+.stat-strip-item {
+  flex: 1; padding: 1rem 1.25rem; display: flex; flex-direction: column;
+  border-right: 1px solid #dde5d8;
+}
+.stat-strip-item:last-child { border-right: none; }
+.stat-strip-value {
+  font-size: 1.5rem; font-weight: 800; color: #2e7d32; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-strip-label { font-size: 0.72rem; color: #7a8f72; margin-top: 0.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.section-heading {
+  font-size: 1rem; font-weight: 700; color: #1a2318;
+  margin: 2rem 0 0.875rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.section-heading::after { content: ''; flex: 1; height: 1px; background: #dde5d8; }
+.country-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem; }
+.country-card {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.75rem;
+  padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 0.65rem;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
+}
+.country-card:hover { box-shadow: 0 3px 14px rgba(46,125,50,0.12); border-color: #b2d8b4; }
+.country-card-flag { font-size: 1.65rem; line-height: 1; flex-shrink: 0; }
+.country-card-body { flex: 1; min-width: 0; }
+.country-card h3 { font-weight: 700; font-size: 0.875rem; color: #1a2318; margin: 0 0 0.1rem; }
+.country-card p { font-size: 0.73rem; color: #7a8f72; margin: 0; }
+.country-card-arrow { color: #c8d8c0; font-size: 0.7rem; flex-shrink: 0; }
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; }
+.tile {
+  background: white; border: 1px solid #dde5d8; border-radius: 0.625rem;
+  padding: 0.8rem 0.95rem; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; color: inherit;
+  transition: box-shadow 0.18s, border-color 0.18s;
+  position: relative; overflow: hidden;
+}
+.tile:hover { box-shadow: 0 3px 12px rgba(46,125,50,0.1); border-color: #b2d8b4; }
+.tile-name { font-weight: 600; font-size: 0.875rem; color: #1a2318; }
+.tile-count { background: #eef6ee; color: #2e7d32; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; flex-shrink: 0; margin-left: 0.4rem; }
+.search-wrap { position: relative; margin-bottom: 1.25rem; }
+.search-icon { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; pointer-events: none; }
+.search-input {
+  width: 100%; padding: 0.65rem 1rem 0.65rem 2.4rem;
+  border: 1.5px solid #dde5d8; border-radius: 0.625rem;
+  font-family: 'Inter', sans-serif; font-size: 0.925rem; background: white; outline: none; color: #1a2318;
+  transition: border 0.18s;
+}
+.search-input:focus { border-color: #4caf50; }
+.search-input::placeholder { color: #aab8a2; }
+.filter-bar {
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; font-weight: 600; color: #7a8f72; margin-right: 0.25rem; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.1rem; }
+.event-card {
+  background: white; border-radius: 0.875rem; overflow: hidden;
+  border: 1px solid #dde5d8;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.event-card:hover { box-shadow: 0 5px 20px rgba(46,125,50,0.13); border-color: #b2d8b4; }
+.card-map-wrap { height: 180px; position: relative; background: #e8f0e5; flex-shrink: 0; overflow: hidden; }
+.card-map-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.card-map-badges { position: absolute; bottom: 7px; left: 7px; z-index: 10; display: flex; gap: 4px; }
+.card-map-badge { border-radius: 6px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: #fff; }
+.card-map-badge.start { background: #28a745; }
+.card-map-badge.finish { background: #dc3545; }
+.card-body { padding: 0.875rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-name { font-weight: 700; font-size: 0.95rem; color: #1a2318; line-height: 1.3; }
+.card-location { font-size: 0.775rem; color: #7a8f72; display: flex; align-items: center; gap: 0.3rem; }
+.card-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: auto; padding-top: 0.35rem; }
+.card-badge { font-size: 0.66rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 99px; }
+.card-badge.junior { background: #e0f7fa; color: #006064; }
+.card-cta {
+  display: block; margin: 0.5rem 0.875rem 0.875rem;
+  padding: 0.55rem 1rem; text-align: center;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white; border-radius: 0.5rem; font-weight: 600; font-size: 0.825rem;
+  text-decoration: none; position: relative; overflow: hidden;
+  transition: opacity 0.18s;
+}
+.card-cta:hover { opacity: 0.87; }
+.hotel-cta {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  border-radius: 0.875rem; padding: 1.4rem 1.6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.hotel-cta-text h2 { font-size: 1.15rem; font-weight: 700; color: white; margin: 0 0 0.2rem; }
+.hotel-cta-text p { font-size: 0.85rem; color: rgba(255,255,255,0.73); margin: 0; }
+.hotel-cta-btn {
+  background: white; color: #2e7d32; font-weight: 700; font-size: 0.875rem;
+  padding: 0.6rem 1.4rem; border-radius: 0.5rem; white-space: nowrap;
+  border: none; cursor: pointer; flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.hotel-cta-btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.14); }
+.toggle-btn {
+  padding: 0.45rem 1.1rem; border-radius: 0.5rem; margin-right: 0.5rem; margin-bottom: 0.25rem;
+  cursor: pointer; font-weight: 600; border: 2px solid #4caf50;
+  background-color: white; color: #4caf50;
+  font-family: 'Inter', sans-serif; font-size: 0.875rem;
+  position: relative; overflow: hidden;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.toggle-btn:hover:not(.active):not(.filter-btn-disabled) { outline: 2px solid #4caf50; outline-offset: 2px; background-color: white; }
+.toggle-btn.active { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; border-color: transparent; }
+.toggle-btn.filter-btn-disabled {
+  opacity: 0.38; cursor: not-allowed; border-color: #c8d8c0; color: #aab8a2;
+}
+/* Ripple effect */
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  transform: scale(0);
+  animation: ripple-anim 0.55s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+.download-footer {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+  padding: 3rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  color: white; font-weight: 700; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.app-badges { display: flex; gap: 2rem; }
+.download-footer img { height: 70px; width: auto; transition: transform 0.3s ease; cursor: pointer; border-radius: 0.5rem; }
+.download-footer img:hover { transform: scale(1.1) translateY(-4px); }
+/* Contact footer */
+.contact-footer {
+  background: #f0faf0; border-top: 1px solid #dde5d8;
+  padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.875rem;
+  text-align: center;
+}
+.contact-footer p { margin: 0; color: #5a6e52; font-size: 0.925rem; }
+.contact-footer-btn {
+  padding: 0.6rem 1.75rem; background: white; color: #2e7d32;
+  border: 2px solid #4caf50; border-radius: 0.5rem;
+  font-weight: 700; font-size: 0.875rem; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.contact-footer-btn:hover { outline: 2px solid #4caf50; outline-offset: 2px; box-shadow: 0 2px 8px rgba(46,125,50,0.12); }
+footer { text-align: center; padding: 2rem; background: #f6f8f3; color: #64748b; font-weight: 500; }
+.leaflet-control-attribution { display: none !important; }
+/* Modal base */
+.modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 9999; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 20px; max-width: 900px; width: 96%; max-height: 92vh;
+  overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.4); display: flex; flex-direction: column;
+}
+.modal-header {
+  padding: 13px 16px 11px; border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: #fff;
+}
+.modal-header-title { font-size: 15px; font-weight: 700; color: rgba(0,0,0,0.87); }
+.modal-close-btn {
+  background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.5);
+  position: relative; overflow: hidden;
+}
+/* Contact modal iframe */
+.contact-modal-iframe {
+  flex: 1; border: none; min-height: 520px;
+}
+@media (max-width: 768px) {
+  main { padding: 1.5rem 1rem 4rem; }
+  .hero-title { font-size: 1.7rem; }
+  header { padding: 1rem; font-size: 1.3rem; }
+  .hotel-cta { flex-direction: column; }
+  .hotel-cta-btn { width: 100%; text-align: center; }
+  .app-badges { flex-direction: column; gap: 1rem; align-items: center; }
+  .stat-strip { flex-wrap: wrap; }
+  .stat-strip-item { border-right: none; border-bottom: 1px solid #dde5d8; flex: 1 1 45%; }
+  .stat-strip-item:last-child { border-bottom: none; }
+}
+</style>
+<header>
+  <a href="https://www.parkrunnertourist.com" target="_self">parkrunner tourist</a>
+  <a href="https://www.parkrunnertourist.com/webapp" target="_blank" class="header-map-btn">Show Full Map</a>
+</header>
+<div class="breadcrumb"><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/">All Locations</a><span class="breadcrumb-sep">/</span><a href="https://jake-lofthouse.github.io/Event-Web-Test/locations/ireland/">Ireland</a><span class="breadcrumb-sep">/</span><span>Fingal County</span></div>
+<main>
+  <div class="hero">
+    <div class="hero-eyebrow">Ireland</div>
+    <h1 class="hero-title">Find parkruns in Fingal County</h1>
+    <p class="hero-sub">15 parkrun events in Fingal County — view course maps and find hotels nearby</p>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-strip-item"><span class="stat-strip-value">8</span><span class="stat-strip-label">5k events</span></div>
+    <div class="stat-strip-item"><span class="stat-strip-value">7</span><span class="stat-strip-label">Junior events</span></div>
+  </div>
+  <div class="hotel-cta">
+    <div class="hotel-cta-text">
+      <h2>Staying in Fingal County?</h2>
+      <p>Find hotels and rentals near your parkrun event.</p>
+    </div>
+    <button class="hotel-cta-btn" onclick="openStay22(53.444487,-6.162729,'Fingal County parkrun')">Find Hotels</button>
+  </div>
+  <div class="search-wrap"><i class="fas fa-search search-icon"></i><input id="evt-search" class="search-input" type="text" placeholder="Search events in Fingal County..." /></div>
+  <div class="filter-bar" id="event-filter-bar">
+  <span class="filter-label">Show:</span>
+  <button class="toggle-btn" id="filter-5k"
+    onclick="setFilter('5k')" title="">5k Events</button>
+  <button class="toggle-btn" id="filter-junior"
+    onclick="setFilter('junior')" title="">Junior Events</button>
+  <button class="toggle-btn" id="filter-all" onclick="setFilter('all')">All Events</button>
+</div>
+<script>
+(function() {
+  var GLOBAL_KEY = 'prt-event-filter';
+  var HAS_JUNIOR = true;
+  var HAS_STANDARD = true;
+  function getInitialFilter() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var fromUrl = params.get('filter');
+      if (fromUrl && ['5k','junior','all'].indexOf(fromUrl) !== -1) {
+        if (fromUrl === '5k' && !HAS_STANDARD) fromUrl = HAS_JUNIOR ? 'junior' : 'all';
+        if (fromUrl === 'junior' && !HAS_JUNIOR) fromUrl = HAS_STANDARD ? '5k' : 'all';
+        localStorage.setItem(GLOBAL_KEY, fromUrl);
+        return fromUrl;
+      }
+    } catch(e) {}
+    try {
+      var saved = localStorage.getItem(GLOBAL_KEY) || '5k';
+      if (saved === '5k' && !HAS_STANDARD) saved = HAS_JUNIOR ? 'junior' : 'all';
+      if (saved === 'junior' && !HAS_JUNIOR) saved = HAS_STANDARD ? '5k' : 'all';
+      return saved;
+    } catch(e) { return '5k'; }
+  }
+  function applyFilter(val) {
+    try { localStorage.setItem(GLOBAL_KEY, val); } catch(e) {}
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('filter', val);
+      history.replaceState(null, '', url.toString());
+    } catch(e) {}
+    var btn5k = document.getElementById('filter-5k');
+    var btnJunior = document.getElementById('filter-junior');
+    var btnAll = document.getElementById('filter-all');
+    if (btn5k) btn5k.classList.toggle('active', val === '5k');
+    if (btnJunior) btnJunior.classList.toggle('active', val === 'junior');
+    if (btnAll) btnAll.classList.toggle('active', val === 'all');
+    document.querySelectorAll('.event-card').forEach(function(card) {
+      var isJunior = card.dataset.junior === 'true';
+      var show = val === 'all'
+        || (val === '5k' && !isJunior)
+        || (val === 'junior' && isJunior);
+      card.style.display = show ? '' : 'none';
+    });
+    document.querySelectorAll('.tile').forEach(function(tile) {
+      try {
+        var href = tile.getAttribute('href');
+        if (!href) return;
+        var u = new URL(href, window.location.href);
+        u.searchParams.set('filter', val);
+        tile.setAttribute('href', u.toString());
+      } catch(e) {}
+    });
+  }
+  window.setFilter = applyFilter;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { applyFilter(getInitialFilter()); });
+  } else {
+    applyFilter(getInitialFilter());
+  }
+})();
+</script>
+  <div class="section-heading">Events in Fingal County</div>
+  <div class="event-grid"><div class="event-card" data-search="ardgillan parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-ardgillan" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Ardgillan parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/A/ardgillan" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-ardgillan');
+  if (!el) return;
+  var map = L.map('cmap-ardgillan', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy05Njg1MjY3LDY2MDcwNzU2LC02MDAzNzg2LDYxNzc2MzE2LC00MjI2MDI0LDY0OTgzODc2LC03OTk1MjkxLDY0MTUzNDU5LC0zNDgzMTUwLDU1MjY4NDMzLC00MzYxNDksNTgzNDEyMjUsLTEyMTMzODcwLDUyNjE1NTQ5LC0xMzk2ODk1NSw1NDE2NDU1MiwtNzQzNDg4OSw1ODI0MTg4OSwtOTExMTQwOSw2MDczNzcwMCwtOTYxNzIyOSw1ODE3NTA0NiwtMTI3MDk2MzEsNjQ3ODc1NTcsLTU4OTEwMjQsNjYzMDgxOTksLTEyMjgyMTE0LDU5NDUyMDUyLC0xMDIzNjIyMyw1MDgxMDMxMCwtNTE4NDU0OSw1OTg1ODE4NiwtMTEyNTA2OTQsNTY2NTA2ODcsLTE1NDkwODM5LDU2NzMxNTcwLC01MjQ2NTgyLDYwNTEwMDE3LC0xNjE0MDMwNyw1NDg4MzEzNiwtMTUzODY5NjMsNTg5ODU0NjUsLTE2NDk5ODI5LDY2NjcxNTk1LC0xMjI2NjM2OSw2MzQ1NzU2MiwtMTY0NzA1MDIsNTYzNTU1MjYsLTQ1OTkyNDksNjE5NDg4OTYsLTExMjM4NDQyLDU2NTg4NDM3LC0xMjQ3NzcwOSw2MDg5Mzk3MiwtMTcxNjg0NSw1OTE5NjQyOCwtMTI2MTYwMDEsNjE1ODQxODIsLTQ1NDIwMzksNTM2ODI3NTksLTIyODQxMDMsNTQ2Mjg2NzAsLTY5MTIwOSw1ODAwMTkzOSwtODcwODIzOSw1OTQzMDEyNywtMTc5MjMwNCw1MDczOTkyNiwtMTI5MDY0NDEsNjA1ODkxMzMsLTE2NTQ0Njc5LDUwNDE1NDIwLC01Mzg2NTc4LDYzMjg1Nzk0LC0xMDY5MjUwOSw1MDY0Nzk4OSwtMTExNDAxODIsNjQ5MDIzNzMsLTI4NjczNzcsNTg1MjI5NzcsLTE2NDU4OTIyLDUxODk3NTk0LC0xNDU5ODkyMyw1Mjg1MjY2NCwtMTUzNzMwMzcsNjMyMzYxMzcsLTc2MjYxNjIsNjE3NDMzNDQsLTE2NDMwOTAwLDYyNDc2OTQwLC0yNzA4NzMsNTY2MTU3OTQsLTExNzgwNzUyLDU0Mjg4NjAyLC0xMzIzNzE2Niw2Mzk5NjgzMl0=", 913358);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="balbriggan junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-balbrigganjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Balbriggan junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/balbriggan-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-balbrigganjuniors');
+  if (!el) return;
+  var map = L.map('cmap-balbrigganjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03MTI4NjM2LDUxODY1Njg0LC04MjI3NzAzLDYwODIwMzcyLC0xMDkxNDU2MSw2NTY1NTgwMiwtNDk3NDAyMSw1OTE5NjE4NywtOTQxMDY5OCw1MDc2NjYwMCwtNzcwMzk4Miw2MTA2MjkyMiwtNzAxNDcxOSw1NTM2MDY0MywtMTY1NTk1OSw1NTQ0MTY5NywtMjAwOTY3Myw2NTAwNjc5OSwtNjUzNzgsNjIyMTA2ODgsLTM0Njk5OTIsNTk3NTkyNjQsLTcxNjczMiw1MTYzNTc5MSwtMjY0MjY1MSw2MTE3NjY0OCwtNTU4OTk1MCw1MTE1NDI3MSwtMTYxNzI4NzgsNTAzNTY2NTYsLTE1MjcxOTIzLDYyNTI0MTQ2LC02NDI4NTY4LDUwOTM5NDA3LC0yODczMDk0LDY0MjY5OTEzLC00OTAzODQ0LDU0OTAwODMzLC00NDAyNDQ0LDU4MDkyNDA4LC0xNTQ4MzM3Nyw1MTc2NTIyMSwtNzI5MDQ1LDYwODE5ODc3LC0zNzA1NTQyLDYwODA1OTMwLC0xMjE2NDc4Miw1NDA2OTg5NCwtOTcxOTQwMiw1NjQzMjU1OSwtNTQyMTcyLDU5NDIzMjYzLC0zMjg3Mjk1LDYzNjcyMzEwLC0xNTkwODIwNSw1MDgzOTg5NCwtOTc4OTgyNyw1NTkzNDU1NiwtMTMyMzExNTEsNTkxNjczMDYsLTE0MzYzMjAzLDUzNTE2ODY5LC0xNTQ1ODk1Miw1NzkwNjc0OSwtOTUwMjc3OSw1MTkyMDkyMiwtNzU1OTM4NCw1Nzk2MDMxNSwtNzkxNzI5OSw1NDk5MzY3MF0=", 16330389);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="beechpark junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-beechparkjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Beechpark junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/beechpark-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-beechparkjuniors');
+  if (!el) return;
+  var map = L.map('cmap-beechparkjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy04MDU1NTI5LDYzMDY4MjI1LC04MjU2MDk1LDU5MDI4NjQ4LC0xMjEwMDQwNyw1OTQ1MzY1MSwtMTUwNTI2ODcsNTU3MzQ0OTcsLTExMTE4NTYzLDY2ODkzMTgwLC0xODgxNTcyLDU1ODMzOTE1LC04OTY2NDk2LDU1ODkyODcxLC0xMjk3OTE2Nyw2MjIwOTUyNSwtMTg3NTU5LDU3MDA1MjU5LC0xNjczOTQwLDY2MTY4NjQ1LC02NzU5NTQ1LDU2OTUyMDEwLC0xNTkyNzg1NCw1MTY5MzQ0MiwtNDQxMjgzMCw2NTAyNTM3NSwtMTI0MDQxNjQsNjE4OTU3ODAsLTE1MTE0OTAsNTkxOTk1NTQsLTMyNTYyMSw1ODUwNTM0OSwtMTU5ODY0Nyw1OTM0NzU5OCwtNTEzNDc0Miw2MTc5OTI0NCwtOTE0NDAzMiw1MTg2NzYzNSwtMjM0ODA3OSw1NDUxMDg4N10=", 9988494);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="broadmeadow linear parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-broadmeadowlinear" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Broadmeadow Linear parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/B/broadmeadowlinear" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-broadmeadowlinear');
+  if (!el) return;
+  var map = L.map('cmap-broadmeadowlinear', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03NDUxNTY3LDU1NDkxNzIzLC0xMTk4ODAwMyw2NjczOTYxNiwtMTUzMjg5NDEsNTU2MTk2MTQsLTE1Mzg3MDQzLDU0OTY5NjI1LC05OTg0MDU3LDU2NjI1OTI0LC04NDg4ODA5LDUxODAzNjMwLC01NDQ3MzcwLDU1NjQ2NTQ5LC02MTQ4NDkyLDUxNjMwNDU1LC04MDY3NTYyLDYxODc0OTYxLC01MzM3MTIsNjUxNzYzODQsLTcwMTExNjMsNTYxOTAxNTAsLTQ4NjYwMSw2MDEzODQ3MCwtMTAzMzYzODgsNTY1MDI4NDMsLTEwMzcyMTQ1LDUzNjM1Njc5LC0xNDk3MDQyOSw1NzM4ODk4NiwtMTQ3NjY3MjAsNTQ4ODM0OTUsLTkxMTE4OTIsNTI3NDkwMzgsLTQxNjY5MjIsNTE4NDQ2NzEsLTQ2NzU5NzcsNjcwMTgzMzQsLTg2NjQ5OSw1NTAyMDkyNiwtMTQ3Nzc1NDMsNTg0MDUwMjQsLTk4MjU5NDksNjE1MDc2NjQsLTY1MDg1MDcsNTI4ODk0NjcsLTEwMjg0MDg1LDU0NzcwMTg0LC0xMjg2MDQyMSw1NzkzNjMxMywtMzQyNTk2MCw1MDQ5NDg4NiwtNTUxNzU2MSw1MTc2ODgwMywtODg4Mjg4Niw1MjI5MjE3MSwtMTUyNTk4MjAsNjY5ODkzNDQsLTYyNTY0MjMsNjE5MTkzNDYsLTg2MTcxMzEsNjIzOTM3MjUsLTEyMDM4NzcyLDY0MzU0MDUxLC00ODA2ODc4LDYxMTEwODMzLC00NDM0MDY1LDUyNjYwNTYyLC0xMDc5MDIyOSw2MDE4MjQ5NiwtNDE3NTAzNCw1MjkzNTcwMSwtMTE3MzQwMDMsNTMzNDEzNTYsLTE2MzY2NTI1LDYzMjAzODMzLC03ODI1MTAzLDUzODQ1ODIyLC0xOTk1MTE1LDUxMDYzMTI2LC04MjQ3NTgzLDY2OTM0MTEzLC00MDc0MzcsNTYxODcwOTUsLTQ4MTE2MDksNjIzMTM0NDMsLTEyNTg1OTAzLDUzNzQ1MTQyLC04ODQ5NDQ3LDUxNDgzMjgzXQ==", 465499);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="donabate parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-donabate" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Donabate parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/D/donabate" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-donabate');
+  if (!el) return;
+  var map = L.map('cmap-donabate', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy00NDQ0MTUsNTQ4NTI5MDEsLTExMTMzODI0LDY1ODc0MTYxLC02MTA0MjUwLDUxODYzMDg5LC0xMTkxMDE0Miw2NjMzMDU0MCwtMjUwODk0Nyw2MzgxNDQ2NSwtMTI2MDUzNTYsNjAwNzA4NjEsLTU5MTIxOTgsNjIzNTYxMTcsLTE0OTc0OTQyLDYxMjQxMDg4LC0xMTMzNzc1Niw2NDI5Njc0NSwtMTQ4NDE4MzQsNjQ2NzQ3NzIsLTU4ODU4MTIsNjA1Mjk3MzEsLTE0MDgyODAyLDU4OTI3MzM1LC03NTc2ODE1LDUzOTk1MjY5LC02Mzg5MDgxLDYxOTE4MjY3LC0zMzcwMjE3LDUxNTU0NDU3LC0xMDgxNTUwLDU2NDQ4NTY1LC04MzA1ODI1LDY2NDM0MTI1LC05ODg3OTIwLDU3MzkyNDY3LC0zNzI0MzcyLDUxMjU1OTg1LC0xMTExMDI2MCw1NTM0ODM1NywtODc0ODgwNiw2MjAxOTQ5NCwtNzU0MjgxMiw1MjY5NDM1MywtMjUzOTE1Nyw2MTEyNTAwMiwtMTI1MTg1ODUsNTUzMTE3MTgsLTExMjY1ODEyLDUxODM3Nzc0LC0xMDk1Nzk3MCw1NjA4ODMwNywtNTgyMDg1Myw1NTU2OTczNSwtMzc1Nzk5OCw1NjI0MTQzNCwtNzM0NTg5OCw2MTc3NzEzMywtMTIwNDgxMzYsNTkyMTU1NjEsLTE1NTM3MjU5LDYxNzUxNjg0LC0xNzEyODMxLDUyMDc3NjkyLC05ODc3MDc2LDU3MjkwMjk3LC0zMTk5NjEyLDYyNDM1ODU2LC01ODg2ODAzLDU2NzQ4OTQ1LC02NDk3MjU3LDUzNzg4NTk5LC04MTkxMjI1LDY2OTM0NTIxLC03MzU0MzE5LDUzNzQxMzYxLC04OTAxMDI0LDU3NzM1OTU1LC0yMTgxNzU5LDUxNTY3NDEzLC03NTU4MTc2LDYyOTU5NzYzLC0xNDY3Mzk2NSw1NDk4ODY4OSwtOTI4MjgyMyw2NTM0NjE1MiwtNzM0OTIyMCw1Mjc0NTU5NSwtMTE2OTExNzcsNTk3NDM4NTgsLTExMTI3Njk2LDY1MjA0NjY4LC0xMTE2MjgxMCw1OTU3MjU0NiwtMTI1NDUxMDQsNTg1NTgwOTAsLTEwOTUwOTE1LDU5NDMyNjM4LC05MzkzNTQwLDUyMTk3Mjg3LC01MjQ2MzE2LDU2Mjg3MjM4LC04MDQyNDk2LDYwMDMxMTM0LC0xMDU4OTMyMiw1NTk4OTc5OCwtMTQzMDAzNjAsNTExNTc1MDVd", 13476321);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="hartstown parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-hartstown" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Hartstown parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/H/hartstown" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-hartstown');
+  if (!el) return;
+  var map = L.map('cmap-hartstown', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy03NDIwNDAzLDYwMzUwMTYwLC05ODU0NDA5LDU4NDUyODY4LC02ODU4NjMxLDUyMjA3MTUyLC03MDQ5NjI3LDYxMjg4MzE0LC02OTQ5ODU5LDU0OTE0MTc4LC0xMTQxMTY4OSw1NDc0NDQ4NCwtMTQzNDU2NTksNjU4MTQ0MzQsLTE0NzkyNDg1LDU4NzQ3NDAyLC05MjM1NjA5LDU5MTk2MzY4LC0xOTcwNjc5LDYwMTUwNjU0LC0xMzQxMzkyNSw2NTA3ODU1NCwtNjUzNTQ4NSw1NDMzNjIyMCwtMTQ5Mjg1ODcsNjIxOTk5MDYsLTk0OTA2MzksNjM5MzgxMTAsLTkzMzk2NDMsNjYyOTE5MDYsLTcxOTE3NTUsNjU2NTczMzAsLTU5MjgyMjUsNjU5MzAyMjQsLTMxNDY0MjcsNjQ1NjkyOTIsLTExOTI1NDksNTMxNDgyOTgsLTE2NzI4NjM5LDYxMTI4OTI0LC0xMzU3NzUwMyw1NDc5Njg2MiwtMTYwOTY5MDksNTI3MTE0MzIsLTE1OTY0NjA3LDU2NjIwNzYwLC0xNDQ5MjY2NSw1ODUyMTk5NCwtNzY2MzYyOSw1NzU0NDk1MiwtOTM5MjgzNSw2MjI2NTYxNiwtMTQ5Njc1NTMsNjM1NzAxOTgsLTkzMzgxNjMsNjU1MTUxMzgsLTExMTU3OTI5LDYwMDAxMzg0LC0zODcyNTc1LDU0MDM3MzI4LC05MjMzNzc3LDUyMjU4Mzk0LC0xMDY5NzYwNSw2NTI2NTIyOCwtMTE3NDY2MjksNTg3NDkwODAsLTc3OTYzNjcsNTQ4MTAwMTQsLTI3NTc1MjksNjU1Nzc0MjIsLTI1NjUyNDcsNjI5MzAyNjYsLTMyNDA5MDEsNjAzNzQ1MzgsLTQ0ODY2NzEsNTY1OTk1NDAsLTE1Mjc5MjI5LDUzOTY2ODIwLC0xNTYxNzEyMSw2NDYzOTU4MCwtNzA4NTcyNSw2NTEyNDIxMCwtMTEzNTUwMzMsNTU4NzUwMTgsLTk1ODgzNSw1MTQ0MDA5NiwtNTU1ODkyNyw1ODI5MjUwNCwtOTg0Nzg5Nyw1OTg0OTU5MCwtNzYwNjE2Myw2NTUyMjQ1MCwtNTE5NTU0NSw1ODEwMjkzMCwtMTE2ODk2MzUsNjU3Mzg1MjgsLTE2NzE3ODkzLDU5MTY1ODE0LC0zMDQxMDQxLDU0MjQ5MzkyLC0xMjA5ODc1Nyw1MTI2NDM4OCwtMTUzNjg5NzksNTk2NjM3MDQsLTE0MjM2NDAzLDU1ODcyMDI4LC0xNTU4OTQ0Myw1Mjc0NTY2MiwtODgzNDI2Myw1NTE5OTg1OCwtMTQ4MDUzMTcsNTU3NzM3NDIsLTE2Njk1NjMzLDU1ODE1ODEyLC00MjQyODAzLDY1NjMxNjAwLC0xMzg1NzYzNSw2MTY3NTI5MCwtMzkxNjg4OSw1OTI1MTc0OCwtMTE1MTE5ODksNjUzNTU3NzIsLTQ3NDk4MjksNTU1MzEyOTYsLTEwMTQzODczLDY0ODU1NTE2LC0xMTAwNjgyNyw2MjM3MTQ3MCwtNDUzNTIxLDY2NzM4Nzg0LC02NDYxNTkzLDU3NzcyODgwLC0zODI2NTcsNjAwOTcwMDgsLTk1NzE5NzUsNjE0NzE5NTYsLTEzNTI4MzE3LDY2NTM1MDI0LC0xMTQwODIxOSw1MTUyODU0NCwtOTc5NjM3MSw2NDQ1MDg0NiwtNzgyMjg0MSw2Njc4MzYyNiwtMTU4MjQ5MzEsNTYzODkyMzQsLTk3MTU2MjMsNjMzMTQzNDQsLTE2MTMyNDkxLDU3ODcwNDk4LC04ODAyMTU3LDYxODcwMDI4LC03NzY4NDcxLDUyOTI0MjI4LC0xNjc0MDEzNyw1NzIyNTY3NiwtMTY0MDI2NzcsNTg4Nzc1MDQsLTQzNzM0MjEsNTA0MDQyNDIsLTk4MjQ2MDksNTc4MjE0OTQsLTU3NzA0NTksNjA3OTMwOTYsLTU1NDg3NTMsNTEzOTAxMjQsLTY5MTU1OTEsNjExMDExODYsLTEwMjU3NjYxLDYzOTc2NzE0LC0xMDA5MjQyOSw1NjQ5NjExMiwtMTAyMTAzOTksNjE4NjE2MDIsLTEyMjE3MDI1LDYzNTk0MDg2LC0xMzI5MDAzNyw2NjcxMzYwMiwtMzIzNTA4MSw1NzM0OTYxNCwtMjc4MTQzLDU2Mjg0NTM4LC0zMTAxODcsNTA5NDI2MTAsLTE2NDU4MTE1LDYxOTQ1NzAwLC0xOTE0MTExLDYzNjI1ODQyLC0zNzg1Mzc1LDUwNDk1Nzk0LC0xMDUzMjg5LDU2NjEyNDkyLC03MDkwMDIxLDU1MTE2OTEyLC0xMDEzMTYxMyw1NjQ2MTIwMCwtMTU4OTI1OTksNTg0OTgxNDYsLTMyMTE0MTcsNjI2NTM3MjQsLTU4ODAwNSw1NDQ5NDgzMCwtNzA4OTg0MSw1MjQzODkwMCwtNjIzNzcyMyw1OTUyMDU1MiwtMzYyNDMwOSw2MjcxNTk4MCwtMTM5MDQ3NTMsNjY5Njc2MjIsLTU5NjYzMjcsNTcxNzI2MDAsLTI3NTcxNSw1NDU1NDc4NCwtMzg1Mjc1OSw1MDg0ODg0OCwtNDI1NzAxMSw2MDM2ODk2NCwtMTEzOTAzOTEsNjE5MDgwNDYsLTE0NzI5NzcsNTM3NzUyMjQsLTU5ODg1ODcsNTczODYxNTYsLTE5NTU4ODksNTM1NDA4MTgsLTMyNjU0NzUsNTI1Nzk3NzAsLTEwOTM1Njg5LDYxOTA3MzkyLC0zNDU2NjM3LDYxNDA3NTEyLC0xNDMxNDE5MSw1MTc5NzE0NCwtNzk0OTIxNSw1NTYwNDM1MiwtNjk4NjQzOSw1MzA2NDM5NCwtNzI1NDk5Nyw2NTU0MDM4MCwtMTYwNzI1MSw2MDg4MDU1MiwtMTQyOTgwNDMsNTg1NTY0OTgsLTEyNDczMDg5LDY0NjkyODMwLC0zMjE3MjIxLDYxMTU3ODMwLC0xMDU4NjkxLDU2MDcxNTYwLC0xNjA5MjQ4Nyw2NjI3Nzc3MCwtMjI5NjkwMSw1MzUyOTEzNiwtNjU4MzY5Nyw2MjczNjY5NiwtNjc3NjkwMyw1OTE1Mjk5OCwtNjE2NjQwNSw2MzQ4ODY4NiwtNzk3NTU3NSw2NTMxMjkwOCwtMTY3NjI5MTcsNTg2NzA5MTgsLTE0NDg1NDc1LDYyMDkzODkyLC00Mjk1NTI3LDUwNzc2NDQ4LC0xMzAxMzA3MSw1ODQ0MzkwMCwtMTU2OTc0MzEsNTUwMDU5NjAsLTE0NDU1ODYxLDUyMzI3NTE0LC0xMjQyNjU4MSw2NjkxOTgxNiwtODA5MTg1Nyw2MDcxNDEwMCwtMTE1MTA2ODUsNTE5MDQ4NzYsLTM0NDM4NzUsNTI3ODgwOTgsLTEyMzUyNDk3LDUyNzcyMzM4LC02MzIyODA1LDYzOTQ1MzU0LC0zODk5MzAxLDU3MzUyNzY2LC0xNTY1MTQ5LDUwNTg5OTc2LC0xMTc2MDU2MSw1NTE0NzIxNiwtMTE0NDY4MTUsNTU1ODYwNTIsLTEzODI5NDYxLDY2NDk0MTQwLC01NjEwNzIxLDU0OTY1NDU2LC01MDM1NDc1LDU2Mjc4NTc0LC0zODgwNzIzLDUxOTQzNTU0LC0zODM0MzQ1LDU1Mzk1NzY0LC0yNjM2OTUxLDYzNzA5NzM0LC0xMjczMTU3OSw1MDQyMjMyNiwtNDEwOTcxNyw1NzA3MzQyMCwtNDA0MTY0NSw1NDI5NjU3MiwtMTU5MDE1MzMsNjI0ODE3MDIsLTEzNzU1MDEzLDYwODMxMTUyLC0xMDA5NTQ3Myw1Mjg5NjA3MCwtMTA1MDU1NTcsNTc0NjMxNTgsLTE1NzMxNzM5LDY2NzgxNzMyLC03NDQ5ODk1LDY0MzY3MjM4LC01Mzk4NzY5LDU1NDEyMjc4LC04MDIzNzU1LDUzMzAwMzEyLC05MTM4NzYzLDU5ODU2MTkwXQ==", 13366454);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="lusk sports hub junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-lusksportshubjuniors" class="card-map-inner"></div>
+    
+  </div>
+  <div class="card-body">
+    <div class="card-name">Lusk Sports Hub junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/L/lusksportshub-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-lusksportshubjuniors');
+  if (!el) return;
+  var map = L.map('cmap-lusksportshubjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  map.setView([53.530771, -6.161849], 14);
+  L.circleMarker([53.530771, -6.161849], { radius: 8, fillColor: '#40e0d0', color: '#fff', weight: 2.5, fillOpacity: 1 }).addTo(map);
+  
+})();</script>
+<div class="event-card" data-search="malahide castle junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-malahidecastlejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Malahide Castle junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/malahidecastle-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-malahidecastlejuniors');
+  if (!el) return;
+  var map = L.map('cmap-malahidecastlejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy01MDE5ODYwLDUzMTQ5MTUxLC0xNTM5NTA2NCw1OTY3MDA0NiwtNjIzMzYxOSw1MDY5ODk4OSwtOTI5ODc4OCw2MTEyOTQ4MCwtMjE2NDM4MSw2Mjc4NzAwNCwtMTM5NDIyMDQsNjU0NzA3NDIsLTkyMzU1NzksNjMwMTEzOTYsLTQ2Nzg2MzYsNTEyNDkyODUsLTYxMTkyMTUsNTA4ODUxOTgsLTE1MDU1MjI3LDYxMjA4ODYyLC05NTczMDAyLDU4MTg2Mzc1LC0xMTMyMjI1MCw2NTU0NDc2OSwtMTA0OTgwMjEsNTQxMDIxNzUsLTExMTg3MDc2LDU4NjEzMzY0LC01MjQwNDI5LDY0NjY4NjQxLC00MDAxMzM5LDU1OTg1NzA0LC0xMDk0MTYxMSw1NjgzNDc0MSwtNjkzMjIwMiw2NTIyNjc1NywtNjQwOTQxMyw1MTg2NzcxMCwtMTA1ODIxNTQsNjAyNjgzMjIsLTY3MTIwMjgsNjM4NzkyMzld", 839923);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="malahide parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-malahide" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Malahide parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/M/malahide" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-malahide');
+  if (!el) return;
+  var map = L.map('cmap-malahide', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0zMzQ0NDY2LDUyODk0ODYzLC01Nzg3MzQ4LDU1NzM5MjA0LC0xMDM4MzM1OSw2NjM1NzY4NiwtMTU4OTkwNTYsNTgxNzExOTgsLTEwNDY3LDYyNDYyNzcyLC0xNjI2ODM0Miw1ODk5MTM0NiwtMTY1NTQyNzQsNTkxMDYwODksLTEzNjY2NjgwLDY0MTk4NTY5LC0xMDYzNzU5OSw1MjY0MzcxNiwtMTE4OTI4LDU0MDY3ODM4LC00OTk5ODUwLDUyNDkxOTQ4LC02ODU4NjcyLDUzMDU4MjY1LC03OTY0OTUyLDU2NDU5MTM0LC03NjQ3NTYsNTcyNjY3NTQsLTE0NzkxODYzLDYwMDMxNDAzLC0zNDE4NDM5LDUxODU3ODQ1LC0xNDY2OTk0OSw2NTczMjcwNiwtNTI5NTc2Niw2NjU5OTM5MCwtMzMxNTAsNjI1ODkxMDUsLTEzNjI3NTI4LDU5MDcxNjA4LC0xMTUwOTcwNiw1NjU0MzY5MCwtMTEwNTczNDIsNjQyNjY4MDAsLTc5Nzg4NDAsNTIxOTIxMzAsLTY2MTk3NzYsNTcyNTU3NDIsLTgzMTE2MzgsNjYzMDc0MTgsLTg3NzU4ODAsNjQ2MjI3NTQsLTU2Nzc2MCw1NTA2NjIwMiwtMTMxNzMzMTIsNTY4ODY1OTgsLTEwNzE1NzMzLDY2MTg4MzcyLC0zMTQ0NTg3LDYxODk3NDY3LC0xNjA5MTI3MCw2MDc1NzYzNywtMTA4MDgzOTgsNjUyODk2MDEsLTY1NjUzODYsNTc1Mjg0NTQsLTk1NDcwNzQsNjM2NDU0MjIsLTExODU4NDg4LDY1NzUyMTIxLC0xMTEwNDIsNTA1NTM3NTMsLTk1OTA5MzUsNTcxNjMwMjEsLTExNDQzNDc0LDU3MjQzMzYyLC0xNjQ4NDYsNTI1MzYyMDgsLTEyMzUyODIxLDU5MDc4OTQ1LC0zMTY5NzA5LDUxMjQyNTY5LC03MTYyODU2LDU4MDAxNDI3XQ==", 2857184);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="newbridge house junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-newbridgehousejuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Newbridge House junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/N/newbridgehouse-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-newbridgehousejuniors');
+  if (!el) return;
+  var map = L.map('cmap-newbridgehousejuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy01MDIzMTk0LDYzODMzMjQxLC04ODgxOTUyLDUyNjE1NzE1LC0xNDkyNjQyLDY2NjY1MzY1LC0xMDA2NjAsNTc4NjYxMzEsLTU1NDU3MzIsNjQ1ODM4NjMsLTE2Mzc2MjM2LDY0MTI1Mzc5LC0xMDQzNTIxOCw1MDc2MDcyNSwtMTQ3OTY5OTQsNjUxMzA0MTUsLTE2MjUwMTU4LDY2MjcxODI1LC03ODE5NDg4LDU1OTcyNDI3LC0zNjA1NDE4LDU3NjA1NzMxLC0xMzc0NzI2OCw2MjY2MTc2MywtODQwNjQ2MCw1NzQzMzE0NywtMTQ4MjUxODQsNTIyMTM2MzcsLTY3MTI0NjAsNjExMzcxODMsLTk4NTM2NzIsNjUxMDIxMzcsLTE1NDY2MzYsNjA0NjAxMzEsLTEzNDU4NzA4LDYyMzYwOTI3LC00NTExMTE2LDYyODkwOTgzLC0yODY0NDc4LDUzODQ0NzY3LC0xMDQxODE1OCw1ODEyMzkxMywtNzAyMjM4Miw1NDM2NTIyNSwtMzI1NDUwMCw2NDYyNzcxNywtNjcyODE2Miw1MjUyOTI4OSwtOTQ2MDMzNiw2NDg3ODcwNywtMTA2NTA5NDAsNTI5ODI0ODUsLTEzOTU3NDU2LDYwMDM1MTg1LC05OTYyOTQ0LDY0MDIyNzYxLC03NDE1NjE4LDUzNTUzNjY5LC0xMjk4MTMwMCw1ODA4NTIyNywtNzIwMjk0NCw1OTc2ODk5MSwtMzY5MzgxMiw2NDIxODE1OSwtNzM4MjM2LDUzODU4OTk5LC0xMzkxMDAxMiw2MzUzMDMwMSwtNzkwMDI5Niw1MTczNjMxNSwtMjYyODE5OCw2MjgyNjE1MSwtMTIwNjc0ODYsNTE2OTYyMTMsLTE2MjM1NjU4LDY1NTIyMDMxLC0xMzM3ODQxNCw1NzYyNDkzMywtMTIzMTY4MzYsNjU2MTg3NzUsLTY2NDkyMTYsNjA1MTE5MDksLTE2NzIzMTQ0LDU4NDM5NjI3LC0xMjg3ODY5OCw2NTg0ODIxMywtMTQ5ODY2ODYsNTk3Njg0NjMsLTEyMzc1MzU4LDYyNTUyNDAxLC0zMjIxMzYwLDUzNjg0ODE5LC04OTk0OTQwLDUyNDg5NjE3LC0xMzgxMTU0MCw2NjIzMzQxNSwtNDQ1MTUzMCw2NTUwMjY3MywtMTIwODM1ODYsNTQ1NDgyMTUsLTkwNDY3MzAsNjUyMTQwNjUsLTU2ODY0MDYsNTU5NDYzNzUsLTM5NDQ4NTIsNTg0MTU0NTUsLTc1NzM0MjgsNTgyNzAwNTMsLTEzNTI4NjA4LDY1OTM0MjExLC0zMjQ2ODUyLDU4Nzg4NjA3LC04ODg0OTI0LDY2MjY4NDU5LC02MzYzMzkwLDU0MDA0Nzg1LC0xMDYxMDc4MCw1NjY5MDQ3NywtNDk1MzI4Miw1ODc5MjMyNywtMTI1MzQ4NjAsNjYwODQ3MjcsLTM2NTE1ODAsNTYzMDMyMzMsLTEzOTI1NTY0LDUyMzkwNjI3LC0xMjQxNzA5NCw2MzI4MzEyOSwtMTM5ODI5MDIsNjQ0Njk4NTMsLTk1NjU1NzIsNjMxODkyMjMsLTEzOTgwMzk0LDYzOTY0NzUzLC05MTY2MzgwLDUyNjE0NzAxLC00Mzk1NTAwLDYyMDI5NTcxLC0xMTk3MjM3Miw1NjE5ODIzOSwtOTIwMTEyNiw2MDcwOTUxMywtMjMxNDY5Niw1MTQ0MTM1MywtMTM1MjM2ODIsNjM4MTA1OTUsLTEwNDk4OTg2LDU2OTg5NzAxLC04MjA2OTgwLDU4MjY3NjU1LC0yMTQ1ODY4LDUxMTIwMDI3LC01MDE3NzUwLDU2Mjc1NDgzLC0xNTgyNTUxOCw2MjI1NDk3MywtMTU0MjMzOTIsNTc4OTY2ODEsLTUwMDkxNDAsNTM3NjkxNjksLTE0Mzg4NjEwLDYzODYwOTgzLC0zMTk5NzQ0LDYyNzE5NTQxLC0xNTM3MDkyMCw2MTEzNjQxNywtMTQzNjExNTQsNTMzNDE0ODEsLTEwNTM1NTI2LDYwOTUxMTQ3LC02MTAyNTM2LDU3NzQwNDMxLC0xMDM3MzE4MCw1Mjk1NTMxMSwtMTUzMDQ0NTQsNTg3ODM5MzcsLTE3MDE2MzQsNTE1Njc0MjcsLTU4MTk3NTYsNTExMTA5ODksLTMyOTY2MDYsNTQyOTA4NDksLTEyNTk5MjAwLDY0NTc0NzMxLC00NzkwMCw1NjcyMzA1OSwtMzU3MzY0MCw1NzQwNDk4NSwtMTAzNTg4NjYsNjExNTA0MjUsLTEwNDY1ODcyLDU1MDAxODU5LC0xMTE3OTM4Miw2NDIxNTMyNSwtMTE4NjcwMTgsNTc4ODI3MTcsLTE1Mjk2NjQ0LDUwOTI3ODUxLC0xNDczNzExMiw1NDQ3MzIzNywtMTE2MjQxMjQsNTc4MjQ1MTksLTE2NDM0MTI2LDY1NTA0NDY3LC0xMDQ4NTY1OCw1NTgwMTIzMSwtOTk2NzA4Miw2NDUzNzE0MSwtMTE5NTkzMDIsNjM2MDA3MTMsLTE0NTgzMDgwLDY2Mjk0NjQ3LC0xOTEzNTYyLDY0MTg4MTMxLC00MzMwNTM4LDU3NzEwMjY3LC0xNTk2MTY5NCw1MTE5OTkxMSwtMTQ4NzAzNjIsNjMyNDg3MjEsLTUwMjM1NDQsNTYzNzI4OTksLTEzMDcyMDU0LDY1NDIxODM5LC0xMDM3OTU0OCw1NzY1MzA5OSwtMzMxNTc1Niw1MzM1MTU0NywtMTA2MjY3MTYsNTI3NTA3MDksLTc2NTg1NzQsNTY1MTI5MDksLTg5NDY5MDIsNTczNTg3NjUsLTExMjcwNzE4LDUwNjY0NzM3LC02Mzg2MzU0LDY1NTY3NjY3LC05NzE4NzAsNTY2NzM5NzMsLTUwMjEyMiw1ODUwMzIwNywtMTM0Nzc4NTQsNjMxNzg1NjksLTUzNjI0NzAsNTI4MzE4MTcsLTE2NjQ2ODY0LDY2NzE0NjAxLC0xMjE0NDU3MCw2MzI0NzkyOSwtOTA5MDk3Miw1NzIxNDE5NV0=", 171707);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="porterstown parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-porterstown" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Porterstown parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/P/porterstown" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-porterstown');
+  if (!el) return;
+  var map = L.map('cmap-porterstown', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy02OTU2MjQyLDU1OTQzMTcwLC0xMTc2NTQ3OSw2MjkxOTQxNywtNDAyNjYwNiw2NTMwODQ1MCwtMTU5NTc4NTMsNTg0NDg0NjEsLTE1Nzk4OTQzLDU1NzE3NDMwLC0xMzQwNTAxNyw2NjMzNzc0NiwtMzgzMDMxNCw2NDc2MjIxMywtOTY3NzQyNSw1MjU3MDU5MCwtMTY2NjU0OTYsNTc5NzgwMjcsLTczNTI0NzgsNTg2NjY0NDAsLTE2NzExNDM4LDU4MzQyMzc4LC05Mzg3MTk0LDUwODAzOTg4LC0xMjU1OTIxLDY3MDU4Njc1LC01MzgwOTgwLDYwNjE5NTEyLC0xNDUyOTU5OCw1MTU0ODA4MCwtNDY5NTM0MCw1NDc3MzkyMywtMTYzMTQyMjYsNjYzMDQ1NjEsLTE0MzYyMTcyLDU3NjI5MzQ0LC0xMjI1NjM3MSw1NTk1MDcxOSwtODk2NzY5Myw2MDAwOTk4OCwtMTM2MDY3NSw1NzQ1ODczMiwtMjEyMjk1Nyw1OTYzMjE3NiwtNTY1MzY1Myw2MzY3Mjk0OCwtMTQ2Mjk3ODAsNTk2MTMwNDksLTE0NDM0NjE0LDUzMjA0ODIxLC0xMjA5NDY4Niw1NTI5NTEwNywtMTI5NzQ3MjMsNjY4NTg3NDksLTEyNDk5NjMyLDY1MTczNTA2LC0xMDI4NzAxMiw2NDk2OTQ4OCwtMTUwNjk3NzgsNTYxMzc3MTIsLTY2NzI4NjQsNjE4OTMwNTAsLTE0MjI2NzIzLDYxMjM4Nzk1LC03NTk3Mjc3LDU0MzQ5NTk4LC0xNDM3NzM1Miw1OTE4NDk3MiwtMTE1Nzk0NjYsNTA4MTE0MDksLTg3NDY3Myw1Njg0NTAzNywtMTM1MTAxNTYsNTE2MjAyOTVd", 15170877);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="river valley junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-rivervalleyjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">River Valley junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/R/rivervalley-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-rivervalleyjuniors');
+  if (!el) return;
+  var map = L.map('cmap-rivervalleyjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xMDM4Mjg4Niw1NDA2NjM3MSwtODQ2ODUzMSw2MzUxMDkyOSwtMTA1ODU3OTYsNjA5NDE1NzEsLTMxNDIzNiw2Mzk1MTcxNiwtMzcwMiw2NTc1NjIzNSwtMjA2MjUxOCw2NjkyNjMxNSwtMTM0MzAzOTEsNjA5MDI3NDUsLTE5NDgzNTQsNjIyODQ1MTYsLTE0MTMyMzk2LDU2NzEyODAyLC0xMjU2OTU2NSw1OTUyNDIyNiwtNTUwNDc2Nyw1NjkyNDg1NCwtMTY3NDAzNTcsNTUzMDc2NDMsLTE1NjY1MzY0LDU3NjI5NDM2LC0xMzIyMDI3MSw1MzAxMjUyNiwtMTE3MTM2MzYsNTE4NjQ2OTAsLTc1MzY3NDEsNTUxMjk4MDcsLTEzOTQzMjY3LDYyMjAzNDc5LC00Mjg1NDYwLDUxNTQ4MTk3XQ==", 6671016);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="river valley parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-rivervalley" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">River Valley parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/R/rivervalley" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-rivervalley');
+  if (!el) return;
+  var map = L.map('cmap-rivervalley', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0zMzI1NjcwLDUwODI3MDUxLC0xNDE1MzU2Niw1NTc2MTA4MSwtNzM3MTczNCw2MTkyNTM2MCwtMTY2ODgzMjYsNjA1MjQxMDQsLTc5MjIwMTUsNjEyMDg5ODMsLTYwMDk1OTEsNjMyNjYxMDMsLTI4Mjc0MzYsNjQzNDE1MTcsLTE0NDIzMjAsNTA0OTg0MTgsLTgzNTkxODAsNjIyMzc4OTAsLTExNTQ5MjIsNjA3NTA2ODIsLTExODg3MjAwLDU5NzMwNDEwLC0xNjY4NjY1OSw2MzA4MDc2NiwtMTc3NTQ0NCw1Mjk4MDQ4NSwtNDI5NzkyMCw2MzI4OTgxMiwtMTI3NDAxNjgsNjQxMzA1OTMsLTkwOTg2MjQsNjY1NjcyMjgsLTEyNDY4NTQ1LDYyMzc1MTQ2LC03MjkyMTgyLDYzNzkzNDQwLC02Mjk1MDEzLDY1MTExMjU3LC04MzE5MDQsNTczMTQ2NjcsLTc2Mjk2MTcsNTk0OTE0NzYsLTEwMTc0NzkxLDYyMDU1MDc4LC0xNjUwMTkyMiw1OTM2NDU0MiwtMTMxMDQyMCw2MTg1Njc1OSwtMTUwODY3ODUsNjIzNzkzNDYsLTQyOTM3ODgsNTY2NjkyOTYsLTE1OTQxNDIsNTQ3NzM2MzcsLTY4NzAwNzcsNTcwNTU3NTMsLTU5NTQ2NDYsNTYyNjUyNDIsLTU3Nzc1MzUsNjM4NTcyOTgsLTEwMTY0MDEwLDY2NDA3NDYwLC0xMDU2MDk3LDU4NDk1MjgwLC0xMTUwNzYwMSw1NjY3MjE5MiwtMTM5ODMyOSw1NjQwOTA1NSwtMzE2MzE0LDUzNDYyMDY0LC01MTc4NTIwLDY1NjM3MDkzLC02NTMxMDE1LDY1MDk3MDYwLC02NzYyMzEzLDY2ODM1NzE3LC0yOTQ0NTAwLDU5Nzc2MjE4LC0xNDgyNzk0OCw1OTkxMTgxMCwtNTIyMDkzOSw2MDc0NzM0OCwtODA3NDY4MCw1MjY5NjE1NSwtNDg1Mzc0NCw1NjY4MTgyOCwtODU0MjYyMCw2NTQ5Mjg4NV0=", 9613538);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="rush junior parkrun fingal county" data-junior="true">
+  <div class="card-map-wrap">
+    <div id="cmap-rushjuniors" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Rush junior parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"><span class="card-badge junior">Junior parkrun</span></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/R/rush-juniors" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-rushjuniors');
+  if (!el) return;
+  var map = L.map('cmap-rushjuniors', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNjcwMzI0MSw2NTI4OTcyNywtMTQzNzI3NSw1NzUxODM4OSwtNTg2MjY0NSw1MzgyNDczMCwtMTMwMTcwNDIsNjQ4MzIzMjgsLTk5MDcyNzcsNjY5NzI1NDksLTExOTU2NzIsNTczMjc1NTQsLTEwMjYxMTE5LDYzOTc4Njk1LC00ODg1NDA2LDY1NzMyMzAxLC01OTk2NTk4LDYyNDAxNzcwLC0xNjc2NTM4Niw2NTgxNTY0MSwtMTE5OTM0ODQsNTA2ODE3OTIsLTQyMDc5OTMsNTkzNjcxNzgsLTQ4NDM5ODEsNTY4NDMyMjMsLTExMDI0MTg0LDYwMDg3NzQ2LC0xMTYwODYxNyw1NzQ4NTgzNiwtODU1Nzc5Myw2NDE4MDcyMywtNjgzOTEwMCw1MDM1NTgxNCwtNDYxNTU2Niw1NzkwOTMzMCwtMTA4MTMwMzgsNTk5OTk1MDAsLTExMDYzNzY2LDY2NTA4MjMyLC0xNTc5NDg2Nyw1Njk4ODU0OCwtMTM4NTczNDMsNjE4MDkzMDgsLTEzOTMwNjM4LDY2NDY3Nzg1LC04Nzg1MjY1LDU1NjUwMDk1LC0xODQwMDk0LDYwNDgwODQ3LC0xMTk2MTc4MSw1NDc5ODM3OSwtODkyMTIxMCw1NTI5MTAzOCwtMzM2NTg0Niw2Njc2Mzg0NywtMTAzMzE0MDksNTg2Mjk3NjYsLTMwNzA1MTMsNjUwMTgxNzIsLTUwODI0Nyw2NDU0MDA5MSwtMzEzNjA0Myw2MDM1MTE2NiwtMjYxNjg1OSw1MjYwMzg2NywtMTM3MTk0MDQsNjEyNjcyMjUsLTEwMzE2Myw1MjA5NjE0MSwtNTQxNTU0NSw1OTM0NjE1NywtMTA0MDkyMDEsNjM2NjYzODZd", 3131020);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#40e0d0', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#40e0d0', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script>
+<div class="event-card" data-search="sport ireland campus parkrun fingal county" data-junior="false">
+  <div class="card-map-wrap">
+    <div id="cmap-sportirelandcampus" class="card-map-inner"></div>
+    <div class="card-map-badges">
+      <span class="card-map-badge start">&#9679; Start</span>
+      <span class="card-map-badge finish">&#9679; Finish</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-name">Sport Ireland Campus parkrun</div>
+    <span class="card-location"><i class="fas fa-map-marker-alt"></i> Fingal County</span>
+    <div class="card-badges"></div>
+  </div>
+  <a href="https://www.parkrunnertourist.com/explore/S/sportirelandcampus" class="card-cta" target="_blank">View Guide &amp; Hotels</a>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
+  var el = document.getElementById('cmap-sportirelandcampus');
+  if (!el) return;
+  var map = L.map('cmap-sportirelandcampus', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false, attributionControl: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+  
+  var route = _d("Wy0xNzEyNTA1LDUxMjE2NTEwLC0xNTY4NDY4Nyw1NjcwMzU2NiwtOTEzNjA5NSw1OTQ4MTE4OCwtMTYzMjE0MjgsNTgwMDQxODYsLTg5NzM2OTgsNjIwMDQzNzMsLTQ2OTMxMzEsNTA5MDkyMzUsLTEzMjg1NzA4LDY2OTA5NjA2LC00MTU3NDAyLDU3MTM4MTIyLC0xNDE3NDg1MSw1NDc1MDc1NCwtMTA1Mzg1MjUsNTE0Nzc3OTYsLTE1MjM1NDM5LDU2OTQ2NDkwLC0xOTIwNyw2NjUyNTYyNCwtNDE1OTM0LDYxMTI3NjQyLC0xNTc0NTQ3LDY0ODk2NjU3LC0xNTk5NjM5OCw1NDgxOTE1NiwtNDI2ODAxNCw1ODA0ODI3OCwtMTM4MzEzNzYsNTgxOTIwNDAsLTM0MTgxNDEsNTEzNTU1MzgsLTM5NTk5ODQsNTczNTgzOTUsLTIxMTIxMzEsNjQ5MTc1MzEsLTgxMjExNzksNTIwMTA0NTUsLTE0MzIwMjA1LDY1MDc1Njc5LC0xNTMyNTg5LDUxMjk2Nzg4LC03MTI1NjMzLDUyNDk2NTc5LC01OTI4NDUsNjQ3Nzg1NzcsLTk4NTU3NzcsNjEyMTYxOTEsLTEwMDQzOTgxLDY0NjY2ODkxLC05Njg5NjMzLDUzMzAyNTIzLC00MzY3OTkyLDU4NjUzOTYxLC0xNDA4ODE2MCw2NDY0NTgzOSwtMTAzNjQ0MDcsNjMwMTMxMTgsLTYzMjAwODQsNTQ4NzA5NzYsLTgwNTUxNjQsNjE0NjU0NTcsLTE1ODA4NzM3LDU3MDEwMDA4LC00ODczMTY3LDY0NzgxNTMwLC0xMDQxMDg0LDYwMDc0NzcyLC04NjM3NDc1LDY1OTAwMDg5LC0xNDUwMzg4LDY2NDU4ODQ3LC00Mjk0Mjc0LDU0MTY1MzkxLC03Njk3NjM1LDYwNTMxOTYxLC0zMTIwNTA3LDU5NTc5OTQ5LC0yNjk5MzA2LDU1NzkyOTMxLC02Njk3OTAyLDUzNTA3MTIyLC05NDI4MTIzLDY0NjA1NjgzLC05OTc1NDQ1LDU5OTU1OTE4LC0yMzE1NTU1LDUwNDYwMzU1LC02OTc0OTA1LDUyNDY0MTMwLC0xNjY3NDQ1MSw1NDYxMTUzMiwtMTA2MTQzMjQsNTQyNDQzODRd", 1418488);
+  var lls = route.map(function(p) { return [p[1], p[0]]; });
+  L.polyline(lls, { color: '#4caf50', weight: 3.5, opacity: 0.9, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  L.circleMarker(lls[0], { radius: 7, fillColor: '#4caf50', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  L.circleMarker(lls[lls.length - 1], { radius: 7, fillColor: '#dc3545', color: '#fff', weight: 2, fillOpacity: 1 }).addTo(map);
+  map.fitBounds(L.latLngBounds(lls), { padding: [20, 20], animate: false });
+  
+})();</script></div>
+</main>
+<div class="download-footer">
+  Download The App
+  <div class="app-badges">
+    <a href="https://apps.apple.com/gb/app/parkrunner-tourist/id6743163993" target="_blank" rel="noopener noreferrer">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=appinventor.ai_jlofty8.parkrunner_tourist" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" />
+    </a>
+  </div>
+</div>
+<div class="contact-footer">
+  <p>Have a question, suggestion, or found an issue?</p>
+  <button class="contact-footer-btn" onclick="openContactModal()">Contact Us</button>
+</div>
+<footer>
+  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
+    parkrun is a registered trademark of parkrun Limited.
+    This website is independent and is not affiliated with or endorsed by parkrun.
+  </p>
+  &copy; 2026 parkrunner tourist
+</footer>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
+  data-message="" data-color="#40DCA5" data-position="Right"
+  data-x_margin="18" data-y_margin="18"></script>
+<script>
+(function() {
+  var strip = document.querySelector('.stat-strip');
+  if (!strip) return;
+  var items = strip.querySelectorAll('.stat-strip-value');
+  if (!items.length) return;
+  var targets = Array.prototype.map.call(items, function(el) {
+    return parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
+  });
+  Array.prototype.forEach.call(items, function(el) { el.textContent = '0'; });
+  function animateItem(el, target, delay) {
+    setTimeout(function() {
+      var duration = Math.min(1200, Math.max(400, target * 0.8));
+      var start = null;
+      function tick(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        el.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toLocaleString();
+      }
+      requestAnimationFrame(tick);
+    }, delay);
+  }
+  function runAnimation() {
+    targets.forEach(function(target, i) {
+      animateItem(items[i], target, i * 120);
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { runAnimation(); obs.disconnect(); }
+    }, { threshold: 0.3 });
+    obs.observe(strip);
+  } else {
+    runAnimation();
+  }
+})();
+</script>
+<div id="stay22-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Find Hotels">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-title" id="stay22-modal-title">Find Hotels</div>
+      <button class="modal-close-btn" onclick="closeStay22()" aria-label="Close">&times;</button>
+    </div>
+    <div style="padding:10px 16px 6px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0;background:#fff;">
+      <button class="toggle-btn active" id="btn-listview" onclick="switchStay22View('listview')">List View</button>
+      <button class="toggle-btn" id="btn-map" onclick="switchStay22View('map')">Map View</button>
+    </div>
+    <iframe id="stay22-iframe" style="flex:1;border:none;min-height:500px;"
+      title="Find hotels near parkrun events" src=""></iframe>
+  </div>
+</div>
+<script>
+var _s22Base = '';
+function openStay22(lat, lon, name) {
+  var d = new Date(), day = d.getDay(), diff = (5 - day + 7) % 7 || 7;
+  d.setDate(d.getDate() + diff);
+  var checkin = d.toISOString().slice(0, 10);
+  _s22Base = 'https://www.stay22.com/embed/gm?aid=parkrunnertourist'
+    + '&lat=' + lat + '&lng=' + lon + '&maincolor=4caf50'
+    + '&venue=' + encodeURIComponent(name) + '&checkin=' + checkin;
+  document.getElementById('stay22-modal-title').textContent = 'Hotels near ' + name;
+  document.getElementById('btn-listview').classList.add('active');
+  document.getElementById('btn-map').classList.remove('active');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=listview&listviewexpand=true';
+  var m = document.getElementById('stay22-modal');
+  m.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function switchStay22View(mode) {
+  document.getElementById('btn-listview').classList.toggle('active', mode === 'listview');
+  document.getElementById('btn-map').classList.toggle('active', mode === 'map');
+  document.getElementById('stay22-iframe').src = _s22Base + '&viewmode=' + mode
+    + (mode === 'listview' ? '&listviewexpand=true' : '');
+}
+function closeStay22() {
+  var m = document.getElementById('stay22-modal');
+  m.classList.remove('active');
+  document.body.classList.remove('modal-open');
+  document.getElementById('stay22-iframe').src = '';
+  _s22Base = '';
+}
+document.getElementById('stay22-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeStay22();
+});
+</script>
+<div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Contact Us">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-title">Contact Us</div>
+      <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    </div>
+    <iframe
+      class="contact-modal-iframe"
+      title="Contact Us"
+      src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u/"
+      frameborder="0"
+    ></iframe>
+  </div>
+</div>
+<script>
+function openContactModal() {
+  var m = document.getElementById('contact-modal');
+  m.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+function closeContactModal() {
+  var m = document.getElementById('contact-modal');
+  m.classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+</script>
+<script>
+(function() {
+  var inp = document.getElementById('evt-search');
+  if (!inp) return;
+  inp.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.event-card').forEach(function(el) {
+      el.style.display = (!q || (el.dataset.search || el.textContent).toLowerCase().includes(q)) ? '' : 'none';
+    });
+  });
+})();
+</script>
+<script>
+(function() {
+  function attachRipple(el) {
+    el.addEventListener('click', function(e) {
+      var rect = el.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      var x = e.clientX - rect.left - size / 2;
+      var y = e.clientY - rect.top - size / 2;
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple-effect';
+      ripple.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;';
+      el.appendChild(ripple);
+      ripple.addEventListener('animationend', function() { ripple.remove(); });
+    });
+  }
+  var selectors = [
+    '.toggle-btn:not(.filter-btn-disabled)',
+    '.hotel-cta-btn',
+    '.card-cta',
+    '.header-map-btn',
+    '.contact-footer-btn',
+    '.modal-close-btn',
+  ];
+  function initRipples() {
+    selectors.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        if (!el.dataset.rippleAttached) {
+          attachRipple(el);
+          el.dataset.rippleAttached = '1';
+        }
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRipples);
+  } else {
+    initRipples();
+  }
+})();
+</script>
+</body></html>
