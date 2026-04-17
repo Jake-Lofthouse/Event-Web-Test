@@ -7,7 +7,7 @@
 <meta name="description" content="Visiting Parramatta parkrun? Compare nearby hotels, explore the course map, learn about the terrain, find local experiences and attractions, check the latest weather forecast and plan your perfect parkrun weekend." />
 <meta name="author" content="Jake Lofthouse" />
 <meta name="geo.placename" content="Eric Primrose Reserve" />
-<meta name="geo.position" content="-33.821485;151.051352" />
+<meta name="geo.position" content="-33.820838;151.063534" />
 <meta property="og:title" content="Parramatta parkrun - Hotels & Visitor Guide" />
 <meta property="og:description" content="Planning a visit to Parramatta parkrun? Discover nearby hotels, explore the course map, learn about the terrain, find local experiences and attractions, check the latest weather forecast and find local cafes." />
 <meta property="og:url" content="https://www.parkrunnertourist.com/explore/P/parramatta" />
@@ -238,9 +238,32 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   .accommodation-iframe, .map-iframe { height: 400px; }
   .weather-iframe { height: 200px; }
 }
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.social-icon {
+  color: #64748b;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.15);
+}
+
+/* Brand colours on hover */
+.social-icon:hover .fa-facebook { color: #1877f2; }
+.social-icon:hover .fa-youtube { color: #ff0000; }
+.social-icon:hover .fa-tiktok { color: #000000; }
+.social-icon:hover .fa-envelope { color: #4caf50; }
+
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"SportsEvent","name":"Parramatta parkrun","description":"Visitor guide to Parramatta parkrun. Hotels, course map, weather forecast and travel information.","sport":"Running","eventAttendanceMode":"OfflineEventAttendanceMode","location":{"@type":"Place","name":"Eric Primrose Reserve","geo":{"@type":"GeoCoordinates","latitude":"-33.821485","longitude":"151.051352"}},"url":"https://www.parkrunnertourist.com/explore/P/parramatta"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the weather like at Parramatta parkrun this week?","acceptedAnswer":{"@type":"Answer","text":"Check the Weather This Week section for the forecast."}},{"@type":"Question","name":"Where is Parramatta parkrun held?","acceptedAnswer":{"@type":"Answer","text":"Parramatta parkrun takes place at Eric Primrose Reserve."}},{"@type":"Question","name":"Where can I find hotels near Parramatta parkrun?","acceptedAnswer":{"@type":"Answer","text":"The Hotels and Rentals section lists nearby accommodations."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"SportsEvent","name":"Parramatta parkrun","description":"Visitor guide to Parramatta parkrun. Hotels, course map, weather forecast and travel information.","sport":"Running","eventAttendanceMode":"OfflineEventAttendanceMode","location":{"@type":"Place","name":"Eric Primrose Reserve","geo":{"@type":"GeoCoordinates","latitude":"-33.820838","longitude":"151.063534"}},"url":"https://www.parkrunnertourist.com/explore/P/parramatta"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the weather like at Parramatta parkrun this week?","acceptedAnswer":{"@type":"Answer","text":"Check the Weather This Week section for the forecast."}},{"@type":"Question","name":"Where is Parramatta parkrun held?","acceptedAnswer":{"@type":"Answer","text":"Parramatta parkrun takes place at Eric Primrose Reserve."}},{"@type":"Question","name":"Where can I find hotels near Parramatta parkrun?","acceptedAnswer":{"@type":"Answer","text":"The Hotels and Rentals section lists nearby accommodations."}}]}]}
 </script>
 </head>
 <body>
@@ -254,7 +277,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   <div class="parkrun-actions">
     <button onclick="openCourseChoice()" class="action-btn course-map-btn">Course Map</button>
     <a href="https://www.parkrun.com.au/parramatta/futureroster/" target="_blank" class="action-btn">Volunteer Roster</a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=-33.821485,151.051352" target="_blank" class="action-btn">Directions</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=-33.820838,151.063534" target="_blank" class="action-btn">Directions</a>
   </div>
   
   <div class="content-grid">
@@ -281,11 +304,11 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     <div class="right-column">
       <div id="location-section" class="iframe-container">
         <h2 class="section-title">parkrun Location</h2>
-        <iframe class="map-iframe" data-src="https://parkrunnertourist.com/main?5k&lat=-33.821485&lon=151.051352&zoom=13" title="parkrun Map"></iframe>
+        <iframe class="map-iframe" data-src="https://parkrunnertourist.com/main?5k&lat=-33.820838&lon=151.063534&zoom=13" title="parkrun Map"></iframe>
       </div>
       <div id="weather-section" class="iframe-container">
         <h2 class="section-title">Weather This Week</h2>
-        <iframe class="weather-iframe" data-src="https://parkrunnertourist.com/weather?lat=-33.821485&lon=151.051352" title="Weather forecast for parramatta"></iframe>
+        <iframe class="weather-iframe" data-src="https://parkrunnertourist.com/weather?lat=-33.820838&lon=151.063534" title="Weather forecast for parramatta"></iframe>
       </div>
       
 <div id="course-terrain-section" class="iframe-container">
@@ -310,7 +333,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 <div id="nearby-section" class="iframe-container">
   <h2 class="section-title">Nearby Events</h2>
   <ul class="nearby-list">
-    <li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/W/wentworthcommon" target="_blank">Wentworth Common parkrun</a> <span class="distance">(2.9 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/R/rhodes" target="_blank">Rhodes parkrun</a> <span class="distance">(4.0 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/A/auburnbotanicgardens" target="_blank">Auburn Botanic Gardens parkrun</a> <span class="distance">(5.4 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/M/macquarieuniversity" target="_blank">Macquarie University parkrun</a> <span class="distance">(7.8 km)</span></li>
+    <li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/W/wentworthcommon" target="_blank">Wentworth Common parkrun</a> <span class="distance">(2.2 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/R/rhodes" target="_blank">Rhodes parkrun</a> <span class="distance">(3.4 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/A/auburnbotanicgardens" target="_blank">Auburn Botanic Gardens parkrun</a> <span class="distance">(6.2 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/M/macquarieuniversity" target="_blank">Macquarie University parkrun</a> <span class="distance">(7.0 km)</span></li>
   </ul>
 </div>
       <div id="cancel-tile" class="iframe-container cancel-tile" style="display:none;">
@@ -386,6 +409,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   </div>
 </div>
 
+<!-- Contact Modal -->
+<div id="contact-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  
+  <div style="background:#fff;border-radius:20px;width:95%;max-width:700px;height:85%;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+    
+    <button onclick="closeContactModal()" style="position:absolute;top:12px;right:12px;
+      background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:32px;height:32px;
+      cursor:pointer;font-size:16px;">&times;</button>
+
+    <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u"
+      style="border:none;width:100%;height:100%;border-radius:20px;"></iframe>
+
+  </div>
+</div>
+
 <!-- Course Map Modal -->
 <div id="course-map-modal">
   <div class="course-modal-inner">
@@ -428,13 +469,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     </a>
   </div>
 </div>
-<footer>
-  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
-    parkrun is a registered trademark of parkrun Limited.
-    This website is independent and is not affiliated with or endorsed by parkrun.
-  </p>
-  &copy; 2026 parkrunner tourist
-</footer>
+<div style="margin-bottom:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:1.4rem;">
+
+  <a href="https://www.facebook.com/profile.php?id=61585873650397" target="_blank" class="social-icon">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+  <a href="https://www.youtube.com/@parkrunnertourist-app" target="_blank" class="social-icon">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@parkrunner.tourist.app" target="_blank" class="social-icon">
+    <i class="fab fa-tiktok"></i>
+  </a>
+
+  <a href="#" onclick="openContactModal()" class="social-icon">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
   data-message="Support The App" data-color="#40DCA5" data-position="Right"
@@ -465,8 +517,8 @@ function getNextFridayDateISO() {
   return today.toISOString().slice(0, 10);
 }
 const _checkinDate   = getNextFridayDateISO();
-const _stay22Base    = "https://www.stay22.com/embed/gm?aid=parkrunnertourist&lat=-33.821485&lng=151.051352&maincolor=7dd856&venue=Parramatta%20parkrun&checkin=" + _checkinDate;
-const _stay22ExpBase = "https://www.stay22.com/embed/gm?aid=parkrunnertourist&lat=-33.821485&lng=151.051352&maincolor=7dd856&venue=Parramatta%20parkrun&invmode=experience&checkin=" + _checkinDate;
+const _stay22Base    = "https://www.stay22.com/embed/gm?aid=parkrunnertourist&lat=-33.820838&lng=151.063534&maincolor=7dd856&venue=Parramatta%20parkrun&checkin=" + _checkinDate;
+const _stay22ExpBase = "https://www.stay22.com/embed/gm?aid=parkrunnertourist&lat=-33.820838&lng=151.063534&maincolor=7dd856&venue=Parramatta%20parkrun&invmode=experience&checkin=" + _checkinDate;
 
 // Initialise Stay22 iframes with live check-in date
 document.getElementById('stay22Frame').src    = _stay22Base    + '&viewmode=listview&listviewexpand=true';
@@ -621,12 +673,14 @@ function fetchElevation(route) {
 const _courseUrl = "https://www.google.com/maps/d/embed?mid=1c8awiORME8soRUAbaoLugXnmFj9YTKY&ehbc=2E312F";
 
 function openCourseChoice() {
+  document.body.classList.add('modal-open');
   const m = document.getElementById('course-choice-modal');
   m.style.display = 'flex';
 }
 
 function closeCourseChoice() {
   document.getElementById('course-choice-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
 }
 
 document.getElementById('course-choice-modal').addEventListener('click', function(e) {
@@ -635,6 +689,7 @@ document.getElementById('course-choice-modal').addEventListener('click', functio
 
 function openStandardMap() {
   if (!_courseUrl) return;
+  document.body.classList.add('modal-open');
   document.getElementById('standard-map-iframe').src = _courseUrl;
   const m = document.getElementById('standard-map-modal');
   m.style.display = 'flex';
@@ -643,7 +698,23 @@ function openStandardMap() {
 function closeStandardMap() {
   document.getElementById('standard-map-modal').style.display = 'none';
   document.getElementById('standard-map-iframe').src = '';
+  document.body.classList.remove('modal-open');
 }
+
+function openContactModal() {
+  document.getElementById('contact-modal').style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+
+function closeContactModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+
+// click outside to close
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
 
 document.getElementById('standard-map-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStandardMap();
@@ -651,6 +722,7 @@ document.getElementById('standard-map-modal').addEventListener('click', function
 
 // Advanced course modal
 function openCourseModal() {
+  document.body.classList.add('modal-open');
   if (!HAS_ROUTE) return;
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -675,6 +747,7 @@ function openCourseModal() {
 }
 
 function closeCourseModal() {
+  document.body.classList.remove('modal-open');
   document.getElementById('course-map-modal').classList.remove('show');
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -978,6 +1051,7 @@ function updateElevationCursor(progress) {
   courseElevationChart.data.datasets[1].pointRadius = courseElevationData.map((v,i) => i===idx?7:0);
   courseElevationChart.update('none');
 }
+
 </script>
 </body>
 </html>

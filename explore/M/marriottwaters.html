@@ -238,6 +238,29 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   .accommodation-iframe, .map-iframe { height: 400px; }
   .weather-iframe { height: 200px; }
 }
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.social-icon {
+  color: #64748b;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.15);
+}
+
+/* Brand colours on hover */
+.social-icon:hover .fa-facebook { color: #1877f2; }
+.social-icon:hover .fa-youtube { color: #ff0000; }
+.social-icon:hover .fa-tiktok { color: #000000; }
+.social-icon:hover .fa-envelope { color: #4caf50; }
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"SportsEvent","name":"Marriott Waters parkrun","description":"Visitor guide to Marriott Waters parkrun. Hotels, course map, weather forecast and travel information.","sport":"Running","eventAttendanceMode":"OfflineEventAttendanceMode","location":{"@type":"Place","name":"Marriott Waters Reserve","geo":{"@type":"GeoCoordinates","latitude":"-38.072157","longitude":"145.249088"}},"url":"https://www.parkrunnertourist.com/explore/M/marriottwaters"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the weather like at Marriott Waters parkrun this week?","acceptedAnswer":{"@type":"Answer","text":"Check the Weather This Week section for the forecast."}},{"@type":"Question","name":"Where is Marriott Waters parkrun held?","acceptedAnswer":{"@type":"Answer","text":"Marriott Waters parkrun takes place at Marriott Waters Reserve."}},{"@type":"Question","name":"Where can I find hotels near Marriott Waters parkrun?","acceptedAnswer":{"@type":"Answer","text":"The Hotels and Rentals section lists nearby accommodations."}}]}]}
@@ -386,6 +409,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   </div>
 </div>
 
+<!-- Contact Modal -->
+<div id="contact-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  
+  <div style="background:#fff;border-radius:20px;width:95%;max-width:700px;height:85%;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+    
+    <button onclick="closeContactModal()" style="position:absolute;top:12px;right:12px;
+      background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:32px;height:32px;
+      cursor:pointer;font-size:16px;">&times;</button>
+
+    <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u"
+      style="border:none;width:100%;height:100%;border-radius:20px;"></iframe>
+
+  </div>
+</div>
+
 <!-- Course Map Modal -->
 <div id="course-map-modal">
   <div class="course-modal-inner">
@@ -428,13 +469,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     </a>
   </div>
 </div>
-<footer>
-  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
-    parkrun is a registered trademark of parkrun Limited.
-    This website is independent and is not affiliated with or endorsed by parkrun.
-  </p>
-  &copy; 2026 parkrunner tourist
-</footer>
+<div style="margin-bottom:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:1.4rem;">
+
+  <a href="https://www.facebook.com/profile.php?id=61585873650397" target="_blank" class="social-icon">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+  <a href="https://www.youtube.com/@parkrunnertourist-app" target="_blank" class="social-icon">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@parkrunner.tourist.app" target="_blank" class="social-icon">
+    <i class="fab fa-tiktok"></i>
+  </a>
+
+  <a href="#" onclick="openContactModal()" class="social-icon">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
   data-message="Support The App" data-color="#40DCA5" data-position="Right"
@@ -447,7 +499,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
 
 // Course data (encrypted at build time, decrypted at runtime)
-const _er = "WzE0NDQyMDExNSwtNDA0NDk0NzUsMTUwNDQwMTY1LC0zNjY0MTgwMiwxNDExOTkwNzEsLTQzODcxNDYzLDE0MjQzODM1NiwtNDUxODY2OTcsMTQ1MDA3NDgzLC0zODkzMzg4MSwxNDg3NzU0NzEsLTQ1NTUwMDI3LDE0OTExOTQ3NiwtMzgwODM3NTQsMTM2NTkwNTU2LC0zODkxNTU5MCwxMzg2NDgzNzAsLTQ1MDYzNDAzLDEzNzMzMzExNCwtNDYyMzE1MTAsMTQ5ODE2MDMwLC0zNzI2OTQ4OSwxNDIzMTMyNDMsLTQ5NzcwNjU2LDEzNjc3NTIxNCwtMzk2NzUyMTksMTM4NjI0NzA4LC0zNTA2NjczOCwxNDQ5OTk1MTAsLTQ2OTQ4MTU4LDEzNDUxNTA0OCwtNDgzMTAzNTAsMTM2NDIzNzcyLC00MzQ5NzQ0NiwxMzg3NTk2OTAsLTQ1Mjc1MzA5LDE0NDkwNzQxNywtMzY2NzA0NjMsMTQ5MjQ4NjQxLC0zNTY2NjgxOSwxNDExNzUxNTYsLTQ2Nzk3OTMzLDE0OTE3NjA3MiwtNDQyNzIyMDcsMTQ5NTY1MTAzLC00NDYwMjY1MSwxMzc3NjE4MTQsLTQ2NzI4NDQzLDE0MDE5MTYwMSwtNDYyOTMzNTcsMTM1NTc2MzM2LC0zNzkwMjM2MCwxNDE0NzA5OTksLTQzODM3MTg4LDEzNTY3OTQ0OSwtMzYxMDIwNjcsMTQyODU1MTAyLC00MTczODE3NiwxNDc3MjUzNjcsLTM5MDQ0OTAyLDE0OTUxOTM3NywtMzc0MDA5NDgsMTQ4MjE4ODc1LC0zMzcwNDg3MiwxNDkyMzEzODgsLTQ0MTA4MTI1LDE0NzYxMTkwNSwtMzM4ODAwNjEsMTQ3MjEzOTk5LC00MTQwMjQ2MSwxMzkxOTUwODgsLTMzNTc0NTgxLDEzNjc4OTA3MCwtMzg5ODQ5MjYsMTQ5ODM2NzM1LC00NjcwMDU2NywxMzc3ODYwNjAsLTQyNzIzNjkyLDEzNDI2NDgwMCwtNDcwNDQyNDMsMTM5NzI1Mzc5LC0zOTIwNzI3MCwxMzY4MTk2OTQsLTM2Njc2NjE3LDE0NDU0MzUxMCwtNDA0NDIyODEsMTM1NDg1NzYyLC00NDE0NzA1MywxNDAyMDQyNTYsLTM2NTE1NzA2LDE0Mzc0MjMyOCwtNDA1NzAxNDksMTQyOTc4ODIzLC00ODk2MDk1OSwxMzU1MTE4NDksLTM0MjU1NTI2LDEzNTExNTc2MywtMzYyNTgzMzld";
+const _er = "WzE0NDQyMDExNSwtNDA0NDk0NzUsMTUwNDQwMTY1LC0zNjY0MTgwMiwxNDExOTkwNzEsLTQzODcxNDYzLDE0MjQzODM1NiwtNDUxODY2OTcsMTQ1MDA3NDgzLC0zODkzMzg4MSwxNDg3NzU0NzEsLTQ1NTUwMDI3LDE0OTExOTQ3NiwtMzgwODM3NTQsMTM2NTkwNTU2LC0zODkxNTU5MCwxMzg2NDgzNzAsLTQ1MDYzNDAzLDEzNzMzMzExNCwtNDYyMzE1MTAsMTQ5ODE2MDMwLC0zNzI2OTQ4OSwxNDIzMTMyNDMsLTQ5NzcwNjU2LDEzNjc3NTIxNCwtMzk2NzUyMTksMTM4NjI0NzA4LC0zNTA2NjczOCwxNDQ5OTk1MTAsLTQ2OTQ4MTU4LDEzNDUxNTA0OCwtNDgzMTAzNTAsMTM2NDIzNzcyLC00MzQ5NzQ0NiwxMzg3NTk2OTAsLTQ1Mjc1MzA5LDE0NDkwNzQxNywtMzY2NzA0NjMsMTQ5MjQ4NjQxLC0zNTY2NjgxOSwxNDExNzUxNTYsLTQ2Nzk3OTMzLDE0OTE3NjEwMywtNDQyNzIzMzksMTQ5NTY0OTgwLC00NDYwMjQ5OCwxMzc3NjIxNjMsLTQ2NzI4MTUwLDE0MDE4OTg5NCwtNDYyOTQ2NzYsMTM1NTcwNDA5LC0zNzkwMzY4MiwxNDE0NzM0MDcsLTQzODM2MDk2LDEzNTY3ODM4NCwtMzYxMDEwNDIsMTQyODU0MTU5LC00MTczMDY3NSwxNDc3MjU5ODgsLTM5MDQ5NzMxLDE0OTUxNjg5OSwtMzczOTkxMjUsMTQ4MjI0NjMyLC0zMzcwNDA3OCwxNDkyMjkwNTMsLTQ0MTA4NTA4LDE0NzYxNjU1OSwtMzM4ODA2NzQsMTQ3MjExNzI5LC00MTQwNTYzNCwxMzkxOTc1OTQsLTMzNTcyNzgzLDEzNjc3NTgzNSwtMzg5ODQxNzksMTQ5ODQyMDQ5LC00NjcwMjU3NSwxMzc3NzcwMzQsLTQyNzI0NzU1LDEzNDI2NDcxMiwtNDcwNDM0MDgsMTM5NzI1Njg1LC0zOTIwOTU0NSwxMzY4MDk0OTAsLTM2Njc3Nzg2LDE0NDU1MzczOCwtNDA0NDA5NDksMTM1NDkwNjI5LC00NDE0NzUxMiwxNDAyMDM0MTIsLTM2NTE1MjA3LDE0Mzc0NDI0OCwtNDA1Njk5NzksMTQyOTc3ODQ4LC00ODk2MDQ1OSwxMzU1MTEzMzQsLTM0MjU2NjUyLDEzNTExNTQ0MiwtMzYyNTkzNTUsMTQyOTUzNDY1LC00NzU0OTM1NywxMzgxMTU3NzksLTUwMTg4NDIwLDEzNjkyNDI3NywtMzUyNTMyNjVd";
 const _es = "WzEzOTMwMjcyOCwtNTAxMTgyNDRd";
 const _ef = "WzE0ODI3Mzg1MCwtMzg3MDE2NzRd";
 const _sk = 10706533;
@@ -621,12 +673,14 @@ function fetchElevation(route) {
 const _courseUrl = "https://www.google.com/maps/d/embed?t=h&mid=1NyLnzBe7uDjFWSP1enXC6m5xSUsBV7M2";
 
 function openCourseChoice() {
+  document.body.classList.add('modal-open');
   const m = document.getElementById('course-choice-modal');
   m.style.display = 'flex';
 }
 
 function closeCourseChoice() {
   document.getElementById('course-choice-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
 }
 
 document.getElementById('course-choice-modal').addEventListener('click', function(e) {
@@ -635,6 +689,7 @@ document.getElementById('course-choice-modal').addEventListener('click', functio
 
 function openStandardMap() {
   if (!_courseUrl) return;
+  document.body.classList.add('modal-open');
   document.getElementById('standard-map-iframe').src = _courseUrl;
   const m = document.getElementById('standard-map-modal');
   m.style.display = 'flex';
@@ -643,7 +698,23 @@ function openStandardMap() {
 function closeStandardMap() {
   document.getElementById('standard-map-modal').style.display = 'none';
   document.getElementById('standard-map-iframe').src = '';
+  document.body.classList.remove('modal-open');
 }
+
+function openContactModal() {
+  document.getElementById('contact-modal').style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+
+function closeContactModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+
+// click outside to close
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
 
 document.getElementById('standard-map-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStandardMap();
@@ -651,6 +722,7 @@ document.getElementById('standard-map-modal').addEventListener('click', function
 
 // Advanced course modal
 function openCourseModal() {
+  document.body.classList.add('modal-open');
   if (!HAS_ROUTE) return;
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -675,6 +747,7 @@ function openCourseModal() {
 }
 
 function closeCourseModal() {
+  document.body.classList.remove('modal-open');
   document.getElementById('course-map-modal').classList.remove('show');
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -978,6 +1051,7 @@ function updateElevationCursor(progress) {
   courseElevationChart.data.datasets[1].pointRadius = courseElevationData.map((v,i) => i===idx?7:0);
   courseElevationChart.update('none');
 }
+
 </script>
 </body>
 </html>

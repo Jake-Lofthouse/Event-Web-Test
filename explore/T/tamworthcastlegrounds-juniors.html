@@ -238,6 +238,29 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   .accommodation-iframe, .map-iframe { height: 400px; }
   .weather-iframe { height: 200px; }
 }
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.social-icon {
+  color: #64748b;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.15);
+}
+
+/* Brand colours on hover */
+.social-icon:hover .fa-facebook { color: #1877f2; }
+.social-icon:hover .fa-youtube { color: #ff0000; }
+.social-icon:hover .fa-tiktok { color: #000000; }
+.social-icon:hover .fa-envelope { color: #4caf50; }
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"SportsEvent","name":"Tamworth Castle Grounds junior parkrun","description":"Visitor guide to Tamworth Castle Grounds junior parkrun. Hotels, course map, weather forecast and travel information.","sport":"Running","eventAttendanceMode":"OfflineEventAttendanceMode","location":{"@type":"Place","name":"Tamworth Castle Grounds juniors","geo":{"@type":"GeoCoordinates","latitude":"52.630305","longitude":"-1.69527"}},"url":"https://www.parkrunnertourist.com/explore/T/tamworthcastlegrounds-juniors"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the weather like at Tamworth Castle Grounds junior parkrun this week?","acceptedAnswer":{"@type":"Answer","text":"Check the Weather This Week section for the forecast."}},{"@type":"Question","name":"Where is Tamworth Castle Grounds junior parkrun held?","acceptedAnswer":{"@type":"Answer","text":"Tamworth Castle Grounds junior parkrun takes place at Tamworth Castle Grounds juniors."}},{"@type":"Question","name":"Where can I find hotels near Tamworth Castle Grounds junior parkrun?","acceptedAnswer":{"@type":"Answer","text":"The Hotels and Rentals section lists nearby accommodations."}}]}]}
@@ -252,7 +275,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 <main>
   <h1>Tamworth Castle Grounds junior parkrun - Hotels &amp; Visitor Guide</h1>
   <div class="parkrun-actions">
-    <a href="https://www.parkrun.org.uk/tamworthcastlegrounds-juniors/course/" target="_blank" class="action-btn course-map-btn">Course Map</a>
+    <button onclick="openCourseChoice()" class="action-btn course-map-btn">Course Map</button>
     <a href="https://www.parkrun.org.uk/tamworthcastlegrounds-juniors/futureroster/" target="_blank" class="action-btn">Volunteer Roster</a>
     <a href="https://www.google.com/maps/dir/?api=1&destination=52.630305,-1.69527" target="_blank" class="action-btn">Directions</a>
   </div>
@@ -291,16 +314,26 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 <div id="course-terrain-section" class="iframe-container">
   <h2 class="section-title">Course &amp; Terrain</h2>
   
-  <div style="text-align:center;padding:2rem 0;">
-    <p style="color:#64748b;margin-bottom:1rem;font-size:0.95rem;">Course route data not yet available for this event.</p>
-    <a href="https://www.parkrun.org.uk/tamworthcastlegrounds-juniors/course/" target="_blank" class="action-btn" style="font-size:0.9rem;"><i class="fas fa-route"></i> View Course Page</a>
+  <div id="course-preview-wrap" style="position:relative;width:100%;height:260px;border-radius:0.75rem;overflow:hidden;background:#e8f5e9;">
+    <div id="course-preview-map" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;border-radius:0.75rem;"></div>
+    <button onclick="openCourseChoice()" style="position:absolute;bottom:10px;right:10px;z-index:10;
+      background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border:none;border-radius:16px;
+      padding:7px 14px;font-size:13px;font-weight:600;color:#008080;cursor:pointer;
+      box-shadow:0 4px 14px rgba(0,0,0,0.18);display:flex;align-items:center;gap:6px;transition:all 0.2s;"
+      onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <i class="fas fa-expand-alt"></i> Expand &amp; Animate
+    </button>
+    <div style="position:absolute;bottom:10px;left:10px;z-index:10;display:flex;gap:6px;">
+      <span style="background:#28a745;color:#fff;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;">&#9679; Start</span>
+      <span style="background:#dc3545;color:#fff;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;">&#9679; Finish</span>
+    </div>
   </div>
 </div>
       
 <div id="nearby-section" class="iframe-container">
   <h2 class="section-title">Nearby Junior Events</h2>
   <ul class="nearby-list">
-    <li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/B/beacon-juniors" target="_blank">Beacon junior parkrun</a> <span class="distance">(11.3 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/S/suttonpark-juniors" target="_blank">Sutton Park junior parkrun</a> <span class="distance">(12.7 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/S/swadlincote-juniors" target="_blank">Swadlincote junior parkrun</a> <span class="distance">(17.6 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/W/wardend-juniors" target="_blank">Ward End junior parkrun</a> <span class="distance">(17.9 km)</span></li>
+    <li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/B/beacon-juniors" target="_blank">Beacon junior parkrun</a> <span class="distance">(11.3 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/S/suttonpark-juniors" target="_blank">Sutton Park junior parkrun</a> <span class="distance">(12.7 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/B/babbsmill-juniors" target="_blank">Babbs Mill junior parkrun</a> <span class="distance">(15.9 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/S/swadlincote-juniors" target="_blank">Swadlincote junior parkrun</a> <span class="distance">(17.6 km)</span></li>
   </ul>
 </div>
       <div id="cancel-tile" class="iframe-container cancel-tile" style="display:none;">
@@ -331,7 +364,27 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     <p style="margin:0 0 1.5rem 0;font-size:0.9rem;color:#64748b;">Choose how you want to view the course.</p>
     <div style="display:flex;flex-direction:row;gap:0.75rem;">
       
+      <button onclick="closeCourseChoice();openStandardMap();"
+        style="flex:1;padding:1.25rem 1rem;border-radius:0.75rem;border:2px solid #40e0d0;
+          background:#fff;color:#008080;
+          font-weight:600;font-size:1rem;cursor:pointer;text-align:center;
+          display:flex;flex-direction:column;align-items:center;gap:0.5rem;transition:all 0.2s;"
+        onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='#fff'">
+        <i class="fas fa-map" style="font-size:1.5rem;color:#40e0d0;"></i>
+        <strong>Standard</strong>
+        <span style="font-size:0.78rem;font-weight:400;color:#64748b;line-height:1.3;">Interactive map view</span>
+      </button>
       
+      <button onclick="closeCourseChoice();openCourseModal();"
+        style="flex:1;padding:1.25rem 1rem;border-radius:0.75rem;border:2px solid #40e0d0;
+          background:linear-gradient(135deg,#40e0d0,#008080);color:#fff;
+          font-weight:600;font-size:1rem;cursor:pointer;text-align:center;
+          display:flex;flex-direction:column;align-items:center;gap:0.5rem;transition:all 0.2s;"
+        onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        <i class="fas fa-route" style="font-size:1.5rem;"></i>
+        <strong>Advanced</strong>
+        <span style="font-size:0.78rem;font-weight:400;opacity:0.9;line-height:1.3;">Animated route &amp; elevation</span>
+      </button>
     </div>
   </div>
 </div>
@@ -353,6 +406,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     <iframe id="standard-map-iframe"
       style="width:100%;height:500px;border:none;display:block;"
       src="" title="Tamworth Castle Grounds junior parkrun course map" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="contact-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  
+  <div style="background:#fff;border-radius:20px;width:95%;max-width:700px;height:85%;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+    
+    <button onclick="closeContactModal()" style="position:absolute;top:12px;right:12px;
+      background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:32px;height:32px;
+      cursor:pointer;font-size:16px;">&times;</button>
+
+    <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u"
+      style="border:none;width:100%;height:100%;border-radius:20px;"></iframe>
+
   </div>
 </div>
 
@@ -398,13 +469,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     </a>
   </div>
 </div>
-<footer>
-  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
-    parkrun is a registered trademark of parkrun Limited.
-    This website is independent and is not affiliated with or endorsed by parkrun.
-  </p>
-  &copy; 2026 junior parkrunner tourist
-</footer>
+<div style="margin-bottom:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:1.4rem;">
+
+  <a href="https://www.facebook.com/profile.php?id=61585873650397" target="_blank" class="social-icon">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+  <a href="https://www.youtube.com/@parkrunnertourist-app" target="_blank" class="social-icon">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@parkrunner.tourist.app" target="_blank" class="social-icon">
+    <i class="fab fa-tiktok"></i>
+  </a>
+
+  <a href="#" onclick="openContactModal()" class="social-icon">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
   data-message="Support The App" data-color="#40DCA5" data-position="Right"
@@ -417,9 +499,9 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
 
 // Course data (encrypted at build time, decrypted at runtime)
-const _er = null;
-const _es = null;
-const _ef = null;
+const _er = "Wy0xNjM1NDI5OCw1MDc1NjI2MywtMTY2NjQyNTYsNjUwOTA0NzUsLTU3Mjg3NTIsNTU0Mjk2NzEsLTU3MzUxOTgsNTY5MDQ3MDUsLTU3NDc2NDYsNjEyMTY1ODMsLTkwMjk1MDQsNjMwMTY5NzEsLTE0OTk3MjYyLDYzMTQzNDA3LC04MDM1Mjc4LDYxOTg4MDQzLC0xMjQ4NDcyNiw2Njg5NjI4NywtMTExMTQ1ODYsNTc5NzM3NzMsLTI4NzY5MCw1MzQzMjM4MSwtMTk0NDQxMCw1Mzk2NzQ2MSwtNjIzOTI2MCw2Mjc4ODg1OSwtNjA2MjI5MCw2MDE3OTY2OSwtMTU0ODA2ODIsNTE5NDQ5NTUsLTEyNDg4NzY4LDYxOTYxODI1LC0xNTA1NTU0OCw1MjczNjc5NywtMTMwMTQ3MjQsNTM1Mzg1MTUsLTY3MTI4ODgsNjY2MDM4NjcsLTkzMzY3MzYsNjIyNDg3MjMsLTk1ODg0MzgsNjU5MjY2ODUsLTM4NDI2MzIsNjE2NDkyNzksLTE1ODQwMjc4LDY1MDAzMzkxLC02OTg3OTU4LDYzNzQ0NzA1LC0zNTIwMTQwLDYxMjYyNjExLC01MjgyOTc0LDY1NzY0NDMxLC01MzM0MTYsNjY0NjE0NjEsLTExODU5NDEyLDUxMTQ3MTI3LC0xMDU5MDgyLDUwMzc5MDg1LC04ODcyMzA0LDU0NjE4NzAzLC01NDg0ODQsNTIzMDcxNDMsLTExOTQ1NTAsNTA5MDc2NjEsLTE0NTQxOTA4LDYwODQzNjExLC0xNzIxMDE2LDYxMjczNjMzLC0xMTA3MjA4MCw1MTQ3NTg3MSwtMzM5NDM5OCw1NjM4MjA4NSwtMTYyMTUyMjQsNjMzOTE1ODMsLTc2NzU2NjAsNTg1NzM3NzEsLTE2MjMzMDcwLDU4MTE4MzA5LC0xNTY5NzYzOCw1MjczNDEwMSwtODk2NDQ5NCw1NTIwNjQ2NSwtODA2Mzk2Niw2MjgwMzM0MywtNjQ5MzQyNiw1NTUzOTI4NSwtMjc4ODY3Miw1NDgxODU4NSwtMTI1MzEzMjQsNjI1ODQ3NTUsLTEwMjA1NjE0LDY0NDAzOTc1LC0yNDgwNDU2LDY2ODcyNjk3LC0xNTYyOTQzMiw2MTMwNjIwNywtODc5NjQxOCw2MzE2MTU1NSwtMTUwNTc3NjYsNjI3MDM4MDEsLTEzNzk0OTMyLDUyMzY3Nzk3LC0zNDIwMjEwLDUzMjA1OTA3LC0xMjk5NjE0Miw1MzM2MzAzNywtODcyMTkyLDY2Nzg3MjM1LC0xNTYzNTg5OCw1OTc5MjY2NywtODYwMDE0LDYzMDMzOTYzLC0yMzkxMjYwLDY2MTYyMTMxLC0xMjQzMDcxNiw1ODU1Mzk1NywtNTg2MjEzNCw2MjQ3OTE3NywtMTA5NDc2NzYsNjU0OTg5NjEsLTEwMjQ5NjIyLDU2OTMzMTE1LC04NDkwNzUwLDY0MzQ5MTMxLC00NDkwOTg2LDYzNTE1NTI3LC05MTM0NDUwLDU4NzgxNjExLC0xNTYzMjkxMCw1NDgzMTQzMywtNjg5NTEyNCw2MzYzNTM3NSwtMTE0ODE5MTgsNjUyMTY3ODUsLTEzODEyOTI4LDUxOTM2Nzc5LC0xNDY1MzIxMiw2MjA2MjM2NSwtMTQzNzczMzAsNjA4MzY1NDEsLTE1OTE0MDU4LDY2OTk4MTQzLC0xNTcwNzIwMiw2MTYwMzIzMywtODY0MDE0Miw1MzEwODE4MywtMTE1MTU4MjYsNjE4OTE3MjUsLTU0MDgxMTgsNTA3MTM3NDcsLTcyMzc3OTgsNTc1MTA0NDEsLTE1NDYyMzQsNTU5NzIyNTUsLTk1MjMyNzAsNjM3OTA1NzUsLTQ1MDUyOTYsNTA3NTc4MjUsLTE4OTAwOTIsNjE5Nzg1MDEsLTI4NDQ4NTYsNTQ3MzQzNzUsLTEwNjE1ODYsNjM5MDMzNTcsLTQ0MDQ2MTIsNjEyMDI3MDksLTMxNjU4MzIsNTQyNjU1MDksLTEyNDc3OTgsNjAzNjU3NzksLTQ1MzQxNCw2MzY3ODg1NSwtMTEwMjc3MjAsNjI0NTAwMzUsLTE0MzA3MTU0LDUyNDk3MjMzLC0xNTY5MTMyLDU4MDk4MTMxLC01ODU3NTI2LDY1NTA0MzY3LC0xMDE2NDI3MCw2Njc3MTc5NSwtMTAyNTM2MDYsNTMzOTU0NzksLTExNjI3MzA0LDU1MjQ2NDM1LC0xNDg3MzM1Miw1NDU2NzY2MSwtNDA0MDExNCw1ODM2NDIwNywtNzI3NzYxOCw1ODQxMTc1NSwtMTA1MTcwNzgsNTM1NjYxMTksLTc3Nzc3MjQsNTExOTk2NDksLTg3ODgzNzAsNTg0MTQ2NTMsLTY4NTE4NjAsNjAzNDMyNTMsLTgzODM3Niw2NTk3MjM3OSwtMTMxMTQyNzIsNjIwNzc3NTksLTI4Mjc2MzQsNjAwNDY2MDEsLTEyMTk2OTcwLDU4MDE5NTU1LC0xODMzMzA2LDY0Nzc4NTc3LC0xNTkyNTA2MCw1NjI4NDAwMywtMTQwODE2OTYsNTYxMjg4MDUsLTU4NDExNiw1MzAxOTAxOSwtMTA4MjE4NjAsNTU0MDk3MTksLTg1MTExOTYsNjY4NjAwMTEsLTg2NDM0NTYsNTc2MDA3MDksLTE0NDUyNzIsNjQ4OTQ0MzMsLTE1NTYwMTcwLDY1NDY2NjExLC01MzAxNTMyLDUyMTMwNDkxLC03NjI0NDg0LDY0OTYwMjMzLC0xMzg2NjU3NCw1NDE2Nzc5NSwtNTU2MzQ3MCw1Mzk5NzI4NSwtMTAxNjc4MjYsNTI2MDgzOTksLTUxNjI3MzIsNjQzNDkyMTcsLTEwODk5MTE2LDYxNzgzODc5LC0xMzA5MTQyMiw1NzUzMjI5MywtNDcwNzM3OCw1MTkxMjY5NSwtMTI3NjAyLDY2MTAwOTk3LC01Nzc4MDA2LDU3MTgwMTQ3LC0xMTIxNjQ3Miw2NTYyNzM4NSwtMjAwNjE0OCw2MzY4MzA3MywtMTI1NTAwNjQsNjU1NDM3NzcsLTE0ODAwMzc4LDYxNTk5Mjc1LC01NDE5Njk4LDY1MDEzMjIzLC0yNTU1MjkwLDYxOTc0MDQ1LC0xMTkxMjIzMCw1MjAwNDI1OSwtNDUyNjk5MCw1Njg0ODA1NywtMTgyMzEwLDY2Mzc4NjcxLC0xMjgyMDM1MCw2NTQxMzM4MSwtMjA4NjYwMiw1MDM1MzE1MSwtMjU3NzIzMCw1OTk3MjYzMywtMTA3OTczMiw2MTM4NDgwNSwtNTgwMTM0OCw2MjA4MTg1NSwtNjI4NzcyNiw1OTMzMjM4NSwtMjUwMDE0NCw2Njc3MTYxMSwtMTU0Mjc2NTQsNjUzNDY2MDksLTE1MjczMTY2LDUzMTcxMzExLC0yODczNDgyLDYyNjMyNzQzLC01MTM5Nzc4LDUyNDkxODU1LC0zOTQ3NDIyLDU3ODU4MTc5LC0xNDcwMDc3Niw2NTQxMjMyNSwtNTk0MzUyNiw2NjYxOTAwMSwtNDgyODg3Miw1MjEzMDM4NSwtMTY3MTU1MDgsNTg1MzczODcsLTY2OTMzMzAsNTQ2NDM3OTEsLTQwNjkzNzAsNTI5MDM4OTksLTUzMTM0ODIsNjU0MzAyNzksLTE2MDQxMDA4LDY0ODM4ODMzLC0yNDI2OTY2LDUyNjAyNDY1LC01ODMzNzIwLDY1MzE0NTcxLC0yNzkwMzQ0LDYwNzA5MzYxLC0xNjYyNzg1NCw1OTM4NjkxNywtMTUwMzU0MzYsNjU0NjY4NTcsLTQwNTU2MDYsNTY0ODE1NDMsLTUyMDc1NjAsNTYwMTczNjksLTE2MDk1MzIyLDYwMzYwMTIxLC0zNzk2NzI4LDU3OTYxOTIzLC0xNTMwMzQsNTg5OTY4NjEsLTEzOTM1MjIwLDUzMTE1MjM5LC0xMTMzMzQsNjQxNjEzOTMsLTE0MDUzNiw1NDYzMTE0OSwtMTI0MzQwMzQsNTQ2OTA2NjcsLTIwODA0NDAsNjY1MTE2NzUsLTE1MzAyODY0LDYzNzgzMzk3LC0xNDc2MzYzNiw1Mzc0OTYzNywtMTUzMDU2NzYsNjM5ODE3NTMsLTU5MDczMjQsNjQ5MzQ4OTMsLTE2MTIzNjI2LDYwMzU2Njg5LC0xMzMwNjAyOCw1OTQxMTI5MywtODE4NDMwMCw1NzA1NjgwMywtMzQwNTU0LDYzMzA0NDA1LC0yMDc3MTQ2LDU2NjgyOTI5LC00Mzg3ODE0LDY2MjU2MTAzXQ==";
+const _es = "Wy05MTc0NjE1LDU5NTY0Mjk0XQ==";
+const _ef = "Wy0zMzY1NDY3LDUyNDk3Njc0XQ==";
 const _sk = 11532295;
 const _courseRoute  = _er ? _d(_er, _sk)       : null;
 const _courseStart  = _es ? _d(_es, _sk +  7)[0] : null;
@@ -588,15 +670,17 @@ function fetchElevation(route) {
 }
 
 // Course choice modal
-const _courseUrl = null;
+const _courseUrl = "https://www.google.com/maps/d/embed?mid=1Y2wUfVMNEgHeGevuxahCo3tCmcYUVFQ&ehbc=2E312F&noprof=1";
 
 function openCourseChoice() {
+  document.body.classList.add('modal-open');
   const m = document.getElementById('course-choice-modal');
   m.style.display = 'flex';
 }
 
 function closeCourseChoice() {
   document.getElementById('course-choice-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
 }
 
 document.getElementById('course-choice-modal').addEventListener('click', function(e) {
@@ -605,6 +689,7 @@ document.getElementById('course-choice-modal').addEventListener('click', functio
 
 function openStandardMap() {
   if (!_courseUrl) return;
+  document.body.classList.add('modal-open');
   document.getElementById('standard-map-iframe').src = _courseUrl;
   const m = document.getElementById('standard-map-modal');
   m.style.display = 'flex';
@@ -613,7 +698,23 @@ function openStandardMap() {
 function closeStandardMap() {
   document.getElementById('standard-map-modal').style.display = 'none';
   document.getElementById('standard-map-iframe').src = '';
+  document.body.classList.remove('modal-open');
 }
+
+function openContactModal() {
+  document.getElementById('contact-modal').style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+
+function closeContactModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+
+// click outside to close
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
 
 document.getElementById('standard-map-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStandardMap();
@@ -621,6 +722,7 @@ document.getElementById('standard-map-modal').addEventListener('click', function
 
 // Advanced course modal
 function openCourseModal() {
+  document.body.classList.add('modal-open');
   if (!HAS_ROUTE) return;
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -645,6 +747,7 @@ function openCourseModal() {
 }
 
 function closeCourseModal() {
+  document.body.classList.remove('modal-open');
   document.getElementById('course-map-modal').classList.remove('show');
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -948,6 +1051,7 @@ function updateElevationCursor(progress) {
   courseElevationChart.data.datasets[1].pointRadius = courseElevationData.map((v,i) => i===idx?7:0);
   courseElevationChart.update('none');
 }
+
 </script>
 </body>
 </html>

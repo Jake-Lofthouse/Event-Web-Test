@@ -238,6 +238,29 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   .accommodation-iframe, .map-iframe { height: 400px; }
   .weather-iframe { height: 200px; }
 }
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.social-icon {
+  color: #64748b;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.15);
+}
+
+/* Brand colours on hover */
+.social-icon:hover .fa-facebook { color: #1877f2; }
+.social-icon:hover .fa-youtube { color: #ff0000; }
+.social-icon:hover .fa-tiktok { color: #000000; }
+.social-icon:hover .fa-envelope { color: #4caf50; }
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"SportsEvent","name":"Southern Town junior parkrun","description":"Visitor guide to Southern Town junior parkrun. Hotels, course map, weather forecast and travel information.","sport":"Running","eventAttendanceMode":"OfflineEventAttendanceMode","location":{"@type":"Place","name":"Southern Town juniors","geo":{"@type":"GeoCoordinates","latitude":"51.65874","longitude":"-1.287818"}},"url":"https://www.parkrunnertourist.com/explore/S/southerntown-juniors"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the weather like at Southern Town junior parkrun this week?","acceptedAnswer":{"@type":"Answer","text":"Check the Weather This Week section for the forecast."}},{"@type":"Question","name":"Where is Southern Town junior parkrun held?","acceptedAnswer":{"@type":"Answer","text":"Southern Town junior parkrun takes place at Southern Town juniors."}},{"@type":"Question","name":"Where can I find hotels near Southern Town junior parkrun?","acceptedAnswer":{"@type":"Answer","text":"The Hotels and Rentals section lists nearby accommodations."}}]}]}
@@ -386,6 +409,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   </div>
 </div>
 
+<!-- Contact Modal -->
+<div id="contact-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  
+  <div style="background:#fff;border-radius:20px;width:95%;max-width:700px;height:85%;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+    
+    <button onclick="closeContactModal()" style="position:absolute;top:12px;right:12px;
+      background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:32px;height:32px;
+      cursor:pointer;font-size:16px;">&times;</button>
+
+    <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u"
+      style="border:none;width:100%;height:100%;border-radius:20px;"></iframe>
+
+  </div>
+</div>
+
 <!-- Course Map Modal -->
 <div id="course-map-modal">
   <div class="course-modal-inner">
@@ -428,13 +469,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     </a>
   </div>
 </div>
-<footer>
-  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
-    parkrun is a registered trademark of parkrun Limited.
-    This website is independent and is not affiliated with or endorsed by parkrun.
-  </p>
-  &copy; 2026 junior parkrunner tourist
-</footer>
+<div style="margin-bottom:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:1.4rem;">
+
+  <a href="https://www.facebook.com/profile.php?id=61585873650397" target="_blank" class="social-icon">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+  <a href="https://www.youtube.com/@parkrunnertourist-app" target="_blank" class="social-icon">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@parkrunner.tourist.app" target="_blank" class="social-icon">
+    <i class="fab fa-tiktok"></i>
+  </a>
+
+  <a href="#" onclick="openContactModal()" class="social-icon">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
   data-message="Support The App" data-color="#40DCA5" data-position="Right"
@@ -447,7 +499,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
 
 // Course data (encrypted at build time, decrypted at runtime)
-const _er = "Wy03OTU0Njg2LDUyNjUzNTA5LC05NjU0OTQzLDUyMzg0MTQzLC0zODAyOTkwLDU3MTE0NDUyLC04Mzc3ODg2LDYzNTgxODcwLC02MzgwODM3LDYyODgwMDQwLC05NjUyMjcyLDU5ODc0OTIyLC01NDEwMTIzLDUyMDE1ODU0LC0zOTYzNjA4LDY1NTc2MjY3LC0zODA2NTc2LDU0NDQxNDI3LC03NjIzMzg5LDUxMjgxNzI4LC02NDMyNzA4LDY1ODc3NTAxLC0xNDMyNzc4Niw1MjU1MjI4NSwtNzUzODQyNyw1MTI2MDM2MSwtNzI1NDc2LDUyMzczODkzLC0xMjk2MTU1MSw1NTEwNTYyOSwtMTUxMTYwNzcsNjM1NDIyMTgsLTk3MDE5Nyw2MDI0NjQ5NSwtMTQzMTkzMjEsNjM2MDE2MDMsLTE1NTE1NzUyLDU1NjA2ODIyLC0xNTQ5MDE0LDY0NTQ3MzIzLC02NjU4NTAsNTkxNjQ2MzksLTk4NDY4ODcsNjM1NDExNDcsLTY1MjE5MDIsNTEwMTQ1NzMsLTQ4MTI3NjAsNjM2MjA1MzQsLTUzMzQxMDAsNTEyNDQyMjUsLTEyMDY1ODgwLDU4OTYyODgwLC0zMzgzODE0LDUzMDc5NjY3LC0xNDgzODE1MSw1NzA5ODI1OCwtMjY4ODYyNiw1MjAxMjQ0MCwtODMwODEyNCw1NTI0NDczNCwtMTUyNTY4MzksNTU0NzExMTMsLTEyOTU4NzQ5LDY2ODE0NDc2LC0xMjkyOTYwMyw1MTU5NzA3MywtNDMwMTQ3Niw2NDc2ODU0MCwtNzUxMjMzOSw1MjA5NzYzOCwtMTE4MjAxOTgsNTM0Mzg4MjEsLTExNzU0Mzc5LDYzOTkwMTQ2LC0xMDk4MDQ1NSw1NDIxMjU1NiwtMTIwMTU3ODgsNTU0NjkzODEsLTEwMjQxOTQsNTU5ODcyMjEsLTQ1MzYyMTQsNjE5NTYxMDMsLTUzNzE4MTMsNTI3MjY4MTksLTEwMjk0NDE5LDUzNzY1NjcyLC02ODU3Mzc1LDU2NzE3NzY5LC04MDUxMDc5LDU0MjYwNjE3LC03MTM4NDgxLDU0MjUwNTU1LC0xMzIxNDI4MCw2MjA2NTU5NCwtMzI4NjAxNCw1NTgzMzEzOSwtNzEyMzkyMiw2MDMwNTA5NSwtNTM4MzUyOCw2MzMwNTc2MCwtMTA4NjU3NzMsNTEyOTE5MDksLTEyODI0ODQsNjEyMzE1MTksLTE0ODQ1MzU2LDUyMjI5MzIxLC0yMTA2NTYwLDYwMTAyMTY4LC01NTA4NzkzLDUyMzA2OTE4LC01MjUzNTYsNjEwOTk2MTcsLTYyMTg1ODYsNTg4MjU5NTIsLTQ2NTk5NzIsNjY2MzMzMzQsLTM1NzU2MTgsNjY4NjA5NzAsLTIwOTQxMzcsNjQ0MDk1NjMsLTEzMDEzNTU5LDU2Mzg2MDI2LC02NjI2MzA5LDU5ODU3MjUxLC0xMzE4MzQzOCw2MDgxMTQ3MSwtNzEzNjcwMSw1ODI5NzgxMiwtMTU1Njc5MjYsNjM4MTc0MDgsLTEzODkzMjYxLDUxNzg1NDI0LC03NjA1MzY0LDYxMTI0MDQ1LC0xMDk0ODg5Niw2MTY2MjMzNSwtMTQ3Nzg5ODksNTM3MTQzNjksLTQxNDIwMzgsNjM0NzQ3OTMsLTExMjkzMzE0LDU2NzA5NjM1LC0xMjMzMzY5LDYxMDk2MTM1LC0xOTA0OTQzLDYxMjI0NDA0LC0xNzI1OTY0LDYzMzgyODE2LC01ODA2Mzk1LDYzNTU0MDUzLC02MTQwOTg2LDY2MDk0OTUyLC03Nzg2NjQ4LDUxMTA2NTgxLC02ODYyNjU2LDU4NDU5MjkzLC03ODE2NDg2LDU2MzM5OTA3LC04NzA4NDY4LDY2OTQ4NTkzLC0zMTIxNDU2LDYxNjI1MzkzLC0xNTA2MTQyMiw1ODAxNDIzMywtMTM1NzE4NTksNTA1NjUzMTdd";
+const _er = "Wy03OTU0Njg2LDUyNjUzNTA5LC05NjU0OTQzLDUyMzg0MTQzLC0zODAyOTkwLDU3MTE0NDUyLC04Mzc3ODg2LDYzNTgxODcwLC02MzgwODM3LDYyODgwMDQwLC05NjUyMjcyLDU5ODc0OTIyLC01NDEwMTIzLDUyMDE1ODU0LC0zOTYzNjA4LDY1NTc2MjY3LC0zODA2NTc2LDU0NDQxNDI3LC03NjIzMzg5LDUxMjgxNzI4LC02NDMyNzA4LDY1ODc3NTAxLC0xNDMyNzc4Niw1MjU1MjI4NSwtNzUzODQyNyw1MTI2MDM2MSwtNzI1NDc2LDUyMzczODkzLC0xMjk2MTU1MSw1NTEwNTYyOSwtMTUxMTYwNzcsNjM1NDIyMTgsLTk3MDIyNSw2MDI0NjQ4OCwtMTQzMTkyODAsNjM2MDA3MzMsLTE1NTE2MDE1LDU1NjA2ODYyLC0xNTQ4MzYyLDY0NTQ3MjIwLC02NjQ1OTYsNTkxNjM3NDYsLTk4NDk4MTgsNjM1NDAyNTUsLTY1MjE3NTAsNTEwMTQ2MTEsLTQ4MTE4MjcsNjM2MjA0NTUsLTUzMzQ1MjIsNTEyNDQ1MjEsLTEyMDY3MzcyLDU4OTYyNjQyLC0zMzgyNzY4LDUzMDU1OTMzLC0xNDgzODE0OCw1NzA5NzkwMCwtMjcwMTc3OCw1MjAxMjIxNSwtODMwODEwNyw1NTI0NDAyMiwtMTUyNjY0NjIsNTU0NzE3NjQsLTEyOTU4ODMyLDY2ODE1MDc0LC0xMjkyOTY1MSw1MTU5NTQ2OSwtNDI5OTEzNyw2NDc2ODU1MiwtNzUxMTAwNyw1MjA5NzY3NywtMTE4MTcyNDAsNTM0NDAwNDgsLTExNzUzMjU1LDYzOTkxNDU4LC0xMDk4MTI5MCw1NDIxMjI4OSwtMTIwMTYyOTUsNTU0Njk5NjYsLTEwMjU1ODcsNTU5ODgwODAsLTQ1MzQ0MDAsNjE5NTY0ODEsLTUzNjk5ODIsNTI3MjcwODksLTEwMjk0MTIyLDUzNzQ2MTA3LC02ODU3NDU3LDU2NjkyNDk1LC04MDUxMTQzLDU0MjYwNDYwLC03MTM4NDg3LDU0MjUxMzcwLC0xMzIxNDcxMCw2MjA2NDY1OSwtMzI4NTM3Nyw1NTgzMzE0OCwtNzEyNjc0MCw2MDMwNDc1NCwtNTM4NTIzOCw2MzMwNjY3MiwtMTA4NjQ1OTYsNTEyOTEyNjUsLTEyODM1OTYsNjEyMzE1ODUsLTE0ODQ1NDc0LDUyMjI5NTU0LC0yMTAzNTkxLDYwMTAyNjE5LC01NTE3NTUwLDUyMzIxNzczLC01Mzk1ODYsNjEwOTIyNzEsLTYyMTY4OTAsNTg4NDM4NTAsLTQ2NjAwMzUsNjY2MzI4MDgsLTM1NzU2MjIsNjY4NjAwODMsLTIwODM3NDgsNjQ0MDg5MDIsLTEzMDEzNTc0LDU2Mzg3NDYwLC02NjI2MzE2LDU5ODU4NTgwLC0xMzE3NzQxNSw2MDgxMzI1NywtNzEzNTA2OSw1ODI5NzgwNCwtMTU1Nzk3NzksNjM4MTYwMTcsLTEzODkwMzkyLDUxNzg0MTI5LC03NjAyODk5LDYxMTIyNTk4LC0xMDk0OTYxNiw2MTY2Mjg4NiwtMTQ3Nzg0NDMsNTM3MTQ3NTQsLTQxNDIxMzgsNjM0NzQ4MzUsLTExMjk0MDE4LDU2NzEwMDkzLC0xMjMzMzUxLDYxMDk2Mjk1LC0xOTA2Mzg4LDYxMjI5ODgzLC0xNzI0ODYwLDYzMzk2NzQ5LC01ODA2NDU1LDYzNTUzNDI5LC02MTQxMzMzLDY2MDk0Mzg2LC03Nzg3MjQxLDUxMTA1ODA4LC02ODYzNzUyLDU4NDYwMDA1LC03ODE3NDE1LDU2MzM5OTkwLC04NzExMjAyLDY2OTQ4NjM2LC0zMTI0ODYwLDYxNjI2MTcwLC0xNTA2NDYxMCw1ODAxMzcxOSwtMTM1NzE2MjIsNTA1NjU4NzUsLTgyNzA3OTYsNjMxNzQwNDksLTk5ODQ4MTAsNjY5Mzc2MDcsLTEzOTg4MjE4LDU2NDUxMDU5LC02NjU4NTY4LDY2MDY0MDA3LC02Njg4Mzk3LDY0OTM3MzE5XQ==";
 const _es = "Wy05OTcyMTEsNjQzNTM4OTJd";
 const _ef = "Wy0xMDk2NTc2OCw1MDgzMTk1OF0=";
 const _sk = 9043363;
@@ -621,12 +673,14 @@ function fetchElevation(route) {
 const _courseUrl = "https://www.google.com/maps/d/embed?mid=1SLXXMWUQZG1M59BPcFMC_f2pEC9mbII&ehbc=2E312F&noprof=1";
 
 function openCourseChoice() {
+  document.body.classList.add('modal-open');
   const m = document.getElementById('course-choice-modal');
   m.style.display = 'flex';
 }
 
 function closeCourseChoice() {
   document.getElementById('course-choice-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
 }
 
 document.getElementById('course-choice-modal').addEventListener('click', function(e) {
@@ -635,6 +689,7 @@ document.getElementById('course-choice-modal').addEventListener('click', functio
 
 function openStandardMap() {
   if (!_courseUrl) return;
+  document.body.classList.add('modal-open');
   document.getElementById('standard-map-iframe').src = _courseUrl;
   const m = document.getElementById('standard-map-modal');
   m.style.display = 'flex';
@@ -643,7 +698,23 @@ function openStandardMap() {
 function closeStandardMap() {
   document.getElementById('standard-map-modal').style.display = 'none';
   document.getElementById('standard-map-iframe').src = '';
+  document.body.classList.remove('modal-open');
 }
+
+function openContactModal() {
+  document.getElementById('contact-modal').style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+
+function closeContactModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+
+// click outside to close
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
 
 document.getElementById('standard-map-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStandardMap();
@@ -651,6 +722,7 @@ document.getElementById('standard-map-modal').addEventListener('click', function
 
 // Advanced course modal
 function openCourseModal() {
+  document.body.classList.add('modal-open');
   if (!HAS_ROUTE) return;
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -675,6 +747,7 @@ function openCourseModal() {
 }
 
 function closeCourseModal() {
+  document.body.classList.remove('modal-open');
   document.getElementById('course-map-modal').classList.remove('show');
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -978,6 +1051,7 @@ function updateElevationCursor(progress) {
   courseElevationChart.data.datasets[1].pointRadius = courseElevationData.map((v,i) => i===idx?7:0);
   courseElevationChart.update('none');
 }
+
 </script>
 </body>
 </html>

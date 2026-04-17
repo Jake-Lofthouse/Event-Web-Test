@@ -238,6 +238,29 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   .accommodation-iframe, .map-iframe { height: 400px; }
   .weather-iframe { height: 200px; }
 }
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.social-icon {
+  color: #64748b;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.15);
+}
+
+/* Brand colours on hover */
+.social-icon:hover .fa-facebook { color: #1877f2; }
+.social-icon:hover .fa-youtube { color: #ff0000; }
+.social-icon:hover .fa-tiktok { color: #000000; }
+.social-icon:hover .fa-envelope { color: #4caf50; }
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"SportsEvent","name":"Houghton Hall parkrun","description":"Visitor guide to Houghton Hall parkrun. Hotels, course map, weather forecast and travel information.","sport":"Running","eventAttendanceMode":"OfflineEventAttendanceMode","location":{"@type":"Place","name":"Houghton Hall Park","geo":{"@type":"GeoCoordinates","latitude":"51.90155","longitude":"-0.510046"}},"url":"https://www.parkrunnertourist.com/explore/H/houghtonhall"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the weather like at Houghton Hall parkrun this week?","acceptedAnswer":{"@type":"Answer","text":"Check the Weather This Week section for the forecast."}},{"@type":"Question","name":"Where is Houghton Hall parkrun held?","acceptedAnswer":{"@type":"Answer","text":"Houghton Hall parkrun takes place at Houghton Hall Park."}},{"@type":"Question","name":"Where can I find hotels near Houghton Hall parkrun?","acceptedAnswer":{"@type":"Answer","text":"The Hotels and Rentals section lists nearby accommodations."}}]}]}
@@ -310,7 +333,7 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 <div id="nearby-section" class="iframe-container">
   <h2 class="section-title">Nearby Events</h2>
   <ul class="nearby-list">
-    <li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/D/dunstabledowns" target="_blank">Dunstable Downs parkrun</a> <span class="distance">(4.4 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/L/lutonwardown" target="_blank">Luton Wardown parkrun</a> <span class="distance">(6.3 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/R/rushmere" target="_blank">Rushmere parkrun</a> <span class="distance">(12.3 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/G/gadebridge" target="_blank">Gadebridge parkrun</a> <span class="distance">(16.1 km)</span></li>
+    <li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/D/dunstabledowns" target="_blank">Dunstable Downs parkrun</a> <span class="distance">(4.4 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/L/lutonwardown" target="_blank">Luton Wardown parkrun</a> <span class="distance">(6.3 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/R/rushmere" target="_blank">Rushmere parkrun</a> <span class="distance">(12.3 km)</span></li><li class="nearby-item"><a href="https://www.parkrunnertourist.com/explore/R/rothamstedpark" target="_blank">Rothamsted Park parkrun</a> <span class="distance">(14.5 km)</span></li>
   </ul>
 </div>
       <div id="cancel-tile" class="iframe-container cancel-tile" style="display:none;">
@@ -386,6 +409,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
   </div>
 </div>
 
+<!-- Contact Modal -->
+<div id="contact-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:10000;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;">
+  
+  <div style="background:#fff;border-radius:20px;width:95%;max-width:700px;height:85%;
+    box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+    
+    <button onclick="closeContactModal()" style="position:absolute;top:12px;right:12px;
+      background:rgba(0,0,0,0.07);border:none;border-radius:50%;width:32px;height:32px;
+      cursor:pointer;font-size:16px;">&times;</button>
+
+    <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tNkQhJUREJVMVA2OUJVVVlXMTBLUUo1MUI2REc5SC4u"
+      style="border:none;width:100%;height:100%;border-radius:20px;"></iframe>
+
+  </div>
+</div>
+
 <!-- Course Map Modal -->
 <div id="course-map-modal">
   <div class="course-modal-inner">
@@ -428,13 +469,24 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
     </a>
   </div>
 </div>
-<footer>
-  <p style="max-width:900px;margin:0 auto 1rem auto;font-size:0.85rem;line-height:1.5;color:#64748b;">
-    parkrun is a registered trademark of parkrun Limited.
-    This website is independent and is not affiliated with or endorsed by parkrun.
-  </p>
-  &copy; 2026 parkrunner tourist
-</footer>
+<div style="margin-bottom:1rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:1.4rem;">
+
+  <a href="https://www.facebook.com/profile.php?id=61585873650397" target="_blank" class="social-icon">
+    <i class="fab fa-facebook"></i>
+  </a>
+
+  <a href="https://www.youtube.com/@parkrunnertourist-app" target="_blank" class="social-icon">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="https://www.tiktok.com/@parkrunner.tourist.app" target="_blank" class="social-icon">
+    <i class="fab fa-tiktok"></i>
+  </a>
+
+  <a href="#" onclick="openContactModal()" class="social-icon">
+    <i class="fas fa-envelope"></i>
+  </a>
+</div>
 <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
   data-id="jlofthouse" data-description="Support me on Buy me a coffee!"
   data-message="Support The App" data-color="#40DCA5" data-position="Right"
@@ -447,9 +499,9 @@ footer { text-align: center; padding: 2rem; background: #f8fafc; color: #64748b;
 function _d(b,s){const f=JSON.parse(atob(b));const r=[];let v=s>>>0;for(let i=0;i<f.length;i+=2){v=(Math.imul(v,1664525)+1013904223)>>>0;const lng=(f[i]^(v&0xFFFFFF))/1e6;v=(Math.imul(v,1664525)+1013904223)>>>0;const lat=(f[i+1]^(v&0xFFFFFF))/1e6;r.push([lng,lat]);}return r;}
 
 // Course data (encrypted at build time, decrypted at runtime)
-const _er = "Wy0xMTI1OTQ0NCw1NTI3OTkwMywtOTQ4MTgwNiw1ODgyOTU1OCwtMTQyMzEwNjQsNjQwOTExNDUsLTg0NDg1NTksNjMzMTIzMjYsLTE1OTg1NTIxLDYxMjQ2MTQwLC0zODIxNTQ2LDU2OTY3MjA4LC0zMTYzNTE3LDU3MTAzMTE0LC0xNjY4ODk4Miw2NjM3NDUyOSwtMTU3Mjg0NDUsNTQwMzEzODQsLTg5Njk1MTUsNjIyNjAyMjcsLTEzMzQ1OTE5LDU3NjQzMDg5LC0xODUwNjM2LDU3ODAxNzQ4LC0xMzMwNzIsNjUwMjUzNjksLTE2NjEyMjYzLDYwMTM4MTcwLC0yMjg4MjgyLDYwMjY3NzI1LC0xNTc2NTc1OCw2MDY1OTAzNCwtNzk1MzgzMSw1NjE0NTU5MSwtMTI5MDA2MDcsNTI1NjY2MjMsLTEyMjI4MTc3LDYwMzEwMTA0LC0xMTUwMjU5Niw1OTk5MTUwNCwtMTI1Nzc4MDYsNTA5MDkwMjksLTc5MzI1MjYsNTM4MjM1MDksLTg2MTQ2MTMsNTkxNDU4ODgsLTE0MTk3ODMzLDUyMTIzNjc4LC0xMzM2MTkxNSw1Njg0MjQyMiwtMTA0NjE2NjMsNTY5NTA2MzYsLTU4MzY2NTQsNjMxMTkzMTgsLTY3NDc4NjAsNjM1MjQzNTksLTEwNDY5NTcsNTE4NTQzNzgsLTEzMjAwNjA3LDU4OTE4NTc1LC0xMDgxMDk4MSw2MDQ4MjA2NywtODQ5ODk1OCw1MzI4ODY3OSwtNjk2MjQwMSw1OTcyNzM5MCwtMTE3ODcxNjAsNjE3MDg5NzYsLTEwMTIyMDQ4LDU0OTc4NjA5LC0xMjMyNTc5Niw1NzgzNzgxMCwtMzQ4NTAyMSw2MDk3NTU2MywtMjY1NjY2MSw1NTQ1OTI2MywtNjg0ODI0LDU5NTE0ODQ3LC00MjI4MTMsNTM1OTg3MDcsLTQ2NTU5NTIsNjUyNTMzNTMsLTE2NTc0NzgxLDYyNTc3NTkwLC0xMDU1NzM5Niw1NjI5ODMxMiwtNzAxMjk0MSw1NjUyMzE3NiwtMTE3MTIyODUsNTg4Mjk0NjUsLTIyMjg2MzAsNTI3ODg4MzEsLTk4ODMxMzQsNTM1MjQ5MjgsLTEwNjI2ODcyLDUwODg3MzM4LC02NjcxNjU5LDUxODYyNjU4LC05ODAxNDkxLDU0MjU3ODEwLC0xNDcwNzAxOCw1NDkzMTAxNywtNzIzMjI2NCw2NTc4NDQ2MCwtNDkzMjc0Nyw1MzE5NDIzMSwtNzM5ODI2Niw1MDg1OTEzNiwtNDA0NDY3Myw2MjkxNDg1NiwtMTAxNjg0Nyw2MDgyNzExMCwtMjczMzkyNCw1NjcxNTM3NV0=";
-const _es = "Wy01OTA1MzAxLDY2MTI4MzE4XQ==";
-const _ef = "Wy0xNTg1OTU2Myw1MzQwMzAwOF0=";
+const _er = "Wy0xMTI1OTQxMSw1NTI3OTg5NSwtOTQ4MTc3Niw1ODgyOTY3MywtMTQyMjk5MzYsNjQwOTE5ODcsLTg0NDkyMzQsNjMzMTI0NDIsLTE1OTg0OTY1LDYxMjQ2Mzg2LC0zODIwNzY4LDU2OTY3NjUxLC0zMTYzNTk0LDU3MTA1NDQxLC0xNjY4ODk2NCw2NjM3MjYxMywtMTU3Mjg0OTQsNTQwMzIwNzksLTg5Njk0MDAsNjIyNjEwMzAsLTEzMzQ2Mjg2LDU3NjQ0NTY1LC0xODUxMjIwLDU3ODAxNjU2LC0xMzI0OTMsNjUwMjU0MzQsLTE2NjExOTI2LDYwMTM4ODAxLC0yMjg4NjA2LDYwMjY3NDkwLC0xNTc2NTUyOCw2MDY1OTA5NSwtNzk1MzkwNCw1NjE0NTY3OCwtMTI5MDE5MDMsNTI1NjYyNzEsLTEyMjI3NTYwLDYwMzA5OTQ0LC0xMTUwMzQwMSw1OTk5MTI5MiwtMTI1NzgwNDIsNTA5MDU1MDEsLTc5MzI5MjYsNTM4MjMyODUsLTg2MTcxNDAsNTkxNDYyMzAsLTE0MTk5NzQ0LDUyMTI0NDEwLC0xMzM2MTY3MCw1Njg0MzEwOSwtMTA0NjE1MzgsNTY5NTAzOTUsLTU4MzY1OTYsNjMxMTc0OTksLTY3NDgyMDEsNjM1MjMzNDUsLTEwNDU2NjEsNTE4NTMzMTcsLTEzMTk5MDMzLDU4OTIzNTg3LC0xMDgwOTc2MCw2MDQ4ODc4NiwtODUwMDQxMiw1MzI4MDkwOSwtNjk1NTUxNSw1OTcyNjkzMCwtMTE3ODAzNjQsNjE3MDg1OTAsLTEwMTIyNjA2LDU0OTc5MzE0LC0xMjMyNjMxMyw1NzgzOTE2MSwtMzQ4MTcxNiw2MDk3Njc3MSwtMjY1NTI5OSw1NTQ1ODYwOCwtNjg1ODcxLDU5NTE0MzY5LC00MjMwMjAsNTM1OTk2NjIsLTQ2NjU5NzYsNjUyNTUyMDIsLTE2NTcwMTcyLDYyNTcxMTM4LC0xMDU2MjUyNSw1NjI5OTg1NCwtNzAyODczMiw1NjUyNDM2MCwtMTE3MDAyNTYsNTg4MzAwNTMsLTIyNDMzNTEsNTI3ODg2NzksLTk4OTQ0MTYsNTM1MjM3MDcsLTEwNjI4MTcyLDUwODg2NTIwLC02NjY4NDA2LDUxODYyODgyLC05Nzk4NjEzLDU0MjU2NzAzLC0xNDcwODIwNCw1NDkyODgyNSwtNzIzMjc0Miw2NTc4NTgyOSwtNDkzMTc2Nyw1MzE5MzMxMywtNzM5NzU1NCw1MDg1OTA3OSwtNDA0MTQyMCw2MjkxNDg3OSwtMTAyMjQ1NSw2MDgyNjMyMiwtMjczMTEzOCw1NjcxNzA3NSwtMTQyMDg4NzIsNTU1NTE4NjMsLTczNzAwNiw1NDQ4MTk0MSwtMTQ3NDc1NzcsNTQxMDc3NzgsLTE1OTA3MDQwLDYwMjU3ODE0LC0zMTIyODM3LDU3OTg2MzU3XQ==";
+const _es = "Wy01OTA1MzM0LDY2MTI4MzEwXQ==";
+const _ef = "Wy0xNTg1NjUyNCw1MzQwMjk2OF0=";
 const _sk = 8780891;
 const _courseRoute  = _er ? _d(_er, _sk)       : null;
 const _courseStart  = _es ? _d(_es, _sk +  7)[0] : null;
@@ -621,12 +673,14 @@ function fetchElevation(route) {
 const _courseUrl = "https://www.google.com/maps/d/embed?t=h&mid=19VrA82-WVbNw1ojoZuqUeYf_gGykrDwq";
 
 function openCourseChoice() {
+  document.body.classList.add('modal-open');
   const m = document.getElementById('course-choice-modal');
   m.style.display = 'flex';
 }
 
 function closeCourseChoice() {
   document.getElementById('course-choice-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
 }
 
 document.getElementById('course-choice-modal').addEventListener('click', function(e) {
@@ -635,6 +689,7 @@ document.getElementById('course-choice-modal').addEventListener('click', functio
 
 function openStandardMap() {
   if (!_courseUrl) return;
+  document.body.classList.add('modal-open');
   document.getElementById('standard-map-iframe').src = _courseUrl;
   const m = document.getElementById('standard-map-modal');
   m.style.display = 'flex';
@@ -643,7 +698,23 @@ function openStandardMap() {
 function closeStandardMap() {
   document.getElementById('standard-map-modal').style.display = 'none';
   document.getElementById('standard-map-iframe').src = '';
+  document.body.classList.remove('modal-open');
 }
+
+function openContactModal() {
+  document.getElementById('contact-modal').style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+
+function closeContactModal() {
+  document.getElementById('contact-modal').style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+
+// click outside to close
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
 
 document.getElementById('standard-map-modal').addEventListener('click', function(e) {
   if (e.target === this) closeStandardMap();
@@ -651,6 +722,7 @@ document.getElementById('standard-map-modal').addEventListener('click', function
 
 // Advanced course modal
 function openCourseModal() {
+  document.body.classList.add('modal-open');
   if (!HAS_ROUTE) return;
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -675,6 +747,7 @@ function openCourseModal() {
 }
 
 function closeCourseModal() {
+  document.body.classList.remove('modal-open');
   document.getElementById('course-map-modal').classList.remove('show');
   if (courseAnimFrameId) cancelAnimationFrame(courseAnimFrameId);
   courseAnimRunning = false;
@@ -978,6 +1051,7 @@ function updateElevationCursor(progress) {
   courseElevationChart.data.datasets[1].pointRadius = courseElevationData.map((v,i) => i===idx?7:0);
   courseElevationChart.update('none');
 }
+
 </script>
 </body>
 </html>
